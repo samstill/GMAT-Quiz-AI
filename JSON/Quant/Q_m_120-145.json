@@ -1,0 +1,392 @@
+[
+  {
+    "questionText": "Working simultaneously and independently at an identical constant rate, 4 machines of a certain type can produce a total of x units of Product P in 6 days. How many of these machines, working simultaneously and independently at this constant rate, can produce a total of 3x units of Product P in 4 days?",
+    "options": [
+      "24",
+      "18",
+      "16",
+      "12",
+      "8"
+    ],
+    "correctAnswer": "B",
+    "answerExplanation": "Define a machine day as 1 machine working for 1 day. Then 4 machines each working 6 days is equivalent to $(4)(6)=24$ machine days. Thus, x units of Product P were produced in 24 machine days, and 3x units of Product P will require $(3)(24)=72$ machine days, which is equivalent to $\\frac{72}{4}=18$ machines working independently and simultaneously for 4 days.",
+    "difficulty": "medium",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "The symbol $\\Delta$ denotes one of the four arithmetic operations: addition, subtraction, multiplication, or division. If $6 \\Delta 3 \\le 3$, which of the following must be true?<br>I. $2 \\Delta 2 = 0$<br>II. $2 \\Delta 2 = 1$<br>III. $4 \\Delta 2 = 2$",
+    "options": [
+      "I only",
+      "II only",
+      "III only",
+      "I and II only",
+      "I, II, and III"
+    ],
+    "correctAnswer": "C",
+    "answerExplanation": "If $\\Delta$ represents addition, subtraction, multiplication, or division, then $6 \\Delta 3$ is equal to either $6+3=9$, or $6-3=3$, or $6 \\times 3=18$, or $6 \\div 3=2$. Since it is given that $6 \\Delta 3 \\le 3$, $\\Delta$ represents either subtraction or division. <br>Statement I is true for subtraction since $2-2=0$ but not true for division since $2 \\div 2=1$. <br>Statement II is not true for subtraction since $2-2=0$ but is true for division since $2 \\div 2=1$. <br>Statement III is true for subtraction since $4-2=2$ and is true for division since $4 \\div 2=2$. <br>Therefore, only Statement III must be true.",
+    "difficulty": "medium",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "If $mn \\ne 0$ and 25 percent of n equals $37\\frac{1}{2}$ percent of m, what is the value of $\\frac{12n}{m}$?",
+    "options": [
+      "18",
+      "$\\frac{32}{3}$",
+      "8",
+      "3",
+      "$\\frac{9}{8}$"
+    ],
+    "correctAnswer": "A",
+    "answerExplanation": "It is given that $(25\\%)n = (37.5\\%)m$, or $0.25n = 0.375m$. The value of $\\frac{12n}{m}$ can be found by first finding the value of $\\frac{n}{m}$ and then multiplying the result by 12. Doing this gives $\\frac{n}{m} = \\frac{0.375}{0.25} = 1.5$. Then, $12 \\times 1.5 = 18$.<br>Alternatively:<br>$0.25n = 0.375m$<br>$25n = 37.5m$<br>$50n = 75m$<br>$2n = 3m$<br>$12n = 18m$<br>$\\frac{12n}{m} = 18$",
+    "difficulty": "medium",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "Last year Joe grew 1 inch and Sally grew 200 percent more than Joe grew. How many inches did Sally grow last year?",
+    "options": [
+      "0",
+      "1",
+      "2",
+      "3",
+      "4"
+    ],
+    "correctAnswer": "D",
+    "answerExplanation": "Joe grew 1 inch last year and Sally grew 200 percent more than Joe grew, so Sally grew 1 inch plus 200 percent of 1 inch or $1 + 2(1) = 3$ inches.",
+    "difficulty": "medium",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "The table shows partial results of a survey in which consumers were asked to indicate which one of six promotional techniques most influenced their decision to buy a new food product. Of those consumers who indicated one of the four techniques listed, what fraction indicated either coupons or store displays?<br><table><tr><th>Technique</th><th>Percent of Consumers</th></tr><tr><td>Television ads</td><td>35%</td></tr><tr><td>Coupons</td><td>22%</td></tr><tr><td>Store displays</td><td>18%</td></tr><tr><td>Samples</td><td>15%</td></tr></table>",
+    "options": [
+      "$\\frac{2}{7}$",
+      "$\\frac{1}{3}$",
+      "$\\frac{2}{5}$",
+      "$\\frac{4}{9}$",
+      "$\\frac{1}{2}$"
+    ],
+    "correctAnswer": "D",
+    "answerExplanation": "Let T be the total number of consumers who were asked. Then the table shows $35\\% + 22\\% + 18\\% + 15\\% = 90\\%$ of this total, or 0.9T consumers. Also, the number of consumers who indicated either coupons or store displays was $0.22T + 0.18T = 0.4T$. Therefore, the number of consumers who indicated either coupons or store displays divided by the number of consumers shown in the table is $\\frac{0.4T}{0.9T} = \\frac{4}{9}$.",
+    "difficulty": "medium",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "If 65 percent of a certain firm's employees are full-time and if there are 5,100 more full-time employees than part-time employees, how many employees does the firm have?",
+    "options": [
+      "8,250",
+      "10,200",
+      "11,050",
+      "16,500",
+      "17,000"
+    ],
+    "correctAnswer": "E",
+    "answerExplanation": "Let T represent the total number of employees the firm has; F, the number of full-time employees; and P, the number of part-time employees. Since 65 percent of the firm's employees are full-time, it follows that 35 percent are part-time. Thus, $F = 0.65T$ and $P = 0.35T$. However, $F = P + 5,100$ so $0.65T = 0.35T + 5,100$, which gives $0.30T = 5,100$ and $T = \\frac{5,100}{0.30} = 17,000$.",
+    "difficulty": "medium",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "The cost C, in dollars, to remove p percent of a certain pollutant from a pond is estimated by using the formula $C=\\frac{100,000p}{100-p}$. According to this estimate, how much more would it cost to remove 90 percent of the pollutant from the pond than it would cost to remove 80 percent of the pollutant?",
+    "options": [
+      "$500,000",
+      "$100,000",
+      "$50,000",
+      "$10,000",
+      "$5,000"
+    ],
+    "correctAnswer": "A",
+    "answerExplanation": "Cost to remove 90% of the pollutant: $C_{90} = \\frac{100,000(90)}{100-90} = \\frac{9,000,000}{10} = \\$900,000$.<br>Cost to remove 80% of the pollutant: $C_{80} = \\frac{100,000(80)}{100-80} = \\frac{8,000,000}{20} = \\$400,000$.<br>The difference is: $\\$900,000 - \\$400,000 = \\$500,000$.",
+    "difficulty": "medium",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "If $xy \\ne 0$ and $x^2y^2 - xy = 6$, which of the following could be y in terms of x?<br>I. $\\frac{1}{2x}$<br>II. $-\\frac{2}{x}$<br>III. $\\frac{3}{x}$",
+    "options": [
+      "I only",
+      "II only",
+      "I and II",
+      "I and III",
+      "II and III"
+    ],
+    "correctAnswer": "E",
+    "answerExplanation": "Given the equation $x^2y^2 - xy = 6$, we can rearrange it to form a quadratic equation in terms of (xy).<br>$x^2y^2 - xy - 6 = 0$<br>Let $A = xy$. The equation becomes $A^2 - A - 6 = 0$.<br>Factoring the quadratic equation: $(A-3)(A+2) = 0$.<br>So, the possible values for A are $A=3$ or $A=-2$.<br>This means $xy = 3$ or $xy = -2$.<br>Solving for y gives $y = \\frac{3}{x}$ or $y = -\\frac{2}{x}$.<br>Thus, the expressions in II and III could be y in terms of x.",
+    "difficulty": "medium",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "$\\sqrt{4.8 \\times 10^9}$ is closest in value to",
+    "options": [
+      "2,200",
+      "70,000",
+      "220,000",
+      "7,000,000",
+      "22,000,000"
+    ],
+    "correctAnswer": "B",
+    "answerExplanation": "We can rewrite the expression to make it easier to approximate.<br>$\\sqrt{4.8 \\times 10^9} = \\sqrt{48 \\times 10^8}$<br>Now, we can separate the square roots:<br>$\\sqrt{48 \\times 10^8} = \\sqrt{48} \\times \\sqrt{10^8}$<br>We know that $\\sqrt{10^8} = 10^4$.<br>The value of $\\sqrt{48}$ is very close to $\\sqrt{49}$, which is 7.<br>So, the expression is approximately $7 \\times 10^4 = 70,000$.",
+    "difficulty": "medium",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "In a certain high school, 80 percent of the seniors are taking calculus, and 60 percent of the seniors who are taking calculus are also taking physics. If 10 percent of the seniors are taking neither calculus nor physics, what percent of the seniors are taking physics?",
+    "options": [
+      "40%",
+      "42%",
+      "48%",
+      "58%",
+      "80%"
+    ],
+    "correctAnswer": "D",
+    "answerExplanation": "Let C be the set of seniors taking calculus and P be the set of seniors taking physics. Let the total number of seniors be 100.<br>Number of seniors taking calculus = $0.80 \\times 100 = 80$.<br>Number of seniors taking both calculus and physics = $0.60 \\times 80 = 48$.<br>Number of seniors taking neither calculus nor physics = $0.10 \\times 100 = 10$.<br>The number of seniors taking at least one of the subjects is $100 - 10 = 90$.<br>The formula for the union of two sets is: $|C \\cup P| = |C| + |P| - |C \\cap P|$.<br>$90 = 80 + |P| - 48$<br>$90 = 32 + |P|$<br>$|P| = 58$<br>So, 58 percent of the seniors are taking physics.",
+    "difficulty": "medium",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "If the units digit of $\\frac{5,610.37}{10^k}$ is 6, what is the value of k?",
+    "options": [
+      "3",
+      "2",
+      "1",
+      "-1",
+      "-2"
+    ],
+    "correctAnswer": "B",
+    "answerExplanation": "Dividing a number by $10^k$ shifts the decimal point k places to the left. For the units digit of the result to be 6, the digit 6 in 5,610.37 must move to the units position. The digit 6 is currently in the hundreds place, which is two places to the left of the decimal point. To move it to the units place (one place to the left of the decimal), the decimal point needs to shift two places to the left. This corresponds to dividing by $10^2$. Therefore, $k=2$.<br>$\\frac{5,610.37}{10^2} = 56.1037$. The units digit is 6.",
+    "difficulty": "medium",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "Three printing presses, R, S, and T, working together at their respective constant rates, can do a certain printing job in 4 hours. S and T, working together at their respective constant rates, can do the same job in 5 hours. How many hours would it take R, working alone at its constant rate, to do the same job?",
+    "options": [
+      "8",
+      "10",
+      "12",
+      "15",
+      "20"
+    ],
+    "correctAnswer": "E",
+    "answerExplanation": "Let r, s, and t be the rates (jobs per hour) of presses R, S, and T, respectively.<br>From the given information:<br>1. $r + s + t = \\frac{1}{4}$ (Together they do 1 job in 4 hours)<br>2. $s + t = \\frac{1}{5}$ (S and T together do 1 job in 5 hours)<br>We want to find the time it takes R to do the job alone, which is $\\frac{1}{r}$.<br>Substitute the second equation into the first:<br>$r + (\\frac{1}{5}) = \\frac{1}{4}$<br>$r = \\frac{1}{4} - \\frac{1}{5}$<br>$r = \\frac{5-4}{20} = \\frac{1}{20}$<br>So, the rate of R is $\\frac{1}{20}$ jobs per hour. The time it takes R to complete the job alone is the reciprocal of its rate, which is 20 hours.",
+    "difficulty": "medium",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "In a poll, 200 subscribers to Financial Magazine X indicated which of five specific companies they own stock in. The results are shown in the table above. If 15 of the 200 own stock in both IBM and AT&T, how many of those polled own stock in neither company?<br><table><tr><th>Company</th><th>Number Who Own Stock</th></tr><tr><td>AT&T</td><td>30</td></tr><tr><td>IBM</td><td>48</td></tr><tr><td>GM</td><td>54</td></tr><tr><td>FORD</td><td>75</td></tr><tr><td>US Air</td><td>83</td></tr></table>",
+    "options": [
+      "63",
+      "93",
+      "107",
+      "122",
+      "137"
+    ],
+    "correctAnswer": "E",
+    "answerExplanation": "Let I be the set of subscribers who own IBM stock and A be the set of subscribers who own AT&T stock.<br>We are given:<br>$|I| = 48$<br>$|A| = 30$<br>$|I \\cap A| = 15$ (own both)<br>The number of subscribers who own either IBM or AT&T is given by the formula for the union of two sets:<br>$|I \\cup A| = |I| + |A| - |I \\cap A|$<br>$|I \\cup A| = 48 + 30 - 15 = 63$.<br>This means 63 subscribers own stock in at least one of these two companies. The other companies (GM, FORD, US Air) are irrelevant to this specific question.<br>The question asks how many own stock in *neither* IBM nor AT&T. This would be the total number of people polled minus those who own at least one of the two.<br>Number owning neither = Total polled - $|I \\cup A|$<br>Number owning neither = $200 - 63 = 137$.<br>(Note: The provided explanation in the PDF is incorrect as it only considers the 200 subscribers and the IBM/AT&T owners, ignoring the other stocks which might be owned by the same people. However, based on the phrasing 'own stock in neither company' referring to IBM and AT&T, this is the most logical interpretation.)",
+    "difficulty": "medium",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "The sum of all the integers k such that $-26 < k < 24$ is",
+    "options": [
+      "0",
+      "-2",
+      "-25",
+      "-49",
+      "-51"
+    ],
+    "correctAnswer": "D",
+    "answerExplanation": "The integers k range from -25 to 23, inclusive.<br>The sum is: $(-25) + (-24) + (-23) + ... + 0 + ... + 21 + 22 + 23$.<br>The sum of the integers from -23 to 23 is 0, because each positive integer cancels out its negative counterpart (e.g., -23 + 23 = 0, -22 + 22 = 0, etc.).<br>So, we are left with the sum of the remaining integers: $(-25) + (-24)$.<br>$-25 - 24 = -49$.",
+    "difficulty": "medium",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "The number line shown contains three points R, S, and T, whose coordinates have absolute values r, s, and t, respectively. Which of the following equals the average (arithmetic mean) of the coordinates of the points R, S, and T?<br><i>A number line is shown with point R to the left of 0, and points S and T to the right of 0. The order is R, 0, S, T.</i>",
+    "options": [
+      "s",
+      "$s + t - r$",
+      "$\\frac{r - s - t}{3}$",
+      "$\\frac{r + s + t}{3}$",
+      "$\\frac{s + t - r}{3}$"
+    ],
+    "correctAnswer": "E",
+    "answerExplanation": "The coordinate of a point on a number line is its value. The absolute value is its distance from 0.<br>Since R is to the left of 0, its coordinate is negative. The absolute value of its coordinate is r, so the coordinate of R is -r.<br>Since S and T are to the right of 0, their coordinates are positive. The absolute values of their coordinates are s and t, so the coordinates are s and t, respectively.<br>The average of the coordinates is the sum of the coordinates divided by the number of points (3).<br>Average = $\\frac{(-r) + s + t}{3} = \\frac{s + t - r}{3}$.",
+    "difficulty": "medium",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "Mark and Ann together were allocated n boxes of cookies to sell for a club project. Mark sold 10 boxes less than n and Ann sold 2 boxes less than n. If Mark and Ann have each sold at least one box of cookies, but together they have sold less than n boxes, what is the value of n?",
+    "options": [
+      "11",
+      "12",
+      "13",
+      "14",
+      "15"
+    ],
+    "correctAnswer": "A",
+    "answerExplanation": "Let M be the number of boxes Mark sold and A be the number of boxes Ann sold.<br>$M = n - 10$<br>$A = n - 2$<br>Condition 1: Each sold at least one box.<br>$M \\ge 1 \\implies n - 10 \\ge 1 \\implies n \\ge 11$<br>$A \\ge 1 \\implies n - 2 \\ge 1 \\implies n \\ge 3$<br>Both must be true, so we must have $n \\ge 11$.<br><br>Condition 2: Together they sold less than n boxes.<br>$M + A < n$<br>$(n - 10) + (n - 2) < n$<br>$2n - 12 < n$<br>$n < 12$<br><br>We have two conditions for the integer n: $n \\ge 11$ and $n < 12$. The only integer that satisfies both is $n=11$.",
+    "difficulty": "medium",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "In the correctly worked addition problem shown, P, Q, R, and S are digits.<br>$\\begin{array}{@{}c@{\\;}c@{}c} & 3 & P & 5 \\\\ + & 4 & Q & R \\\\ \\hline & 8 & S & 4 \\end{array}$<br>If $Q = 2P$, which of the following could be the value of S?",
+    "options": [
+      "3",
+      "4",
+      "5",
+      "7",
+      "9"
+    ],
+    "correctAnswer": "A",
+    "answerExplanation": "Let's analyze the addition column by column, from right to left.<br>1. <b>Units column:</b> $5 + R$ ends in 4. This means $5 + R = 14$ (since R is a single digit, it cannot be 4). So, $R = 9$. We carry over 1 to the tens column.<br>2. <b>Tens column:</b> $1 + P + Q = S$ (if no carry-over) or $1 + P + Q = 10 + S$ (if there is a carry-over to the hundreds column).<br>3. <b>Hundreds column:</b> $3 + 4$ (plus any carry-over from the tens column) equals 8. Since $3+4=7$, there must have been a carry-over of 1 from the tens column. This means $1 + P + Q$ must be 10 or greater.<br>So, from the tens column, we have: $1 + P + Q = 10 + S$.<br>We are given $Q = 2P$. Substitute this into the equation:<br>$1 + P + 2P = 10 + S$<br>$1 + 3P = 10 + S$<br>$S = 3P - 9$<br>$S = 3(P - 3)$<br>This shows that S must be a multiple of 3. This eliminates options B (4) and C (5).<br>Let's test the remaining options for S:<br>- If $S=3$: $3 = 3(P-3) \\implies 1 = P-3 \\implies P=4$. If $P=4$, then $Q=2P=8$. Let's check: P=4, Q=8, R=9, S=3. The sum is 345 + 489 = 834. This works.<br>- If $S=9$: $9 = 3(P-3) \\implies 3 = P-3 \\implies P=6$. If $P=6$, then $Q=2P=12$. Q cannot be 12 as it must be a single digit. So S cannot be 9.<br>- If S=7, it's not a multiple of 3.<br>Therefore, the only possible value for S is 3.",
+    "difficulty": "medium",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "A certain high school has 5,000 students. Of these students, x are taking music, y are taking art, and z are taking both music and art. How many students are taking neither music nor art?",
+    "options": [
+      "$5,000 - z$",
+      "$5,000 - x - y$",
+      "$5,000 - x + z$",
+      "$5,000 - x - y - z$",
+      "$5,000 - x - y + z$"
+    ],
+    "correctAnswer": "E",
+    "answerExplanation": "We use the principle of inclusion-exclusion for two sets.<br>Let M be the set of students taking music and A be the set of students taking art.<br>We are given:<br>$|M| = x$<br>$|A| = y$<br>$|M \\cap A| = z$ (students taking both)<br>The number of students taking at least one of the subjects (music or art) is given by:<br>$|M \\cup A| = |M| + |A| - |M \\cap A| = x + y - z$.<br>The number of students taking *neither* music nor art is the total number of students minus the number of students taking at least one of the subjects.<br>Number taking neither = Total students - $|M \\cup A|$<br>Number taking neither = $5,000 - (x + y - z) = 5,000 - x - y + z$.",
+    "difficulty": "medium",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "Each person who attended a company meeting was either a stockholder in the company, an employee of the company, or both. If 62 percent of those who attended the meeting were stockholders and 47 percent were employees, what percent were stockholders who were NOT employees?",
+    "options": [
+      "34%",
+      "38%",
+      "45%",
+      "53%",
+      "62%"
+    ],
+    "correctAnswer": "D",
+    "answerExplanation": "Let S be the set of attendees who are stockholders and E be the set of attendees who are employees.<br>We are given:<br>P(S) = 62% = 0.62<br>P(E) = 47% = 0.47<br>Since everyone is at least one of the two, the probability of being in the union of the sets is 100%.<br>P(S U E) = 1.00<br>Using the formula P(S U E) = P(S) + P(E) - P(S ∩ E), we can find the percentage who are both.<br>1.00 = 0.62 + 0.47 - P(S ∩ E)<br>1.00 = 1.09 - P(S ∩ E)<br>P(S ∩ E) = 1.09 - 1.00 = 0.09<br>So, 9% of attendees are both stockholders and employees.<br>The question asks for the percent who were stockholders but NOT employees. This is the total percentage of stockholders minus the percentage who are also employees.<br>P(S only) = P(S) - P(S ∩ E) = 0.62 - 0.09 = 0.53.<br>So, 53% were stockholders who were not employees.",
+    "difficulty": "medium",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "The table shows the amount budgeted and the amount spent for each of three accounts in a certain company. For which of these accounts did the amount spent differ from the amount budgeted by more than 6 percent of the amount budgeted?<br><table><tr><th>Accounts</th><th>Amount Budgeted</th><th>Amount Spent</th></tr><tr><td>Payroll</td><td>\\$110,000</td><td>\\$117,000</td></tr><tr><td>Taxes</td><td>\\$40,000</td><td>\\$42,000</td></tr><tr><td>Insurance</td><td>\\$2,500</td><td>\\$2,340</td></tr></table>",
+    "options": [
+      "Payroll only",
+      "Taxes only",
+      "Insurance only",
+      "Payroll and Insurance",
+      "Taxes and Insurance"
+    ],
+    "correctAnswer": "D",
+    "answerExplanation": "We need to check each account.<br><b>Payroll:</b><br>Budgeted: \\$110,000<br>Spent: \\$117,000<br>Difference: \\$117,000 - \\$110,000 = \\$7,000<br>6% of budget: $0.06 \\times 110,000 = \\$6,600$<br>Since \\$7,000 > \\$6,600, the difference for Payroll is more than 6%.<br><br><b>Taxes:</b><br>Budgeted: \\$40,000<br>Spent: \\$42,000<br>Difference: \\$42,000 - \\$40,000 = \\$2,000$<br>6% of budget: $0.06 \\times 40,000 = \\$2,400$<br>Since \\$2,000 < \\$2,400, the difference for Taxes is not more than 6%.<br><br><b>Insurance:</b><br>Budgeted: \\$2,500<br>Spent: \\$2,340<br>Difference: |\\$2,340 - \\$2,500| = \\$160<br>6% of budget: $0.06 \\times 2,500 = \\$150$<br>Since \\$160 > \\$150, the difference for Insurance is more than 6%.<br><br>Thus, Payroll and Insurance differed by more than 6%.",
+    "difficulty": "medium",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "The graph shows the number of computers assembled during each of 6 consecutive days. From what day to the next day was the percent change in the number of computers assembled the greatest in magnitude?<br><i>A bar graph shows the following data for computers assembled: Day 1: 20, Day 2: 12, Day 3: 18, Day 4: 10, Day 5: 16, Day 6: 8.</i>",
+    "options": [
+      "From Day 1 to Day 2",
+      "From Day 2 to Day 3",
+      "From Day 3 to Day 4",
+      "From Day 4 to Day 5",
+      "From Day 5 to Day 6"
+    ],
+    "correctAnswer": "D",
+    "answerExplanation": "We calculate the percent change for each period. Percent change = $\\frac{\\text{New} - \\text{Old}}{\\text{Old}} \\times 100\\%$.<br><b>Day 1 to 2:</b> $\\frac{12-20}{20} = -\\frac{8}{20} = -40\\%$. Magnitude is 40%.<br><b>Day 2 to 3:</b> $\\frac{18-12}{12} = \\frac{6}{12} = 50\\%$. Magnitude is 50%.<br><b>Day 3 to 4:</b> $\\frac{10-18}{18} = -\\frac{8}{18} \\approx -44.4\\%$. Magnitude is ~44.4%.<br><b>Day 4 to 5:</b> $\\frac{16-10}{10} = \\frac{6}{10} = 60\\%$. Magnitude is 60%.<br><b>Day 5 to 6:</b> $\\frac{8-16}{16} = -\\frac{8}{16} = -50\\%$. Magnitude is 50%.<br>The greatest magnitude of percent change is 60%, which occurred from Day 4 to Day 5.",
+    "difficulty": "medium",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "If $n = 20! + 17$, then n is divisible by which of the following?<br>I. 15<br>II. 17<br>III. 19",
+    "options": [
+      "None",
+      "I only",
+      "II only",
+      "I and II",
+      "II and III"
+    ],
+    "correctAnswer": "C",
+    "answerExplanation": "Let's analyze the divisibility for each number.<br>$20! = 1 \\times 2 \\times ... \\times 15 \\times ... \\times 17 \\times ... \\times 19 \\times 20$.<br><br><b>I. Divisibility by 15:</b><br>$20!$ is divisible by 15 because 15 is one of its factors. However, 17 is not divisible by 15. The sum of a multiple of 15 and a non-multiple of 15 is not divisible by 15. So, n is not divisible by 15.<br><br><b>II. Divisibility by 17:</b><br>$20!$ is divisible by 17 because 17 is one of its factors. The number 17 is also divisible by 17. The sum of two numbers divisible by 17 is also divisible by 17. So, n is divisible by 17.<br><br><b>III. Divisibility by 19:</b><br>$20!$ is divisible by 19 because 19 is one of its factors. However, 17 is not divisible by 19. The sum of a multiple of 19 and a non-multiple of 19 is not divisible by 19. So, n is not divisible by 19.<br><br>Therefore, n is only divisible by 17.",
+    "difficulty": "medium",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "An American dealer bought a table in Germany for 480 marks and sold the same table in France for 2,385 francs. What was the dealer's gross profit on the two transactions in dollars?<br><b>Exchange Rates in a Particular Year</b><br>\\$1 = 5.3 francs<br>\\$1 = 1.6 marks",
+    "options": [
+      "\\$0",
+      "\\$50",
+      "\\$100",
+      "\\$150",
+      "\\$200"
+    ],
+    "correctAnswer": "D",
+    "answerExplanation": "First, convert the cost and revenue into dollars.<br><b>Cost in Germany:</b><br>Cost = 480 marks<br>Conversion rate: \\$1 = 1.6 marks<br>Cost in dollars = $\\frac{480 \\text{ marks}}{1.6 \\text{ marks/\\$}} = \\frac{4800}{16} = \\$300$.<br><br><b>Revenue in France:</b><br>Revenue = 2,385 francs<br>Conversion rate: \\$1 = 5.3 francs<br>Revenue in dollars = $\\frac{2,385 \\text{ francs}}{5.3 \\text{ francs/\\$}} = \\frac{23850}{53} = \\$450$.<br><br><b>Gross Profit:</b><br>Profit = Revenue - Cost<br>Profit = \\$450 - \\$300 = \\$150$.",
+    "difficulty": "medium",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "The product of two negative numbers is 160. If the lesser of the two numbers is 4 less than twice the greater, what is the greater number?",
+    "options": [
+      "-20",
+      "-16",
+      "-10",
+      "-8",
+      "-4"
+    ],
+    "correctAnswer": "D",
+    "answerExplanation": "Let the two negative numbers be x and y. Let y be the greater number, and x be the lesser number. Since both are negative, the 'greater' number is closer to zero (e.g., -8 > -10).<br>From the problem statement:<br>1. $xy = 160$<br>2. $x = 2y - 4$<br>Substitute the second equation into the first:<br>$(2y - 4)y = 160$<br>$2y^2 - 4y = 160$<br>$y^2 - 2y = 80$<br>$y^2 - 2y - 80 = 0$<br>Factor the quadratic equation:<br>$(y - 10)(y + 8) = 0$<br>The possible values for y are $y=10$ and $y=-8$.<br>Since the numbers are negative, the only valid solution is $y=-8$.<br>If the greater number is $y=-8$, the lesser number is $x = 2(-8) - 4 = -16 - 4 = -20$.<br>Check the product: $(-20) \\times (-8) = 160$. This is correct.<br>The greater number is -8.",
+    "difficulty": "medium",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "According to a certain estimate, the depth $N(t)$, in centimeters, of the water in a certain tank at t hours past 2:00 in the morning is given by $N(t) = -20(t-5)^2 + 500$ for $0 \\le t \\le 10$. According to this estimate, at what time in the morning does the depth of the water in the tank reach its maximum?",
+    "options": [
+      "5:30",
+      "7:00",
+      "7:30",
+      "8:00",
+      "9:00"
+    ],
+    "correctAnswer": "B",
+    "answerExplanation": "The function for the depth is a downward-opening parabola: $N(t) = -20(t-5)^2 + 500$.<br>The maximum value of this function occurs at its vertex.<br>For a quadratic function in the form $a(x-h)^2 + k$, the vertex is at $(h, k)$.<br>In this case, the vertex of the parabola is at $t=5$.<br>The term $-20(t-5)^2$ will always be less than or equal to zero. Its maximum value is 0, which happens when $t-5=0$, or $t=5$.<br>At $t=5$, the depth $N(5) = -20(5-5)^2 + 500 = 500$.<br>The time t is the number of hours past 2:00 in the morning.<br>So, the maximum depth is reached 5 hours after 2:00 a.m., which is 7:00 a.m.",
+    "difficulty": "medium",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "After driving to a riverfront parking lot, Bob plans to run south along the river, turn around, and return to the parking lot, running north along the same path. After running 3.25 miles south, he decides to run for only 50 minutes more. If Bob runs at a constant rate of 8 minutes per mile, how many miles farther south can he run and still be able to return to the parking lot in 50 minutes?",
+    "options": [
+      "1.5",
+      "2.25",
+      "3.0",
+      "3.25",
+      "4.75"
+    ],
+    "correctAnswer": "A",
+    "answerExplanation": "Let d be the additional distance in miles Bob can run south.<br>The total distance from the parking lot will be $3.25 + d$ miles.<br>The time it takes to run this additional distance south is $8d$ minutes.<br>The time it takes to run back to the parking lot from the turning point is $8 \\times (3.25 + d)$ minutes.<br>The total time for the remainder of his run is 50 minutes.<br>So, (time to run d miles south) + (time to run 3.25+d miles north) = 50.<br>$8d + 8(3.25 + d) = 50$<br>$8d + 26 + 8d = 50$<br>$16d + 26 = 50$<br>$16d = 24$<br>$d = \\frac{24}{16} = \\frac{3}{2} = 1.5$ miles.",
+    "difficulty": "medium",
+    "question_type": "Quant",
+    "subsection": null
+  }
+]

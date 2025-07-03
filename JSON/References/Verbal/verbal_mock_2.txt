@@ -1,0 +1,63 @@
+Mapping of JSON to PDF Information (Third Set):
+
+RC Passages and Questions:
+
+rc_id: 4
+
+Corresponds to the Reading Comprehension passage for questions 519-523, found on PDF page 445.
+
+JSON Question 1 = PDF Question 519
+
+JSON Question 2 = PDF Question 520
+
+JSON Question 3 = PDF Question 522
+
+rc_id: 5
+
+Corresponds to the Reading Comprehension passage for questions 580-585, found on PDF page 473.
+
+JSON Question 4 = PDF Question 580
+
+JSON Question 5 = PDF Question 581
+
+JSON Question 6 = PDF Question 584
+
+rc_id: 6
+
+Corresponds to the Reading Comprehension passage for questions 613-616, found on PDF page 485.
+
+JSON Question 7 = PDF Question 613
+
+JSON Question 8 = PDF Question 615
+
+JSON Question 9 = PDF Question 616
+
+CR Questions:
+
+JSON Question 10 = PDF Question 684 (Page 232)
+
+JSON Question 11 = PDF Question 691 (Page 233)
+
+JSON Question 12 = PDF Question 699 (Page 236)
+
+JSON Question 13 = PDF Question 704 (Page 239)
+
+JSON Question 14 = PDF Question 710 (Page 241)
+
+JSON Question 15 = PDF Question 716 (Page 243)
+
+JSON Question 16 = PDF Question 724 (Page 246)
+
+JSON Question 17 = PDF Question 745 (Page 255)
+
+JSON Question 18 = PDF Question 749 (Page 256)
+
+JSON Question 19 = PDF Question 753 (Page 257)
+
+JSON Question 20 = PDF Question 760 (Page 260)
+
+JSON Question 21 = PDF Question 764 (Page 262)
+
+JSON Question 22 = PDF Question 770 (Page 264)
+
+JSON Question 23 = PDF Question 780 (Page 268)

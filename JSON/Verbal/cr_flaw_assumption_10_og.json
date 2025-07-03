@@ -1,0 +1,152 @@
+[
+  {
+    "questionText": "Airline representative: The percentage of flight delays caused by airline error decreased significantly this year. This indicates that airlines listened to complaints about preventable errors and addressed the problems. Although delays caused by weather and other uncontrollable factors will always be part of travel, preventable delays are clearly decreasing. <strong>Which of the following most clearly points to a logical flaw in the representative's reasoning?</strong>",
+    "options": [
+      "Airlines may be motivated by financial concerns to underreport the percentage of flight delays caused by airline error.",
+      "The delays caused by uncontrollable factors could have led to an increase in complaints to airlines.",
+      "Complaints may not be the most reliable measure of how many errors occurred in a given year.",
+      "Delays caused by weather and other uncontrollable factors could have increased dramatically during the year under discussion.",
+      "Airline customers might not believe that particular delays were caused by uncontrollable factors rather than airline error."
+    ],
+    "correctAnswer": "D",
+    "answerExplanation": "The representative's reasoning is flawed because a decrease in the *percentage* of delays due to airline error doesn't necessarily mean the *number* of such delays decreased. If delays from uncontrollable factors (like weather) greatly increased, the proportion of airline-error delays could fall even if their actual number remained constant or rose. Option D highlights this possibility.",
+    "difficulty": "medium",
+    "question_type": "Verbal",
+    "subsection": "CR"
+  },
+  {
+    "questionText": "Although the school would receive financial benefits if it had soft drink vending machines in the cafeteria, we should not allow them. Allowing soft drink machines there would not be in our students' interest. If our students start drinking more soft drinks, they will be less healthy. <strong>The argument depends on which of the following?</strong>",
+    "options": [
+      "If the soft drink vending machines were placed in the cafeteria, students would consume more soft drinks as a result.",
+      "The amount of soft drinks that most students at the school currently drink is not detrimental to their health.",
+      "Students are apt to be healthier if they do not drink soft drinks at all than if they just drink small amounts occasionally.",
+      "Students will not simply bring soft drinks from home if the soft drink vending machines are not placed in the cafeteria.",
+      "The school's primary concern should be to promote good health among its students."
+    ],
+    "correctAnswer": "A",
+    "answerExplanation": "The argument's conclusion (not allowing machines because it's not in students' interest due to potential health decline from more soft drinks) depends on the assumption that placing vending machines in the cafeteria *would actually lead* to students consuming more soft drinks. If consumption doesn't increase, the central reason against the machines is undermined. Option A states this necessary assumption.",
+    "difficulty": "medium",
+    "question_type": "Verbal",
+    "subsection": "CR"
+  },
+  {
+    "questionText": "Although there is no record of poet Edmund Spenser's parentage, we do know that as a youth Spenser attended the Merchant Tailors' School in London for a period between 1560 and 1570. Records from this time indicate that the Merchant Tailors' Guild then had only three members named Spenser: Robert Spenser, listed as a gentleman; Nicholas Spenser, elected the Guild's Warden in 1568; and John Spenser, listed as a \"journeyman cloth-maker.\" Of these, the last was likely the least affluent of the three-and most likely Edmund's father, since school accounting records list Edmund as a scholar who attended the school at a reduced fee. <strong>Which of the following is an assumption on which the argument depends?</strong>",
+    "options": [
+      "Anybody in sixteenth-century London who made clothing professionally would have had to be a member of the Merchant Tailors' Guild.",
+      "The fact that Edmund Spenser attended the Merchant Tailors' School did not necessarily mean that he planned to become a tailor.",
+      "No member of the Guild could become Guild warden in sixteenth-century London unless he was a gentleman.",
+      "Most of those whose fathers were members of the Merchant Tailors' Guild were students at the Merchant Tailors' School.",
+      "The Merchant Tailors' School did not reduce its fees for the children of the more affluent Guild members."
+    ],
+    "correctAnswer": "E",
+    "answerExplanation": "The argument concludes John Spenser was likely Edmund's father because Edmund received a reduced school fee, implying his father was the least affluent. This reasoning depends on the assumption that reduced fees were granted based on financial need, specifically that children of more affluent Guild members did *not* receive such reductions. If affluent members also received fee reductions, the link between the reduced fee and John Spenser's lower affluence (and thus his paternity) is broken.",
+    "difficulty": "medium",
+    "question_type": "Verbal",
+    "subsection": "CR"
+  },
+  {
+    "questionText": "Economist: The most economically efficient way to reduce emissions of air pollutants is to tax them in proportion to the damage they are likely to cause. But in Country Y, many serious pollutants are untaxed and unregulated, and policy makers strongly oppose new taxes. Therefore, the best way to achieve a reduction in air pollutant emissions in Country Y would be to institute fixed upper limits on them. <strong>Which of the following is an assumption of the economist's argument?</strong>",
+    "options": [
+      "Policy makers in Country Y oppose all new taxes equally strongly, regardless of any benefits they may provide.",
+      "Country Y's air pollutant emissions would not fall significantly if they were taxed in proportion to the damage they are likely to cause.",
+      "Policy makers in Country Y strongly favor reductions in air pollutant emissions.",
+      "Country Y's policy makers believe that air pollutant emissions should be reduced with maximum economic efficiency.",
+      "Policy makers in Country Y do not oppose setting fixed upper limits on air pollutant emissions as strongly as they oppose new taxes."
+    ],
+    "correctAnswer": "E",
+    "answerExplanation": "The economist argues for fixed limits because new taxes (the most efficient way) are opposed. This argument assumes that fixed limits are a more politically feasible alternative. If policymakers opposed fixed limits just as strongly as new taxes, then the reason for preferring fixed limits (political opposition to taxes) would be nullified, and it wouldn't necessarily be the 'best way'.",
+    "difficulty": "medium",
+    "question_type": "Verbal",
+    "subsection": "CR"
+  },
+  {
+    "questionText": "Linguist: In English, the past is described as \"behind\" and the future \"ahead,\" whereas in Aymara, the past is \"ahead\" and the future \"behind.\" Research indicates that English speakers sway backward when discussing the past and forward when discussing the future. Conversely, Aymara speakers gesture forward with their hands when discussing the past and backward when discussing the future. These bodily movements, therefore, suggest that the language one speaks affects how one mentally visualizes time. <strong>The linguist's reasoning depends on assuming which of the following?</strong>",
+    "options": [
+      "At least some Aymara speakers sway forward when discussing the past and backward when discussing the future.",
+      "Most people mentally visualize time as running either forward or backward.",
+      "Not all English and Aymara speakers tend to sway or gesture forward or backward when discussing the present.",
+      "How people move when discussing the future correlates to some extent with how they mentally visualize time.",
+      "The researchers also examined the movements of at least some speakers of languages other than English and Aymara discussing the past and the future."
+    ],
+    "correctAnswer": "D",
+    "answerExplanation": "The linguist links specific bodily movements (swaying, gesturing) related to temporal discussions to how time is mentally visualized, based on linguistic conventions. For this link to be valid, there must be an assumed correlation between these physical actions and the mental visualization of time. Without this assumption, the observed movements wouldn't necessarily indicate anything about mental visualization.",
+    "difficulty": "medium",
+    "question_type": "Verbal",
+    "subsection": "CR"
+  },
+  {
+    "questionText": "Birds have been said to be descended from certain birdlike dinosaur species with which they share distinctive structural features. The fossil record, however, shows that this cannot be so, since there are bird fossils that are much older than the earliest birdlike dinosaur fossils that have been found. <strong>Which of the following is an assumption on which the argument relies?</strong>",
+    "options": [
+      "The birdlike dinosaurs have no living descendants.",
+      "There are no flightless dinosaur species that have the distinctive structural features shared by birds and birdlike dinosaurs.",
+      "There are no birdlike dinosaur fossils that are older than the bird fossils but have not yet been unearthed.",
+      "It could not have been the case that some birds were descended from one of the birdlike dinosaur species and other birds from another.",
+      "Birds cannot have been descended from dinosaur species with which the birds do not share the distinctive structural features."
+    ],
+    "correctAnswer": "C",
+    "answerExplanation": "The argument concludes birds cannot be descended from these dinosaurs because known bird fossils are older than known birdlike dinosaur fossils. This relies on the assumption that the current fossil record is complete enough in this respect – specifically, that there aren't older birdlike dinosaur fossils yet to be found that would predate the known bird fossils. If such older dinosaur fossils exist but are undiscovered, the argument's premise (based on *found* fossils) would be misleading.",
+    "difficulty": "hard",
+    "question_type": "Verbal",
+    "subsection": "CR"
+  },
+  {
+    "questionText": "Debater: The average amount of overtime per month worked by an employee in the manufacturing division of the Haglut Corporation is 14 hours. Most employees of the Haglut Corporation work in the manufacturing division. Furthermore, the average amount of overtime per month worked by any employee in the company generally does not fluctuate much from month to month. Therefore, each month, most employees of the Haglut Corporation almost certainly work at least some overtime. <strong>The debater’s argument is most vulnerable to criticism on which of these grounds?</strong>",
+    "options": [
+      "It takes for granted that the manufacturing division is a typical division of the corporation with regard to the average amount of overtime its employees work each month.",
+      "It takes for granted that if a certain average amount of overtime is worked each month by each employee of the Haglut Corporation, then approximately the same amount of overtime must be worked each month by each employee of the manufacturing division.",
+      "It confuses a claim from which the argument’s conclusion about the Haglut Corporation would necessarily follow with a claim that would follow from the argument’s conclusion only with a high degree of probability.",
+      "It overlooks the possibility that even if, on average, a certain amount of overtime is worked by the members of some group, many members of that group may work no overtime at all.",
+      "It overlooks the possibility that even if most employees of the corporation work some overtime each month, any one corporate employee may, in some months, work no overtime."
+    ],
+    "correctAnswer": "D",
+    "answerExplanation": "The argument's flaw is an error of averages. Just because the *average* overtime in the manufacturing division is 14 hours doesn't mean *most* employees work overtime. It's possible that a small number of employees work a very large amount of overtime, while the majority work none, still resulting in a 14-hour average. The conclusion that 'most employees...work at least some overtime' is not necessarily true based on the average.",
+    "difficulty": "hard",
+    "question_type": "Verbal",
+    "subsection": "CR"
+  },
+  {
+    "questionText": "In Wareland last year, 16 percent of licensed drivers under 21 and 11 percent of drivers ages 21–24 were in serious accidents. By contrast, only 3 percent of licensed drivers 65 and older were involved in serious accidents. These figures clearly show that the greater experience and developed habits of caution possessed by drivers in the 65-and-older group make them far safer behind the wheel than the younger drivers are. <strong>Which of the following is an assumption on which the argument depends?</strong>",
+    "options": [
+      "Drivers 65 and older do not, on average, drive very many fewer miles per year than drivers 24 and younger.",
+      "Drivers 65 and older do not constitute a significantly larger percentage of licensed drivers in Wareland than drivers ages 18–24 do.",
+      "Drivers 65 and older are less likely than are drivers 24 and younger to drive during weather conditions that greatly increase the risk of accidents.",
+      "The difference between the accident rate of drivers under 21 and of those ages 21–24 is attributable to the greater driving experience of those in the older group.",
+      "There is no age bracket for which the accident rate is lower than it is for licensed drivers 65 and older."
+    ],
+    "correctAnswer": "A",
+    "answerExplanation": "The argument attributes the lower accident rate of older drivers to experience and caution. However, if older drivers drive significantly fewer miles than younger drivers, their lower accident *rate* (per driver) might simply reflect less exposure to risk, not necessarily safer driving habits per mile. The argument assumes that differences in mileage driven are not so substantial as to be the primary explanation for the differing accident rates.",
+    "difficulty": "hard",
+    "question_type": "Verbal",
+    "subsection": "CR"
+  },
+  {
+    "questionText": "Exposure to certain chemicals commonly used in elementary schools as cleaners or pesticides causes allergic reactions in some children. Elementary school nurses in Renston report that the proportion of schoolchildren sent to them for treatment of allergic reactions to those chemicals has increased significantly over the past ten years. Therefore, either Renston’s schoolchildren have been exposed to greater quantities of the chemicals or they are more sensitive to them than schoolchildren were ten years ago. <strong>Which of the following is an assumption on which the argument depends?</strong>",
+    "options": [
+      "The number of school nurses employed by Renston’s elementary schools has not decreased over the past ten years.",
+      "Children who are allergic to the chemicals are no more likely than other children to have allergies to other substances.",
+      "Children who have allergic reactions to the chemicals are not more likely to be sent to a school nurse now than they were ten years ago.",
+      "The chemicals are not commonly used as cleaners or pesticides in houses and apartment buildings in Renston.",
+      "Children attending elementary school do not make up a larger proportion of Renston’s population now than they did ten years ago."
+    ],
+    "correctAnswer": "C",
+    "answerExplanation": "The argument concludes that increased nurse visits for allergic reactions must be due to either greater exposure or greater sensitivity. This overlooks a third possibility: that children are now more likely to be sent to the nurse for the same reactions than they were ten years ago (e.g., due to increased awareness or lower tolerance for symptoms). The argument assumes this reporting rate hasn't changed.",
+    "difficulty": "hard",
+    "question_type": "Verbal",
+    "subsection": "CR"
+  },
+  {
+    "questionText": "In an experiment, each volunteer was allowed to choose between an easy task and a hard task and was told that another volunteer would do the other task. Each volunteer could also choose to have a computer assign the two tasks randomly. Most volunteers chose the easy task for themselves and under questioning later said they had acted fairly. But when the scenario was described to another group of volunteers, almost all said choosing the easy task would be unfair. This shows that most people apply weaker moral standards to themselves than to others. <strong>Which of the following is an assumption required by this argument?</strong>",
+    "options": [
+      "At least some volunteers who said they had acted fairly in choosing the easy task would have said that it was unfair for someone else to do so.",
+      "The most moral choice for the volunteers would have been to have the computer assign the two tasks randomly.",
+      "There were at least some volunteers who were assigned to do the hard task and felt that the assignment was unfair.",
+      "On average, the volunteers to whom the scenario was described were more accurate in their moral judgments than the other volunteers were.",
+      "At least some volunteers given the choice between assigning the tasks themselves and having the computer assign them felt that they had made the only fair choice available to them."
+    ],
+    "correctAnswer": "A",
+    "answerExplanation": "The argument concludes people apply weaker moral standards to themselves based on two groups' different judgments: one judging their own actions as fair, the other judging the same hypothetical actions of others as unfair. For this conclusion to hold, it must be assumed that the individuals in the first group, if put in the position of judging *others*, would have applied the stricter standard (like the second group did). Option A bridges this gap by suggesting this internal inconsistency within the first group's potential judgments.",
+    "difficulty": "hard",
+    "question_type": "Verbal",
+    "subsection": "CR"
+  }
+]

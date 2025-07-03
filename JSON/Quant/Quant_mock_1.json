@@ -1,0 +1,170 @@
+[
+  {
+    "questionText": "During a trip that they took together, Carmen, Juan, Maria, and Rafael drove an average (arithmetic mean) of 80 miles each. Carmen drove 72 miles, Juan drove 78 miles, and Maria drove 83 miles. How many miles did Rafael drive?",
+    "options": ["80", "82", "85", "87", "89"],
+    "correctAnswer": "D",
+    "difficulty": "easy",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "When traveling at a constant speed of 32 miles per hour, a certain motorboat consumes 24 gallons of fuel per hour. What is the fuel consumption of this boat at this speed measured in miles traveled per gallon of fuel?",
+    "options": ["$\\frac{2}{3}$", "$\\frac{3}{4}$", "$\\frac{4}{5}$", "$\\frac{4}{3}$", "$\\frac{3}{2}$"],
+    "correctAnswer": "D",
+    "difficulty": "easy",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "A bicycle store purchased two bicycles, one for $250 and the other for $375, and sold both bicycles at a total gross profit of $250. If the store sold one of the bicycles for $450, which of the following could be the store's gross profit from the sale of the other bicycle?",
+    "options": ["$75", "$100", "$125", "$150", "$175"],
+    "correctAnswer": "E",
+    "difficulty": "easy",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "The positive two-digit integers x and y have the same digits, but in reverse order. Which of the following must be a factor of $x+y$?",
+    "options": ["6", "9", "10", "11", "14"],
+    "correctAnswer": "D",
+    "difficulty": "easy",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "If k is a positive integer, what is the remainder when $(k+2)(k^{3}-k)$ is divided by 6?",
+    "options": ["0", "1", "2", "3", "4"],
+    "correctAnswer": "A",
+    "difficulty": "easy",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "If m is the average (arithmetic mean) of the first 10 positive multiples of 5 and if M is the median of the first 10 positive multiples of 5, what is the value of $M-m$?",
+    "options": ["-5", "0", "5", "25", "27.5"],
+    "correctAnswer": "B",
+    "difficulty": "medium",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "A manufacturer makes and sells 2 products, P and Q. The revenue from the sale of each unit of P is $20.00 and the revenue from the sale of each unit of Q is $17.00. Last year the manufacturer sold twice as many units of Q as P. What was the manufacturer's average (arithmetic mean) revenue per unit sold of these 2 products last year?",
+    "options": ["$28.50", "$27.00", "$19.00", "$18.50", "$18.00"],
+    "correctAnswer": "E",
+    "difficulty": "medium",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "$\\sqrt{4.8 \\times 10^{9}}$ is closest in value to",
+    "options": ["2,200", "70,000", "220,000", "7,000,000", "22,000,000"],
+    "correctAnswer": "B",
+    "difficulty": "medium",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "The product of two negative numbers is 160. If the lesser of the two numbers is 4 less than twice the greater, what is the greater number?",
+    "options": ["-20", "-16", "-10", "-8", "-4"],
+    "correctAnswer": "D",
+    "difficulty": "medium",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "The average (arithmetic mean) cost per book for the 12 books on a certain table is k dollars. If a book that costs 18 dollars is removed from the table and replaced by a book that costs 42 dollars, then in terms of k, what will be the average cost per book, in dollars, for the books on the table?",
+    "options": ["$k+2$", "$k-2$", "$12+\\frac{24}{k}$", "$12-\\frac{24}{k}$", "$12k-6$"],
+    "correctAnswer": "A",
+    "difficulty": "medium",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "If the speed of x meters per second is equivalent to the speed of y kilometers per hour, what is y in terms of x? (1 kilometer $=1,000$ meters)",
+    "options": ["$\\frac{5x}{18}$", "$\\frac{6x}{5}$", "$\\frac{18x}{5}$", "$60x$", "$3,600,000x$"],
+    "correctAnswer": "C",
+    "difficulty": "medium",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "The cost to rent a small bus for a trip is x dollars, which is to be shared equally among the people taking the trip. If 10 people take the trip rather than 16, how many more dollars, in terms of x, will it cost per person?",
+    "options": ["$\\frac{x}{160}$", "$\\frac{x}{80}$", "$\\frac{x}{26}$", "$\\frac{3x}{16}$", "$\\frac{3x}{80}$"],
+    "correctAnswer": "E",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "The total cost for Company X to produce a batch of tools is $10,000 plus $3 per tool. Each tool sells for $8. The gross profit earned from producing and selling these tools is the total income from sales minus the total production cost. If a batch of 20,000 tools is produced and sold, then Company X’s gross profit per tool is",
+    "options": ["$3.00", "$3.75", "$4.50", "$5.00", "$5.50"],
+    "correctAnswer": "C",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "If Jake loses 8 pounds, he will weigh twice as much as his sister. Together they now weigh 278 pounds. What is Jake’s present weight, in pounds?",
+    "options": ["131", "135", "139", "147", "188"],
+    "correctAnswer": "E",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "What is the smallest integer n for which $25^n > 5^{12}$?",
+    "options": ["6", "7", "8", "9", "10"],
+    "correctAnswer": "B",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "In a box of 12 pens, a total of 3 are defective. If a customer buys 2 pens selected at random from the box, what is the probability that neither pen will be defective?",
+    "options": ["$\\frac{1}{2}$", "$\\frac{2}{3}$", "$\\frac{6}{11}$", "$\\frac{9}{16}$", "$\\frac{3}{4}$"],
+    "correctAnswer": "C",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "If $3 < x < 100$, for how many values of x is $\\frac{x}{3}$ the square of a prime number?",
+    "options": ["Two", "Three", "Four", "Five", "Nine"],
+    "correctAnswer": "B",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "If y is the smallest positive integer such that 3,150 multiplied by y is the square of an integer, then y must be",
+    "options": ["2", "5", "6", "7", "14"],
+    "correctAnswer": "E",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "A photography dealer ordered 60 Model X cameras to be sold for $250 each, which represents a 20 percent markup over the dealer’s initial cost for each camera. Of the cameras ordered, 6 were never sold and were returned to the manufacturer for a refund of 50 percent of the dealer’s initial cost. What was the dealer’s approximate profit or loss as a percent of the dealer’s initial cost for the 60 cameras?",
+    "options": ["7% loss", "13% loss", "7% profit", "13% profit", "15% profit"],
+    "correctAnswer": "D",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "If $\\frac{x+1}{x+4} - \\frac{x}{x+1} = \\frac{x}{x+4}$, then x could be",
+    "options": ["0", "-1", "-2", "-3", "-4"],
+    "correctAnswer": "C",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "A furniture dealer purchased a desk for $150 and then set the selling price equal to the purchase price plus a markup that was 40 percent of the selling price. If the dealer sold the desk at the selling price, what was the amount of the dealer’s gross profit from the purchase and the sale of the desk?",
+    "options": ["$40", "$60", "$80", "$90", "$100"],
+    "correctAnswer": "E",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  }
+]

@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Performance Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <style>
+        /* --- CSS Variables for Theming --- */
+        :root {
+            /* Light Mode */
+            --bg-color: #F5F5F7;
+            --surface-color: rgba(255, 255, 255, 0.9); /* 90% opacity */
+            --border-color: rgba(0, 0, 0, 0.1); /* 10% opacity */
+            --primary-accent: #0066FF;
+            --secondary-accent: #8A2BE2;
+            --text-color: #1D1D1F;
+            --secondary-text-color: #86868B;
+            --shadow: 0 8px 32px rgba(0,0,0,0.05);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --glass-bg: rgba(255, 255, 255, 0.15);
+             --code-bg: rgba(0, 0, 0, 0.3);
+             --code-color: #90ee90;
+        }
+
+        body.dark-mode {
+            /* Dark Mode */
+            --bg-color: #000000;
+            --surface-color: rgba(28, 28, 30, 0.9); /* Dark gray with 90% opacity */
+            --border-color: rgba(255, 255, 255, 0.1); /* 10% opacity */
+            --primary-accent: #0A84FF;
+            --secondary-accent: #BF5AF2;
+            --text-color: #FFFFFF;
+            --secondary-text-color: #86868B;
+            --shadow: 0 8px 32px rgba(255, 255, 255, 0.05); /* Adjust shadow for dark mode */
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --glass-bg: rgba(255, 255, 255, 0.15); /* Keep glass background consistent or slightly adjust */
+            --code-bg: rgba(0, 0, 0, 0.5);
+            --code-color: #90ee90;
+        }
+
+        /* --- Base Styles --- */
+        body {
+            /* Use variable for solid background and layer gradients on top */
+            background: radial-gradient(circle at 20% 30%, var(--primary-accent) 0%, transparent 40%),
+                        radial-gradient(circle at 80% 70%, var(--secondary-accent) 0%, transparent 40%),
+                        var(--bg-color); /* Fallback background color / Base color */
+            background-size: 150% 150%; /* Make gradients larger than viewport */
+            background-position: center center; /* Center the gradients */
+            background-repeat: no-repeat; /* Prevent tiling */
+            color: var(--text-color); /* Use variable */
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; /* System fonts */
+            font-weight: 400;
+            min-height: 100vh;
+            padding: 20px;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+            transition: background 0.5s ease, color 0.5s ease; /* Smooth theme transition */
+            position: relative; /* Needed for pseudo-elements positioning */
+        }
+
+         /* Remove animated pseudo-elements */
+         /* The background gradients are now directly on the body */
+        body::before, body::after {
+            content: none;
+        }
+
+
+        /* --- Glassmorphic Container --- */
+        .glass-container {
+            background-color: var(--glass-bg);
+            backdrop-filter: blur(15px); /* Slightly more blur */
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px; /* More rounded */
+            box-shadow: var(--shadow); /* Use variable shadow */
+            padding: 30px;
+            width: 95%;
+            max-width: 1000px; /* Wider for dashboard */
+            margin: 20px auto;
+            position: relative; /* Ensure container is above background effects */
+            z-index: 1;
+        }
+
+        /* --- Typography --- */
+        h1, h2 {
+            color: var(--text-color); /* Use variable */
+            font-weight: 600; /* Semi-bold */
+            font-size: 2rem; /* Large heading */
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        h2 {
+            color: var(--text-color); /* Ensure chart titles match text color */
+            font-size: 1.5rem; /* Medium heading */
+            margin-bottom: 1rem;
+            text-align: center; /* Center chart titles */
+        }
+
+        /* --- Charts --- */
+        .chart-container {
+            background-color: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            position: relative; /* Needed for centering */
+            display: flex; /* Use flexbox for internal alignment */
+            flex-direction: column; /* Stack title and canvas */
+            align-items: center; /* Center content horizontally */
+        }
+
+        .chart-container canvas {
+             max-width: 100%; /* Ensure canvas is responsive */
+             max-height: 400px; /* Set a max height */
+             width: 100% !important; /* Ensure width is 100% of container */
+             height: auto !important; /* Allow height to adjust based on aspect ratio and width */
+        }
+
+        /* Container for all charts */
+        #all-charts-container {
+            display: block; /* Default block layout on small screens */
+        }
+
+        /* Container for line charts */
+        #line-charts-container {
+            display: block; /* Default block layout on small screens */
+        }
+
+
+        /* Apply flexbox for column layout on large screens */
+        @media (min-width: 1024px) { /* Tailwind's 'lg' breakpoint */
+            #all-charts-container {
+                display: flex;
+                flex-direction: column; /* Stack Score Distribution and Line Charts container */
+                width: 100%;
+            }
+
+            /* Ensure individual chart containers within all-charts-container take full width */
+            #all-charts-container > .chart-container {
+                 width: 100%;
+            }
+
+            /* Flex container for line charts, stacked in a column on large screens */
+            #line-charts-container {
+                display: flex;
+                flex-direction: column; /* Stack Score Over Time and Time Taken Over Time */
+                align-items: center; /* Center line chart containers horizontally */
+                width: 100%; /* Take full width within all-charts-container */
+            }
+
+             /* Ensure individual line chart containers take full width within line-charts-container */
+             #line-charts-container .chart-container {
+                 width: 100%;
+             }
+        }
+
+
+        /* --- Performance Table --- */
+        .performance-table-container {
+            background-color: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            overflow-x: auto; /* Add horizontal scroll for small screens */
+        }
+
+        .performance-table {
+            width: 100%;
+            border-collapse: collapse; /* Remove space between borders */
+        }
+
+        .performance-table th,
+        .performance-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .performance-table th {
+            background-color: rgba(255, 255, 255, 0.1);
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+        .performance-table tbody tr {
+            cursor: pointer; /* Indicate rows are clickable */
+            transition: background-color 0.2s ease;
+        }
+
+        .performance-table tbody tr:hover {
+            background-color: rgba(255, 255, 255, 0.08);
+        }
+
+        .performance-table tbody tr.selected {
+            background-color: color-mix(in srgb, var(--primary-accent) 20%, transparent 80%);
+            border-left: 4px solid var(--primary-accent); /* Highlight selected row */
+        }
+
+
+        /* --- Theme Toggle --- */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+            z-index: 10;
+        }
+        .theme-toggle svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--text-color); /* Icon color matches text */
+            transition: fill 0.3s ease;
+        }
+
+         /* --- Navigation Link --- */
+        .nav-link {
+            display: block;
+            text-align: center;
+            margin-bottom: 20px; /* Add margin below link */
+            color: var(--primary-accent);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+        .nav-link:hover {
+            color: color-mix(in srgb, var(--primary-accent) 80%, black 20%);
+            text-decoration: underline;
+        }
+
+        /* --- Loading Message --- */
+        #loading-message {
+            text-align: center;
+            font-size: 1.2em;
+            color: var(--secondary-text-color);
+        }
+
+        /* --- Quiz Selector --- */
+        .quiz-selector-container {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .quiz-selector-container label {
+            font-size: 1.1em;
+            margin-right: 10px;
+            color: var(--text-color);
+        }
+
+        .quiz-selector-container select {
+            padding: 8px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            background-color: var(--surface-color);
+            color: var(--text-color);
+            cursor: pointer;
+            outline: none;
+            transition: border-color 0.2s ease;
+        }
+        .quiz-selector-container select:focus {
+             border-color: var(--primary-accent);
+        }
+
+
+        /* --- Responsive Adjustments --- */
+        @media (max-width: 768px) { /* Use 768px breakpoint */
+            .glass-container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+            h2 {
+                font-size: 1.3rem;
+            }
+             .chart-container {
+                padding: 15px;
+             }
+             .performance-table th,
+             .performance-table td {
+                 padding: 8px; /* Reduce padding on small screens */
+                 font-size: 0.9em;
+             }
+             .quiz-selector-container {
+                 display: flex;
+                 flex-direction: column;
+                 align-items: center;
+             }
+             .quiz-selector-container label {
+                 margin-right: 0;
+                 margin-bottom: 5px;
+             }
+        }
+
+    </style>
+</head>
+<body>
+     <button class="theme-toggle" id="theme-toggle">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.818 5.182a.75.75 0 011.06 0l1.591 1.591a.75.75 0 11-1.06 1.06l-1.591-1.59a.75.75 0 010-1.06zM5.182 5.182a.75.75 0 010 1.06L3.591 7.832a.75.75 0 01-1.06-1.06l1.59-1.591a.75.75 0 011.06 0zM16.5 7.5a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V8.25a.75.75 0 01.75-.75zM7.5 16.5a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V17.25a.75.75 0 01.75-.75zM3 12a.75.75 0 01.75-.75h2.25a.75.75 0 010 1.5H3.75A.75.75 0 013 12zM19.5 12a.75.75 0 01.75-.75h2.25a.75.75 0 010 1.5H20.25a.75.75 0 01-.75-.75zM6.659 18.818a.75.75 0 01-1.06 0l-1.591-1.591a.75.75 0 111.06-1.06l1.591 1.59a.75.75 0 010 1.06zM18.818 18.818a.75.75 0 01-1.06 0l-1.591-1.591a.75.75 0 111.06-1.06l1.591 1.59a.75.75 0 010 1.06z"></path></svg>
+    </button>
+
+    <div class="glass-container">
+        <h1>Quiz Performance Dashboard</h1>
+
+       
+        <a href="manage_quizzes.html" class="nav-link">Manage Quizzes</a>
+
+
+        <div id="loading-message">Loading performance data...</div>
+
+        <div id="performance-data-container" style="display: none;">
+
+             <div class="quiz-selector-container">
+                 <label for="quiz-select">Select Quiz:</label>
+                 <select id="quiz-select">
+                     <option value="">All Quizzes</option>
+                     </select>
+             </div>
+
+            <div id="all-charts-container">
+                 <div class="chart-container">
+                     <h2>Score Distribution by Difficulty</h2>
+                     <canvas id="scoreDistributionChart"></canvas>
+                 </div>
+                 
+                 <div class="chart-container">
+                     <h2>Performance by Question Type</h2>
+                     <canvas id="questionTypeChart"></canvas>
+                 </div>
+                 
+                 <div class="chart-container">
+                     <h2>Verbal Subsection Performance</h2>
+                     <canvas id="verbalSubsectionChart"></canvas>
+                 </div>
+
+                 <div id="line-charts-container">
+                     <div class="chart-container">
+                         <h2>Score Over Time</h2>
+                         <canvas id="scoreOverTimeChart"></canvas>
+                     </div>
+
+                      <div class="chart-container">
+                         <h2>Time Taken Over Time</h2>
+                         <canvas id="timeTakenOverTimeChart"></canvas>
+                     </div>
+                 </div>
+            </div>
+
+             <div class="performance-table-container">
+                 <h2>Quiz History</h2>
+                 <table class="performance-table">                     <thead>
+                         <tr>
+                             <th>Quiz Name</th>
+                             <th>Date</th>
+                             <th>Time</th>
+                             <th>Score</th>
+                             <th>Accuracy</th>
+                             <th>Time Taken</th>
+                             <th>Question Types</th>
+                             <th>Actions</th>
+                         </tr>
+                     </thead>
+                     <tbody id="performance-table-body">
+                     </tbody>
+                 </table>
+             </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Base URL for your FastAPI backend
+        const API_BASE_URL = 'http://127.0.0.1:8000/api'; // Adjust if your server is on a different address/port
+
+        // DOM Elements
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const loadingMessageEl = document.getElementById('loading-message');
+        const performanceDataContainerEl = document.getElementById('performance-data-container');
+        const performanceTableBodyEl = document.getElementById('performance-table-body');
+        const performanceChartsEl = document.getElementById('performance-charts'); // This is now the container for all charts
+        const quizSelectEl = document.getElementById('quiz-select');
+
+
+        let performanceRecords = []; // To store fetched performance data
+        let quizzes = []; // To store the list of available quizzes
+        let questionsMap = {}; // To store question details by ID
+        let scoreDistributionChart = null; // This will now be the Score by Difficulty chart
+        let questionTypeChart = null; // New chart for question type performance
+        let verbalSubsectionChart = null; // New chart for verbal subsection performance
+        let scoreOverTimeChart = null;
+        let timeTakenOverTimeChart = null;
+
+        // --- Fetch Questions for a Specific Quiz ---
+        async function fetchQuizQuestions(quizId) {
+            try {
+                const response = await fetch(`${API_BASE_URL}/quizzes/${quizId}/questions/`);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const questions = await response.json();
+                
+                // Map questions by their ID for easy lookup
+                const questionMap = {};
+                questions.forEach(question => {
+                    questionMap[question.id] = question;
+                });
+                
+                return questionMap;
+            } catch (error) {
+                console.error(`Error fetching questions for quiz ${quizId}:`, error);
+                return {};
+            }
+        }
+
+        // --- Theme Toggle Logic ---
+        // Apply theme on load
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        document.body.classList.add(currentTheme + '-mode');
+
+        // Add event listener to toggle theme
+        themeToggleBtn.addEventListener('click', () => {
+            if (document.body.classList.contains('light-mode')) {
+                document.body.classList.remove('light-mode');
+                document.body.classList.add('dark-mode');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                document.body.classList.remove('dark-mode');
+                document.body.classList.add('light-mode');
+                localStorage.setItem('theme', 'light');
+            }
+        });
+
+        // --- Chart Rendering ---
+         function renderCharts(performanceData, selectedIndex = -1) {
+            // Destroy existing charts if they exist to prevent duplicates
+            if (scoreDistributionChart) scoreDistributionChart.destroy();
+            if (questionTypeChart) questionTypeChart.destroy();
+            if (verbalSubsectionChart) verbalSubsectionChart.destroy();
+            if (scoreOverTimeChart) scoreOverTimeChart.destroy();
+            if (timeTakenOverTimeChart) timeTakenOverTimeChart.destroy();
+
+
+            if (!performanceData || performanceData.length === 0) {
+                 // This case should be handled before calling renderCharts
+                return;
+            }
+
+            // --- Data Processing for Charts ---
+            const scores = performanceData.map(record => (record.correctAnswers / record.totalQuestions) * 100);
+            const timestamps = performanceData.map(record => new Date(record.timestamp));
+            const timeTaken = performanceData.map(record => record.timeTakenSeconds);
+
+            // --- Data Processing for Score Distribution by Difficulty ---
+            const difficultyScores = {
+                easy: { correct: 0, total: 0 },
+                medium: { correct: 0, total: 0 },
+                hard: { correct: 0, total: 0 }
+            };
+
+            performanceData.forEach(record => {
+                if (record.detailedResults && record.detailedResults.length > 0) {
+                    record.detailedResults.forEach(qResult => {
+                        const difficulty = qResult.difficulty ? qResult.difficulty.toLowerCase() : 'unknown'; // Handle potential missing difficulty
+                        if (difficultyScores[difficulty]) {
+                            difficultyScores[difficulty].total++;
+                            if (qResult.correct) {
+                                difficultyScores[difficulty].correct++;
+                            }
+                        } else {
+                            // Initialize if difficulty is new/unexpected
+                            difficultyScores[difficulty] = { correct: qResult.correct ? 1 : 0, total: 1 };
+                        }
+                    });
+                }
+            });
+
+            // Get unique difficulty labels from the processed data, ensuring Easy, Medium, Hard are first if present
+            const processedDifficulties = Object.keys(difficultyScores);
+            const difficultyLabels = ['easy', 'medium', 'hard'].filter(d => processedDifficulties.includes(d))
+                                    .concat(processedDifficulties.filter(d => !['easy', 'medium', 'hard'].includes(d)))
+                                    .map(d => d.charAt(0).toUpperCase() + d.slice(1));
+
+
+            const averageScoresByDifficulty = difficultyLabels.map(difficulty => {
+                const data = difficultyScores[difficulty.toLowerCase()];
+                return data && data.total > 0 ? (data.correct / data.total) * 100 : 0;
+            });
+
+
+            // --- Render Score Distribution by Difficulty Chart (Bar Chart) ---
+            const scoreDistributionCtx = document.getElementById('scoreDistributionChart').getContext('2d');
+            scoreDistributionChart = new Chart(scoreDistributionCtx, {
+                type: 'bar',
+                data: {
+                    labels: difficultyLabels,
+                    datasets: [{
+                        label: 'Average Score (%)',
+                        data: averageScoresByDifficulty,
+                        backgroundColor: [
+                            'rgba(54, 162, 235, 0.7)', // Blue for Easy
+                            'rgba(255, 206, 86, 0.7)',  // Yellow for Medium
+                            'rgba(255, 99, 132, 0.7)',   // Red for Hard
+                             // Add more colors if other difficulties are possible
+                            'rgba(75, 192, 192, 0.7)',
+                            'rgba(153, 102, 255, 0.7)',
+                            'rgba(255, 159, 64, 0.7)'
+                        ],
+                         borderColor: [
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(255, 99, 132, 1)',
+                             'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 1,
+                        hoverBorderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Average Score (%)',
+                                color: 'var(--text-color)'
+                            },
+                             max: 100, // Max score is 100%
+                             ticks: { color: 'var(--secondary-text-color)' },
+                             grid: { color: 'rgba(255, 255, 255, 0.1)' }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Difficulty',
+                                color: 'var(--text-color)'
+                            },
+                             ticks: { color: 'var(--secondary-text-color)' },
+                             grid: { color: 'rgba(255, 255, 255, 0.1)' }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            labels: {
+                                color: 'var(--text-color)'
+                            }
+                        }
+                    },
+                    hover: {
+                        mode: 'nearest',
+                        intersect: true
+                    }
+                }
+            });
+            
+            // --- Data Processing for Question Type Performance ---
+            const questionTypeData = {};
+
+            // --- Data Processing for Verbal Subsection Performance ---
+            const verbalSubsectionData = {};
+
+            // Process detailed results for question type and verbal subsection charts
+            performanceData.forEach(record => {
+                if (record.detailedResults && record.detailedResults.length > 0) {
+                    console.log("Processing record with details:", record);
+                    record.detailedResults.forEach(qResult => {
+                        // Log each individual result to debug what's coming from the server
+                        console.log("Raw question result:", qResult);
+                        
+                        // Get question_type from the enhanced details (fetched from the questions API)
+                        const qType = qResult.question_type || 'Unknown';
+                        
+                        // Initialize question type if not already in our data object
+                        if (!questionTypeData[qType]) {
+                            questionTypeData[qType] = { correct: 0, total: 0 };
+                        }
+                        
+                        questionTypeData[qType].total++;
+                        if (qResult.correct) {
+                            questionTypeData[qType].correct++;
+                        }
+                        
+                        // Process verbal subsection data only for Verbal questions
+                        if (qType === 'Verbal') {
+                            // Get subsection from the enhanced details (fetched from the questions API)
+                            const subSection = qResult.subsection || 'Unknown';
+                            
+                            // Initialize subsection if not already in our data object
+                            if (!verbalSubsectionData[subSection]) {
+                                verbalSubsectionData[subSection] = { correct: 0, total: 0 };
+                            }
+                            
+                            verbalSubsectionData[subSection].total++;
+                            if (qResult.correct) {
+                                verbalSubsectionData[subSection].correct++;
+                            }
+                        }
+                    });
+                }
+            });
+
+            console.log("Question type data:", questionTypeData);
+            console.log("Verbal subsection data:", verbalSubsectionData);
+
+            // Calculate average scores for question types
+            const questionTypeLabels = Object.keys(questionTypeData);
+            const questionTypeScores = questionTypeLabels.map(type => {
+                const data = questionTypeData[type];
+                return data && data.total > 0 ? (data.correct / data.total) * 100 : 0;
+            });
+
+            // Calculate average scores for verbal subsections
+            const verbalSubsectionLabels = Object.keys(verbalSubsectionData);
+            const verbalSubsectionScores = verbalSubsectionLabels.map(subsection => {
+                const data = verbalSubsectionData[subsection];
+                return data && data.total > 0 ? (data.correct / data.total) * 100 : 0;
+            });
+
+            // --- Render Question Type Performance Chart ---
+            const questionTypeCtx = document.getElementById('questionTypeChart').getContext('2d');
+            questionTypeChart = new Chart(questionTypeCtx, {
+                type: 'bar',
+                data: {
+                    labels: questionTypeLabels,
+                    datasets: [{
+                        label: 'Average Score (%)',
+                        data: questionTypeScores,
+                        backgroundColor: [
+                            'rgba(75, 192, 192, 0.7)', // Teal for Quant
+                            'rgba(153, 102, 255, 0.7)', // Purple for Verbal
+                            'rgba(255, 159, 64, 0.7)'  // Orange for Data Insights
+                        ],
+                        borderColor: [
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 100,
+                            title: {
+                                display: true,
+                                text: 'Average Score (%)',
+                                color: 'var(--text-color)'
+                            },
+                            ticks: { color: 'var(--secondary-text-color)' },
+                            grid: { color: 'rgba(255, 255, 255, 0.1)' }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Question Type',
+                                color: 'var(--text-color)'
+                            },
+                            ticks: { color: 'var(--secondary-text-color)' },
+                            grid: { color: 'rgba(255, 255, 255, 0.1)' }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            labels: {
+                                color: 'var(--text-color)'
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Check if we have verbal subsection data to display
+            if (verbalSubsectionLabels.length > 0) {
+                // --- Render Verbal Subsection Performance Chart ---
+                const verbalSubsectionCtx = document.getElementById('verbalSubsectionChart').getContext('2d');
+                verbalSubsectionChart = new Chart(verbalSubsectionCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: verbalSubsectionLabels,
+                        datasets: [{
+                            label: 'Average Score (%)',
+                            data: verbalSubsectionScores,
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 0.7)', // Pink for RC
+                                'rgba(54, 162, 235, 0.7)'  // Blue for CR
+                            ],
+                            borderColor: [
+                                'rgba(255, 99, 132, 1)',
+                                'rgba(54, 162, 235, 1)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                max: 100,
+                                title: {
+                                    display: true,
+                                    text: 'Average Score (%)',
+                                    color: 'var(--text-color)'
+                                },
+                                ticks: { color: 'var(--secondary-text-color)' },
+                                grid: { color: 'rgba(255, 255, 255, 0.1)' }
+                            },
+                            x: {
+                                title: {
+                                    display: true,
+                                    text: 'Verbal Subsection',
+                                    color: 'var(--text-color)'
+                                },
+                                ticks: { color: 'var(--secondary-text-color)' },
+                                grid: { color: 'rgba(255, 255, 255, 0.1)' }
+                            }
+                        },
+                        plugins: {
+                            legend: {
+                                labels: {
+                                    color: 'var(--text-color)'
+                                }
+                            }
+                        }
+                    }
+                });
+            } else {
+                // Hide the verbal subsection chart container if no data
+                const verbalSubsectionChartContainer = document.getElementById('verbalSubsectionChart').closest('.chart-container');
+                if (verbalSubsectionChartContainer) {
+                    verbalSubsectionChartContainer.style.display = 'none';
+                }
+            }
+
+            // Highlight point style and radius for selected index
+            const pointStyle = performanceData.map((_, i) => i === selectedIndex ? 'circle' : false); // Use 'circle' for selected, false for others
+            const pointRadius = performanceData.map((_, i) => i === selectedIndex ? 8 : 3); // Larger radius for selected
+            const pointBackgroundColor = performanceData.map((_, i) => i === selectedIndex ? 'var(--primary-accent)' : 'rgba(0, 102, 255, 1)'); // Accent color for selected
+            const pointBorderColor = performanceData.map((_, i) => i === selectedIndex ? 'white' : 'rgba(0, 102, 255, 1)'); // White border for selected
+             const pointBorderWidth = performanceData.map((_, i) => i === selectedIndex ? 2 : 1); // Thicker border for selected
+
+
+            // --- Render Score Over Time Chart (Line Chart) ---
+            const scoreOverTimeCtx = document.getElementById('scoreOverTimeChart').getContext('2d');
+            scoreOverTimeChart = new Chart(scoreOverTimeCtx, {
+                type: 'line',
+                data: {
+                    labels: timestamps,
+                    datasets: [{
+                        label: 'Score (%)',
+                        data: scores,
+                        borderColor: 'rgba(0, 102, 255, 1)', /* Primary accent */
+                        backgroundColor: 'rgba(0, 102, 255, 0.2)', /* Primary accent with opacity */
+                        tension: 0.1,
+                        fill: true,
+                        pointStyle: pointStyle, // Apply point style
+                        radius: pointRadius, // Apply radius
+                        pointBackgroundColor: pointBackgroundColor, // Apply point background color
+                        pointBorderColor: pointBorderColor, // Apply point border color
+                        pointBorderWidth: pointBorderWidth // Apply point border width
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            type: 'time',
+                            time: {
+                                unit: 'day',
+                                tooltipFormat: 'MMM dd, HH:mm',
+                                displayFormats: {
+                                    day: 'MMM dd',
+                                     hour: 'HH:mm'
+                                }
+                            },
+                            title: {
+                                display: true,
+                                text: 'Date',
+                                color: 'var(--text-color)'
+                            },
+                             ticks: { color: 'var(--secondary-text-color)' },
+                             grid: { color: 'rgba(255, 255, 255, 0.1)' }
+                        },
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Score (%)',
+                                color: 'var(--text-color)'
+                            },
+                            max: 100,
+                             ticks: { color: 'var(--secondary-text-color)' },
+                             grid: { color: 'rgba(255, 255, 255, 0.1)' }
+                        }
+                    },
+                     plugins: {
+                        legend: {
+                            labels: {
+                                color: 'var(--text-color)'
+                            }
+                        }
+                    },
+                     hover: {
+                        mode: 'nearest',
+                        intersect: true
+                    }
+                }
+            });
+
+             // --- Render Time Taken Over Time Chart (Line Chart) ---
+            const timeTakenOverTimeCtx = document.getElementById('timeTakenOverTimeChart').getContext('2d');
+            timeTakenOverTimeChart = new Chart(timeTakenOverTimeCtx, {
+                type: 'line',
+                data: {
+                    labels: timestamps,
+                    datasets: [{
+                        label: 'Time Taken (seconds)',
+                        data: timeTaken,
+                        borderColor: 'rgba(255, 99, 132, 1)', /* Example color */
+                        backgroundColor: 'rgba(255, 99, 132, 0.2)', /* Example color with opacity */
+                        tension: 0.1,
+                        fill: true,
+                        pointStyle: pointStyle, // Apply point style
+                        radius: pointRadius, // Apply radius
+                        pointBackgroundColor: pointBackgroundColor, // Apply point background color
+                        pointBorderColor: pointBorderColor, // Apply point border color
+                         pointBorderWidth: pointBorderWidth // Apply point border width
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            type: 'time',
+                            time: {
+                                unit: 'day',
+                                tooltipFormat: 'MMM dd, HH:mm',
+                                displayFormats: {
+                                    day: 'MMM dd',
+                                     hour: 'HH:mm'
+                                }
+                            },
+                            title: {
+                                display: true,
+                                text: 'Date',
+                                color: 'var(--text-color)'
+                            },
+                             ticks: { color: 'var(--secondary-text-color)' },
+                             grid: { color: 'rgba(255, 255, 255, 0.1)' }
+                        },
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Time Taken (seconds)',
+                                color: 'var(--text-color)'
+                            },
+                             ticks: { color: 'var(--secondary-text-color)' },
+                             grid: { color: 'rgba(255, 255, 255, 0.1)' }
+                        }
+                    },
+                     plugins: {
+                        legend: {
+                            labels: {
+                                color: 'var(--text-color)'
+                            }
+                        }
+                    },
+                     hover: {
+                        mode: 'nearest',
+                        intersect: true
+                    }
+                }
+            });
+
+
+            // Update Chart.js colors based on theme (basic example)
+             function updateChartColors(isDarkMode) {
+                const textColor = isDarkMode ? '#FFFFFF' : '#1D1D1F';
+                const secondaryTextColor = isDarkMode ? '#86868B' : '#86868B';
+                const gridColor = isDarkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)';
+
+                if (scoreDistributionChart) {
+                    scoreDistributionChart.options.scales.y.title.color = textColor;
+                    scoreDistributionChart.options.scales.x.title.color = textColor;
+                    scoreDistributionChart.options.scales.y.ticks.color = secondaryTextColor;
+                    scoreDistributionChart.options.scales.x.ticks.color = secondaryTextColor;
+                    scoreDistributionChart.options.scales.y.grid.color = gridColor;
+                    scoreDistributionChart.options.scales.x.grid.color = gridColor;
+                    scoreDistributionChart.options.plugins.legend.labels.color = textColor;
+                    scoreDistributionChart.update();
+                }
+                
+                if (questionTypeChart) {
+                    questionTypeChart.options.scales.y.title.color = textColor;
+                    questionTypeChart.options.scales.x.title.color = textColor;
+                    questionTypeChart.options.scales.y.ticks.color = secondaryTextColor;
+                    questionTypeChart.options.scales.x.ticks.color = secondaryTextColor;
+                    questionTypeChart.options.scales.y.grid.color = gridColor;
+                    questionTypeChart.options.scales.x.grid.color = gridColor;
+                    questionTypeChart.options.plugins.legend.labels.color = textColor;
+                    questionTypeChart.update();
+                }
+                
+                if (verbalSubsectionChart) {
+                    verbalSubsectionChart.options.scales.y.title.color = textColor;
+                    verbalSubsectionChart.options.scales.x.title.color = textColor;
+                    verbalSubsectionChart.options.scales.y.ticks.color = secondaryTextColor;
+                    verbalSubsectionChart.options.scales.x.ticks.color = secondaryTextColor;
+                    verbalSubsectionChart.options.scales.y.grid.color = gridColor;
+                    verbalSubsectionChart.options.scales.x.grid.color = gridColor;
+                    verbalSubsectionChart.options.plugins.legend.labels.color = textColor;
+                    verbalSubsectionChart.update();
+                }
+                
+                if (scoreOverTimeChart) {
+                    scoreOverTimeChart.options.scales.x.type = 'time'; // Re-set type
+                    scoreOverTimeChart.options.scales.x.title.color = textColor;
+                    scoreOverTimeChart.options.scales.y.title.color = textColor;
+                    scoreOverTimeChart.options.scales.x.ticks.color = secondaryTextColor;
+                    scoreOverTimeChart.options.scales.y.ticks.color = secondaryTextColor;
+                    scoreOverTimeChart.options.scales.x.grid.color = gridColor;
+                    scoreOverTimeChart.options.scales.y.grid.color = gridColor;
+                    scoreOverTimeChart.options.plugins.legend.labels.color = textColor;
+                    scoreOverTimeChart.update();
+                }
+                
+                if (timeTakenOverTimeChart) {
+                    timeTakenOverTimeChart.options.scales.x.type = 'time'; // Re-set type
+                    timeTakenOverTimeChart.options.scales.x.title.color = textColor;
+                    timeTakenOverTimeChart.options.scales.y.title.color = textColor;
+                    timeTakenOverTimeChart.options.scales.x.ticks.color = secondaryTextColor;
+                    timeTakenOverTimeChart.options.scales.y.ticks.color = secondaryTextColor;
+                    timeTakenOverTimeChart.options.scales.x.grid.color = gridColor;
+                    timeTakenOverTimeChart.options.scales.y.grid.color = gridColor;
+                    timeTakenOverTimeChart.options.plugins.legend.labels.color = textColor;
+                    timeTakenOverTimeChart.update();
+                }
+             }
+
+             // Listen for theme changes and update chart colors
+             const observer = new MutationObserver((mutations) => {
+                 mutations.forEach((mutation) => {
+                     if (mutation.attributeName === 'class') {
+                         const isDarkMode = document.body.classList.contains('dark-mode');
+                         updateChartColors(isDarkMode);
+                     }
+                 });
+                 // Also update charts if performance data is loaded after theme change
+                 if (performanceRecords.length > 0) {
+                      renderCharts(performanceRecords); // Re-render charts with current data and new colors
+                 }
+             });
+             observer.observe(document.body, { attributes: true });
+
+             // Initial chart color update based on current theme
+             updateChartColors(document.body.classList.contains('dark-mode'));
+
+        }
+
+        // --- Render Performance Table ---
+        function renderPerformanceTable(data) {
+            performanceTableBodyEl.innerHTML = ''; // Clear existing rows
+
+            if (!data || data.length === 0) {
+                // This case is handled by fetchAllData
+                return;
+            }
+
+            data.forEach((record, index) => {
+                const row = document.createElement('tr');
+                row.dataset.index = index; // Store the index for easy lookup
+
+                // Find the quiz name for this record
+                const quiz = quizzes.find(q => q.id === record.quizId);
+                const quizName = quiz ? quiz.name : 'Unknown Quiz';
+                
+                // Get question types from detailed results
+                let questionTypes = {};
+                if (record.detailedResults && record.detailedResults.length > 0) {
+                    record.detailedResults.forEach(result => {
+                        const type = result.question_type || 'Unknown';
+                        if (questionTypes[type]) {
+                            questionTypes[type]++;
+                        } else {
+                            questionTypes[type] = 1;
+                        }
+                    });
+                }
+                
+                // Format question types as a string
+                const questionTypesStr = Object.entries(questionTypes)
+                    .map(([type, count]) => `${type}: ${count}`)
+                    .join(', ') || 'N/A';                row.innerHTML = `
+                    <td>${quizName}</td>
+                    <td>${new Date(record.timestamp).toLocaleDateString()}</td>
+                    <td>${new Date(record.timestamp).toLocaleTimeString()}</td>
+                    <td>${record.correctAnswers} / ${record.totalQuestions}</td>
+                    <td>${((record.correctAnswers / record.totalQuestions) * 100).toFixed(0)}%</td>
+                    <td>${record.timeTakenSeconds}s</td>
+                    <td>${questionTypesStr}</td>
+                    <td>
+                        <button class="view-details-btn" data-record-index="${index}" style="
+                            background-color: var(--primary-accent);
+                            color: white;
+                            border: none;
+                            padding: 6px 12px;
+                            border-radius: 4px;
+                            cursor: pointer;
+                            font-size: 12px;
+                            margin-right: 5px;
+                        ">View Details</button>
+                    </td>
+                `;                row.addEventListener('click', () => handleRowClick(index));
+                performanceTableBodyEl.appendChild(row);
+            });
+            
+            // Add event listeners for "View Details" buttons
+            performanceTableBodyEl.addEventListener('click', (event) => {
+                if (event.target.classList.contains('view-details-btn')) {
+                    event.stopPropagation(); // Prevent row click
+                    const recordIndex = parseInt(event.target.dataset.recordIndex);
+                    openQuizReview(recordIndex);
+                }
+            });
+        }
+
+        // --- Handle Table Row Click ---
+        function handleRowClick(selectedIndex) {
+            // Remove 'selected' class from all rows
+            performanceTableBodyEl.querySelectorAll('tr').forEach(row => {
+                row.classList.remove('selected');
+            });
+
+            // Add 'selected' class to the clicked row
+            const selectedRow = performanceTableBodyEl.querySelector(`tr[data-index="${selectedIndex}"]`);
+            if (selectedRow) {
+                selectedRow.classList.add('selected');
+            }
+
+            // Re-render charts, highlighting the selected index
+            renderCharts(performanceRecords, selectedIndex);
+        }
+
+         // --- Populate Quiz Selector Dropdown ---
+         function populateQuizSelector(quizzesData) {
+             quizSelectEl.innerHTML = '<option value="">All Quizzes</option>'; // Keep the "All Quizzes" option
+             quizzesData.forEach(quiz => {
+                 const option = document.createElement('option');
+                 option.value = quiz.id;
+                 option.textContent = quiz.name;
+                 quizSelectEl.appendChild(option);
+             });
+         }
+
+         // --- Fetch All Data (Quizzes and Performance Records) ---
+         async function fetchAllData(selectedQuizId = null) {
+             // Defensive: ensure selectedQuizId is a number or null, never an event object
+             if (selectedQuizId && typeof selectedQuizId !== 'number') {
+                 if (typeof selectedQuizId === 'string' && !isNaN(parseInt(selectedQuizId))) {
+                     selectedQuizId = parseInt(selectedQuizId);
+                 } else {
+                     selectedQuizId = null;
+                 }
+             }
+             loadingMessageEl.textContent = "Loading performance data...";
+             loadingMessageEl.style.display = 'block';
+             performanceDataContainerEl.style.display = 'none';
+
+             try {
+                 // Fetch list of quizzes first
+                 const quizzesResponse = await fetch(`${API_BASE_URL}/quizzes/`);
+                 if (!quizzesResponse.ok) {
+                     const errorData = await quizzesResponse.json();
+                     console.error('Failed to fetch quizzes:', errorData);
+                     // Continue even if quizzes fail, but log the error
+                     quizzes = [];
+                 } else {
+                      quizzes = await quizzesResponse.json(); // Store fetched quizzes
+                      populateQuizSelector(quizzes); // Populate the dropdown
+                 }
+
+                 // Clear previous questions map
+                 questionsMap = {};
+                 
+                 // If a specific quiz is selected, fetch its questions
+                 if (selectedQuizId) {
+                     const quizQuestions = await fetchQuizQuestions(selectedQuizId);
+                     Object.assign(questionsMap, quizQuestions);
+                 } else {
+                     // If all quizzes are selected, fetch questions for each quiz
+                     for (const quiz of quizzes) {
+                         const quizQuestions = await fetchQuizQuestions(quiz.id);
+                         Object.assign(questionsMap, quizQuestions);
+                     }
+                 }
+                 
+                 console.log("Fetched questions map:", questionsMap);
+
+                 // Fetch performance records (optionally filtered by quiz ID)
+                 let performanceUrl = `${API_BASE_URL}/performance/`;
+                 if (selectedQuizId) {
+                     performanceUrl += `?quiz_id=${selectedQuizId}`;
+                 }
+
+                 const performanceResponse = await fetch(performanceUrl);
+
+                 if (!performanceResponse.ok) {
+                     const errorData = await performanceResponse.json();
+                     throw new Error(errorData.detail || `HTTP error! status: ${performanceResponse.status}`);
+                 }
+
+                 performanceRecords = await performanceResponse.json(); // Store fetched performance data
+                 loadingMessageEl.style.display = 'none'; // Hide loading message
+
+                 if (performanceRecords.length === 0) {
+                     loadingMessageEl.textContent = selectedQuizId
+                         ? `No performance data available for this quiz yet. Take the quiz to see your results!`
+                         : `No performance data available yet. Take a quiz to see your results!`;
+                     loadingMessageEl.style.display = 'block';
+                     performanceDataContainerEl.style.display = 'none';
+                 } else {
+                     // Enhance performance records with question details
+                     performanceRecords.forEach(record => {
+                         if (record.detailedResults && record.detailedResults.length > 0) {
+                             record.detailedResults.forEach(result => {
+                                 if (result.questionId && questionsMap[result.questionId]) {
+                                     // Add question_type and subsection from the questions map
+                                     result.question_type = questionsMap[result.questionId].question_type;
+                                     result.subsection = questionsMap[result.questionId].subsection;
+                                 }
+                             });
+                         }
+                     });
+                     
+                     performanceDataContainerEl.style.display = 'block';
+                     renderPerformanceTable(performanceRecords); // Render the table
+                     renderCharts(performanceRecords); // Render initial charts (no selection)
+                 }
+             } catch (error) {
+                 console.error('Error fetching data:', error); // Log the full error object
+                 let errorMsg = '';
+                 if (typeof error === 'string') {
+                     errorMsg = error;
+                 } else if (error && error.message) {
+                     errorMsg = error.message;
+                 } else if (error && error.detail) {
+                     errorMsg = error.detail;
+                 } else {
+                     errorMsg = JSON.stringify(error);
+                 }
+                 loadingMessageEl.textContent = `Failed to load data from ${API_BASE_URL}. Please ensure your FastAPI server is running and accessible. Details: ${errorMsg}`;
+                 loadingMessageEl.style.display = 'block';
+                 performanceDataContainerEl.style.display = 'none';
+             }         }        // --- Open Quiz Review Function ---
+        function openQuizReview(recordIndex) {
+            if (recordIndex < 0 || recordIndex >= performanceRecords.length) {
+                console.error('Invalid record index:', recordIndex);
+                return;
+            }
+            
+            const record = performanceRecords[recordIndex];
+            console.log('Opening quiz review for record:', record);
+            
+            // Build URL parameters for review mode
+            const params = new URLSearchParams({
+                mode: 'review',
+                quizId: record.quizId, // Use camelCase as returned by API
+                recordId: record.id,
+                timestamp: record.timestamp
+            });
+            
+            // Navigate to quiz.html with review parameters
+            window.location.href = `quiz.html?${params.toString()}`;
+        }
+
+        // Add event listener to the quiz selector dropdown
+        quizSelectEl.addEventListener('change', (event) => {
+            const selectedQuizId = event.target.value ? parseInt(event.target.value) : null;
+            fetchAllData(selectedQuizId); // Fetch data for the selected quiz (or all)
+        });
+
+
+        // Load all data when the page is ready
+        window.onload = fetchAllData; // Start the process on load
+
+    </script>
+</body>
+</html>

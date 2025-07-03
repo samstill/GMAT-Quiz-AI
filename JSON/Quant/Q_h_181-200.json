@@ -1,0 +1,303 @@
+[
+  {
+    "questionText": "The total cost for Company X to produce a batch of tools is $10,000 plus $3 per tool. Each tool sells for $8. The gross profit earned from producing and selling these tools is the total income from sales minus the total production cost. If a batch of 20,000 tools is produced and sold, then Company X’s gross profit per tool is",
+    "options": [
+      "$3.00",
+      "$3.75",
+      "$4.50",
+      "$5.00",
+      "$5.50"
+    ],
+    "correctAnswer": "C",
+    "answerExplanation": "The total cost to produce 20,000 tools is $10,000 + $3(20,000) = $70,000. The revenue resulting from the sale of 20,000 tools is $8(20,000) = $160,000. The gross profit is $160,000 – $70,000 = $90,000, and the gross profit per tool is $\\frac{\\$90,000}{20,000} = \\$4.50.",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "If Q is an odd number and the median of Q consecutive integers is 120, what is the largest of these integers?",
+    "options": [
+      "$120 + \\frac{Q-1}{2}$",
+      "$120 + \\frac{Q}{2}$",
+      "$\\frac{Q+120}{2}$",
+      "$Q + 119$",
+      "$Q + 120$"
+    ],
+    "correctAnswer": "A",
+    "answerExplanation": "For an odd number of data values, the median is the middle number. Thus, 120 is the middle number, and so half of the $Q - 1$ remaining values are at most 120 and the other half of the $Q - 1$ remaining values are at least 120. In particular, $\\frac{Q-1}{2}$ data values lie to the right of 120 when the data values are listed in increasing order from left to right, and so the largest data value is $120 + \\frac{Q-1}{2}$.",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "If there are fewer than 8 zeros between the decimal point and the first nonzero digit in the decimal expansion of $(\\frac{t}{1,000})^4$, which of the following numbers could be the value of t?<br>I. 3<br>II. 5<br>III. 9",
+    "options": [
+      "None",
+      "I only",
+      "II only",
+      "III only",
+      "II and III"
+    ],
+    "correctAnswer": "A",
+    "answerExplanation": "Since $(\\frac{t}{1,000})^4 = \\frac{t^4}{(1,000)^4}$ and $(1,000)^4 = (10^3)^4 = 10^{12}$, it follows that $(\\frac{t}{1,000})^4 = t^4 \\times 10^{-12}$. The decimal point of $t^4 \\times 10^{-12}$ is 12 positions to the left of the decimal point of $t^4$. Now consider the value of $t^4 \\times 10^{-12}$ for the three given values of t. <br>For $t=3$, $t^4=81$, and $81 \\times 10^{-12} = 0.000000000081$, which has 10 zeros after the decimal point.<br>For $t=5$, $t^4=625$, and $625 \\times 10^{-12} = 0.000000000625$, which has 9 zeros after the decimal point.<br>For $t=9$, $t^4=6,561$, and $6,561 \\times 10^{-12} = 0.000000006561$, which has 8 zeros after the decimal point.<br>From the results, none of these values of t results in fewer than 8 zeros between the decimal point and the first nonzero digit.",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "A three-digit code for certain locks uses the digits 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 according to the following constraints. The first digit cannot be 0 or 1, the second digit must be 0 or 1, and the second and third digits cannot both be 0 in the same code. How many different codes are possible?",
+    "options": [
+      "144",
+      "152",
+      "160",
+      "168",
+      "176"
+    ],
+    "correctAnswer": "B",
+    "answerExplanation": "Since the first digit cannot be 0 or 1, there are 8 digits possible for the first digit. Since the second digit must be 0 or 1, there are 2 digits possible for the second digit. If there were no other restrictions, all 10 digits would be possible for the third digit, making the total number of possible codes $8 \\times 2 \\times 10 = 160$. But the additional restriction that the second and third digits cannot both be 0 in the same code eliminates the 8 codes 2-0-0, 3-0-0, 4-0-0, 5-0-0, 6-0-0, 7-0-0, 8-0-0, and 9-0-0. Therefore, there are $160 - 8 = 152$ possible codes.",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "Jackie has two solutions that are 2 percent sulfuric acid and 12 percent sulfuric acid by volume, respectively. If these solutions are mixed in appropriate quantities to produce 60 liters of a solution that is 5 percent sulfuric acid, approximately how many liters of the 2 percent solution will be required?",
+    "options": [
+      "18",
+      "20",
+      "24",
+      "36",
+      "42"
+    ],
+    "correctAnswer": "E",
+    "answerExplanation": "Let x represent the quantity of the 2% sulfuric acid solution and y represent the quantity of the 12% sulfuric acid solution. The total volume is 60 liters, so $x + y = 60$. The total amount of sulfuric acid is $0.05 \\times 60 = 3$ liters. This comes from the two solutions: $0.02x + 0.12y = 3$. Since $y = 60 - x$, we can substitute this into the second equation: $0.02x + 0.12(60 - x) = 3$. This simplifies to $0.02x + 7.2 - 0.12x = 3$. Combining terms gives $-0.10x = -4.2$. Solving for x gives $x = 42$.",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "If Jake loses 8 pounds, he will weigh twice as much as his sister. Together they now weigh 278 pounds. What is Jake’s present weight, in pounds?",
+    "options": [
+      "131",
+      "135",
+      "139",
+      "147",
+      "188"
+    ],
+    "correctAnswer": "E",
+    "answerExplanation": "Let J be Jake's present weight and S be his sister's weight. We have two equations: 1) $J - 8 = 2S$ and 2) $J + S = 278$. From equation (2), we can express S as $S = 278 - J$. Substitute this into equation (1): $J - 8 = 2(278 - J)$. This simplifies to $J - 8 = 556 - 2J$. Add $2J$ to both sides to get $3J - 8 = 556$. Add 8 to both sides to get $3J = 564$. Divide by 3 to find $J = 188$.",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "For each student in a certain class, a teacher adjusted the student’s test score using the formula $y = 0.8x + 20$, where x is the student’s original test score and y is the student’s adjusted test score. If the standard deviation of the original test scores of the students in the class was 20, what was the standard deviation of the adjusted test scores of the students in the class?",
+    "options": [
+      "12",
+      "16",
+      "28",
+      "36",
+      "40"
+    ],
+    "correctAnswer": "B",
+    "answerExplanation": "If a set of data with standard deviation σ is transformed by the linear function $ax+b$, the new standard deviation will be $|a|σ$. Adding a constant (b=20) to all scores shifts the mean but does not change the spread, so it does not affect the standard deviation. Multiplying each score by a constant (a=0.8) multiplies the standard deviation by that constant. Therefore, the new standard deviation is $0.8 \\times 20 = 16$.",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "Last year 26 members of a certain club traveled to England, 26 members traveled to France, and 32 members traveled to Italy. Last year no members of the club traveled to both England and France, 6 members traveled to both England and Italy, and 11 members traveled to both France and Italy. How many members of the club traveled to at least one of these three countries last year?",
+    "options": [
+      "52",
+      "67",
+      "71",
+      "73",
+      "79"
+    ],
+    "correctAnswer": "B",
+    "answerExplanation": "Let E, F, and I be the sets of members who traveled to England, France, and Italy, respectively. We are given: $|E| = 26, |F| = 26, |I| = 32$. Also, $|E \\cap F| = 0, |E \\cap I| = 6, |F \\cap I| = 11$. Since $|E \\cap F| = 0$, it implies that $|E \\cap F \\cap I| = 0$. The number of members who traveled to at least one country is given by the Principle of Inclusion-Exclusion: $|E \\cup F \\cup I| = |E| + |F| + |I| - (|E \\cap F| + |E \\cap I| + |F \\cap I|) + |E \\cap F \\cap I|$.Plugging in the values: $|E \\cup F \\cup I| = 26 + 26 + 32 - (0 + 6 + 11) + 0 = 84 - 17 = 67$.",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "A store reported total sales of $385 million for February of this year. If the total sales for the same month last year was $320 million, approximately what was the percent increase in sales?",
+    "options": [
+      "2%",
+      "17%",
+      "20%",
+      "65%",
+      "83%"
+    ],
+    "correctAnswer": "C",
+    "answerExplanation": "The increase in sales is $385 million - $320 million = $65 million. The percent increase is calculated as $\\frac{\\text{Increase}}{\\text{Original Amount}} \\times 100\\%$. So, the percent increase is $\\frac{65}{320} \\times 100\\%$. This can be approximated as $\\frac{64}{320} \\times 100\\% = \\frac{1}{5} \\times 100\\% = 20\\%$.",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "When positive integer x is divided by positive integer y, the remainder is 9. If $\\frac{x}{y} = 96.12$, what is the value of y?",
+    "options": [
+      "96",
+      "75",
+      "48",
+      "25",
+      "12"
+    ],
+    "correctAnswer": "B",
+    "answerExplanation": "From the problem statement, we know that $x = qy + 9$, where q is the integer quotient. Dividing this equation by y gives $\\frac{x}{y} = q + \\frac{9}{y}$. We are also given that $\\frac{x}{y} = 96.12$. By comparing the two expressions for $\\frac{x}{y}$, we can see that the integer part of the quotient is $q=96$ and the fractional part is $\\frac{9}{y} = 0.12$. Solving for y gives $y = \\frac{9}{0.12} = \\frac{900}{12} = 75$.",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "If $x(2x + 1) = 0$ and $(x + \\frac{1}{2})(2x - 3) = 0$, then $x =$",
+    "options": [
+      "$-\\frac{3}{2}$",
+      "$-\\frac{1}{2}$",
+      "0",
+      "$\\frac{1}{2}$",
+      "$\\frac{3}{2}$"
+    ],
+    "correctAnswer": "B",
+    "answerExplanation": "From the first equation, $x(2x + 1) = 0$, the solutions are $x=0$ or $2x+1=0$, which means $x=0$ or $x = -\\frac{1}{2}$. From the second equation, $(x + \\frac{1}{2})(2x - 3) = 0$, the solutions are $x + \\frac{1}{2} = 0$ or $2x - 3 = 0$, which means $x = -\\frac{1}{2}$ or $x = \\frac{3}{2}$. The value that satisfies both equations is the common solution, which is $x = -\\frac{1}{2}$.",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "A certain experimental mathematics program was tried out in 2 classes in each of 32 elementary schools and involved 37 teachers. Each of the classes had 1 teacher and each of the teachers taught at least 1, but not more than 3, of the classes. If the number of teachers who taught 3 classes is n, then the least and greatest possible values of n, respectively, are",
+    "options": [
+      "0 and 13",
+      "0 and 14",
+      "1 and 10",
+      "1 and 9",
+      "2 and 8"
+    ],
+    "correctAnswer": "A",
+    "answerExplanation": "The total number of classes is $2 \\times 32 = 64$. Let k, m, and n be the number of teachers who taught 1, 2, and 3 classes, respectively. The total number of teachers is 37, so $k + m + n = 37$. The total number of classes taught is 64, so $k + 2m + 3n = 64$. Subtracting the first equation from the second gives $(k + 2m + 3n) - (k + m + n) = 64 - 37$, which simplifies to $m + 2n = 27$. Since $m \\ge 0$, we have $2n \\le 27$, which implies $n \\le 13.5$. Since n must be an integer, the greatest possible value for n is 13. To find the least value of n, we need to maximize m. From $m = 27 - 2n$, m is maximized when n is minimized. Since n is a positive integer, the least it could be is 0. If $n=0$, then $m=27$. We can check if this is possible: $k + 27 + 0 = 37$, so $k=10$. This is a valid solution ($k=10, m=27, n=0$). Thus, the least possible value of n is 0. The least and greatest values are 0 and 13.",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "For the positive numbers $n, n + 1, n + 2, n + 4$, and $n + 8$, the mean is how much greater than the median?",
+    "options": [
+      "0",
+      "1",
+      "$n + 1$",
+      "$n + 2$",
+      "$n + 3$"
+    ],
+    "correctAnswer": "B",
+    "answerExplanation": "The numbers are already given in ascending order: $n, n + 1, n + 2, n + 4, n + 8$. The median is the middle value, which is the third term, $n + 2$. The mean is the sum of the numbers divided by the count of the numbers: $\\frac{n + (n + 1) + (n + 2) + (n + 4) + (n + 8)}{5} = \\frac{5n + 15}{5} = n + 3$. The difference between the mean and the median is $(n + 3) - (n + 2) = 1$.",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "The present ratio of students to teachers at a certain school is 30 to 1. If the student enrollment were to increase by 50 students and the number of teachers were to increase by 5, the ratio of students to teachers would then be 25 to 1. What is the present number of teachers?",
+    "options": [
+      "5",
+      "8",
+      "10",
+      "12",
+      "15"
+    ],
+    "correctAnswer": "E",
+    "answerExplanation": "Let S be the current number of students and T be the current number of teachers. We are given two relationships: 1) $\\frac{S}{T} = \\frac{30}{1}$, which means $S = 30T$. 2) $\\frac{S+50}{T+5} = \\frac{25}{1}$, which means $S+50 = 25(T+5)$. Substitute the first equation into the second: $30T + 50 = 25T + 125$. Subtract $25T$ from both sides: $5T + 50 = 125$. Subtract 50 from both sides: $5T = 75$. Divide by 5: $T = 15$.",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "What is the smallest integer n for which $25^n > 5^{12}$?",
+    "options": [
+      "6",
+      "7",
+      "8",
+      "9",
+      "10"
+    ],
+    "correctAnswer": "B",
+    "answerExplanation": "We can rewrite the inequality with a common base of 5. Since $25 = 5^2$, the inequality becomes $(5^2)^n > 5^{12}$. Using the rules of exponents, this simplifies to $5^{2n} > 5^{12}$. For this inequality to hold, the exponent on the left must be greater than the exponent on the right: $2n > 12$. Dividing by 2, we get $n > 6$. The smallest integer n that satisfies this condition is 7.",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "Sixty percent of the members of a study group are women, and 45 percent of those women are lawyers. If one member of the study group is to be selected at random, what is the probability that the member selected is a woman lawyer?",
+    "options": [
+      "0.10",
+      "0.15",
+      "0.27",
+      "0.33",
+      "0.45"
+    ],
+    "correctAnswer": "C",
+    "answerExplanation": "The probability of selecting a woman is 0.60. The probability that a selected woman is a lawyer is 0.45. The probability that a randomly selected member is a woman lawyer is the product of these probabilities: $P(\\text{Woman and Lawyer}) = P(\\text{Woman}) \\times P(\\text{Lawyer | Woman}) = 0.60 \\times 0.45 = 0.27$.",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "Each year for 4 years, a farmer increased the number of trees in a certain orchard by $\\frac{1}{4}$ of the number of trees in the orchard the preceding year. If all of the trees thrived and there were 6,250 trees in the orchard at the end of the 4-year period, how many trees were in the orchard at the beginning of the 4-year period?",
+    "options": [
+      "1,250",
+      "1,563",
+      "2,250",
+      "2,560",
+      "2,752"
+    ],
+    "correctAnswer": "D",
+    "answerExplanation": "Let N be the initial number of trees. Increasing by $\\frac{1}{4}$ each year is equivalent to multiplying by $(1 + \\frac{1}{4}) = \\frac{5}{4}$ each year. Over 4 years, the number of trees becomes $N \\times (\\frac{5}{4})^4$. We are given that this final number is 6,250. So, $N \\times (\\frac{5}{4})^4 = 6,250$. This is $N \\times \\frac{5^4}{4^4} = 6,250$, or $N \\times \\frac{625}{256} = 6,250$. Solving for N gives $N = 6,250 \\times \\frac{256}{625} = 10 \\times 256 = 2,560$.",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "According to the chart shown, which of the following is closest to the median annual number of shipments of manufactured homes in the United States for the years from 1990 to 2000, inclusive?",
+    "options": [
+      "250,000",
+      "280,000",
+      "310,000",
+      "325,000",
+      "340,000"
+    ],
+    "correctAnswer": "C",
+    "answerExplanation": "First, list the approximate number of shipments for each year from the chart:<br>1990: 190,000<br>1991: 180,000<br>1992: 210,000<br>1993: 270,000<br>1994: 310,000<br>1995: 350,000<br>1996: 380,000<br>1997: 370,000<br>1998: 390,000<br>1999: 360,000<br>2000: 270,000<br>There are 11 data points. To find the median, we arrange them in ascending order and find the middle value (the 6th value).<br>Ordered list: 180,000; 190,000; 210,000; 270,000; 270,000; <b>310,000</b>; 350,000; 360,000; 370,000; 380,000; 390,000.<br>The median is the 6th value, which is 310,000.",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null,
+    "figureIncluded": true
+  },
+  {
+    "questionText": "For the positive integers a, b, and k, $a^k \\| b$ means that $a^k$ is a divisor of b, but $a^{k+1}$ is not a divisor of b. If k is a positive integer and $2^k \\| 72$, then k is equal to",
+    "options": [
+      "2",
+      "3",
+      "4",
+      "8",
+      "18"
+    ],
+    "correctAnswer": "B",
+    "answerExplanation": "We need to find the highest power of 2 that divides 72. First, find the prime factorization of 72. $72 = 8 \\times 9 = 2^3 \\times 3^2$. The highest power of 2 that is a divisor of 72 is $2^3$. The next power, $2^4 = 16$, is not a divisor of 72. Therefore, according to the definition, $2^3 \\| 72$, which means $k=3$.",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "A certain characteristic in a large population has a distribution that is symmetric about the mean m. If 68 percent of the distribution lies within one standard deviation d of the mean, what percent of the distribution is less than m + d?",
+    "options": [
+      "16%",
+      "32%",
+      "48%",
+      "84%",
+      "92%"
+    ],
+    "correctAnswer": "D",
+    "answerExplanation": "The distribution is symmetric about the mean m. 68 percent of the distribution lies between $m - d$ and $m + d$. This means that $100\\% - 68\\% = 32\\%$ of the distribution lies outside this range. Because of symmetry, half of this 32% lies to the left of $m-d$ and half lies to the right of $m+d$. So, 16% of the distribution is greater than $m+d$. The percent of the distribution that is less than $m+d$ is therefore $100\\% - 16\\% = 84\\%$.",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  }
+]

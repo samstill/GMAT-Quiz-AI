@@ -1,0 +1,2812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GMAT Prep | The Path Forward</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* * === CSS Variables for Theming === */
+        :root {
+            --bg-color: #05050A;
+            --text-color: #E4E4E7;
+            --text-color-muted: #A1A1AA;
+            --text-gradient-from: #E5E7EB;
+            --text-gradient-to: #9CA3AF;
+            --glass-bg: rgba(20, 20, 25, 0.4);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --glass-shadow: 0 16px 48px rgba(0, 0, 0, 0.2);
+            --cta-bg: rgba(30, 30, 35, 0.5);
+            --cta-bg-hover: rgba(45, 45, 50, 0.7);
+            --cta-border: rgba(255, 255, 255, 0.1);
+            --input-bg: rgba(255, 255, 255, 0.05);
+            --gradient-1: hsla(215, 80%, 50%, 0.3);
+            --gradient-2: hsla(280, 70%, 55%, 0.3);
+            --gradient-3: hsla(180, 60%, 50%, 0.2);
+        }
+
+        .light-mode {
+            --bg-color: #F4F4F5;
+            --text-color: #18181B;
+            --text-color-muted: #52525B;
+            --text-gradient-from: #18181B;
+            --text-gradient-to: #3F3F46;
+            --glass-bg: rgba(255, 255, 255, 0.4);
+            --glass-border: rgba(0, 0, 0, 0.25);
+            --glass-shadow: 0 16px 48px rgba(0, 0, 0, 0.1);
+            --cta-bg: rgba(250, 250, 250, 0.5);
+            --cta-bg-hover: rgba(255, 255, 255, 0.8);
+            --cta-border: rgba(0, 0, 0, 0.2);
+            --input-bg: rgba(0, 0, 0, 0.08);
+            --gradient-1: hsla(215, 90%, 60%, 0.4);
+            --gradient-2: hsla(280, 80%, 65%, 0.4);
+            --gradient-3: hsla(180, 70%, 60%, 0.35);
+        }
+
+        /* * === Base Styles & Animated Background === */
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            overflow: hidden;
+            transition: background-color 0.5s ease, color 0.5s ease;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: -10%; left: -10%; right: -10%; bottom: -10%;
+            z-index: -1;
+            background: 
+                radial-gradient(circle at 20% 30%, var(--gradient-1) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, var(--gradient-2) 0%, transparent 40%),
+                radial-gradient(circle at 50% 50%, var(--gradient-3) 0%, transparent 35%);
+            background-size: 200% 200%;
+            animation: moveGradient 25s ease-in-out infinite;
+            transition: background 0.5s ease;
+        }
+
+        @keyframes moveGradient {
+            0% { background-position: 0% 50%; transform: scale(1); }
+            25% { transform: scale(1.1) rotate(2deg); }
+            50% { background-position: 100% 50%; transform: scale(1); }
+            75% { transform: scale(0.9) rotate(-2deg); }
+            100% { background-position: 0% 50%; transform: scale(1); }
+        }
+
+        /* * === Glassmorphism Card & Themed Elements === */
+        .glass-card {
+            position: relative;
+            background: var(--glass-bg);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--glass-shadow);
+            animation: fadeIn 1.5s ease-out;
+            transition: background 0.5s ease, border 0.5s ease, box-shadow 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px) scale(0.98); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .heading-gradient {
+            background-image: linear-gradient(to right, var(--text-gradient-from), var(--text-gradient-to));
+            transition: background-image 0.5s ease;
+        }
+
+        .muted-text { color: var(--text-color-muted); transition: color 0.5s ease; }
+        
+        .light-mode .muted-text { color: #4B5563; }
+
+        .cta-link {
+            background: var(--cta-bg);
+            border: 1px solid var(--cta-border);
+            color: var(--text-color);
+            transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease, color 0.5s ease;
+        }
+
+        .cta-link:hover {
+            background: var(--cta-bg-hover);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+        }
+        
+        .cta-link svg { transition: transform 0.3s ease; }
+        .cta-link:hover svg { transform: translateX(4px); }
+
+        /* * === Icon Buttons === */
+        .icon-button {
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; background: var(--glass-bg);
+            border: 1px solid var(--glass-border); border-radius: 50%;
+            transition: transform 0.3s ease, background 0.5s ease, border 0.5s ease;
+        }
+        .icon-button:hover { transform: scale(1.1); }
+        .icon-button svg { color: var(--text-color); transition: color 0.5s ease; }
+        .theme-toggle { position: fixed; top: 20px; right: 20px; z-index: 100; width: 50px; height: 50px; }
+        .theme-toggle:hover { transform: scale(1.1) rotate(15deg); }
+        .theme-toggle svg { width: 24px; height: 24px; }
+        .fullscreen-toggle { position: absolute; top: 16px; right: 16px; width: 40px; height: 40px; }
+        .fullscreen-toggle svg { width: 20px; height: 20px; }
+
+        /* * === Modal & Scrollbar Styles === */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.7); backdrop-filter: blur(8px);
+            display: flex; align-items: center; justify-content: center;
+            z-index: 99; opacity: 0; pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        .modal-overlay.active { opacity: 1; pointer-events: auto; }
+        .modal-content {
+            width: 90%; max-width: 800px; max-height: 85vh;
+            display: flex; flex-direction: column;
+            transform: scale(0.95); transition: transform 0.3s ease;
+        }
+        .modal-overlay.active .modal-content { transform: scale(1); }
+        .modal-input {
+            background: var(--input-bg); border: 1px solid var(--glass-border);
+            color: var(--text-color);
+            border-radius: 8px;
+            padding: 12px;
+            font-size: 14px;
+            transition: all 0.2s ease;
+        }
+        
+        .light-mode .modal-input {
+            background: #F9FAFB;
+            border: 1px solid #D1D5DB;
+            color: #1F2937;
+        }
+        
+        .modal-input::placeholder { color: var(--text-color-muted); }
+        
+        .light-mode .modal-input::placeholder { color: #6B7280; }
+        
+        .modal-input:focus {
+            outline: none;
+            border-color: #3B82F6;
+            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
+        }
+        
+        .modal-input:hover {
+            border-color: var(--text-color-muted);
+        }
+        
+        .light-mode .modal-input:hover {
+            border-color: #9CA3AF;
+        }
+        
+        /* Dropdown option styling for theme support */
+        .modal-input option {
+            background: var(--bg-color);
+            color: var(--text-color);
+            padding: 8px 12px;
+        }
+        
+        .light-mode .modal-input option {
+            background: #FFFFFF;
+            color: #1F2937;
+        }
+        
+        /* Browser-specific select styling */
+        select.modal-input {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            background-size: 16px;
+            padding-right: 40px;
+        }
+        
+        /* Select dropdown hover and focus states */
+        .modal-input:focus {
+            outline: none;
+            border-color: var(--text-color);
+            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
+        }
+        
+        .modal-input:hover {
+            border-color: var(--text-color-muted);
+        }
+        
+        /* Checkbox styling for theme support */
+        input[type="checkbox"] {
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border: 2px solid var(--glass-border);
+            border-radius: 4px;
+            background: var(--input-bg);
+            cursor: pointer;
+            position: relative;
+            transition: all 0.2s ease;
+        }
+        
+        /* Enhanced checkbox styling for light mode */
+        .light-mode input[type="checkbox"] {
+            border: 2px solid #6B7280;
+            background: #F9FAFB;
+        }
+        
+        input[type="checkbox"]:checked {
+            background: var(--text-color);
+            border-color: var(--text-color);
+        }
+        
+        .light-mode input[type="checkbox"]:checked {
+            background: #3B82F6;
+            border-color: #3B82F6;
+        }
+        
+        input[type="checkbox"]:checked::after {
+            content: '✓';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: var(--bg-primary);
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .light-mode input[type="checkbox"]:checked::after {
+            color: white;
+        }
+        
+        input[type="checkbox"]:hover {
+            border-color: var(--text-color);
+        }
+        
+        .light-mode input[type="checkbox"]:hover {
+            border-color: #4B5563;
+        }
+        
+        /* Checkbox label styling */
+        .checkbox-label {
+            color: var(--text-color-muted);
+            font-size: 0.875rem;
+        }
+        
+        .light-mode .checkbox-label {
+            color: #374151;
+        }
+        .loader {
+            border: 4px solid var(--glass-border);
+            border-top: 4px solid var(--text-color);
+            border-radius: 50%;
+            width: 40px; height: 40px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .animate-spin { animation: spin 1s linear infinite; }
+        
+        .modal-result-container::-webkit-scrollbar { display: none; }
+        .modal-result-container { -ms-overflow-style: none; scrollbar-width: none; }
+
+        /* Override hidden scrollbar for glass-scrollbar elements */
+        .modal-result-container.glass-scrollbar::-webkit-scrollbar { display: block; }
+        .modal-result-container.glass-scrollbar { -ms-overflow-style: auto; scrollbar-width: thin; }
+
+        /* * === Glassmorphic Scrollbar Styles === */
+        .glass-scrollbar {
+            scrollbar-width: thin;
+            scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+        }
+
+        .glass-scrollbar::-webkit-scrollbar {
+            width: 12px;
+            background: transparent;
+        }
+
+        .glass-scrollbar::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(10px);
+            margin: 4px;
+        }
+
+        .glass-scrollbar::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, 
+                rgba(255, 255, 255, 0.2), 
+                rgba(255, 255, 255, 0.1)
+            );
+            border-radius: 20px;
+            border: 2px solid transparent;
+            background-clip: content-box;
+            backdrop-filter: blur(15px);
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .glass-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, 
+                rgba(255, 255, 255, 0.3), 
+                rgba(255, 255, 255, 0.2)
+            );
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            transform: scale(1.1);
+        }
+
+        .glass-scrollbar::-webkit-scrollbar-thumb:active {
+            background: linear-gradient(135deg, 
+                rgba(255, 255, 255, 0.4), 
+                rgba(255, 255, 255, 0.3)
+            );
+        }
+
+        /* Light mode scrollbar adjustments */
+        .light-mode .glass-scrollbar::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.05);
+            border-color: rgba(0, 0, 0, 0.1);
+        }
+
+        .light-mode .glass-scrollbar::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, 
+                rgba(0, 0, 0, 0.15), 
+                rgba(0, 0, 0, 0.1)
+            );
+        }
+
+        .light-mode .glass-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, 
+                rgba(0, 0, 0, 0.25), 
+                rgba(0, 0, 0, 0.2)
+            );
+        }
+
+        .light-mode .glass-scrollbar::-webkit-scrollbar-thumb:active {
+            background: linear-gradient(135deg, 
+                rgba(0, 0, 0, 0.35), 
+                rgba(0, 0, 0, 0.3)
+            );
+        }
+
+        /* * === Glassmorphic Navbar Styles === */
+        .glass-navbar {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            backdrop-filter: blur(20px);
+            box-shadow: var(--glass-shadow);
+            margin-bottom: 20px;
+            padding: 16px 20px;
+            transition: all 0.3s ease;
+        }
+
+        .glass-navbar:hover {
+            background: var(--input-bg);
+            transform: translateY(-1px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        .navbar-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            min-height: 40px;
+            flex-wrap: wrap;
+        }
+
+        .navbar-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-color);
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-shrink: 0;
+            padding: 4px 0;
+            order: 1;
+        }
+
+        .navbar-title svg {
+            color: var(--cta-bg);
+            transition: all 0.2s ease;
+        }
+
+        .navbar-stats {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: var(--text-color-muted);
+            flex: 1;
+            justify-content: center;
+            min-width: 200px;
+            order: 2;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            padding: 4px 8px;
+            background: var(--input-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+            min-height: 24px;
+            font-size: 13px;
+        }
+
+        .stat-item:hover {
+            background: var(--cta-bg);
+            color: white;
+            border-color: var(--cta-border);
+            transform: translateY(-1px);
+        }
+
+        .stat-item svg {
+            width: 14px;
+            height: 14px;
+            transition: all 0.2s ease;
+        }
+
+        .stat-item:hover svg {
+            color: white;
+        }
+
+        .navbar-actions {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            flex-shrink: 0;
+            order: 3;
+        }
+
+        .navbar-btn {
+            padding: 6px 12px;
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
+            background: var(--input-bg);
+            color: var(--text-color);
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            white-space: nowrap;
+            min-height: 32px;
+        }
+
+        .navbar-btn:hover {
+            background: var(--cta-bg);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .navbar-btn.primary {
+            background: var(--cta-bg);
+            border-color: var(--cta-border);
+            color: white;
+            font-weight: 600;
+        }
+
+        .navbar-btn.primary:hover {
+            background: var(--cta-bg-hover);
+            box-shadow: 0 4px 16px rgba(var(--cta-rgb), 0.3);
+        }
+
+        .navbar-btn svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        /* Responsive navbar */
+        @media (max-width: 900px) {
+            .navbar-content {
+                gap: 8px;
+            }
+            
+            .navbar-stats {
+                gap: 6px;
+                min-width: 160px;
+            }
+            
+            .navbar-btn {
+                padding: 5px 10px;
+                font-size: 12px;
+                gap: 3px;
+            }
+            
+            .stat-item {
+                padding: 3px 6px;
+                font-size: 12px;
+                gap: 3px;
+            }
+            
+            .navbar-title {
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar-content {
+                flex-direction: column;
+                gap: 12px;
+                align-items: stretch;
+            }
+            
+            .navbar-title {
+                align-self: center;
+                order: 1;
+            }
+            
+            .navbar-stats {
+                justify-content: center;
+                gap: 12px;
+                order: 2;
+                min-width: auto;
+            }
+            
+            .navbar-actions {
+                justify-content: center;
+                gap: 8px;
+                order: 3;
+            }
+            
+            .stat-item {
+                flex: 1;
+                justify-content: center;
+                min-width: 70px;
+                font-size: 13px;
+                padding: 4px 8px;
+            }
+            
+            .navbar-btn {
+                flex: 1;
+                justify-content: center;
+                min-width: 80px;
+                font-size: 13px;
+                padding: 6px 12px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .navbar-content {
+                gap: 10px;
+            }
+            
+            .navbar-stats {
+                gap: 6px;
+            }
+            
+            .navbar-actions {
+                flex-wrap: wrap;
+                gap: 6px;
+            }
+            
+            .stat-item {
+                font-size: 12px;
+                padding: 3px 6px;
+                min-width: 60px;
+            }
+            
+            .navbar-btn {
+                font-size: 12px;
+                padding: 5px 8px;
+                min-width: 70px;
+            }
+            
+            .navbar-title {
+                font-size: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .glass-navbar {
+                padding: 12px 16px;
+            }
+            
+            .navbar-content {
+                gap: 8px;
+            }
+            
+            .stat-item {
+                font-size: 11px;
+                padding: 2px 4px;
+                min-width: 50px;
+            }
+            
+            .navbar-btn {
+                font-size: 11px;
+                padding: 4px 6px;
+                min-width: 60px;
+            }
+            
+            .navbar-title {
+                font-size: 14px;
+            }
+            
+            .stat-item svg, .navbar-btn svg {
+                width: 12px;
+                height: 12px;
+            }
+        }
+
+        /* * === Flashcard Styles === */
+        .flashcard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            perspective: 1000px;
+        }
+        .flashcard {
+            background-color: transparent;
+            min-height: 220px;
+            cursor: pointer;
+            transform-style: preserve-3d;
+            transition: transform 0.6s;
+        }
+        .flashcard.flipped {
+            transform: rotateY(180deg);
+        }
+        .flashcard-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start; /* Align content to the top */
+            align-items: center;
+            padding: 1rem;
+            border-radius: 1.5rem;
+        }
+        .flashcard-content-wrapper {
+            width: 100%;
+            max-height: 100%;
+            overflow-y: auto;
+            padding: 0.5rem;
+            /* Firefox scrollbar styling */
+            scrollbar-width: thin;
+            scrollbar-color: var(--glass-border) transparent;
+        }
+
+        /* Webkit (Chrome, Safari, Edge) scrollbar styling */
+        .flashcard-content-wrapper::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        .flashcard-content-wrapper::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .flashcard-content-wrapper::-webkit-scrollbar-thumb {
+            background-color: var(--glass-border);
+            border-radius: 20px;
+            border: 3px solid transparent; /* Creates padding around thumb */
+            background-clip: content-box;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .flashcard-content-wrapper::-webkit-scrollbar-thumb:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+
+        .flashcard-front {
+            background: var(--cta-bg);
+            border: 1px solid var(--cta-border);
+            text-align: center;
+            z-index: 2; /* Fix: Ensures front face captures mouse events */
+        }
+        .flashcard-back {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            transform: rotateY(180deg);
+            text-align: left;
+        }
+        .flashcard-back table, .flashcard-front table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+            font-size: 0.875rem;
+            background-color: rgba(0,0,0,0.1);
+            border-radius: 0.5rem;
+            overflow: hidden;
+        }
+        .flashcard-back th, .flashcard-back td, .flashcard-front th, .flashcard-front td {
+            border: 1px solid var(--glass-border);
+            padding: 0.75rem;
+            text-align: left;
+        }
+        .flashcard-back th, .flashcard-front th {
+            background-color: rgba(255, 255, 255, 0.1);
+            font-weight: 600;
+        }
+        .flashcard-back tr:nth-child(even), .flashcard-front tr:nth-child(even) {
+            background-color: rgba(0,0,0,0.05);
+        }
+        .flashcard-back h4 {
+            font-weight: 700;
+            margin-top: 0.75rem;
+            margin-bottom: 0.25rem;
+            color: var(--text-color);
+        }
+        .flashcard-back p {
+            margin-bottom: 0.75rem;
+        }
+        .flashcard-back ul {
+            list-style-type: disc;
+            padding-left: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+        .flashcard-back li {
+            margin-bottom: 0.25rem;
+        }
+        .flashcard-back strong {
+            color: var(--text-gradient-from);
+            font-weight: 600;
+        }
+
+        /* Chart container styling for better theme integration */
+        .flashcard canvas {
+            border-radius: 0.5rem;
+            background-color: transparent;
+        }
+        
+        [id^="chart-container-"] {
+            background: var(--input-bg);
+            border-radius: 0.75rem;
+            padding: 0.75rem;
+            border: 1px solid var(--glass-border);
+            transition: background 0.5s ease, border 0.5s ease;
+        }
+
+        /* Additional light mode enhancements for form elements and buttons */
+        .light-mode button {
+            transition: all 0.2s ease;
+        }
+        
+        /* Improve button text contrast in light mode */
+        .light-mode .text-blue-800 { color: #1E40AF !important; }
+        .light-mode .text-green-800 { color: #166534 !important; }
+        .light-mode .text-purple-800 { color: #6B21A8 !important; }
+        
+        /* Improve button background contrast in light mode */
+        .light-mode .bg-blue-100 { background-color: #DBEAFE !important; }
+        .light-mode .bg-green-100 { background-color: #DCFCE7 !important; }
+        .light-mode .bg-purple-100 { background-color: #F3E8FF !important; }
+        
+        /* Improve button hover states in light mode */
+        .light-mode .hover\:bg-blue-200:hover { background-color: #BFDBFE !important; }
+        .light-mode .hover\:bg-green-200:hover { background-color: #BBF7D0 !important; }
+        .light-mode .hover\:bg-purple-200:hover { background-color: #E9D5FF !important; }
+        
+        /* Focus states for better accessibility */
+        .light-mode button:focus {
+            outline: 2px solid #3B82F6;
+            outline-offset: 2px;
+        }
+        
+        /* Improve general text contrast in light mode */
+        .light-mode .text-sm { color: #374151; }
+
+        /* Bookmark icon styling for flashcards */
+        .bookmark-icon {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.2s ease;
+            opacity: 0.7;
+        }
+        
+        .bookmark-icon:hover {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+        
+        .bookmark-icon svg {
+            width: 100%;
+            height: 100%;
+            color: var(--text-color);
+            transition: color 0.2s ease;
+        }
+        
+        .bookmark-icon.saved svg {
+            color: #F59E0B;
+            fill: #F59E0B;
+        }
+        
+        .bookmark-icon.unsaved svg {
+            color: var(--text-color-muted);
+            fill: none;
+        }
+        
+        .light-mode .bookmark-icon.unsaved svg {
+            color: #9CA3AF;
+        }
+
+        /* * === Individual Flashcard Toolbar === */
+        .flashcard-toolbar {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            display: flex;
+            gap: 8px;
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .flashcard:hover .flashcard-toolbar {
+            opacity: 1;
+            transform: translateY(-2px);
+        }
+
+        .flashcard-action-btn {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 8px;
+            color: var(--text-color);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(15px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+        }
+
+        .flashcard-action-btn:hover {
+            background: var(--cta-bg);
+            border-color: var(--cta-border);
+            transform: translateY(-2px) scale(1.1);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+        }
+
+        .flashcard-action-btn svg {
+            width: 18px;
+            height: 18px;
+            transition: all 0.2s ease;
+        }
+
+        .flashcard-action-btn:hover svg {
+            transform: scale(1.1);
+        }
+
+        .flashcard-action-btn.save-btn {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.2), rgba(34, 197, 94, 0.1));
+            border-color: rgba(34, 197, 94, 0.3);
+        }
+
+        .flashcard-action-btn.save-btn:hover {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.3), rgba(34, 197, 94, 0.2));
+            border-color: rgba(34, 197, 94, 0.5);
+        }
+
+        /* Save individual flashcard modal */
+        .save-individual-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .save-individual-modal.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .save-individual-content {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 24px;
+            backdrop-filter: blur(25px);
+            box-shadow: var(--glass-shadow);
+            width: 90%;
+            max-width: 400px;
+            transform: scale(0.9) translateY(20px);
+            transition: all 0.3s ease;
+        }
+
+        .save-individual-modal.active .save-individual-content {
+            transform: scale(1) translateY(0);
+        }
+
+        .save-individual-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .save-individual-header h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-color);
+            margin: 0;
+        }
+
+        .save-individual-header svg {
+            width: 24px;
+            height: 24px;
+            color: rgba(34, 197, 94, 0.8);
+        }
+
+        .save-individual-form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .save-individual-input {
+            background: var(--input-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 12px 16px;
+            color: var(--text-color);
+            font-size: 14px;
+            transition: all 0.2s ease;
+        }
+
+        .save-individual-input:focus {
+            outline: none;
+            border-color: rgba(34, 197, 94, 0.5);
+            box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.1);
+        }
+
+        .save-individual-input::placeholder {
+            color: var(--text-color-muted);
+        }
+
+        .save-individual-actions {
+            display: flex;
+            gap: 12px;
+            justify-content: flex-end;
+        }
+
+        .save-individual-btn {
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid var(--glass-border);
+        }
+
+        .save-individual-btn.cancel {
+            background: var(--input-bg);
+            color: var(--text-color-muted);
+        }
+
+        .save-individual-btn.cancel:hover {
+            background: var(--cta-bg);
+            color: var(--text-color);
+            transform: translateY(-1px);
+        }
+
+        .save-individual-btn.save {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.2), rgba(34, 197, 94, 0.1));
+            border-color: rgba(34, 197, 94, 0.3);
+            color: var(--text-color);
+        }
+
+        .save-individual-btn.save:hover {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.3), rgba(34, 197, 94, 0.2));
+            border-color: rgba(34, 197, 94, 0.5);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(34, 197, 94, 0.2);
+        }
+
+        .save-individual-btn svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* Responsive design for save individual modal */
+        @media (max-width: 640px) {
+            .save-individual-content {
+                padding: 20px;
+                margin: 16px;
+                width: calc(100% - 32px);
+                max-width: none;
+            }
+            
+            .save-individual-header h3 {
+                font-size: 16px;
+            }
+            
+            .save-individual-header svg {
+                width: 20px;
+                height: 20px;
+            }
+            
+            .save-individual-actions {
+                flex-direction: column;
+                gap: 8px;
+            }
+            
+            .save-individual-btn {
+                width: 100%;
+                justify-content: center;
+                padding: 12px 16px;
+            }
+            
+            .flashcard-toolbar {
+                gap: 6px;
+            }
+            
+            .flashcard-action-btn {
+                width: 32px;
+                height: 32px;
+                padding: 6px;
+            }
+            
+            .flashcard-action-btn svg {
+                width: 16px;
+                height: 16px;
+            }
+        }
+
+        /* * === Modern Notification System === */
+        .notification-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            pointer-events: none;
+        }
+
+        .notification {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 16px 20px;
+            box-shadow: var(--glass-shadow);
+            backdrop-filter: blur(20px);
+            max-width: 400px;
+            pointer-events: all;
+            transform: translateX(100%);
+            opacity: 0;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .notification.show {
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        .notification.success {
+            border-color: rgba(34, 197, 94, 0.3);
+            background: rgba(34, 197, 94, 0.1);
+        }
+
+        .notification.error {
+            border-color: rgba(239, 68, 68, 0.3);
+            background: rgba(239, 68, 68, 0.1);
+        }
+
+        .notification.info {
+            border-color: rgba(59, 130, 246, 0.3);
+            background: rgba(59, 130, 246, 0.1);
+        }
+
+        .notification-icon {
+            flex-shrink: 0;
+            width: 20px;
+            height: 20px;
+        }
+
+        .notification-content {
+            flex: 1;
+        }
+
+        .notification-title {
+            font-weight: 600;
+            margin-bottom: 2px;
+            color: var(--text-color);
+        }
+
+        .notification-message {
+            font-size: 14px;
+            color: var(--text-color-muted);
+        }
+
+        .notification-close {
+            flex-shrink: 0;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+
+        .notification-close:hover {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen p-4">
+
+    <!-- Notification Container -->
+    <div id="notification-container" class="notification-container"></div>
+
+    <!-- Theme Toggle Button -->
+    <button id="theme-toggle" class="icon-button theme-toggle" aria-label="Toggle theme">
+        <svg id="theme-icon-sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sun hidden"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+        <svg id="theme-icon-moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-moon"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+    </button>
+
+    <!-- Main View -->
+    <div id="main-view" class="w-full">
+        <main class="w-full max-w-2xl text-center mx-auto">
+            <div class="glass-card rounded-3xl p-8 md:p-12">
+                <button id="fullscreen-toggle" class="icon-button fullscreen-toggle" aria-label="Toggle fullscreen">
+                    <svg id="icon-expand" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-expand"><path d="m21 21-6-6m6 6v-4m0 4h-4"/><path d="M3 3l6 6m-6-6v4m0-4h4"/></svg>
+                    <svg id="icon-shrink" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shrink hidden"><path d="M15 15l6 6m-6-6v4m0-4h4"/><path d="M9 9l-6-6m6 6v-4m0 4H5"/></svg>
+                </button>
+
+                <h1 id="motivational-quote" class="heading-gradient text-3xl md:text-5xl font-extrabold text-transparent bg-clip-text leading-tight min-h-[100px] flex items-center justify-center">
+                    Loading quote...
+                </h1>
+                
+                <p class="mt-6 text-lg md:text-xl max-w-lg mx-auto muted-text">
+                    The discomfort of discipline is temporary. The regret of being stuck is not. It's time to break through.
+                </p>
+
+                <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="manage_quizzes.html" class="cta-link inline-flex items-center gap-3 px-8 py-4 rounded-full font-semibold text-lg w-full sm:w-auto justify-center">
+                        Start Quiz
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                    </a>
+                    <button id="generate-flashcards-btn" class="cta-link inline-flex items-center gap-3 px-8 py-4 rounded-full font-semibold text-lg w-full sm:w-auto justify-center">
+                        ⚡ Generate Flashcards
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- AI Flashcard Modal -->
+    <div id="flashcard-modal" class="modal-overlay">
+        <div class="modal-content glass-card rounded-3xl p-8 text-left">
+            <div class="flex justify-between items-center mb-6 flex-shrink-0">
+                <h2 class="text-2xl font-bold heading-gradient text-transparent bg-clip-text">AI Flashcard Generator</h2>
+                <button id="close-modal-btn" class="icon-button w-10 h-10">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
+            
+            <div id="modal-form" class="flex-shrink-0">
+                <p class="muted-text mb-4">Generate targeted GMAT Focus Edition flashcards based on your performance data and weak areas. The AI will analyze your quiz history to create personalized content.</p>
+                
+                <div class="mb-4 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800">
+                    <h3 class="text-sm font-semibold text-blue-800 dark:text-blue-200 mb-2">🎯 GMAT Focus Edition Topics</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-2 text-xs">
+                        <div>
+                            <strong class="text-blue-700 dark:text-blue-300">Quantitative:</strong>
+                            <div class="text-blue-600 dark:text-blue-400">Algebra, Geometry, Number Properties, Statistics, Combinatorics</div>
+                        </div>
+                        <div>
+                            <strong class="text-green-700 dark:text-green-300">Verbal:</strong>
+                            <div class="text-green-600 dark:text-green-400">Reading Comp, Critical Reasoning, Inference</div>
+                        </div>
+                        <div>
+                            <strong class="text-purple-700 dark:text-purple-300">Data Insights:</strong>
+                            <div class="text-purple-600 dark:text-purple-400">Multi-Source, Table Analysis, Graphics, Two-Part</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                    <div>
+                        <label for="flashcard-topics" class="block text-sm font-medium muted-text mb-1">Topics (comma-separated)</label>
+                        <input type="text" id="flashcard-topics" class="modal-input w-full p-3 rounded-lg" placeholder="e.g., Data Sufficiency, Critical Reasoning, Table Analysis">
+                        <div class="mt-2 flex flex-wrap gap-2">
+                            <button type="button" onclick="addSuggestedTopic('Number Properties, Algebra')" class="px-2 py-1 text-xs bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded hover:bg-blue-200 dark:hover:bg-blue-800">Quant Fundamentals</button>
+                            <button type="button" onclick="addSuggestedTopic('Critical Reasoning, Reading Comprehension')" class="px-2 py-1 text-xs bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded hover:bg-green-200 dark:hover:bg-green-800">Verbal Mastery</button>
+                            <button type="button" onclick="addSuggestedTopic('Multi-Source Reasoning, Graphics Interpretation')" class="px-2 py-1 text-xs bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 rounded hover:bg-purple-200 dark:hover:bg-purple-800">Data Insights</button>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="flashcard-count" class="block text-sm font-medium muted-text mb-1">Number of Flashcards</label>
+                        <select id="flashcard-count" class="modal-input w-full p-3 rounded-lg">
+                            <option value="3">3 Cards (Quick Review)</option>
+                            <option value="5" selected>5 Cards (Standard)</option>
+                            <option value="8">8 Cards (Deep Practice)</option>
+                            <option value="10">10 Cards (Intensive)</option>
+                        </select>
+                        <div class="mt-2">
+                            <label class="flex items-center checkbox-label">
+                                <input type="checkbox" id="target-weaknesses" class="mr-2" checked>
+                                Prioritize my weak areas (recommended)
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex gap-2 mb-4">
+                    <button id="submit-flashcard-request" class="cta-link flex-1 text-center justify-center inline-flex items-center gap-3 px-6 py-3 rounded-full font-semibold">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sparkles">
+                            <path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .962 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.582a.5.5 0 0 1 0 .962L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.962 0z"/>
+                        </svg>
+                        Generate AI Flashcards
+                    </button>
+                    <button id="load-saved-flashcards" class="cta-link px-6 py-3 rounded-full font-semibold inline-flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-folder-open">
+                            <path d="m6 14 1.45-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.73 3l-1.45 2.9a2 2 0 0 1-1.79 1.1H9a2 2 0 0 1-1.73-3z"/>
+                            <path d="M4 6h16a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2z"/>
+                        </svg>
+                        Load Saved
+                    </button>
+                </div>
+            </div>
+
+            <div id="modal-result" class="hidden flex-grow mt-6 modal-result-container overflow-y-auto glass-scrollbar">
+                <div id="flashcard-controls" class="hidden mb-4 flex gap-2 items-center flex-wrap">
+                    <input type="text" id="flashcard-set-name" class="modal-input flex-1 min-w-48" placeholder="Enter flashcard set name...">
+                    <button id="save-flashcards" class="cta-link px-4 py-2 rounded-lg font-medium inline-flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-save">
+                            <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/>
+                            <polyline points="17,21 17,13 7,13 7,21"/>
+                            <polyline points="7,3 7,8 15,8"/>
+                        </svg>
+                        Save Set
+                    </button>
+                    <button id="back-to-form" class="cta-link px-4 py-2 rounded-lg font-medium inline-flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left">
+                            <path d="m12 19-7-7 7-7"/>
+                            <path d="M19 12H5"/>
+                        </svg>
+                        Back to Form
+                    </button>
+                </div>
+                <div id="loader" class="hidden justify-center items-center py-10"><div class="loader"></div></div>
+                <div id="flashcard-output" class="flashcard-grid">
+                    <!-- AI generated flashcards will appear here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Load Saved Flashcards Modal -->
+    <div id="load-flashcards-modal" class="modal-overlay">
+        <div class="modal-content glass-card rounded-3xl p-8 text-left max-w-2xl">
+            <!-- Glassmorphic Navbar -->
+            <div class="glass-navbar">
+                <div class="navbar-content">
+                    <div class="navbar-title">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bookmark">
+                            <path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/>
+                        </svg>
+                        <span id="navbar-title-text">Saved Flashcard Sets</span>
+                    </div>
+                    
+                    <div class="navbar-stats">
+                        <div class="stat-item" id="sets-stat">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-layers">
+                                <path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/>
+                                <path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/>
+                                <path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/>
+                            </svg>
+                            <span id="total-sets-count">0</span> Sets
+                        </div>
+                        <div class="stat-item" id="cards-stat">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-square-stack">
+                                <path d="M4 10c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h4c1.1 0 2 .9 2 2"/>
+                                <path d="M10 16c-1.1 0-2-.9-2-2v-4c0-1.1.9-2 2-2h4c1.1 0 2 .9 2 2"/>
+                                <path d="M16 22c-1.1 0-2-.9-2-2v-4c0-1.1.9-2 2-2h4c1.1 0 2 .9 2 2v4c0 1.1-.9 2-2 2Z"/>
+                            </svg>
+                            <span id="total-cards-count">0</span> Cards
+                        </div>
+                    </div>
+                    
+                    <div class="navbar-actions">
+                        <button id="toggle-view-btn" class="navbar-btn" title="Toggle between sets and individual cards">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-grid-3x3">
+                                <rect width="18" height="18" x="3" y="3" rx="2"/>
+                                <path d="M9 3v18"/>
+                                <path d="M15 3v18"/>
+                                <path d="M3 9h18"/>
+                                <path d="M3 15h18"/>
+                            </svg>
+                            Individual
+                        </button>
+                        <button id="refresh-sets-btn" class="navbar-btn" title="Refresh sets">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-refresh-cw">
+                                <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/>
+                                <path d="M21 3v5h-5"/>
+                                <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/>
+                                <path d="M3 21v-5h5"/>
+                            </svg>
+                        </button>
+                        <button id="close-load-modal-btn" class="navbar-btn primary">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x">
+                                <path d="M18 6 6 18"/>
+                                <path d="m6 6 12 12"/>
+                            </svg>
+                            Close
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="saved-flashcards-list" class="space-y-3 max-h-96 overflow-y-auto glass-scrollbar">
+                <!-- Saved flashcard sets will appear here -->
+            </div>
+            
+            <div id="individual-flashcards-list" class="hidden space-y-3 max-h-96 overflow-y-auto glass-scrollbar">
+                <!-- Individual saved flashcards will appear here -->
+            </div>
+            
+            <div id="no-saved-flashcards" class="hidden text-center py-8">
+                <p class="muted-text">No saved flashcard sets found.</p>
+                <p class="text-sm muted-text mt-2">Generate some flashcards and save them to see them here.</p>
+            </div>
+            
+            <div id="no-individual-flashcards" class="hidden text-center py-8">
+                <p class="muted-text">No individual flashcards found.</p>
+                <p class="text-sm muted-text mt-2">Save individual flashcards to see them here.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Save Individual Flashcard Modal -->
+    <div id="save-individual-modal" class="save-individual-modal">
+        <div class="save-individual-content">
+            <div class="save-individual-header">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bookmark-plus">
+                    <path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/>
+                    <line x1="12" x2="12" y1="7" y2="13"/>
+                    <line x1="9" x2="15" y1="10" y2="10"/>
+                </svg>
+                <h3>Save Flashcard</h3>
+            </div>
+            
+            <div class="save-individual-form">
+                <input type="text" id="individual-flashcard-name" class="save-individual-input" placeholder="Enter a name for this flashcard..." required>
+                
+                <div class="save-individual-actions">
+                    <button id="cancel-individual-save" class="save-individual-btn cancel">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x">
+                            <path d="M18 6 6 18"/>
+                            <path d="m6 6 12 12"/>
+                        </svg>
+                        Cancel
+                    </button>
+                    <button id="confirm-individual-save" class="save-individual-btn save">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-save">
+                            <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/>
+                            <polyline points="17,21 17,13 7,13 7,21"/>
+                            <polyline points="7,3 7,8 15,8"/>
+                        </svg>
+                        Save Flashcard
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- Global variable to hold active chart instances ---
+        let activeCharts = [];
+
+        // --- Theme Toggle Logic ---
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const sunIcon = document.getElementById('theme-icon-sun');
+        const moonIcon = document.getElementById('theme-icon-moon');
+
+        const applyTheme = (theme) => {
+            document.body.classList.toggle('light-mode', theme === 'light');
+            sunIcon.classList.toggle('hidden', theme !== 'light');
+            moonIcon.classList.toggle('hidden', theme === 'light');
+
+            // Use a timeout to ensure CSS variables are applied before updating charts
+            setTimeout(() => {
+                const colors = getThemeColors();
+
+                activeCharts.forEach(chart => {
+                    // Update legend colors
+                    if (chart.options.plugins && chart.options.plugins.legend) {
+                        chart.options.plugins.legend.labels.color = colors.textColor;
+                    }
+                    
+                    // Update tooltip colors
+                    if (chart.options.plugins && chart.options.plugins.tooltip) {
+                        chart.options.plugins.tooltip.backgroundColor = colors.backgroundColor;
+                        chart.options.plugins.tooltip.titleColor = colors.textColor;
+                        chart.options.plugins.tooltip.bodyColor = colors.textColor;
+                        chart.options.plugins.tooltip.borderColor = colors.gridColor;
+                    }
+                    
+                    // Update scale colors if they exist
+                    if (chart.options.scales) {
+                        if (chart.options.scales.y) {
+                            chart.options.scales.y.ticks.color = colors.textColor;
+                            chart.options.scales.y.grid.color = colors.gridColor;
+                            if (chart.options.scales.y.border) {
+                                chart.options.scales.y.border.color = colors.gridColor;
+                            }
+                        }
+                        if (chart.options.scales.x) {
+                            chart.options.scales.x.ticks.color = colors.textColor;
+                            chart.options.scales.x.grid.color = colors.gridColor;
+                            if (chart.options.scales.x.border) {
+                                chart.options.scales.x.border.color = colors.gridColor;
+                            }
+                        }
+                    }
+                    
+                    chart.update('none'); // Update without animation for smoother theme transition
+                });
+            }, 50); // Slightly longer delay to ensure CSS variables are fully applied
+        };
+
+        let currentTheme = localStorage.getItem('theme') || 'dark';
+        applyTheme(currentTheme);
+
+        themeToggleBtn.addEventListener('click', () => {
+            currentTheme = document.body.classList.contains('light-mode') ? 'dark' : 'light';
+            localStorage.setItem('theme', currentTheme);
+            applyTheme(currentTheme);
+        });
+
+        // --- Fullscreen Toggle Logic ---
+        const fullscreenToggleBtn = document.getElementById('fullscreen-toggle');
+        const expandIcon = document.getElementById('icon-expand');
+        const shrinkIcon = document.getElementById('icon-shrink');
+
+        const toggleFullscreenState = () => {
+            const isFullscreen = !!document.fullscreenElement;
+            expandIcon.classList.toggle('hidden', isFullscreen);
+            shrinkIcon.classList.toggle('hidden', !isFullscreen);
+            sessionStorage.setItem('isFullscreenPreferred', isFullscreen);
+        };
+
+        fullscreenToggleBtn.addEventListener('click', () => {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen().catch(err => console.error(`Fullscreen error: ${err.message}`));
+            } else {
+                if (document.exitFullscreen) document.exitFullscreen();
+            }
+        });
+
+        document.addEventListener('fullscreenchange', toggleFullscreenState);
+        toggleFullscreenState();
+
+        // --- Dynamic Motivational Quote ---
+        const quoteElement = document.getElementById('motivational-quote');
+        const motivationalQuotes = [
+            "The journey of a thousand miles begins with a single step.",
+            "Believe you can and you're halfway there.",
+            "The secret of getting ahead is getting started.",
+            "It's not whether you get knocked down, it's whether you get up.",
+            "The will to win, the desire to succeed, the urge to reach your full potential... these are the keys that will unlock the door to personal excellence.",
+            "Success is not final, failure is not fatal: it is the courage to continue that counts.",
+            "Excellence is not a skill, it's an attitude.",
+            "Your limitation—it's only your imagination.",
+            "Push yourself, because no one else is going to do it for you.",
+            "Great things never come from comfort zones.",
+            "Dream it. Wish it. Do it.",
+            "Success doesn't just find you. You have to go out and get it.",
+            "The harder you work for something, the greater you'll feel when you achieve it.",
+            "Don't stop when you're tired. Stop when you're done.",
+            "Wake up with determination. Go to bed with satisfaction.",
+            "Do something today that your future self will thank you for."
+        ];
+
+        async function generateAIQuote() {
+            try {
+                const response = await fetch('http://127.0.0.1:8000/api/ai/analyze', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        history: [{
+                            role: "user",
+                            parts: [{
+                                text: "Generate a single inspiring and motivational quote for a GMAT student who is working hard to achieve their goals. The quote should be encouraging, focused on persistence, growth, and achieving excellence. Return only the quote text without quotes or additional formatting."
+                            }]
+                        }]
+                    })
+                });
+
+                if (response.ok) {
+                    const result = await response.json();
+                    if (result.text) {
+                        quoteElement.textContent = `"${result.text.trim()}"`;
+                        return;
+                    }
+                }
+            } catch (error) {
+                console.log('AI quote generation failed, using fallback:', error);
+            }
+            
+            // Fallback to static quotes if AI fails
+            displayRandomQuote();
+        }
+
+        function displayRandomQuote() {
+            const randomIndex = Math.floor(Math.random() * motivationalQuotes.length);
+            quoteElement.textContent = `"${motivationalQuotes[randomIndex]}"`;
+        }
+
+        // Try AI quote first, fallback to random quote
+        document.addEventListener('DOMContentLoaded', generateAIQuote);
+
+        // --- AI Flashcard Modal Logic ---
+        const generateFlashcardsBtn = document.getElementById('generate-flashcards-btn');
+        const flashcardModal = document.getElementById('flashcard-modal');
+        const closeModalBtn = document.getElementById('close-modal-btn');
+        const submitFlashcardRequestBtn = document.getElementById('submit-flashcard-request');
+        const loadSavedFlashcardsBtn = document.getElementById('load-saved-flashcards');
+        const modalForm = document.getElementById('modal-form');
+        const modalResult = document.getElementById('modal-result');
+        const loader = document.getElementById('loader');
+        const flashcardOutput = document.getElementById('flashcard-output');
+        const flashcardControls = document.getElementById('flashcard-controls');
+        const saveFlashcardsBtn = document.getElementById('save-flashcards');
+        const backToFormBtn = document.getElementById('back-to-form');
+        const flashcardSetNameInput = document.getElementById('flashcard-set-name');
+
+        // Load flashcards modal elements
+        const loadFlashcardsModal = document.getElementById('load-flashcards-modal');
+        const closeLoadModalBtn = document.getElementById('close-load-modal-btn');
+        const savedFlashcardsList = document.getElementById('saved-flashcards-list');
+        const noSavedFlashcards = document.getElementById('no-saved-flashcards');
+
+        let currentFlashcards = [];
+
+        generateFlashcardsBtn.addEventListener('click', () => {
+            flashcardModal.classList.add('active');
+        });
+
+        const closeModal = () => {
+            flashcardModal.classList.remove('active');
+            modalForm.classList.remove('hidden');
+            modalResult.classList.add('hidden');
+            flashcardControls.classList.add('hidden');
+            flashcardOutput.innerHTML = '';
+            flashcardSetNameInput.value = '';
+            currentFlashcards = [];
+            // Destroy charts and clear the array to prevent memory leaks
+            activeCharts.forEach(chart => chart.destroy());
+            activeCharts = [];
+        };
+
+        const closeLoadModal = () => {
+            loadFlashcardsModal.classList.remove('active');
+        };
+
+        const showFlashcardResults = () => {
+            modalForm.classList.add('hidden');
+            modalResult.classList.remove('hidden');
+            flashcardControls.classList.remove('hidden');
+        };
+
+        const backToForm = () => {
+            modalForm.classList.remove('hidden');
+            modalResult.classList.add('hidden');
+            flashcardControls.classList.add('hidden');
+            flashcardOutput.innerHTML = '';
+            flashcardSetNameInput.value = '';
+            currentFlashcards = [];
+            // Destroy charts and clear the array to prevent memory leaks
+            activeCharts.forEach(chart => chart.destroy());
+            activeCharts = [];
+        };
+
+        closeModalBtn.addEventListener('click', closeModal);
+        closeLoadModalBtn.addEventListener('click', closeLoadModal);
+        backToFormBtn.addEventListener('click', backToForm);
+        
+
+        // --- API Base URL for backend ---
+        const API_BASE = 'http://127.0.0.1:8000';
+
+        // Save flashcards event listener
+        saveFlashcardsBtn.addEventListener('click', async () => {
+            const setName = flashcardSetNameInput.value.trim();
+            if (!setName) {
+                showNotification('error', 'Name Required', 'Please enter a name for the flashcard set.');
+                return;
+            }
+
+            if (!currentFlashcards || currentFlashcards.length === 0) {
+                showNotification('error', 'No Flashcards', 'No flashcards to save. Generate some flashcards first.');
+                return;
+            }
+
+            const topics = document.getElementById('flashcard-topics').value;
+            const payload = {
+                name: setName,
+                topics: topics,
+                flashcards: currentFlashcards
+            };
+
+            try {
+                const response = await fetch(`${API_BASE}/api/flashcards/save`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(payload)
+                });
+
+                const data = await response.json();
+                
+                if (response.ok && data.id) {
+                    showNotification('success', 'Set Saved', `Flashcard set "${setName}" has been saved successfully!`);
+                    flashcardSetNameInput.value = '';
+                } else {
+                    throw new Error(data.detail || 'Failed to save flashcard set');
+                }
+            } catch (error) {
+                console.error('Error saving flashcard set:', error);
+                showNotification('error', 'Save Failed', 'Failed to save flashcard set. Please try again.');
+            }
+        });
+
+        // Load saved flashcards event listener
+        loadSavedFlashcardsBtn.addEventListener('click', async () => {
+            try {
+                // Reset to sets view when opening modal
+                currentView = 'sets';
+                const toggleBtn = document.getElementById('toggle-view-btn');
+                const navbarTitle = document.getElementById('navbar-title-text');
+                const savedSetsList = document.getElementById('saved-flashcards-list');
+                const individualList = document.getElementById('individual-flashcards-list');
+                const noIndividualCards = document.getElementById('no-individual-flashcards');
+                
+                if (navbarTitle) navbarTitle.textContent = 'Saved Flashcard Sets';
+                if (savedSetsList) savedSetsList.classList.remove('hidden');
+                if (individualList) individualList.classList.add('hidden');
+                if (noIndividualCards) noIndividualCards.classList.add('hidden');
+                
+                if (toggleBtn) {
+                    toggleBtn.innerHTML = `
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-grid-3x3">
+                            <rect width="18" height="18" x="3" y="3" rx="2"/>
+                            <path d="M9 3v18"/>
+                            <path d="M15 3v18"/>
+                            <path d="M3 9h18"/>
+                            <path d="M3 15h18"/>
+                        </svg>
+                        Individual
+                    `;
+                }
+                
+                const response = await fetch(`${API_BASE}/api/flashcards/list`);
+                const flashcardSets = await response.json();
+                
+                if (response.ok) {
+                    displaySavedFlashcardSets(flashcardSets);
+                    loadFlashcardsModal.classList.add('active');
+                } else {
+                    throw new Error('Failed to load saved flashcard sets');
+                }
+            } catch (error) {
+                console.error('Error loading saved flashcard sets:', error);
+                showNotification('error', 'Load Failed', 'Failed to load saved flashcard sets. Please try again.');
+            }
+        });
+
+        // Refresh sets button functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            const refreshSetsBtn = document.getElementById('refresh-sets-btn');
+            const toggleViewBtn = document.getElementById('toggle-view-btn');
+            
+            if (refreshSetsBtn) {
+                refreshSetsBtn.addEventListener('click', async () => {
+                    refreshSetsBtn.disabled = true;
+                    refreshSetsBtn.innerHTML = `
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-loader-2 animate-spin">
+                            <path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+                            <path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/>
+                        </svg>
+                    `;
+                    
+                    try {
+                        if (currentView === 'sets') {
+                            const response = await fetch(`${API_BASE}/api/flashcards/list`);
+                            const flashcardSets = await response.json();
+                            
+                            if (response.ok) {
+                                displaySavedFlashcardSets(flashcardSets);
+                                showNotification('success', 'Refreshed', 'Flashcard sets updated successfully');
+                            } else {
+                                throw new Error('Failed to refresh flashcard sets');
+                            }
+                        } else {
+                            await loadIndividualFlashcards();
+                            showNotification('success', 'Refreshed', 'Individual flashcards updated successfully');
+                        }
+                    } catch (error) {
+                        console.error('Error refreshing:', error);
+                        showNotification('error', 'Refresh Failed', 'Failed to refresh. Please try again.');
+                    } finally {
+                        refreshSetsBtn.disabled = false;
+                        refreshSetsBtn.innerHTML = `
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-refresh-cw">
+                                <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/>
+                                <path d="M21 3v5h-5"/>
+                                <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/>
+                                <path d="M3 21v-5h5"/>
+                            </svg>
+                        `;
+                    }
+                });
+            }
+            
+            if (toggleViewBtn) {
+                toggleViewBtn.addEventListener('click', toggleView);
+            }
+        });
+        
+        flashcardModal.addEventListener('click', (e) => {
+            if (e.target === flashcardModal) closeModal();
+        });
+        loadFlashcardsModal.addEventListener('click', (e) => {
+            if (e.target === loadFlashcardsModal) closeLoadModal();
+        });
+
+        submitFlashcardRequestBtn.addEventListener('click', async () => {
+            const topics = document.getElementById('flashcard-topics').value;
+            const count = document.getElementById('flashcard-count').value;
+            const targetWeaknesses = document.getElementById('target-weaknesses').checked;
+
+            if (!topics) {
+                const input = document.getElementById('flashcard-topics');
+                input.style.borderColor = 'red';
+                setTimeout(() => { input.style.borderColor = '' }, 2000);
+                return;
+            }
+
+            modalForm.classList.add('hidden');
+            modalResult.classList.remove('hidden');
+            loader.classList.remove('hidden');
+            loader.classList.add('flex');
+            flashcardOutput.innerHTML = '';
+
+            const prompt = `
+                You are an elite GMAT Focus Edition coach with access to the student's performance data. Analyze their strengths and weaknesses to create targeted flashcards.
+
+                **STUDENT CONTEXT & PERFORMANCE DATA:**
+                - Generate ${count} GMAT Focus Edition flashcards for: "${topics}"
+                - Target Level: 760+ (90th+ percentile)
+                - Focus Areas: ${targetWeaknesses ? 'Prioritize weak areas based on performance data' : 'Comprehensive coverage of requested topics'}
+                - Format: GMAT Focus Edition (3 sections: Quant, Verbal, Data Insights)
+
+                **GMAT FOCUS EDITION SPECIFICATIONS (2024-2025):**
+                
+                **QUANTITATIVE REASONING (21 questions, 45 minutes):**
+                - Problem Solving: Multi-step problems, optimization, advanced algebra
+                - Data Sufficiency: Statement analysis, logical reasoning
+                - Key Topics: Number Properties, Algebra, Geometry, Word Problems, Statistics
+                - High-Level Concepts: Combinatorics, Probability, Functions, Coordinate Geometry
+                
+                **VERBAL REASONING (23 questions, 45 minutes):**
+                - Reading Comprehension: Complex passages with inference questions
+                - Critical Reasoning: Argument analysis, assumption identification, strengthen/weaken
+                - No Sentence Correction (removed in Focus Edition)
+                - Advanced Topics: Multi-part reasoning, comparative reading, logical structure analysis
+                
+                **DATA INSIGHTS (20 questions, 45 minutes):**
+                - Multi-Source Reasoning: Integration of data from multiple sources
+                - Table Analysis: Sorting and filtering data tables
+                - Graphics Interpretation: Chart and graph analysis
+                - Two-Part Analysis: Simultaneous solution identification
+                - Statistical Analysis: Correlation, causation, data interpretation
+
+                **FLASHCARD GENERATION STRATEGY:**
+                Create a mix targeting the student's improvement areas:
+                1. **High-Impact Weaknesses (40%)**: Target common mistake patterns
+                2. **Advanced Concepts (35%)**: 90th+ percentile level problems
+                3. **Time-Saving Techniques (15%)**: Shortcuts and strategic approaches
+                4. **Trap Identification (10%)**: Common wrong answer patterns
+
+                **FLASHCARD STRUCTURE:**
+                Each flashcard must have "front" and "back" keys:
+
+                **FRONT Structure:**
+                {
+                    "visual": "Chart.js JSON OR HTML table OR empty string",
+                    "text": "Question with multiple choice options (A) through (E)"
+                }
+
+                **For Data Insights visuals, use these Chart.js configurations:**
+                - Bar Charts: {"type": "bar", "data": {"labels": ["Q1", "Q2", "Q3", "Q4"], "datasets": [{"label": "Revenue ($M)", "data": [25, 30, 28, 35], "backgroundColor": ["#3B82F6", "#10B981", "#F59E0B", "#EF4444"], "borderColor": ["#2563EB", "#059669", "#D97706", "#DC2626"], "borderWidth": 2}]}}
+                - Line Charts: {"type": "line", "data": {"labels": ["2020", "2021", "2022", "2023"], "datasets": [{"label": "Growth %", "data": [5, 8, 12, 15], "borderColor": "#3B82F6", "backgroundColor": "rgba(59, 130, 246, 0.1)", "tension": 0.4}]}}
+                - Pie Charts: {"type": "pie", "data": {"labels": ["Segment A", "Segment B", "Segment C"], "datasets": [{"data": [40, 35, 25], "backgroundColor": ["#3B82F6", "#10B981", "#F59E0B"]}]}}
+
+                **BACK Structure (HTML with these exact sections):**
+                <h4>🎯 Answer & Strategic Approach</h4>
+                <p><strong>Correct Answer:</strong> (X) [Brief explanation]</p>
+                <p><strong>90th Percentile Strategy:</strong> [Advanced approach/shortcut]</p>
+
+                <h4>💡 Fundamental Principle</h4>
+                <ul>
+                    <li><strong>Core Concept:</strong> [Essential principle being tested]</li>
+                    <li><strong>Formula/Rule:</strong> [If applicable, use LaTeX: $$formula$$]</li>
+                    <li><strong>Application:</strong> [When to use this concept]</li>
+                </ul>
+
+                <h4>⚡ Time-Saving Techniques</h4>
+                <ul>
+                    <li><strong>Quick Method:</strong> [Efficient solving approach]</li>
+                    <li><strong>Pattern Recognition:</strong> [What to look for]</li>
+                    <li><strong>Elimination Strategy:</strong> [How to eliminate wrong answers]</li>
+                </ul>
+
+                <h4>🚨 Common Traps & Mistakes</h4>
+                <ul>
+                    <li><strong>Trap Answer:</strong> [Most tempting wrong choice and why]</li>
+                    <li><strong>Misconception:</strong> [Common error in reasoning]</li>
+                    <li><strong>Red Flags:</strong> [Warning signs to watch for]</li>
+                </ul>
+
+                **CONTENT REQUIREMENTS:**
+                - Use LaTeX for math: $$x^2 + y^2 = z^2$$
+                - Include Data Insights charts/tables for 60% of cards
+                - Focus on GMAT Focus Edition format (no sentence correction)
+                - Emphasize multi-step reasoning and data integration
+                - Include time pressure management tips
+                - Target 700-800 level difficulty
+                - Provide shortcuts used by 99th percentile scorers
+
+                **RESPONSE FORMAT:**
+                Return ONLY this JSON structure:
+                {
+                    "flashcards": [
+                        {
+                            "front": {
+                                "visual": "",
+                                "text": "Question text with (A) through (E) options"
+                            },
+                            "back": "Complete HTML explanation with all 4 sections"
+                        }
+                    ]
+                }
+
+                **EXAMPLE HIGH-LEVEL DATA INSIGHTS QUESTION:**
+                Front: Chart showing quarterly revenue data + "Based on the chart, if the trend continues, what will be the approximate revenue in Q5?"
+                Back: Detailed explanation with trend analysis, calculation shortcuts, and common mistake identification.
+
+                Generate flashcards that challenge the student at the 90th+ percentile level while building fundamental mastery for GMAT Focus Edition success.
+            `;
+
+            try {
+                // First, get performance context to inform flashcard generation
+                let performanceContext = '';
+                try {
+                    const performanceResponse = await fetch('http://127.0.0.1:8000/api/ai/analyze', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            history: [{
+                                role: "user",
+                                parts: [{
+                                    text: "Analyze my recent GMAT performance data and identify my top 3 weakness areas and top 2 strength areas. Provide a brief summary for flashcard targeting. Focus on question types, difficulty levels, and specific topics where I need improvement."
+                                }]
+                            }]
+                        })
+                    });
+
+                    if (performanceResponse.ok) {
+                        const performanceResult = await performanceResponse.json();
+                        if (performanceResult.text) {
+                            performanceContext = `\n\n**STUDENT PERFORMANCE ANALYSIS:**\n${performanceResult.text.trim()}\n\n**FLASHCARD TARGETING INSTRUCTION:** Use this performance data to prioritize topics where the student needs the most improvement. Focus 60% of flashcards on identified weakness areas.`;
+                        }
+                    }
+                } catch (perfError) {
+                    console.log('Performance analysis unavailable, proceeding with general flashcards:', perfError);
+                    performanceContext = '\n\n**STUDENT PERFORMANCE ANALYSIS:** No recent performance data available. Focus on comprehensive coverage of advanced GMAT Focus Edition topics.';
+                }
+
+                const enhancedPrompt = prompt + performanceContext;
+
+                const response = await fetch('http://127.0.0.1:8000/api/ai/analyze', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        history: [{
+                            role: "user",
+                            parts: [{
+                                text: enhancedPrompt
+                            }]
+                        }]
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`Backend API error: ${response.status}`);
+                }
+
+                const result = await response.json();
+                
+                if (result.text) {
+                    try {
+                        // Try to parse the AI response as JSON
+                        let flashcardData;
+                        const cleanResponse = result.text.trim();
+                        
+                        // Check if response is wrapped in markdown code blocks
+                        if (cleanResponse.startsWith('```json')) {
+                            const jsonStart = cleanResponse.indexOf('{');
+                            const jsonEnd = cleanResponse.lastIndexOf('}') + 1;
+                            flashcardData = JSON.parse(cleanResponse.substring(jsonStart, jsonEnd));
+                        } else if (cleanResponse.startsWith('{')) {
+                            flashcardData = JSON.parse(cleanResponse);
+                        } else {
+                            // Try to find JSON within the response
+                            const jsonMatch = cleanResponse.match(/\{[\s\S]*\}/);
+                            if (jsonMatch) {
+                                flashcardData = JSON.parse(jsonMatch[0]);
+                            } else {
+                                throw new Error('No valid JSON found in response');
+                            }
+                        }
+                        
+                        if (flashcardData.flashcards && Array.isArray(flashcardData.flashcards)) {
+                            console.log('Flashcards parsed successfully:', flashcardData.flashcards.length, 'cards');
+                            currentFlashcards = flashcardData.flashcards; // Store for saving
+                            displayFlashcards(flashcardData.flashcards);
+                        } else {
+                            console.error('Invalid flashcard data structure:', flashcardData);
+                            throw new Error('Invalid flashcard data structure');
+                        }
+                    } catch (parseError) {
+                        console.error("JSON parsing error:", parseError);
+                        console.log("Raw AI response:", result.text);
+                        flashcardOutput.innerHTML = `<p class="text-red-400 col-span-full">The AI response could not be parsed. Please try again with different topics.</p>`;
+                    }
+                } else {
+                    console.error("AI Error Response:", result);
+                    flashcardOutput.innerHTML = `<p class="text-red-400 col-span-full">Sorry, the AI returned an unexpected response. Please try again.</p>`;
+                }
+
+            } catch (error) {
+                console.error("Error calling AI API:", error);
+                flashcardOutput.innerHTML = `<p class="text-red-400 col-span-full">An error occurred while generating flashcards. Please check your internet connection and try again.</p>`;
+            } finally {
+                loader.classList.add('hidden');
+                loader.classList.remove('flex');
+            }
+        });
+
+        // Helper function for suggested topic buttons
+        function addSuggestedTopic(topic) {
+            const topicsInput = document.getElementById('flashcard-topics');
+            const currentValue = topicsInput.value.trim();
+            if (currentValue) {
+                topicsInput.value = currentValue + ', ' + topic;
+            } else {
+                topicsInput.value = topic;
+            }
+        }
+
+        function getThemeColors() {
+            const computedStyle = getComputedStyle(document.body);
+            return {
+                textColor: computedStyle.getPropertyValue('--text-color').trim(),
+                gridColor: computedStyle.getPropertyValue('--glass-border').trim(),
+                mutedColor: computedStyle.getPropertyValue('--text-color-muted').trim(),
+                backgroundColor: computedStyle.getPropertyValue('--glass-bg').trim()
+            };
+        }
+
+        function renderChart(canvasId, chartData) {
+            const canvas = document.getElementById(canvasId);
+            if (!canvas) {
+                console.warn(`Canvas with id ${canvasId} not found`);
+                return;
+            }
+            
+            const ctx = canvas.getContext('2d');
+            const colors = getThemeColors();
+
+            // Handle both chartType and type properties for flexibility
+            const chartType = chartData.type || chartData.chartType || 'bar';
+            
+            // Enhance dataset colors for better theme compatibility
+            const enhancedData = { ...chartData.data };
+            if (enhancedData.datasets) {
+                enhancedData.datasets = enhancedData.datasets.map(dataset => {
+                    const enhancedDataset = { ...dataset };
+                    
+                    // If no colors provided, use theme-aware defaults
+                    if (!enhancedDataset.backgroundColor) {
+                        enhancedDataset.backgroundColor = [
+                            '#3B82F6', '#10B981', '#F59E0B', '#EF4444', 
+                            '#8B5CF6', '#06B6D4', '#84CC16', '#F97316'
+                        ];
+                    }
+                    
+                    if (!enhancedDataset.borderColor) {
+                        enhancedDataset.borderColor = enhancedDataset.backgroundColor;
+                    }
+                    
+                    // Ensure border width for better visibility
+                    if (!enhancedDataset.borderWidth) {
+                        enhancedDataset.borderWidth = 2;
+                    }
+                    
+                    return enhancedDataset;
+                });
+            }
+            
+            const chartConfig = {
+                type: chartType,
+                data: enhancedData,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { 
+                        legend: { 
+                            labels: { 
+                                color: colors.textColor,
+                                usePointStyle: true,
+                                padding: 20,
+                                font: {
+                                    size: 12
+                                }
+                            },
+                            display: true
+                        },
+                        tooltip: {
+                            backgroundColor: colors.backgroundColor,
+                            titleColor: colors.textColor,
+                            bodyColor: colors.textColor,
+                            borderColor: colors.gridColor,
+                            borderWidth: 1
+                        }
+                    },
+                    scales: {}
+                }
+            };
+
+            // Only add scales if the chart type supports them
+            if (['bar', 'line', 'area', 'scatter'].includes(chartType)) {
+                chartConfig.options.scales = {
+                    y: { 
+                        ticks: { 
+                            color: colors.textColor,
+                            font: {
+                                size: 11
+                            }
+                        }, 
+                        grid: { 
+                            color: colors.gridColor,
+                            lineWidth: 0.5
+                        },
+                        border: {
+                            color: colors.gridColor
+                        }
+                    },
+                    x: { 
+                        ticks: { 
+                            color: colors.textColor,
+                            font: {
+                                size: 11
+                            }
+                        }, 
+                        grid: { 
+                            color: colors.gridColor,
+                            lineWidth: 0.5
+                        },
+                        border: {
+                            color: colors.gridColor
+                        }
+                    }
+                };
+            }
+
+            // For pie/doughnut charts, enhance the styling
+            if (['pie', 'doughnut'].includes(chartType)) {
+                chartConfig.options.plugins.legend.position = 'bottom';
+                chartConfig.options.plugins.legend.labels.padding = 15;
+            }
+
+            // Merge any additional options from chartData
+            if (chartData.options) {
+                chartConfig.options = { ...chartConfig.options, ...chartData.options };
+            }
+
+            try {
+                const chartInstance = new Chart(ctx, chartConfig);
+                activeCharts.push(chartInstance);
+                console.log(`Chart ${canvasId} rendered successfully`);
+            } catch (error) {
+                console.error(`Error rendering chart ${canvasId}:`, error);
+            }
+        }
+
+        function formatQuestionText(text) {
+            if (!text) return '';
+            const textWithNewlines = text.replace(/<br\s*\/?>/gi, '\n');
+            const lines = textWithNewlines.split('\n').map(l => l.trim()).filter(l => l);
+
+            const optionRegex = /^\s*(\([A-Ea-e]\)|[A-Ea-e]\.)\s+/;
+            let questionParts = [];
+            let optionParts = [];
+            let optionsStarted = false;
+
+            for (const line of lines) {
+                if (optionRegex.test(line)) {
+                    optionsStarted = true;
+                    optionParts.push(line);
+                } else if (optionsStarted && optionParts.length > 0) {
+                    optionParts[optionParts.length - 1] += ` ${line}`;
+                } else {
+                    questionParts.push(line);
+                }
+            }
+
+            if (!optionsStarted) {
+                return `<div class="text-center flex items-center justify-center h-full">${text}</div>`;
+            }
+
+            const questionHtml = `<p class="text-left mb-6">${questionParts.join('<br>')}</p>`;
+            let optionsHtml = '<div class="space-y-3 w-full">';
+            for (const option of optionParts) {
+                const match = option.match(optionRegex);
+                if (!match) continue;
+                const letter = match[1].replace(/[().]/g, '').toUpperCase();
+                const optionText = option.replace(optionRegex, '');
+
+                optionsHtml += `
+                    <div class="option-item flex items-start text-left p-3 rounded-xl border transition-all duration-300 hover:bg-[var(--input-bg)]" style="border-color: var(--glass-border);">
+                        <span class="flex-shrink-0 font-bold w-8 h-8 flex items-center justify-center rounded-full mr-4" style="border:1px solid var(--glass-border); background-color: var(--glass-bg);">
+                            ${letter}
+                        </span>
+                        <span class="muted-text pt-1">${optionText}</span>
+                    </div>
+                `;
+            }
+            optionsHtml += '</div>';
+
+            return `${questionHtml}${optionsHtml}`;
+        }
+
+
+        function displayFlashcards(flashcards) {
+            flashcardOutput.innerHTML = '';
+            activeCharts.forEach(chart => chart.destroy());
+            activeCharts = [];
+
+            if (!flashcards || flashcards.length === 0) {
+                 flashcardOutput.innerHTML = '<p class="text-red-400 col-span-full">No flashcards were generated. Please try a different topic.</p>';
+                 return;
+            }
+
+            const chartsToRender = [];
+            const fragment = document.createDocumentFragment();
+
+            flashcards.forEach((card, index) => {
+                if (!card.front || !card.back) {
+                    console.warn("Skipping malformed card:", card);
+                    return;
+                }
+
+                const cardElement = document.createElement('div');
+                cardElement.className = 'flashcard';
+
+                const visualContent = card.front.visual || "";
+                let visualHtml = '';
+                const chartContainerId = `chart-container-${index}`;
+
+                if (visualContent.trim().toLowerCase().startsWith('<table')) {
+                    visualHtml = `<div class="w-full mb-4">${visualContent}</div>`;
+                } else if (visualContent.trim().startsWith('{')) {
+                    // Try to parse as JSON and check if it's a valid chart configuration
+                    try {
+                        const chartData = JSON.parse(visualContent);
+                        // Check if it has required Chart.js properties
+                        if (chartData.data && (chartData.type || chartData.chartType)) {
+                            visualHtml = `<div id="${chartContainerId}" class="relative w-full h-48 md:h-64 mb-4">
+                                <canvas id="canvas-${chartContainerId}" style="max-height: 100%;"></canvas>
+                            </div>`;
+                            chartsToRender.push({ containerId: chartContainerId, chartData: chartData });
+                            console.log(`Chart data prepared for container ${chartContainerId}:`, chartData);
+                        } else {
+                            console.warn("Invalid chart data structure:", chartData);
+                            visualHtml = ''; 
+                        }
+                    } catch (e) {
+                        console.warn("Could not parse chart JSON from front of card:", e);
+                        visualHtml = ''; 
+                    }
+                }
+
+                const questionHtml = formatQuestionText(card.front.text || "");
+                
+                cardElement.innerHTML = `
+                    <div class="flashcard-toolbar">
+                        <button class="flashcard-action-btn save-btn" onclick="showSaveIndividualModal(${index})" title="Save this flashcard">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bookmark-plus">
+                                <path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/>
+                                <line x1="12" x2="12" y1="7" y2="13"/>
+                                <line x1="9" x2="15" y1="10" y2="10"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="flashcard-face flashcard-front">
+                        <div class="flashcard-content-wrapper">
+                            ${visualHtml}
+                            ${questionHtml}
+                        </div>
+                    </div>
+                    <div class="flashcard-face flashcard-back">
+                        <div class="flashcard-content-wrapper">
+                            ${card.back}
+                        </div>
+                    </div>
+                `;
+
+                cardElement.addEventListener('click', (e) => {
+                    if (e.target.closest('a, button, .flashcard-toolbar')) return;
+                    cardElement.classList.toggle('flipped');
+                });
+
+                fragment.appendChild(cardElement);
+            });
+
+            flashcardOutput.appendChild(fragment);
+
+            // Use requestAnimationFrame to ensure the DOM is updated before rendering charts
+            requestAnimationFrame(() => {
+                chartsToRender.forEach(({ containerId, chartData }) => {
+                    const canvasElement = document.getElementById(`canvas-${containerId}`);
+                    if (canvasElement) {
+                        try {
+                            const ctx = canvasElement.getContext('2d');
+                            const chart = new Chart(ctx, chartData);
+                            activeCharts.push(chart);
+                            console.log(`Chart rendered for container ${containerId}`);
+                        } catch (error) {
+                            console.error(`Error rendering chart for ${containerId}:`, error);
+                        }
+                    } else {
+                        console.warn(`Canvas element not found for ${containerId}`);
+                    }
+                });
+            });
+
+            // Show flashcard controls
+            if (flashcardControls) {
+                flashcardControls.classList.remove('hidden');
+            }
+        }
+
+        // Modern notification system
+        function showNotification(type, title, message, duration = 5000) {
+            const container = document.getElementById('notification-container');
+            if (!container) return;
+
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            
+            let iconSvg = '';
+            switch (type) {
+                case 'success':
+                    iconSvg = '<svg class="notification-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check-circle"><path d="m9 12 2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>';
+                    break;
+                case 'error':
+                    iconSvg = '<svg class="notification-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-alert-circle"><circle cx="12" cy="12" r="9"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg>';
+                    break;
+                case 'info':
+                    iconSvg = '<svg class="notification-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-info"><circle cx="12" cy="12" r="9"/><path d="m12 8v8"/><path d="m8 12h8"/></svg>';
+                    break;
+            }
+            
+            notification.innerHTML = `
+                ${iconSvg}
+                <div class="notification-content">
+                    <div class="notification-title">${title}</div>
+                    <div class="notification-message">${message}</div>
+                </div>
+                <svg class="notification-close" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x"><path d="m18 6-12 12"/><path d="m6 6 12 12"/></svg>
+            `;
+
+            const closeBtn = notification.querySelector('.notification-close');
+            closeBtn.addEventListener('click', () => {
+                hideNotification(notification);
+            });
+
+            container.appendChild(notification);
+
+            // Show notification with animation
+            setTimeout(() => {
+                notification.classList.add('show');
+            }, 100);
+
+            // Auto-hide after duration
+            if (duration > 0) {
+                setTimeout(() => {
+                    hideNotification(notification);
+                }, duration);
+            }
+        }
+
+        function hideNotification(notification) {
+            notification.classList.remove('show');
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.parentNode.removeChild(notification);
+                }
+            }, 300);
+        }
+
+        // View toggle functionality
+        let currentView = 'sets'; // 'sets' or 'individual'
+        
+        function toggleView() {
+            const toggleBtn = document.getElementById('toggle-view-btn');
+            const navbarTitle = document.getElementById('navbar-title-text');
+            const savedSetsList = document.getElementById('saved-flashcards-list');
+            const individualList = document.getElementById('individual-flashcards-list');
+            const noSavedSets = document.getElementById('no-saved-flashcards');
+            const noIndividualCards = document.getElementById('no-individual-flashcards');
+            
+            if (currentView === 'sets') {
+                // Switch to individual view
+                currentView = 'individual';
+                navbarTitle.textContent = 'Individual Flashcards';
+                savedSetsList.classList.add('hidden');
+                individualList.classList.remove('hidden');
+                noSavedSets.classList.add('hidden');
+                
+                toggleBtn.innerHTML = `
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-layers">
+                        <path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/>
+                        <path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/>
+                        <path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/>
+                    </svg>
+                    Sets
+                `;
+                
+                // Load individual flashcards
+                loadIndividualFlashcards();
+            } else {
+                // Switch to sets view
+                currentView = 'sets';
+                navbarTitle.textContent = 'Saved Flashcard Sets';
+                savedSetsList.classList.remove('hidden');
+                individualList.classList.add('hidden');
+                noIndividualCards.classList.add('hidden');
+                
+                toggleBtn.innerHTML = `
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-grid-3x3">
+                        <rect width="18" height="18" x="3" y="3" rx="2"/>
+                        <path d="M9 3v18"/>
+                        <path d="M15 3v18"/>
+                        <path d="M3 9h18"/>
+                        <path d="M3 15h18"/>
+                    </svg>
+                    Individual
+                `;
+            }
+        }
+        
+        async function loadIndividualFlashcards() {
+            try {
+                const response = await fetch(`${API_BASE}/api/flashcards/list-individual`);
+                const individualCards = await response.json();
+                
+                if (response.ok) {
+                    displayIndividualFlashcards(individualCards);
+                } else {
+                    throw new Error('Failed to load individual flashcards');
+                }
+            } catch (error) {
+                console.error('Error loading individual flashcards:', error);
+                showNotification('error', 'Load Failed', 'Failed to load individual flashcards. Please try again.');
+            }
+        }
+        
+        function displayIndividualFlashcards(cards) {
+            const individualList = document.getElementById('individual-flashcards-list');
+            const noIndividualCards = document.getElementById('no-individual-flashcards');
+            const totalCardsCount = document.getElementById('total-cards-count');
+            
+            // Update total count
+            if (totalCardsCount) totalCardsCount.textContent = cards ? cards.length : 0;
+            
+            if (!cards || cards.length === 0) {
+                individualList.innerHTML = '';
+                noIndividualCards.classList.remove('hidden');
+                return;
+            }
+            
+            noIndividualCards.classList.add('hidden');
+            individualList.innerHTML = '';
+            
+            cards.forEach(card => {
+                const cardElement = document.createElement('div');
+                cardElement.className = 'glass-card p-4 rounded-lg transition-colors';
+                
+                const createdDate = card.created_at ? new Date(card.created_at).toLocaleDateString() : 'Unknown';
+                const topics = card.topics || 'No topics specified';
+                
+                cardElement.innerHTML = `
+                    <div class="flex justify-between items-start mb-3">
+                        <h3 class="font-semibold text-lg">${escapeHtml(card.name)}</h3>
+                        <div class="flex gap-2">
+                            <button class="text-blue-400 hover:text-blue-300 p-1" onclick="viewIndividualFlashcard(${card.id})" title="View flashcard">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye">
+                                    <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/>
+                                    <circle cx="12" cy="12" r="3"/>
+                                </svg>
+                            </button>
+                            <button class="text-red-400 hover:text-red-300 p-1" onclick="deleteIndividualFlashcard(${card.id})" title="Delete flashcard">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash-2">
+                                    <polyline points="3,6 5,6 21,6"/>
+                                    <path d="m19,6v14a2,2 0 0 1-2,2H7a2,2 0 0 1-2-2V6m3,0V4a2,2 0 0 1,2-2h4a2,2 0 0 1,2,2v2"/>
+                                    <line x1="10" x2="10" y1="11" y2="17"/>
+                                    <line x1="14" x2="14" y1="11" y2="17"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <p class="text-sm muted-text mb-2">${escapeHtml(topics)}</p>
+                    <div class="text-xs muted-text">
+                        <span>Created: ${createdDate}</span>
+                    </div>
+                `;
+                
+                individualList.appendChild(cardElement);
+            });
+        }
+        
+        async function viewIndividualFlashcard(cardId) {
+            try {
+                const response = await fetch(`${API_BASE}/api/flashcards/individual/${cardId}`);
+                const cardData = await response.json();
+                
+                if (response.ok && cardData.flashcard) {
+                    // Close the load modal and display the flashcard
+                    closeLoadModal();
+                    
+                    // Clear current flashcards and display just this one
+                    currentFlashcards = [cardData.flashcard];
+                    displayFlashcards([cardData.flashcard]);
+                    showFlashcardResults();
+                    
+                    showNotification('success', 'Flashcard Loaded', `Loaded "${cardData.name}"`);
+                } else {
+                    throw new Error('Failed to load flashcard');
+                }
+            } catch (error) {
+                console.error('Error loading individual flashcard:', error);
+                showNotification('error', 'Load Failed', 'Failed to load flashcard. Please try again.');
+            }
+        }
+        
+        async function deleteIndividualFlashcard(cardId) {
+            if (!confirm('Are you sure you want to delete this flashcard? This action cannot be undone.')) {
+                return;
+            }
+            
+            try {
+                const response = await fetch(`${API_BASE}/api/flashcards/delete-individual/${cardId}`, {
+                    method: 'DELETE'
+                });
+                
+                if (response.ok) {
+                    showNotification('success', 'Flashcard Deleted', 'Flashcard deleted successfully');
+                    // Refresh current view
+                    if (currentView === 'individual') {
+                        loadIndividualFlashcards();
+                    }
+                } else {
+                    throw new Error('Failed to delete flashcard');
+                }
+            } catch (error) {
+                console.error('Error deleting individual flashcard:', error);
+                showNotification('error', 'Delete Failed', 'Failed to delete flashcard. Please try again.');
+            }
+        }
+
+        // Save individual flashcard function
+        // Display saved flashcard sets in the load modal
+        function displaySavedFlashcardSets(flashcardSets) {
+            const savedFlashcardsList = document.getElementById('saved-flashcards-list');
+            const noSavedFlashcards = document.getElementById('no-saved-flashcards');
+            const totalSetsCount = document.getElementById('total-sets-count');
+            const totalCardsCount = document.getElementById('total-cards-count');
+            
+            // Calculate totals
+            const totalSets = flashcardSets ? flashcardSets.length : 0;
+            const totalCards = flashcardSets ? flashcardSets.reduce((sum, set) => sum + (set.flashcards ? set.flashcards.length : 0), 0) : 0;
+            
+            // Update navbar stats
+            if (totalSetsCount) totalSetsCount.textContent = totalSets;
+            if (totalCardsCount) totalCardsCount.textContent = totalCards;
+            
+            if (!flashcardSets || flashcardSets.length === 0) {
+                savedFlashcardsList.innerHTML = '';
+                noSavedFlashcards.classList.remove('hidden');
+                return;
+            }
+
+            noSavedFlashcards.classList.add('hidden');
+            savedFlashcardsList.innerHTML = '';
+
+            flashcardSets.forEach(set => {
+                const setElement = document.createElement('div');
+                setElement.className = 'glass-card p-4 rounded-lg cursor-pointer hover:bg-[var(--input-bg)] transition-colors';
+                
+                const flashcardCount = set.flashcards ? set.flashcards.length : 0;
+                const createdDate = set.created_at ? new Date(set.created_at).toLocaleDateString() : 'Unknown';
+                
+                setElement.innerHTML = `
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="font-semibold text-lg">${escapeHtml(set.name)}</h3>
+                        <div class="flex gap-2">
+                            <button class="text-blue-400 hover:text-blue-300 p-1" onclick="loadFlashcardSet(${set.id})" title="Load flashcard set">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-download">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                    <polyline points="7,10 12,15 17,10"/>
+                                    <line x1="12" x2="12" y1="15" y2="3"/>
+                                </svg>
+                            </button>
+                            <button class="text-red-400 hover:text-red-300 p-1" onclick="deleteFlashcardSet(${set.id})" title="Delete flashcard set">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash-2">
+                                    <polyline points="3,6 5,6 21,6"/>
+                                    <path d="m19,6v14a2,2 0 0 1-2,2H7a2,2 0 0 1-2-2V6m3,0V4a2,2 0 0 1,2-2h4a2,2 0 0 1,2,2v2"/>
+                                    <line x1="10" x2="10" y1="11" y2="17"/>
+                                    <line x1="14" x2="14" y1="11" y2="17"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <p class="text-sm muted-text mb-2">${escapeHtml(set.topics || 'No topics specified')}</p>
+                    <div class="flex justify-between text-xs muted-text">
+                        <span>${flashcardCount} flashcard${flashcardCount !== 1 ? 's' : ''}</span>
+                        <span>Created: ${createdDate}</span>
+                    </div>
+                `;
+
+                savedFlashcardsList.appendChild(setElement);
+            });
+        }
+
+        // Load a specific flashcard set
+        function loadFlashcardSet(setId) {
+            fetch(`${API_BASE}/api/flashcards/${setId}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.flashcards && Array.isArray(data.flashcards)) {
+                        currentFlashcards = data.flashcards;
+                        displayFlashcards(data.flashcards);
+                        
+                        // Close the load modal and switch to results view
+                        closeLoadModal();
+                        showFlashcardResults();
+                        
+                        // Set the flashcard set name for potential saving updates
+                        flashcardSetNameInput.value = data.name || '';
+                        
+                        showNotification('success', 'Set Loaded', `Loaded "${data.name}" with ${data.flashcards.length} flashcard${data.flashcards.length !== 1 ? 's' : ''}`);
+                    } else {
+                        throw new Error('Invalid flashcard data');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error loading flashcard set:', error);
+                    showNotification('error', 'Load Failed', 'Failed to load flashcard set. Please try again.');
+                });
+        }
+
+        // Delete a flashcard set
+        function deleteFlashcardSet(setId) {
+            if (!confirm('Are you sure you want to delete this flashcard set? This action cannot be undone.')) {
+                return;
+            }
+
+            fetch(`${API_BASE}/api/flashcards/${setId}`, {
+                method: 'DELETE'
+            })
+            .then(response => {
+                if (response.ok) {
+                    showNotification('success', 'Set Deleted', 'Flashcard set deleted successfully');
+                    // Refresh current view
+                    if (currentView === 'individual') {
+                        loadIndividualFlashcards();
+                    } else {
+                        loadSavedFlashcardsBtn.click();
+                    }
+                } else {
+                    throw new Error('Failed to delete flashcard set');
+                }
+            })
+            .catch(error => {
+                console.error('Error deleting flashcard set:', error);
+                showNotification('error', 'Delete Failed', 'Failed to delete flashcard set. Please try again.');
+            });
+        }
+
+        // === Individual Flashcard Save Functionality ===
+        let currentIndividualCard = null;
+        let currentIndividualIndex = null;
+
+        // Get modal elements
+        const saveIndividualModal = document.getElementById('save-individual-modal');
+        const individualNameInput = document.getElementById('individual-flashcard-name');
+        const confirmIndividualSave = document.getElementById('confirm-individual-save');
+        const cancelIndividualSave = document.getElementById('cancel-individual-save');
+
+        // Show save individual modal
+        function showSaveIndividualModal(cardIndex) {
+            if (!currentFlashcards || !currentFlashcards[cardIndex]) {
+                showNotification('error', 'Error', 'Flashcard not found');
+                return;
+            }
+
+            currentIndividualCard = currentFlashcards[cardIndex];
+            currentIndividualIndex = cardIndex;
+            
+            // Auto-generate a name based on the card content
+            const cardText = currentIndividualCard.front.text || '';
+            const words = cardText.replace(/[^\w\s]/g, '').split(' ').filter(w => w.length > 2);
+            const suggestedName = words.slice(0, 4).join(' ') || `Flashcard ${cardIndex + 1}`;
+            
+            individualNameInput.value = suggestedName;
+            saveIndividualModal.classList.add('active');
+            individualNameInput.focus();
+            individualNameInput.select();
+        }
+
+        // Hide save individual modal
+        function hideSaveIndividualModal() {
+            saveIndividualModal.classList.remove('active');
+            currentIndividualCard = null;
+            currentIndividualIndex = null;
+            individualNameInput.value = '';
+        }
+
+        // Save individual flashcard
+        async function saveIndividualFlashcard() {
+            const name = individualNameInput.value.trim();
+            
+            if (!name) {
+                individualNameInput.style.borderColor = 'rgba(239, 68, 68, 0.5)';
+                individualNameInput.focus();
+                setTimeout(() => {
+                    individualNameInput.style.borderColor = '';
+                }, 2000);
+                return;
+            }
+
+            if (!currentIndividualCard) {
+                showNotification('error', 'Error', 'No flashcard selected');
+                return;
+            }
+
+            // Disable save button and show loading
+            confirmIndividualSave.disabled = true;
+            confirmIndividualSave.innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-loader-2 animate-spin">
+                    <path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+                    <path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/>
+                </svg>
+                Saving...
+            `;
+
+            try {
+                const response = await fetch(`${API_BASE}/api/flashcards/save-individual`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        name: name,
+                        flashcard: currentIndividualCard,
+                        topics: document.getElementById('flashcard-topics')?.value || ''
+                    })
+                });
+
+                const data = await response.json();
+
+                if (response.ok && data.id) {
+                    showNotification('success', 'Flashcard Saved', `"${name}" has been saved successfully!`);
+                    hideSaveIndividualModal();
+                } else {
+                    throw new Error(data.detail || 'Failed to save flashcard');
+                }
+            } catch (error) {
+                console.error('Error saving individual flashcard:', error);
+                showNotification('error', 'Save Failed', 'Failed to save flashcard. Please try again.');
+            } finally {
+                // Restore save button
+                confirmIndividualSave.disabled = false;
+                confirmIndividualSave.innerHTML = `
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-save">
+                        <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/>
+                        <polyline points="17,21 17,13 7,13 7,21"/>
+                        <polyline points="7,3 7,8 15,8"/>
+                    </svg>
+                    Save Flashcard
+                `;
+            }
+        }
+
+        // Event listeners for individual save modal
+        cancelIndividualSave.addEventListener('click', hideSaveIndividualModal);
+        confirmIndividualSave.addEventListener('click', saveIndividualFlashcard);
+
+        // Close modal when clicking outside
+        saveIndividualModal.addEventListener('click', (e) => {
+            if (e.target === saveIndividualModal) {
+                hideSaveIndividualModal();
+            }
+        });
+
+        // Handle Enter key in input
+        individualNameInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                saveIndividualFlashcard();
+            } else if (e.key === 'Escape') {
+                hideSaveIndividualModal();
+            }
+        });
+
+        // Utility function to escape HTML
+        function escapeHtml(text) {
+            const map = {
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#039;'
+            };
+            return text.replace(/[&<>"']/g, function(m) { return map[m]; });
+        }
+    </script>
+</body>
+</html>

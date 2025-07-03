@@ -1,0 +1,332 @@
+[
+  {
+    "questionText": "What is the number of pages of a certain journal article?<br/>(1) The size of each page is $5\\frac{1}{2}$ inches by 8 inches.<br/>(2) The average (arithmetic mean) number of words per page is 250.",
+    "options": [
+      "Statement (1) ALONE is sufficient, but statement (2) alone is not sufficient.",
+      "Statement (2) ALONE is sufficient, but statement (1) alone is not sufficient.",
+      "BOTH statements TOGETHER are sufficient, but NEITHER statement ALONE is sufficient.",
+      "EACH statement ALONE is sufficient.",
+      "Statements (1) and (2) TOGETHER are NOT sufficient."
+    ],
+    "correctAnswer": "E",
+    "answerExplanation": "<b>Arithmetic Applied Problems</b><br/>1. Given that each page is $5\\frac{1}{2}$ inches by 8 inches, any positive integer can be the number of pages of the journal article. For example, it is possible that the journal article consists of 10 pages, each $5\\frac{1}{2}$ inches by 8 inches. However, it is also possible that the journal article consists of 20 pages, each $5\\frac{1}{2}$ inches by 8 inches. Therefore, the number of pages cannot be determined; NOT sufficient.<br/>2. Given that the average number of words per page is 250, any positive integer can be the number of pages of the journal article. For example, it is possible that the journal article consists of 10 pages and contains a total of $10(250)=2,500$ words, and in this case the average number of words per page is $\\frac{2,500}{10}=250$. However, it is also possible that the journal article consists of 20 pages and contains a total of $20(250)=5,000$ words, and in this case the average number of words per page is also $\\frac{5,000}{20}=250$. Therefore, the number of pages cannot be determined; NOT sufficient.<br/>Taking (1) and (2) together, it is still not possible to determine the number of pages because each of the examples used above satisfies both (1) and (2).<br/>The correct answer is E; both statements together are still not sufficient.",
+    "difficulty": "easy",
+    "question_type": "Data Insights",
+    "subsection": null
+  },
+  {
+    "questionText": "If a certain vase contains only roses and tulips, how many tulips are there in the vase?<br/>(1) The number of roses in the vase is 4 times the number of tulips in the vase.<br/>(2) There is a total of 20 flowers in the vase.",
+    "options": [
+      "Statement (1) ALONE is sufficient, but statement (2) alone is not sufficient.",
+      "Statement (2) ALONE is sufficient, but statement (1) alone is not sufficient.",
+      "BOTH statements TOGETHER are sufficient, but NEITHER statement ALONE is sufficient.",
+      "EACH statement ALONE is sufficient.",
+      "Statements (1) and (2) TOGETHER are NOT sufficient."
+    ],
+    "correctAnswer": "C",
+    "answerExplanation": "<b>Arithmetic Ratio and Proportion</b><br/>The task is to determine the number of tulips in the vase.<br/>1. This says that for every tulip in the vase, there are 4 roses, so the ratio of roses to tulips is 4:1. Because there could be 4 roses and 1 tulip or there could be 20 roses and 5 tulips, the number of tulips cannot be uniquely determined; NOT sufficient.<br/>2. This says the total number of roses and tulips in the vase is 20. Because there could be 10 roses and 10 tulips or there could be 15 roses and 5 tulips, the number of tulips cannot be uniquely determined; NOT sufficient.<br/>From (1), the ratio of roses to tulips is 4:1 so $\\frac{1}{5}$ of the flowers in the vase are tulips. From (2), there are 20 flowers in the vase. So, taking (1) and (2) together, the number of tulips in the vase is $\\frac{1}{5}(20)=4$.<br/>The correct answer is C; both statements together are sufficient.",
+    "difficulty": "easy",
+    "question_type": "Data Insights",
+    "subsection": null
+  },
+  {
+    "questionText": "The cost of 10 pounds of apples and 2 pounds of grapes was \\$12. What was the cost per pound of apples?<br/>(1) The cost per pound of grapes was \\$2.<br/>(2) The cost of 2 pounds of apples was less than the cost of 1 pound of grapes.",
+    "options": [
+      "Statement (1) ALONE is sufficient, but statement (2) alone is not sufficient.",
+      "Statement (2) ALONE is sufficient, but statement (1) alone is not sufficient.",
+      "BOTH statements TOGETHER are sufficient, but NEITHER statement ALONE is sufficient.",
+      "EACH statement ALONE is sufficient.",
+      "Statements (1) and (2) TOGETHER are NOT sufficient."
+    ],
+    "correctAnswer": "A",
+    "answerExplanation": "<b>Arithmetic Applied Problems</b><br/>Determine the cost per pound of apples.<br/>1. The cost per pound of grapes was \\$2. The cost of 2 pounds of grapes was $2(\\$2)=\\$4$. The cost of the 10 pounds of apples was $\\$12-\\$4=\\$8$. The cost per pound of the apples was $\\frac{\\$8}{10}=\\$0.80;$ SUFFICIENT.<br/>2. Intuitively, since (2) involves an inequality, it seems as if it wouldn't give enough information to determine the unique cost per pound of apples. A good strategy might be to guess multiple values for the costs per pound of apples and grapes that satisfy the condition given in the problem (the cost of 10 pounds of apples and 2 pounds of grapes is \\$12) and look for values that also meet the condition in (2), namely that the cost of 2 pounds of apples is less than the cost of 1 pound of grapes. For example:<br/><table><thead><tr><th>Cost per pound of apples</th><th>Cost per pound of grapes</th><th>Total cost of 10 pounds of apples and 2 pounds of grapes, in dollars</th><th>Is total cost \\$12?</th><th>Is the cost of 2 pounds of apples less than the cost of 1 pound of grapes?</th></tr></thead><tbody><tr><td>\\$1</td><td>\\$1</td><td>$10(1)+2(1)$</td><td>yes</td><td>No, $2(1)$ is not less than $1$</td></tr><tr><td>\\$0.50</td><td>\\$3.50</td><td>$10(0.5)+2(3.5)$</td><td>yes</td><td>Yes, $2(0.50) < 3.50$</td></tr><tr><td>\\$0.60</td><td>\\$3.00</td><td>$10(0.6)+2(3)$</td><td>yes</td><td>Yes, $2(0.60) < 3.00$</td></tr></tbody></table><br/>As shown in the table, the cost per pound of apples could be \\$0.50 or \\$0.60, so the cost per pound of apples cannot be uniquely determined; NOT sufficient.<br/>The correct answer is A; statement 1 alone is sufficient.",
+    "difficulty": "easy",
+    "question_type": "Data Insights",
+    "subsection": null
+  },
+  {
+    "questionText": "Each of the marbles in a jar is either red or white or blue. If one marble is to be selected at random from the jar, what is the probability that the marble will be blue?<br/>(1) There are a total of 24 marbles in the jar, 8 of which are red.<br/>(2) The probability that the marble selected will be white is $\\frac{1}{2}$.",
+    "options": [
+      "Statement (1) ALONE is sufficient, but statement (2) alone is not sufficient.",
+      "Statement (2) ALONE is sufficient, but statement (1) alone is not sufficient.",
+      "BOTH statements TOGETHER are sufficient, but NEITHER statement ALONE is sufficient.",
+      "EACH statement ALONE is sufficient.",
+      "Statements (1) and (2) TOGETHER are NOT sufficient."
+    ],
+    "correctAnswer": "C",
+    "answerExplanation": "<b>Arithmetic Probability</b><br/>This problem can be solved by determining the number of marbles in the jar and the number that are blue.<br/>1. This indicates that there are 24 marbles in the jar and 8 of them are red. The number of marbles that are blue is not known; NOT sufficient.<br/>2. This indicates neither the number of marbles in the jar nor the number that are blue; NOT sufficient.<br/>Taking (1) and (2) together, there are 24 marbles in the jar, 8 of which are red and $\\frac{1}{2}(24)=12$ of which are white. Then the number of blue marbles is $24-8-12=4$, and the probability that one marble selected at random will be blue is $\\frac{4}{24}=\\frac{1}{6}$.<br/>The correct answer is C; both statements together are sufficient.",
+    "difficulty": "easy",
+    "question_type": "Data Insights",
+    "subsection": null
+  },
+  {
+    "questionText": "Of a group of 50 households, how many have at least one cat or at least one dog, but not both?<br/>(1) The number of households that have at least one cat and at least one dog is 4.<br/>(2) The number of households that have no cats and no dogs is 14.<br/><b>Note:</b> This question refers to a Venn diagram showing two overlapping circles labeled 'cat' and 'dog', with regions x (cat only), y (both), z (dog only), and w (neither) outside the circles but within a rectangle.",
+    "options": [
+      "Statement (1) ALONE is sufficient, but statement (2) alone is not sufficient.",
+      "Statement (2) ALONE is sufficient, but statement (1) alone is not sufficient.",
+      "BOTH statements TOGETHER are sufficient, but NEITHER statement ALONE is sufficient.",
+      "EACH statement ALONE is sufficient.",
+      "Statements (1) and (2) TOGETHER are NOT sufficient."
+    ],
+    "correctAnswer": "C",
+    "answerExplanation": "<b>Arithmetic Sets</b><br/>Using the labels on the Venn diagram (as described in the question note), $w+x+y+z=50$. Determine the value of $x+z$.<br/>1. This indicates that $y=4$, so $w+x+z=46,$ but the value of $x+z$ cannot be uniquely determined; NOT sufficient.<br/>2. This indicates that $w=14$, so $x+y+z=36,$ but the value of $x+z$ cannot be uniquely determined; NOT sufficient.<br/>Taking (1) and (2) together, $14+x+4+z=50$, so $x+z=50-14-4=32$.<br/>The correct answer is C; both statements together are sufficient.",
+    "difficulty": "easy",
+    "question_type": "Data Insights",
+    "subsection": null
+  },
+  {
+    "questionText": "Every object in a box is either a sphere or a cube, and every object in the box is either red or green. How many objects are in the box?<br/>(1) There are six cubes and five green objects in the box.<br/>(2) There are two red spheres in the box.<br/><b>Note:</b> This question can be visualized using a contingency table with rows 'red', 'green', 'total' and columns 'cube', 'sphere', 'total'.",
+    "options": [
+      "Statement (1) ALONE is sufficient, but statement (2) alone is not sufficient.",
+      "Statement (2) ALONE is sufficient, but statement (1) alone is not sufficient.",
+      "BOTH statements TOGETHER are sufficient, but NEITHER statement ALONE is sufficient.",
+      "EACH statement ALONE is sufficient.",
+      "Statements (1) and (2) TOGETHER are NOT sufficient."
+    ],
+    "correctAnswer": "E",
+    "answerExplanation": "<b>Arithmetic Sets</b><br/>This problem can be solved using a contingency table set up as shown below, where T represents the number to be determined.<br/><table><thead><tr><td></td><td>cube</td><td>sphere</td><td>total</td></tr></thead><tbody><tr><td>red</td><td></td><td></td><td></td></tr><tr><td>green</td><td></td><td></td><td></td></tr><tr><td>total</td><td></td><td></td><td>T</td></tr></tbody></table><br/>1. The following table displays the information that there are 6 cubes and 5 green objects:<br/><table><thead><tr><td></td><td>cube</td><td>sphere</td><td>total</td></tr></thead><tbody><tr><td>red</td><td></td><td></td><td></td></tr><tr><td>green</td><td></td><td></td><td>5</td></tr><tr><td>total</td><td>6</td><td></td><td>T</td></tr></tbody></table><br/>It is obvious that there is not enough information to determine a unique value for T; NOT sufficient.<br/>2. The following table displays the information that there are 2 red spheres:<br/><table><thead><tr><td></td><td>cube</td><td>sphere</td><td>total</td></tr></thead><tbody><tr><td>red</td><td></td><td>2</td><td></td></tr><tr><td>green</td><td></td><td></td><td></td></tr><tr><td>total</td><td></td><td></td><td>T</td></tr></tbody></table><br/>It is obvious that there is not enough information to determine a unique value for T; NOT sufficient.<br/>The following table displays the information from (1) and (2) taken together:<br/><table><thead><tr><td></td><td>cube</td><td>sphere</td><td>total</td></tr></thead><tbody><tr><td>red</td><td></td><td>2</td><td></td></tr><tr><td>green</td><td></td><td></td><td>5</td></tr><tr><td>total</td><td>6</td><td></td><td>T</td></tr></tbody></table><br/>It is obvious that there is still not enough information to determine a unique value for T.<br/>The correct answer is E; both statements together are still not sufficient.",
+    "difficulty": "easy",
+    "question_type": "Data Insights",
+    "subsection": null
+  },
+  {
+    "questionText": "On Day X, was the forecast temperature $36^{\\circ}C$ at noon?<br/>(1) On Day X, the forecast temperature was $30^{\\circ}C$ at 9:00 a.m. and $40^{\\circ}C$ at 2:00 p.m.<br/>(2) On Day X, every half hour, the forecast temperature increased by $1^{\\circ}C$.",
+    "options": [
+      "Statement (1) ALONE is sufficient, but statement (2) alone is not sufficient.",
+      "Statement (2) ALONE is sufficient, but statement (1) alone is not sufficient.",
+      "BOTH statements TOGETHER are sufficient, but NEITHER statement ALONE is sufficient.",
+      "EACH statement ALONE is sufficient.",
+      "Statements (1) and (2) TOGETHER are NOT sufficient."
+    ],
+    "correctAnswer": "C",
+    "answerExplanation": "<b>Inference</b><br/>1. This information provides that the forecast temperature was $30^{\\circ}C$ at 9:00 a.m., but nothing about the forecast temperatures after 9:00 a.m. except that the forecast temperature was $40^{\\circ}C$ at 2:00 p.m. By itself, it provides no information about the forecast temperature at noon. Therefore, statement (1) is not sufficient alone to provide a definitive answer to the question posed; NOT sufficient.<br/>2. The information that the forecast temperature increased by $1^{\\circ}C$ on each half hour would enable us to calculate the forecast temperature at each half hour after some earlier given time. But statement (2) gives us no forecast temperature for an earlier time in the 24-hour period. If statement (2) informed us, for example, that the temperature at 9:00 a.m. was $30^{\\circ}C$, we could infer that it was $31^{\\circ}C$ at 9:30 a.m. This means that statement (2) is not sufficient by itself to answer definitively the question posed; NOT sufficient.<br/>If we combine the information in statements (1) and (2), both of which refer to forecast temperatures on Day X, we can infer the forecast temperature at noon on Day X; since it increased by $2^{\\circ}C$ each hour, it was therefore $36^{\\circ}C$ at noon.<br/>The correct answer is C; both statements together are sufficient.",
+    "difficulty": "easy",
+    "question_type": "Data Insights",
+    "subsection": null
+  },
+  {
+    "questionText": "What is the total number of executives at Company P?<br/>(1) The number of male executives is $\\frac{3}{5}$ the number of female executives.<br/>(2) There are 4 more female executives than male executives.",
+    "options": [
+      "Statement (1) ALONE is sufficient, but statement (2) alone is not sufficient.",
+      "Statement (2) ALONE is sufficient, but statement (1) alone is not sufficient.",
+      "BOTH statements TOGETHER are sufficient, but NEITHER statement ALONE is sufficient.",
+      "EACH statement ALONE is sufficient.",
+      "Statements (1) and (2) TOGETHER are NOT sufficient."
+    ],
+    "correctAnswer": "C",
+    "answerExplanation": "<b>Algebra Simultaneous Equations</b><br/>Let M be the number of male executives at Company P and let F be the number of female executives at Company P. Determine the value of $M+F$.<br/>1. Given that $M=\\frac{3}{5}F,$ it is not possible to determine the value of $M+F$. For example, if $M=3$ and $F=5,$ then $M=\\frac{3}{5}F$ and $M+F=8.$ However, if $M=6$ and $F=10$, then $M=\\frac{3}{5}F$ and $M+F=16$; NOT sufficient.<br/>2. Given that $F=M+4,$ it is not possible to determine the value of $M+F$. For example, if $M=3$ and $F=7$ then $F=M+4$ and $M+F=10$. However, if $M=4$ and $F=8$ then $F=M+4$ and $M+F=12$; NOT sufficient.<br/>Taking (1) and (2) together, then $F=M+4$ and $M=\\frac{3}{5}F,$ so $F=\\frac{3}{5}F+4.$ Now solve for F to get $\\frac{2}{5}F=4$ and $F=10$. Therefore, using $F=10$ and $F=M+4$, it follows that $M=6$, and hence $M+F=6+10=16$.<br/>The correct answer is C; both statements together are sufficient.",
+    "difficulty": "medium",
+    "question_type": "Data Insights",
+    "subsection": null
+  },
+  {
+    "questionText": "A certain painting job requires a mixture of yellow, green, and white paint. If 12 quarts of paint are needed for the job, how many quarts of green paint are needed?<br/>(1) The ratio of the amount of green paint to the amount of yellow and white paint combined needs to be 1 to 3.<br/>(2) The ratio of the amount of yellow paint to the amount of green paint needs to be 3 to 2.",
+    "options": [
+      "Statement (1) ALONE is sufficient, but statement (2) alone is not sufficient.",
+      "Statement (2) ALONE is sufficient, but statement (1) alone is not sufficient.",
+      "BOTH statements TOGETHER are sufficient, but NEITHER statement ALONE is sufficient.",
+      "EACH statement ALONE is sufficient.",
+      "Statements (1) and (2) TOGETHER are NOT sufficient."
+    ],
+    "correctAnswer": "A",
+    "answerExplanation": "<b>Algebra Ratios; Simultaneous Equations</b><br/>This problem involves 3 quantities:<br/>The number of quarts of yellow paint, represented by Y; the number of quarts of green paint, represented by G; and the number of quarts of white paint, represented by W.<br/>It is given that $Y+G+W=12$.<br/>The task is to uniquely determine the value of G, which is possible only if there is enough information to eliminate Y and W from $Y+G+W=12$ so that only G is left.<br/>1. Using the variables introduced above, this gives $\\frac{G}{Y+W}=\\frac{1}{3}$ or $3G=Y+W$. Substituting 3G for $Y+W$ in $Y+G+W=12$ gives $G+3G=12$, or $4G=12,$ which yields a unique value of G; SUFFICIENT.<br/>2. Using the variables introduced above, this gives $\\frac{Y}{G}=\\frac{3}{2}$ or $Y=\\frac{3}{2}G.$ Then, by substitution, $\\frac{3}{2}G+G+W=12$. Because the value of W can vary, the value of G cannot be uniquely determined; NOT sufficient.<br/>The correct answer is A; statement 1 alone is sufficient.",
+    "difficulty": "medium",
+    "question_type": "Data Insights",
+    "subsection": null
+  },
+  {
+    "questionText": "A company produces a certain toy in only 2 sizes, small or large, and in only 2 colors, red or green. If, for each size, there are equal numbers of red and green toys in a certain production lot, what fraction of the total number of green toys is large?<br/>(1) In the production lot, 400 of the small toys are green.<br/>(2) In the production lot, $\\frac{2}{3}$ of the toys produced are small.",
+    "options": [
+      "Statement (1) ALONE is sufficient, but statement (2) alone is not sufficient.",
+      "Statement (2) ALONE is sufficient, but statement (1) alone is not sufficient.",
+      "BOTH statements TOGETHER are sufficient, but NEITHER statement ALONE is sufficient.",
+      "EACH statement ALONE is sufficient.",
+      "Statements (1) and (2) TOGETHER are NOT sufficient."
+    ],
+    "correctAnswer": "B",
+    "answerExplanation": "<b>Algebra Ratios</b><br/>Let x be the number of small toys of each color, and let y be the number of large toys of each color. The contingency table below gives a summary of the information given. Determine the value of $\\frac{y}{x+y}$.<br/><table><thead><tr><td></td><td>small</td><td>large</td><td>total</td></tr></thead><tbody><tr><td>red</td><td>x</td><td>y</td><td>$x+y$</td></tr><tr><td>green</td><td>x</td><td>y</td><td>$x+y$</td></tr><tr><td>total</td><td>2x</td><td>2y</td><td>$2x+2y$</td></tr></tbody></table><br/>1. Given that $x=400,$ it is clearly not possible to determine the value of $\\frac{y}{x+y}=\\frac{y}{400+y}$; NOT sufficient.<br/>2. Given that $\\frac{2}{3}$ of the toys are small, then, because there are $(2x+2y)$ toys altogether and 2x small toys, it follows that $\\frac{2x}{2x+2y}=\\frac{2}{3}.$ Therefore, $3(2x)=2(2x+2y)$, or $6x=4x+4y$, so $2x=4y$, or $x=2y$. Then $\\frac{y}{x+y}=\\frac{y}{2y+y}=\\frac{y}{3y}=\\frac{1}{3}$; SUFFICIENT.<br/>The correct answer is B; statement 2 alone is sufficient.",
+    "difficulty": "medium",
+    "question_type": "Data Insights",
+    "subsection": null
+  },
+  {
+    "questionText": "By what percent was the price of a certain television set discounted for a sale?<br/>(1) The price of the television set before it was discounted for the sale was 25 percent greater than the discounted price.<br/>(2) The price of the television set was discounted by \\$60 for the sale.",
+    "options": [
+      "Statement (1) ALONE is sufficient, but statement (2) alone is not sufficient.",
+      "Statement (2) ALONE is sufficient, but statement (1) alone is not sufficient.",
+      "BOTH statements TOGETHER are sufficient, but NEITHER statement ALONE is sufficient.",
+      "EACH statement ALONE is sufficient.",
+      "Statements (1) and (2) TOGETHER are NOT sufficient."
+    ],
+    "correctAnswer": "A",
+    "answerExplanation": "<b>Arithmetic Percents</b><br/>Let B represent the price, in dollars, for the television before the sale and let D represent the discounted price, in dollars. The percent by which B was discounted to obtain D can be determined if the value of $\\frac{B-D}{B}$ can be determined.<br/>1. This indicates that B is 25% greater than D, or that $B=1.25D$. Then, $\\frac{B-D}{B}=\\frac{1.25D-D}{1.25D}=\\frac{0.25D}{1.25D}=\\frac{0.25}{1.25}=0.2$ or 20%; SUFFICIENT.<br/>2. This indicates that $D=B-60$ but B is unknown. For example, B could be 100 and the value of $\\frac{B-D}{B}$ would be $\\frac{60}{100}$, or B could be 500 and the value of $\\frac{B-D}{B}$ would be $\\frac{60}{500}$; NOT sufficient.<br/>The correct answer is A; statement 1 alone is sufficient.",
+    "difficulty": "medium",
+    "question_type": "Data Insights",
+    "subsection": null
+  },
+  {
+    "questionText": "In a product test of a common cold remedy, x percent of the patients tested experienced side effects from the use of the drug and y percent experienced relief of cold symptoms. What percent of the patients tested experienced both side effects and relief of cold symptoms?<br/>(1) Of the 1,000 patients tested, 15 percent experienced neither side effects nor relief of cold symptoms.<br/>(2) Of the patients tested, 30 percent experienced relief of cold symptoms without side effects.<br/><b>Note:</b> This question refers to a Venn diagram with two overlapping circles representing 'Side effects' and 'Relief'. Regions are labeled: a (side effects only), b (both), c (relief only), d (neither).",
+    "options": [
+      "Statement (1) ALONE is sufficient, but statement (2) alone is not sufficient.",
+      "Statement (2) ALONE is sufficient, but statement (1) alone is not sufficient.",
+      "BOTH statements TOGETHER are sufficient, but NEITHER statement ALONE is sufficient.",
+      "EACH statement ALONE is sufficient.",
+      "Statements (1) and (2) TOGETHER are NOT sufficient."
+    ],
+    "correctAnswer": "E",
+    "answerExplanation": "<b>Algebra Sets</b><br/>The Venn diagram (as described in the question note) represents the numbers of patients who experienced neither, one, or both side effects and relief. In the diagram, $a=$ number who experienced side effects only, $b=$ number who experienced both, $c=$ number who experienced relief only, $d=$ number who experienced neither, where $T=a+b+c+d$ is the total number of patients. Note that $a+b=\\frac{x}{100}T$ and $b+c=\\frac{y}{100}T$. Determine the value of $\\frac{b}{T}$.<br/>1. Given that 1,000 patients were tested and $(0.15)(1,000)=150$ patients experienced neither side effects nor relief, it follows that $a+b+c+d=1,000$ and $d=150$. Therefore, $a+b+c+150=1,000,$ or $a+b+c=850.$ However, there is no information about how the remaining 850 patients are assigned to the other categories. Thus, the percent of patients who experienced both side effects and relief could be any value between 0% and 85%; NOT sufficient.<br/>2. Given that 30% of the patients experienced relief without side effects, there is no information about how the remaining 70% of the patients are assigned to the other categories. Thus, the percent of patients who experienced both side effects and relief could be any value between 0% and 70%; NOT sufficient.<br/>Taking (1) and (2) together, it follows that 150 patients experienced neither side effects nor relief and $(0.3)(1,000)=300$ patients experienced relief only. Therefore, from $a+b+c+d=T$ it follows that $a+b+300+150=1,000,$ or $a+b=550$. However, it is still not possible to determine a unique value of $\\frac{b}{T}=\\frac{b}{1,000},$ the percent of patients who experienced both side effects and relief. For example, it is possible that $a=300$ and $b=250$ (that is, the percent who experienced both could be 25%), and it is possible that $a=250$ and $b=300$ (that is, the percent who experienced both could be 30%).<br/>The correct answer is E; both statements together are still not sufficient.",
+    "difficulty": "medium",
+    "question_type": "Data Insights",
+    "subsection": null
+  },
+  {
+    "questionText": "Was the number of books sold at Bookstore X last week greater than the number of books sold at Bookstore Y last week?<br/>(1) Last week, more than 1,000 books were sold at Bookstore X on Saturday and fewer than 1,000 books were sold at Bookstore Y on Saturday.<br/>(2) Last week, less than 20 percent of the books sold at Bookstore X were sold on Saturday and more than 20 percent of the books sold at Bookstore Y were sold on Saturday.",
+    "options": [
+      "Statement (1) ALONE is sufficient, but statement (2) alone is not sufficient.",
+      "Statement (2) ALONE is sufficient, but statement (1) alone is not sufficient.",
+      "BOTH statements TOGETHER are sufficient, but NEITHER statement ALONE is sufficient.",
+      "EACH statement ALONE is sufficient.",
+      "Statements (1) and (2) TOGETHER are NOT sufficient."
+    ],
+    "correctAnswer": "C",
+    "answerExplanation": "<b>Arithmetic Inequalities</b><br/>Determine if Bookstore X sold more books last week than Bookstore Y.<br/>1. This indicates that Bookstore X sold more books on Saturday than Bookstore Y, but it gives no information about the numbers of books sold by the two bookstores on the other days of last week; NOT sufficient.<br/>2. This gives information about the percents of the books sold last week that were sold on Saturday, but it gives no information about the actual numbers of books sold at the two bookstores last week. Therefore, a comparison of the numbers of books sold last week by Bookstore X and Bookstore Y is not possible; NOT sufficient.<br/>Taking (1) and (2) together, if x represents the number of books that Bookstore X sold on Saturday and $T_{X}$ represents the total number of books that Bookstore X sold last week, then $x>1,000$ and $x<0.2T_{X}.$ It follows that $1,000<0.2T_{X},$ and so $T_{X}>5,000$. Similarly, if y represents the number of books that Bookstore Y sold on Saturday and $T_{Y}$ represents the total number of books that Bookstore Y sold last week, then $y<1,000$ and $y>0.2T_{Y}.$ It follows that $0.2T_{Y}<1,000$ and so $T_{Y}<5,000$. Combining the inequalities gives $T_{Y}<5,000<T_{X},$ and so $T_{Y}<T_{X},$ which means that Bookstore X sold more books last week than Bookstore Y.<br/>The correct answer is C; both statements together are sufficient.",
+    "difficulty": "medium",
+    "question_type": "Data Insights",
+    "subsection": null
+  },
+  {
+    "questionText": "Last year, in a certain housing development, the average (arithmetic mean) price of 20 new houses was \\$160,000. Did more than 9 of the 20 houses have prices that were less than the average price last year?<br/>(1) Last year, the greatest price of one of the 20 houses was \\$219,000.<br/>(2) Last year, the median of the prices of the 20 houses was \\$150,000.",
+    "options": [
+      "Statement (1) ALONE is sufficient, but statement (2) alone is not sufficient.",
+      "Statement (2) ALONE is sufficient, but statement (1) alone is not sufficient.",
+      "BOTH statements TOGETHER are sufficient, but NEITHER statement ALONE is sufficient.",
+      "EACH statement ALONE is sufficient.",
+      "Statements (1) and (2) TOGETHER are NOT sufficient."
+    ],
+    "correctAnswer": "B",
+    "answerExplanation": "<b>Arithmetic Statistics</b><br/>1. Given that the greatest of the prices was \\$219,000, the table below shows two possibilities in which the average price was \\$160,000.<br/><table><thead><tr><th>Example I</th><th>Example II</th></tr><tr><td>price</td><td>frequency</td><td>price</td><td>frequency</td></tr></thead><tbody><tr><td>\\$101,000</td><td>1</td><td>\\$119,000</td><td>1</td></tr><tr><td>\\$160,000</td><td>18</td><td>\\$159,000</td><td>18</td></tr><tr><td>\\$219,000</td><td>1</td><td>\\$219,000</td><td>1</td></tr></tbody></table><br/>In Example I, note that $101,000+219,000=320,000=160,000+160,000,$ so the sum of the prices is $20(\\$160,000)$ and the average price is \\$160,000. Example II is then obtained from Example I by transferring \\$1,000 from each of the \\$160,000 prices to the \\$101,000 price, and thus the sum of the prices in Example II is also $20(\\$160,000)$.<br/>Example I shows that only 1 of the prices could have been less than the average price, and Example II shows that 19 of the prices could have been less than the average price; NOT sufficient.<br/>2. Given that the median of the 20 prices was \\$150,000, then when the prices are listed in numerical order from least to greatest, the average of the 10th and 11th prices is \\$150,000. Therefore, the 10th price must be less than or equal to \\$150,000, since if the 10th price was greater than \\$150,000, then both prices would be greater than \\$150,000 and their average would be greater than \\$150,000 (the median), contrary to what is given. Moreover, since the first 9 prices are less than or equal to the 10th price, it follows that the first 10 prices are each less than or equal to \\$150,000. Therefore, at least 10 of the prices are less than the average price; SUFFICIENT.<br/>The correct answer is B; statement 2 alone is sufficient.",
+    "difficulty": "medium",
+    "question_type": "Data Insights",
+    "subsection": null
+  },
+  {
+    "questionText": "Three dice, each of which has its 6 sides numbered 1 through 6, are tossed. The sum of the 3 numbers that are facing up is 12. Is at least 1 of these numbers 5?<br/>(1) None of the 3 numbers that are facing up is divisible by 3.<br/>(2) Of the numbers that are facing up, 2, but not all 3, are equal.",
+    "options": [
+      "Statement (1) ALONE is sufficient, but statement (2) alone is not sufficient.",
+      "Statement (2) ALONE is sufficient, but statement (1) alone is not sufficient.",
+      "BOTH statements TOGETHER are sufficient, but NEITHER statement ALONE is sufficient.",
+      "EACH statement ALONE is sufficient.",
+      "Statements (1) and (2) TOGETHER are NOT sufficient."
+    ],
+    "correctAnswer": "C",
+    "answerExplanation": "<b>Arithmetic Properties of Integers</b><br/>When three dice, each with its 6 faces numbered 1 through 6, are tossed and the sum of the three integers facing up is 12, the possible outcomes are {1, 5, 6}, {2, 4, 6}, {2, 5, 5}, {3, 3, 6}, {3, 4, 5}, and {4, 4, 4}. Determine if, in the outcome described, at least one of the numbers is 5.<br/>1. This indicates that none of the numbers is divisible by three. The outcome could be {4, 4, 4}. In this case, none of the three numbers is 5. On the other hand, the outcome could be {2, 5, 5}. In this case, at least one of the numbers is 5; NOT sufficient.<br/>2. This indicates that two of the numbers, but not all three, are equal. The outcome could be {3, 3, 6}. In this case, none of the three numbers is 5. On the other hand, the outcome could be {2, 5, 5}. In this case, at least one of the numbers is 5; NOT sufficient.<br/>Taking (1) and (2) together, of the possible outcomes, {1, 5, 6}, {2, 4, 6}, {3, 3, 6}, and {3, 4, 5} are eliminated because they do not satisfy (1), and {4, 4, 4} is eliminated because it does not satisfy (2). This leaves only {2, 5, 5}, and at least one number is 5.<br/>The correct answer is C; both statements together are sufficient.",
+    "difficulty": "medium",
+    "question_type": "Data Insights",
+    "subsection": null
+  },
+  {
+    "questionText": "A candy shop owner must mix three types of sweeteners-A, B, and C-in a certain ratio to get the desired mixture in his candies. What is the ratio of the weights of Sweetener A to Sweetener B to Sweetener C in the final mixture?<br/>(1) Sweeteners A, B, and C cost \\$40, \\$50, and \\$60 per pound. The average (arithmetic mean) cost of the final mixture is \\$50 per pound.<br/>(2) In the final mixture, the average (arithmetic mean) price of Sweeteners A and B together is \\$45, and the average (arithmetic mean) price of Sweeteners B and C together is \\$55.",
+    "options": [
+      "Statement (1) ALONE is sufficient, but statement (2) alone is not sufficient.",
+      "Statement (2) ALONE is sufficient, but statement (1) alone is not sufficient.",
+      "BOTH statements TOGETHER are sufficient, but NEITHER statement ALONE is sufficient.",
+      "EACH statement ALONE is sufficient.",
+      "Statements (1) and (2) TOGETHER are NOT sufficient."
+    ],
+    "correctAnswer": "C",
+    "answerExplanation": "<b>Applied Problems</b><br/>Three sweeteners A, B, and C are mixed as ingredients for candy. We are asked to determine the ratio among the weights of each based on information about cost per pound for each of the three ingredients and information about average (arithmetic mean) cost per pound for mixtures of two or three of the ingredients.<br/>1. This information will not allow us to calculate weights of individual ingredients in the mixture, or even a ratio between individual weights. Therefore, (1) is not sufficient by itself; NOT sufficient.<br/>2. This information will not allow us to calculate weights of individual ingredients in the mixture or even a ratio between the weights of individual ingredients. Therefore, (2) is not sufficient by itself; NOT sufficient.<br/>If we combine the information provided in (1) and (2), we will be able to calculate the ratio between the weights of each of the three ingredients in the mixture.<br/>Let a be the weight in pounds of Sweetener A, b the weight in pounds of Sweetener B, and c the weight in pounds of Sweetener C. From (1) and (2), we get the following equations:<br/>$(40a+50b)=45(a+b)$<br/>$(50b+60c)=55(b+c)$.<br/>From the first, we can infer $5b-5a=0$ and therefore that $a=b$. Similarly, from the second, we can infer that $b=c$. So $a:b:c=1:1:1$. So (1) and (2) are sufficient together.<br/>The correct answer is C; both statements together are sufficient.",
+    "difficulty": "medium",
+    "question_type": "Data Insights",
+    "subsection": null
+  },
+  {
+    "questionText": "Did the population of Town C increase by at least 100 percent from the year 2000 to the year 2010?<br/>(1) The population of Town C in 2000 was $\\frac{2}{3}$ of the population in 2005.<br/>(2) The population of Town C increased by a greater number of people from 2005 to 2010 than it did from 2000 to 2005.",
+    "options": [
+      "Statement (1) ALONE is sufficient, but statement (2) alone is not sufficient.",
+      "Statement (2) ALONE is sufficient, but statement (1) alone is not sufficient.",
+      "BOTH statements TOGETHER are sufficient, but NEITHER statement ALONE is sufficient.",
+      "EACH statement ALONE is sufficient.",
+      "Statements (1) and (2) TOGETHER are NOT sufficient."
+    ],
+    "correctAnswer": "C",
+    "answerExplanation": "<b>Algebra Percents</b><br/>Determine whether the population of Town C increased by at least 100 percent from the year 2000 to the year 2010.<br/>1. Given that the population of Town C in 2000 was $\\frac{2}{3}$ of the population in 2005, it is not possible to determine whether the population of Town C increased by at least 100 percent from the year 2000 to the year 2010 because no information is given that helps to determine the population in 2010; NOT sufficient.<br/>2. Given that the population of Town C increased by a greater number of people from 2005 to 2010 than it did from 2000 to 2005, it is not possible to determine whether the population of Town C increased by at least 100 percent from the year 2000 to the year 2010 because no information is given that helps determine the increase from 2000 to 2005; NOT sufficient.<br/>Taking (1) and (2) together, from (1) the population in 2000 was $\\frac{2}{3}$ of the population in 2005, so if P represents the population in 2005, then the population increase from 2000 to 2005 is $P-\\frac{2}{3}P=\\frac{1}{3}P.$ From (2), the population increase from 2005 to 2010 was greater than $\\frac{1}{3}P,$ so the population increase from 2000 to 2010 was greater than $\\frac{1}{3}P+\\frac{1}{3}P=\\frac{2}{3}P.$ Thus, the percent increase from 2000 to 2010 is given by $\\frac{\\text{increase in population from 2000 to 2010}}{\\text{population in 2000}}$, which is greater than $\\frac{\\frac{2}{3}P}{\\frac{2}{3}P}=1$ or 100%.<br/>The correct answer is C; both statements together are sufficient.",
+    "difficulty": "hard",
+    "question_type": "Data Insights",
+    "subsection": null
+  },
+  {
+    "questionText": "In a survey of 200 college graduates, 30% said they had received student loans during their college careers, and 40% said they had received scholarships. What percent of those surveyed said that they had received neither student loans nor scholarships during their college careers?<br/>(1) 25% of those surveyed said that they had received scholarships but no loans.<br/>(2) 50% of those surveyed who said that they had received loans also said that they had received scholarships.<br/><b>Note:</b> This question refers to a Venn diagram showing two overlapping circles for 'Loans' and 'Scholarships', with regions x (Loans only), y (both), z (Scholarships only), and w (neither).",
+    "options": [
+      "Statement (1) ALONE is sufficient, but statement (2) alone is not sufficient.",
+      "Statement (2) ALONE is sufficient, but statement (1) alone is not sufficient.",
+      "BOTH statements TOGETHER are sufficient, but NEITHER statement ALONE is sufficient.",
+      "EACH statement ALONE is sufficient.",
+      "Statements (1) and (2) TOGETHER are NOT sufficient."
+    ],
+    "correctAnswer": "D",
+    "answerExplanation": "<b>Arithmetic Sets</b><br/>Using the variables shown on the Venn diagram (as described in the question note), determine the value of w. According to the information given, 30% had received student loans, so $x+y=0.3(200)=60$ and $x=60-y$. Also, 40% had received scholarships, so $y+z=0.4(200)=80$ and $z=80-y$. Then, since $x+y+z+w=200,$ $w=200-x-y-z=200-(60-y)-y-(80-y)=60+y$. Thus, if the value of y can be determined, then the value of w can be determined.<br/>1. Since 25% received scholarships but no loans, $z=0.25(200)=50$. Since $z=80-y$, then $50=80-y$, so $y=30$. Then $w=60+30=90$. The percent is $\\frac{90}{200} \times 100 = 45\\%$; SUFFICIENT.<br/>2. Since 50% of those who had received loans had also received scholarships, $y=0.5(x+y)$. Since $x+y=60$, then $y=0.5(60)=30$. Then $w=60+30=90$. The percent is $\\frac{90}{200} \times 100 = 45\\%$; SUFFICIENT.<br/>The correct answer is D; each statement alone is sufficient.",
+    "difficulty": "hard",
+    "question_type": "Data Insights",
+    "subsection": null
+  },
+  {
+    "questionText": "A box contains only red chips, white chips, and blue chips. If a chip is randomly selected from the box, what is the probability that the chip will be either white or blue?<br/>(1) The probability that the chip will be blue is $\\frac{1}{5}$.<br/>(2) The probability that the chip will be red is $\\frac{1}{3}$.",
+    "options": [
+      "Statement (1) ALONE is sufficient, but statement (2) alone is not sufficient.",
+      "Statement (2) ALONE is sufficient, but statement (1) alone is not sufficient.",
+      "BOTH statements TOGETHER are sufficient, but NEITHER statement ALONE is sufficient.",
+      "EACH statement ALONE is sufficient.",
+      "Statements (1) and (2) TOGETHER are NOT sufficient."
+    ],
+    "correctAnswer": "B",
+    "answerExplanation": "<b>Arithmetic Probability</b><br/>1. Since the probability of drawing a blue chip is known, the probability of drawing a chip that is not blue (in other words, a red or white chip) can also be found. However, the probability of drawing a white or blue chip cannot be determined from this information; NOT sufficient.<br/>2. The probability that the chip will be either white or blue is the same as the probability that it will NOT be red. Thus, the probability is $1 - P(\\text{red}) = 1 - \\frac{1}{3} = \\frac{2}{3}$; SUFFICIENT.<br/>The correct answer is B; statement 2 alone is sufficient.",
+    "difficulty": "hard",
+    "question_type": "Data Insights",
+    "subsection": null
+  },
+  {
+    "questionText": "Six shipments of machine parts were shipped from a factory on two trucks, with each shipment entirely on one of the trucks. Each shipment was labeled either S1, S2, S3, S4, S5, or S6. The table shows the value of each shipment as a fraction of the total value of the six shipments. If the shipments on the first truck had a value greater than $\\frac{1}{2}$ of the total value of the six shipments, was S3 shipped on the first truck?<br/><b>Note:</b> This question refers to a table showing fractions for shipments S1 to S6: S1: $\\frac{1}{4}$, S2: $\\frac{1}{5}$, S3: $\\frac{1}{6}$, S4: $\\frac{3}{20}$, S5: $\\frac{2}{15}$, S6: $\\frac{1}{10}$.<br/>(1) S2 and S4 were shipped on the first truck.<br/>(2) S1 and S6 were shipped on the second truck.",
+    "options": [
+      "Statement (1) ALONE is sufficient, but statement (2) alone is not sufficient.",
+      "Statement (2) ALONE is sufficient, but statement (1) alone is not sufficient.",
+      "BOTH statements TOGETHER are sufficient, but NEITHER statement ALONE is sufficient.",
+      "EACH statement ALONE is sufficient.",
+      "Statements (1) and (2) TOGETHER are NOT sufficient."
+    ],
+    "correctAnswer": "B",
+    "answerExplanation": "<b>Arithmetic Operations on Rational Numbers</b><br/>Given that the shipments on the first truck had a value greater than $\\frac{1}{2}$ of the total value of the 6 shipments, determine if S3 was shipped on the first truck.<br/>To avoid dealing with fractions, it will be convenient to create scaled values of the shipments by multiplying each fractional value by 60 (LCM of 4, 5, 6, 20, 15, 10).<br/>S1: $\\frac{1}{4} \\times 60 = 15$<br/>S2: $\\frac{1}{5} \\times 60 = 12$<br/>S3: $\\frac{1}{6} \\times 60 = 10$<br/>S4: $\\frac{3}{20} \\times 60 = 9$<br/>S5: $\\frac{2}{15} \\times 60 = 8$<br/>S6: $\\frac{1}{10} \\times 60 = 6$<br/>Total scaled value = $15+12+10+9+8+6 = 60$.<br/>The first truck had a scaled value greater than $\\frac{1}{2}(60)=30$.<br/>1. Given that S2 (12) and S4 (9) were shipped on the first truck. Total value $12+9=21$. To exceed 30, other shipments are needed. <br/>If S3 (10) is on the first truck: $21+10=31 > 30$. (Possible: S2, S4, S3 on first truck). <br/>If S3 is NOT on the first truck, can the first truck still be > 30? Yes, e.g., S1 (15) + S2 (12) + S4 (9) = 36 > 30. (S3 is on second truck). <br/>So S3 could be on the first truck or not; NOT sufficient.<br/>2. Given that S1 (15) and S6 (6) were shipped on the second truck. Total value on second truck is at least $15+6=21$. <br/>The remaining shipments are S2 (12), S3 (10), S4 (9), S5 (8). Their total value is $12+10+9+8 = 39$.<br/>If S3 (10) were on the second truck, then second truck value would be $21+10 = 31$. The first truck would have $60-31=29$. This is NOT greater than 30, which contradicts the problem statement. <br/>Therefore, S3 cannot be on the second truck, meaning S3 must be on the first truck. Let's verify. If S3 is on first truck: Second truck has S1, S6. Max value for second truck without S3 is S1+S6+S5+S4 = 15+6+8+9=38. Then first truck has 22 (not >30). This line of reasoning is slightly off. <br/>Let's re-evaluate (2): S1 (15) and S6 (6) are on the second truck. The remaining shipments are S2 (12), S3 (10), S4 (9), S5 (8). These must be distributed between the first and second trucks. <br/>Value of shipments not S1 or S6 is $60 - 15 - 6 = 39$. These are S2, S3, S4, S5. <br/>Suppose S3 is on the second truck. Then second truck has S1, S6, S3. Value = $15+6+10 = 31$. First truck has $60-31=29$. This is not > 30. So this scenario is impossible. <br/>Thus, S3 cannot be on the second truck. S3 must be on the first truck. If S3 is on the first truck, then the first truck has S3 (10). To be > 30, it needs > 20 more from S2(12), S4(9), S5(8). For example, S3(10) + S2(12) + S4(9) = 31 > 30. This is possible. The second truck would have S1(15), S6(6), S5(8) = 29. This configuration works. <br/>So, S3 must be on the first truck; SUFFICIENT.<br/>The correct answer is B; statement 2 alone is sufficient.",
+    "difficulty": "hard",
+    "question_type": "Data Insights",
+    "subsection": null
+  },
+  {
+    "questionText": "The annual rainfall in a city over the past 50 years is its historical average rainfall (HAR). The graph above shows the annual rainfall in City X over a seven-year period. All figures are rounded to the nearest integer. Is it true that the rounded historical average rainfall (HAR) for City X over the past 50 years is 47 mm or greater?<br/><b>Note:</b> This question refers to a bar graph showing annual rainfall (mm) for 7 years: Year 1: 35, Year 2: 47, Year 3: 60, Year 4: 51, Year 5: 32, Year 6: 23, Year 7: 35.<br/>(1) In the seven-year period in City X, the annual rainfall was greater than the HAR in exactly two of the consecutive years.<br/>(2) In the seven-year period in City X, the annual rainfall was less than the HAR in exactly four of the years.",
+    "options": [
+      "Statement (1) ALONE is sufficient, but statement (2) alone is not sufficient.",
+      "Statement (2) ALONE is sufficient, but statement (1) alone is not sufficient.",
+      "BOTH statements TOGETHER are sufficient, but NEITHER statement ALONE is sufficient.",
+      "EACH statement ALONE is sufficient.",
+      "Statements (1) and (2) TOGETHER are NOT sufficient."
+    ],
+    "correctAnswer": "A",
+    "answerExplanation": "<b>Inference</b><br/>Rainfall values: Y1=35, Y2=47, Y3=60, Y4=51, Y5=32, Y6=23, Y7=35.<br/>1. Annual rainfall > HAR in exactly two consecutive years. Looking at the graph, the only two consecutive years where rainfall is highest and could be greater than HAR while others are not are Year 3 (60) and Year 4 (51). If these are the only two years > HAR, then HAR must be less than 51 and greater than or equal to 47 (the next highest value, Year 2). So, $47 \\le HAR < 51$. This means HAR is 47 mm or greater; SUFFICIENT.<br/>2. Annual rainfall < HAR in exactly four years. The four lowest rainfall years are Y6 (23), Y5 (32), Y1 (35), Y7 (35). If these four are < HAR, then HAR must be greater than 35. The other three years (Y2=47, Y4=51, Y3=60) must be $\\ge HAR$. So $35 < HAR \\le 47$. In this case, HAR could be 36 (not $\\ge 47$) or HAR could be 47 (is $\\ge 47$). Not uniquely determined; NOT sufficient.<br/>The correct answer is A; statement 1 alone is sufficient.",
+    "difficulty": "hard",
+    "question_type": "Data Insights",
+    "subsection": null
+  },
+  {
+    "questionText": "A certain pizzeria has more than fifty types of pizza on its menu. The chart above shows the revenue share, in the pizzeria's total revenue in the last month, of its four most popular pizza types. Each pizza type has only a single size and a single price. Which was their best-selling pizza last month in terms of number of pizzas sold?<br/><b>Note:</b> This question refers to a pie chart showing revenue shares: VegCheese: 5%, NiceSpice: 8%, Pep-Peroni: 11%, Tomato Blast: 14%, Others: 62%.<br/>(1) The number of customers who ordered at least one Pep-Peroni pizza last month was greater than the number of customers who ordered at least one of any other pizza type last month.<br/>(2) The lowest-priced pizza type on the pizzeria's menu is Tomato Blast, followed by VegCheese.",
+    "options": [
+      "Statement (1) ALONE is sufficient, but statement (2) alone is not sufficient.",
+      "Statement (2) ALONE is sufficient, but statement (1) alone is not sufficient.",
+      "BOTH statements TOGETHER are sufficient, but NEITHER statement ALONE is sufficient.",
+      "EACH statement ALONE is sufficient.",
+      "Statements (1) and (2) TOGETHER are NOT sufficient."
+    ],
+    "correctAnswer": "B",
+    "answerExplanation": "<b>Inference</b><br/>The graph shows revenue shares: Tomato Blast (14%), Pep-Peroni (11%), NiceSpice (8%), VegCheese (5%). Revenue = Price × Number sold.<br/>1. This statement is about the number of customers, not the number of pizzas sold for each type. A customer might buy multiple pizzas. Even if Pep-Peroni had the most customers, if those customers bought fewer Pep-Peronis on average than customers of Tomato Blast bought Tomato Blasts, Pep-Peroni might not be the best-selling in terms of units. Also, price is unknown. NOT sufficient.<br/>2. Tomato Blast has the highest revenue share (14%). If Tomato Blast is also the lowest-priced pizza, then to achieve the highest revenue share, it must have sold the highest number of units. (If $R_T > R_X$ and $P_T < P_X$, then $N_T P_T > N_X P_X$. Since $P_T$ is the lowest, for $N_T P_T$ to be the highest revenue, $N_T$ must be significantly large, and indeed the largest number of units). SUFFICIENT.<br/>The correct answer is B; statement 2 alone is sufficient.",
+    "difficulty": "hard",
+    "question_type": "Data Insights",
+    "subsection": null
+  }
+]

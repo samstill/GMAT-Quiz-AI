@@ -1,0 +1,347 @@
+[
+  {
+    "questionText": "The quotient when a certain number is divided by $\\frac{2}{3}$ is $\\frac{9}{2}$. What is the number?",
+    "options": [
+      "$\\frac{4}{27}$",
+      "$\\frac{1}{3}$",
+      "3",
+      "6",
+      "$\\frac{27}{4}$"
+    ],
+    "correctAnswer": "C",
+    "answerExplanation": "Let N be the unknown number. The quotient when N is divided by $\\frac{2}{3}$ is $N \\div \\frac{2}{3},$ which equals $N \\times \\frac{3}{2}=\\frac{3}{2}N$ (invert and multiply). Since this quotient equals $\\frac{9}{2},$ it follows that $\\frac{3}{2}N=\\frac{9}{2}.$ Therefore, $N=(\\frac{9}{2})(\\frac{2}{3})=3$.<br><br><b>Tip:</b> Sometimes a correct method of calculation will be intuitively evident if difficult-to-conceptualize numbers are replaced with easy-to-conceptualize numbers. For example, if the first sentence had instead been \"The quotient when a certain number is divided by 2 is 3\" (i.e., after dividing a certain number by 2, the result is 3), then it may be intuitively evident that the number can be obtained by multiplying 2 and 3. Thus, for this problem, the number can be obtained by multiplying $\\frac{2}{3}$ and $\\frac{9}{2}$.",
+    "difficulty": "easy",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "If k is a positive integer, what is the remainder when $(k+2)(k^{3}-k)$ is divided by 6?",
+    "options": [
+      "0",
+      "1",
+      "2",
+      "3",
+      "4"
+    ],
+    "correctAnswer": "A",
+    "answerExplanation": "Since k can be any positive integer, the remainder must be the same regardless of the value of k. If $k=2,$ for example, then $(k+2)(k^{3}-k)=(2+2)(2^{3}-2)=(4)(6),$ which is a multiple of 6, and therefore, the remainder when divided by 6 is 0.<br><br>Alternatively, factor the given expression:<br>$(k+2)(k^{3}-k)=(k+2)(k)(k^{2}-1) = (k+2)(k)(k+1)(k-1)$<br>Now, rearrange the factors in ascending order $(k-1)(k)(k+1)(k+2)$ and observe that for any positive integer k, the factors are four consecutive integers, two of which are even and one of which is divisible by 3. Therefore, $(k+2)(k^{3}-k)$ is divisible by both 2 and 3. Thus, $(k+2)(k^{3}-k)$ is divisible by 6 with 0 remainder.",
+    "difficulty": "easy",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "The product P of two prime numbers is between 9 and 55. If one of the prime numbers is greater than 2 but less than 6 and the other is greater than 13 but less than 25, then $P=$",
+    "options": [
+      "15",
+      "33",
+      "34",
+      "46",
+      "51"
+    ],
+    "correctAnswer": "E",
+    "answerExplanation": "The only prime numbers greater than 2 but less than 6 are 3 and 5. The only prime numbers greater than 13 but less than 25 are 17, 19, and 23. Therefore, P is the product of 3 or 5 with 17, 19, or 23. Because the answer choices are relatively small for a number having a factor of 17, 19, or 23, a useful strategy is to consider the possible values of P beginning with the least possible value, which is $3 \\times 17$. Since $3 \\times 17 = 51$, it follows that $P=51$.<br><br>Alternatively, each of the tables shows a way to examine possibilities for locating the correct answer.<br><br><b>Observation</b><br><table><tr><td><b>P</b></td><td><b>Conclusion</b></td></tr><tr><td>$15=3 \\times 5$</td><td>no factor of 17, 19, or 23</td><td>$P \\ne 15$</td></tr><tr><td>$33=3 \\times 11$</td><td>no factor of 17, 19, or 23</td><td>$P \\ne 33$</td></tr><tr><td>$34=2 \\times 17$</td><td>no factor of 3 or 5</td><td>$P \\ne 34$</td></tr><tr><td>$46=2 \\times 23$</td><td>no factor of 3 or 5</td><td>$P \\ne 46$</td></tr><tr><td>$51=3 \\times 17$</td><td>satisfies requirements</td><td>$P=51$</td></tr></table><br><b>Product possibility</b><br><table><tr><td></td><td><b>Value</b></td><td><b>An answer choice?</b></td></tr><tr><td>$3 \\times 17$</td><td>51</td><td>yes</td></tr><tr><td>$3 \\times 19$</td><td>57</td><td>no</td></tr><tr><td>$3 \\times 23$</td><td>69</td><td>no</td></tr><tr><td>$5 \\times 17$</td><td>85</td><td>no</td></tr><tr><td>$5 \\times 19$</td><td>95</td><td>no</td></tr><tr><td>$5 \\times 23$</td><td>115</td><td>no</td></tr></table>",
+    "difficulty": "easy",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "If $n = 20! + 17$, then n is divisible by which of the following?<br>I. 15<br>II. 17<br>III. 19",
+    "options": [
+      "None",
+      "I only",
+      "II only",
+      "I and II",
+      "II and III"
+    ],
+    "correctAnswer": "C",
+    "answerExplanation": "Because 20! is the product of all integers from 1 through 20, it follows that 20! is divisible by each integer from 1 through 20. In particular, 20! is divisible by each of the integers 15, 17, and 19. Since 20! and 17 are both divisible by 17, their sum is divisible by 17, and hence the correct answer will include Statement II. If n were divisible by 15, then $n-20!$ would be divisible by 15. But $n-20!=17$ and 17 is not divisible by 15. Therefore, the correct answer does not include Statement I. If n were divisible by 19, then n - 20! would be divisible by 19. But $n-20!=17,$ and 17 is not divisible by 19. Therefore, the correct answer does not include Statement III.",
+    "difficulty": "medium",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "What is the remainder when $3^{19}$ is divided by 10?",
+    "options": [
+      "1",
+      "3",
+      "5",
+      "7",
+      "9"
+    ],
+    "correctAnswer": "D",
+    "answerExplanation": "When a positive integer is divided by 10, the remainder is the units digit of that positive integer. For example, when 584 is divided by 10, the quotient is 58 and the remainder is 4. Thus, the remainder when $3^{19}$ is divided by 10 is the units digit when $3^{19}$ is written as a decimal numeral. The table shows the units digits for the first few powers of 3.<br><table><tr><th>number</th><th>decimal numeral</th><th>units digit</th></tr><tr><td>$3^{1}$</td><td>3</td><td>3</td></tr><tr><td>$3^{2}$</td><td>9</td><td>9</td></tr><tr><td>$3^{3}$</td><td>27</td><td>7</td></tr><tr><td>$3^{4}$</td><td>81</td><td>1</td></tr><tr><td>$3^{5}$</td><td>243</td><td>3</td></tr><tr><td>$3^{6}$</td><td>729</td><td>9</td></tr><tr><td>$3^{7}$</td><td>2,187</td><td>7</td></tr><tr><td>$3^{8}$</td><td>6,561</td><td>1</td></tr></table><br>The table, along with thinking about the standard method for multiplying decimal numerals by hand, shows that the units digits of the powers of 3 form a sequence in which the digits 3, 9, 7, and 1 repeat indefinitely in that order. By following this pattern, the units digit of $3^{19}$ is seen to be 7.",
+    "difficulty": "medium",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "If n is a positive integer and the product of all the integers from 1 to n, inclusive, is divisible by 990, what is the least possible value of n?",
+    "options": [
+      "8",
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "correctAnswer": "D",
+    "answerExplanation": "For convenience, let N represent the product of all integers from 1 through n. Then, since N is divisible by 990, every prime factor of 990 must also be a factor of N. The prime factorization of 990 is $2 \\times 3^2 \\times 5 \\times 11$, and therefore, 11 must be a factor of N. Then the least possible value of N with factors of 2, 5, $3^2$, and 11 is $1 \\times 2 \\times 3 \\times \\dots \\times 11$, and the least possible value of n is 11.",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "If there are fewer than 8 zeros between the decimal point and the first nonzero digit in the decimal expansion of $(\\frac{t}{1000})^4$, which of the following numbers could be the value of t? <br> I. 3 <br> II. 5 <br> III. 9",
+    "options": [
+      "None",
+      "I only",
+      "II only",
+      "III only",
+      "II and III"
+    ],
+    "correctAnswer": "A",
+    "answerExplanation": "Since $(\\frac{t}{1000})^4 = \\frac{t^4}{1000^4}$ and $(1000)^4 = (10^3)^4 = 10^{12}$, it follows that $(\\frac{t}{1000})^4 = t^4 \\times 10^{-12}$. The following table illustrates the effect that multiplication by $10^{-1}, 10^{-2}, 10^{-3}$, and $10^{-4}$ has on the placement of the decimal point of 52.7, a number chosen only for illustrative purposes. <table><tr><th>multiplication by</th><th>resulting number</th><th>placement of decimal point</th></tr><tr><td>$10^{-1}$</td><td>5.27</td><td>1 place left of original</td></tr><tr><td>$10^{-2}$</td><td>0.527</td><td>2 places left of original</td></tr><tr><td>$10^{-3}$</td><td>0.0527</td><td>3 places left of original</td></tr><tr><td>$10^{-4}$</td><td>0.00527</td><td>4 places left of original</td></tr></table>Therefore, the decimal point of $t^4 \\times 10^{-12}$ is 12 positions to the left of the decimal point of $t^4$. Now consider the value of $t^4 \\times 10^{-12}$ for the three given values of t. <table><tr><th>t</th><th>$t^4$</th><th>$t^4 \\times 10^{-12}$</th><th># zeros after decimal point</th></tr><tr><td>3</td><td>81</td><td>0.000000000081</td><td>10</td></tr><tr><td>5</td><td>625</td><td>0.000000000625</td><td>9</td></tr><tr><td>9</td><td>6,561</td><td>0.000000006561</td><td>8</td></tr></table>From the prior table it follows that NONE of these values of t is such that $t^4 \\times 10^{-12}$ has fewer than 8 zeros between the decimal point and the first nonzero digit.",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "When positive integer x is divided by positive integer y, the remainder is 9. If $\\frac{x}{y} = 96.12$, what is the value of y?",
+    "options": [
+      "96",
+      "75",
+      "48",
+      "25",
+      "12"
+    ],
+    "correctAnswer": "B",
+    "answerExplanation": "The remainder is 9 when x is divided by y, so $x = yq + 9$ for some positive integer q. Dividing both sides by y gives $\\frac{x}{y} = q + \\frac{9}{y}$. But $\\frac{x}{y} = 96.12 = 96 + 0.12$. Equating the two expressions for $\\frac{x}{y}$ gives $q + \\frac{9}{y} = 96 + 0.12$. Thus, q = 96 and $\\frac{9}{y} = 0.12$. Solving for y: $y = \\frac{9}{0.12} = \\frac{900}{12} = 75$.",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "For the positive integers a, b, and k, $a^k || b$ means that $a^k$ is a divisor of b, but $a^{k+1}$ is not a divisor of b. If k is a positive integer and $2^k || 72$, then k is equal to",
+    "options": [
+      "2",
+      "3",
+      "4",
+      "8",
+      "18"
+    ],
+    "correctAnswer": "B",
+    "answerExplanation": "Since $72 = (2^3)(3^2)$, it follows that $2^3$ is a divisor of 72 and $2^4$ is not a divisor of 72. Therefore, $2^3 || 72$, and hence $k=3$.",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "The light in a restroom operates with a 15-minute timer that is reset every time the door opens as a person goes in or out of the room. Thus, after someone enters or exits the room, the light remains on for only 15 minutes unless the door opens again and resets the timer for another 15 minutes. If the times listed above are the times at which the door opened from 8:00 to 10:00, approximately how many minutes during this two-hour period was the light off?<br><b>Times at Which the Door Opened from 8:00 to 10:00</b><br><table><tr><td>8:00</td><td>8:06</td><td>8:30</td><td>9:05</td></tr><tr><td>8:03</td><td>8:10</td><td>8:31</td><td>9:11</td></tr><tr><td>8:04</td><td>8:18</td><td>8:54</td><td>9:29</td></tr><tr><td>8:04</td><td>8:19</td><td>8:57</td><td>9:31</td></tr></table>",
+    "options": [
+      "10",
+      "25",
+      "35",
+      "40",
+      "70"
+    ],
+    "correctAnswer": "B",
+    "answerExplanation": "In the table given above, read down the columns looking for pairs of consecutive times that are more than 15 minutes apart. The following table shows all such pairs:<br><table><tr><th>Consecutive times more than 15 minutes apart</th><th>Minutes between times door opens</th><th>Minutes that light is on</th><th>Minutes that light is off</th></tr><tr><td>8:31 and 8:54</td><td>54 – 31 = 23</td><td>15</td><td>23 – 15 = 8</td></tr><tr><td>9:11 and 9:29</td><td>29 – 11 = 18</td><td>15</td><td>18 – 15 = 3</td></tr><tr><td>9:31 and 10:00</td><td>60 – 31 = 29</td><td>15</td><td>29 – 15 = 14</td></tr><tr><td></td><td></td><td><b>Total time light is off</b></td><td><b>25</b></td></tr></table>",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "If p is the product of the integers from 1 to 30, inclusive, what is the greatest integer k for which $3^k$ is a factor of p?",
+    "options": [
+      "10",
+      "12",
+      "14",
+      "16",
+      "18"
+    ],
+    "correctAnswer": "C",
+    "answerExplanation": "The table below shows the numbers from 1 to 30, inclusive, that have at least one factor of 3 and how many factors of 3 each has.<br><table><tr><th>Multiples of 3 Between 1 and 30</th><th>Number of Factors of 3</th></tr><tr><td>3</td><td>1</td></tr><tr><td>6</td><td>1</td></tr><tr><td>9</td><td>2</td></tr><tr><td>12</td><td>1</td></tr><tr><td>15</td><td>1</td></tr><tr><td>18</td><td>2</td></tr><tr><td>21</td><td>1</td></tr><tr><td>24</td><td>1</td></tr><tr><td>27</td><td>3</td></tr><tr><td>30</td><td>1</td></tr></table><br>The sum of the numbers in the right column is 14. Therefore, $3^{14}$ is the greatest power of 3 that is a factor of the product of the first 30 positive integers.",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "Club X has more than 10 but fewer than 40 members. Sometimes the members sit at tables with 3 members at one table and 4 members at each of the other tables, and sometimes they sit at tables with 3 members at one table and 5 members at each of the other tables. If they sit at tables with 6 members at each table except one and fewer than 6 members at that one table, how many members will be at the table that has fewer than 6 members?",
+    "options": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "correctAnswer": "E",
+    "answerExplanation": "Let n be the number of members that Club X has. Since the members can be equally divided into groups of 4 each with 3 left over, and the members can be equally divided into groups of 5 each with 3 left over, it follows that n – 3 is divisible by both 4 and 5. Therefore, n – 3 must be a multiple of (4)(5) = 20. Also, because the only multiple of 20 that is greater than 10 and less than 40 is 20, it follows that n – 3 = 20, or n = 23. Finally, when these 23 members are divided into the greatest number of groups of 6 each, there will be 5 members left over, since 23 = (3)(6) + 5.",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "If $3 < x < 100$, for how many values of x is $\\frac{x}{3}$ the square of a prime number?",
+    "options": [
+      "Two",
+      "Three",
+      "Four",
+      "Five",
+      "Nine"
+    ],
+    "correctAnswer": "B",
+    "answerExplanation": "If $\\frac{x}{3}$ is the square of a prime number, then possible values of $\\frac{x}{3}$ are $2^2, 3^2, 5^2, 7^2, \\dots$. Therefore, possible values of x are $3 \\times 2^2 = 12$, $3 \\times 3^2 = 27$, $3 \\times 5^2 = 75$, $3 \\times 7^2 = 147, \\dots$. Since only three of these values, namely 12, 27, and 75, are between 3 and 100, there are three values of x such that $\\frac{x}{3}$ is the square of a prime number.",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "If y is the smallest positive integer such that 3,150 multiplied by y is the square of an integer, then y must be",
+    "options": [
+      "2",
+      "5",
+      "6",
+      "7",
+      "14"
+    ],
+    "correctAnswer": "E",
+    "answerExplanation": "To find the smallest positive integer y such that 3,150y is the square of an integer, first find the prime factorization of 3,150 by a method similar to the following:<br> $3,150 = 10 \\times 315 = (2 \\times 5) \\times (5 \\times 63) = 2 \\times 5^2 \\times (9 \\times 7) = 2 \\times 3^2 \\times 5^2 \\times 7$. <br> To be a perfect square, 3,150y must have an even number of each of its prime factors. At a minimum, y must have one factor of 2 and one factor of 7 so that 3,150y has two factors of each of the primes 2, 3, 5, and 7. The smallest positive integer value of y is then $(2)(7) = 14$.",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "If $n = (33)^{43} + (43)^{33}$, what is the units digit of n?",
+    "options": [
+      "0",
+      "2",
+      "4",
+      "6",
+      "8"
+    ],
+    "correctAnswer": "A",
+    "answerExplanation": "When a number is raised to a power, its units digit is determined by the units digit of the base. The units digit of $33^{43}$ is determined by the units digit of $3^{43}$, and the units digit of $43^{33}$ is determined by the units digit of $3^{33}$.<br>The pattern of units digits for powers of 3 is: $3^1=3, 3^2=9, 3^3=27 \rightarrow 7, 3^4=81 \rightarrow 1, 3^5 \rightarrow 3, ...$ The cycle is (3, 9, 7, 1) and has a length of 4.<br>For $3^{43}$, we find the remainder of 43 divided by 4, which is $43 = 4 \times 10 + 3$. The units digit is the 3rd in the cycle, which is 7.<br>For $3^{33}$, we find the remainder of 33 divided by 4, which is $33 = 4 \times 8 + 1$. The units digit is the 1st in the cycle, which is 3.<br>The units digit of n is the units digit of the sum of the units digits of $(33)^{43}$ and $(43)^{33}$, which is the units digit of $7+3=10$. The units digit is 0.",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "If $d = \\frac{1}{2^3 \\cdot 5^7}$ is expressed as a terminating decimal, how many nonzero digits will d have?",
+    "options": [
+      "One",
+      "Two",
+      "Three",
+      "Seven",
+      "Ten"
+    ],
+    "correctAnswer": "B",
+    "answerExplanation": "It will be helpful to use the fact that a factor that is an integer power of 10 has no effect on the number of nonzero digits a terminating decimal has. $d = \\frac{1}{2^3 \\cdot 5^7} = \\frac{1}{2^3 \\cdot 5^3 \\cdot 5^4} = \\frac{1}{(2 \\cdot 5)^3 \\cdot 5^4} = \\frac{1}{10^3 \\cdot 625} = \\frac{1}{625} \\times 10^{-3}$. The nonzero digits of d will be the nonzero digits of the decimal expansion of $\\frac{1}{625}$. Since $\\frac{1}{625} = \\frac{16}{10000} = 0.0016$, the decimal expansion of $\\frac{1}{625}$ has two nonzero digits, 1 and 6.",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "November 16, 2001, was a Friday. If each of the years 2004, 2008, and 2012 had 366 days, and the remaining years from 2001 through 2014 had 365 days, what day of the week was November 16, 2014?",
+    "options": [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday"
+    ],
+    "correctAnswer": "A",
+    "answerExplanation": "The time period is from November 16, 2001, to November 16, 2014, which is exactly 13 years. The leap years in this period are 2004, 2008, and 2012 (3 leap years). The other $13-3=10$ years are normal years. Total number of days = $(3 \\times 366) + (10 \\times 365) = 1098 + 3650 = 4748$ days. To find the day of the week, we find the remainder when 4748 is divided by 7. $4748 \\div 7 = 678$ with a remainder of 2. ($4748 = 7 \\times 678 + 2$). So, the day will be Friday + 2 days, which is Sunday.",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "How many prime numbers between 1 and 100 are factors of 7,150?",
+    "options": [
+      "One",
+      "Two",
+      "Three",
+      "Four",
+      "Five"
+    ],
+    "correctAnswer": "D",
+    "answerExplanation": "To find the number of prime numbers between 1 and 100 that are factors of 7,150, find the prime factorization of 7,150:<br>$7,150 = 10 \\times 715 = (2 \\times 5) \\times (5 \\times 143) = 2 \\times 5^2 \\times (11 \\times 13)$<br>Thus, 7,150 has four prime factors: 2, 5, 11, and 13. All of these are between 1 and 100.",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "From the consecutive integers –10 to 10, inclusive, 20 integers are randomly chosen with repetitions allowed. What is the least possible value of the product of the 20 integers?",
+    "options": [
+      "$(-10)^{20}$",
+      "$(-10)^{10}$",
+      "0",
+      "$-10^{10}$",
+      "$-10^{20}$"
+    ],
+    "correctAnswer": "E",
+    "answerExplanation": "To get the least possible value (i.e., the most negative number), the product must be negative. This requires an odd number of negative factors. To maximize the magnitude of the negative product, we should use the integers with the largest absolute value, which are -10 and 10. Let's choose -10 an odd number of times and 10 the remaining times. For example, if we choose -10 once and 10 nineteen times, the product is $(-10)^1 \\times (10)^{19} = -10^{20}$. If we choose -10 nineteen times and 10 once, the product is $(-10)^{19} \\times (10)^1 = -10^{20}$. The other negative choice is $-10^{10}$. Since $-10^{20}$ is less than $-10^{10}$, the least possible value is $-10^{20}$.",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "Which of the following fractions has a decimal equivalent that is a terminating decimal?",
+    "options": [
+      "$\\frac{10}{189}$",
+      "$\\frac{15}{196}$",
+      "$\\frac{16}{225}$",
+      "$\\frac{25}{144}$",
+      "$\\frac{39}{128}$"
+    ],
+    "correctAnswer": "E",
+    "answerExplanation": "A fraction has a terminating decimal equivalent if and only if the prime factorization of its denominator (in simplest form) contains only 2s and 5s.<br>A. Denominator 189 = $3^3 \\times 7$. Contains 3 and 7.<br>B. Denominator 196 = $2^2 \\times 7^2$. Contains 7.<br>C. Denominator 225 = $3^2 \\times 5^2$. Contains 3.<br>D. Denominator 144 = $2^4 \\times 3^2$. Contains 3.<br>E. Denominator 128 = $2^7$. Contains only 2.<br>Therefore, $\\frac{39}{128}$ is the only fraction that has a terminating decimal equivalent.",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "If x is the product of the integers from 1 to 150, inclusive, and $5^y$ is a factor of x, what is the greatest possible value of y?",
+    "options": [
+      "30",
+      "34",
+      "36",
+      "37",
+      "39"
+    ],
+    "correctAnswer": "D",
+    "answerExplanation": "The value of y is the number of times the prime factor 5 appears in the prime factorization of 150!. We can find this using Legendre's formula: $y = \\sum_{k=1}^{\\infty} \\lfloor \\frac{n}{p^k} \\rfloor$. Here, n=150 and p=5.<br>$y = \\lfloor \\frac{150}{5} \\rfloor + \\lfloor \\frac{150}{25} \\rfloor + \\lfloor \\frac{150}{125} \\rfloor$<br>$y = 30 + 6 + 1 = 37$<br>So, the greatest possible value of y is 37.",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "Three dice, each of which has its 6 sides numbered 1 through 6, are tossed. The sum of the 3 numbers that are facing up is 12. Is at least 1 of these numbers 5?<br>(1) None of the 3 numbers that are facing up is divisible by 3.<br>(2) Of the numbers that are facing up, 2, but not all 3, are equal.",
+    "options": [
+      "Statement (1) ALONE is sufficient, but statement (2) alone is not sufficient.",
+      "Statement (2) ALONE is sufficient, but statement (1) alone is not sufficient.",
+      "BOTH statements TOGETHER are sufficient, but NEITHER statement ALONE is sufficient.",
+      "EACH statement ALONE is sufficient.",
+      "Statements (1) and (2) TOGETHER are NOT sufficient."
+    ],
+    "correctAnswer": "C",
+    "answerExplanation": "The possible combinations of three dice that sum to 12 are: {1, 5, 6}, {2, 4, 6}, {2, 5, 5}, {3, 3, 6}, {3, 4, 5}, and {4, 4, 4}. The question is whether at least one die is a 5.<br><b>Statement (1):</b> None of the numbers is divisible by 3. This eliminates {1, 5, 6}, {2, 4, 6}, {3, 3, 6}, and {3, 4, 5}. The remaining possibilities are {2, 5, 5} (which has a 5) and {4, 4, 4} (which does not). Since we can't be certain, statement (1) is NOT sufficient.<br><b>Statement (2):</b> Exactly two of the numbers are equal. This eliminates {1, 5, 6}, {2, 4, 6}, {3, 4, 5}, and {4, 4, 4}. The remaining possibilities are {2, 5, 5} (which has a 5) and {3, 3, 6} (which does not). Since we can't be certain, statement (2) is NOT sufficient.<br><b>Statements (1) and (2) Together:</b> From (1), we are left with {2, 5, 5} and {4, 4, 4}. From (2), we know exactly two numbers are equal. This eliminates {4, 4, 4}. The only remaining possibility is {2, 5, 5}, which contains a 5. Therefore, we can definitively say yes. BOTH statements together are sufficient.",
+    "difficulty": "medium",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "A school administrator will assign each student in a group of n students to one of m classrooms. If $3 < m < 13 < n,$ is it possible to assign each of the n students to one of the m classrooms so that each classroom has the same number of students assigned to it?<br>(1) It is possible to assign each of 3n students to one of m classrooms so that each classroom has the same number of students assigned to it.<br>(2) It is possible to assign each of 13n students to one of m classrooms so that each classroom has the same number of students assigned to it.",
+    "options": [
+      "Statement (1) ALONE is sufficient, but statement (2) alone is not sufficient.",
+      "Statement (2) ALONE is sufficient, but statement (1) alone is not sufficient.",
+      "BOTH statements TOGETHER are sufficient, but NEITHER statement ALONE is sufficient.",
+      "EACH statement ALONE is sufficient.",
+      "Statements (1) and (2) TOGETHER are NOT sufficient."
+    ],
+    "correctAnswer": "B",
+    "answerExplanation": "The question asks if n is divisible by m.<br><b>Statement (1):</b> It is possible to assign 3n students to m classrooms equally. This means 3n is divisible by m. However, this does not guarantee that n is divisible by m. For example, if m=9 and n=15, then $3<9<13<15$ is true. 3n=45, which is divisible by m=9. But n=15 is not divisible by m=9. Now consider m=10 and n=20. $3<10<13<20$. 3n=60, which is divisible by m=10. And n=20 is divisible by m=10. Since we have a 'yes' and a 'no' case, statement (1) is NOT sufficient.<br><b>Statement (2):</b> It is possible to assign 13n students to m classrooms equally. This means 13n is divisible by m. We are given that $3 < m < 13$. Since 13 is a prime number and m is an integer less than 13, m cannot have 13 as a factor. Therefore, m and 13 are coprime. If m divides 13n and m and 13 are coprime, then m must divide n. This is always true. Thus, it is possible to assign the students equally. Statement (2) is SUFFICIENT.",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  }
+]

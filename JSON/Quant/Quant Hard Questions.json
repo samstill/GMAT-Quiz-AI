@@ -1,0 +1,170 @@
+[
+  {
+    "questionText": "The cost to rent a small bus for a trip is x dollars, which is to be shared equally among the people taking the trip. If 10 people take the trip rather than 16, how many more dollars, in terms of x, will it cost per person?",
+    "options": ["$\\frac{x}{160}$", "$\\frac{x}{80}$", "$\\frac{x}{26}$", "$\\frac{3x}{80}$", "$\\frac{3x}{16}$"],
+    "correctAnswer": "E",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "Clarissa will create her summer reading list by randomly choosing 4 books from the 10 books approved for summer reading. She will list the books in the order in which they are chosen. How many different lists are possible?",
+    "options": ["6", "40", "210", "5,040", "151,200"],
+    "correctAnswer": "D",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "If n is a positive integer and the product of all the integers from 1 to n, inclusive, is divisible by 990, what is the least possible value of n?",
+    "options": ["8", "9", "10", "11", "12"],
+    "correctAnswer": "D",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "The probability that event M will NOT occur is 0.8 and the probability that event R will NOT occur is 0.6. If events M and R CANNOT both occur, which of the following is the probability that either event M or event R will occur?",
+    "options": ["$\\frac{1}{5}$", "$\\frac{2}{5}$", "$\\frac{3}{5}$", "$\\frac{4}{5}$", "$1$"],
+    "correctAnswer": "C",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "The total cost for Company X to produce a batch of tools is $10,000 plus $3 per tool. Each tool sells for $8. The gross profit earned from producing and selling these tools is the total income from sales minus the total production cost. If a batch of 20,000 tools is produced and sold, then Company X’s gross profit per tool is",
+    "options": ["$3.00", "$3.75", "$4.50", "$5.00", "$5.50"],
+    "correctAnswer": "C",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "If Q is an odd number and the median of Q consecutive integers is 120, what is the largest of these integers?",
+    "options": ["$\\frac{Q-1}{2} + 120$", "$\\frac{Q+1}{2} + 119$", "$\\frac{Q}{2} + 120$", "$Q + \\frac{119}{2}$", "$Q + 119$"],
+    "correctAnswer": "A",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "If there are fewer than 8 zeros between the decimal point and the first nonzero digit in the decimal expansion of $(\\frac{t}{1000})^4$, which of the following numbers could be the value of t?\nI. 3\nII. 5\nIII. 9",
+    "options": ["None", "I only", "II only", "III only", "II and III"],
+    "correctAnswer": "A",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "A three-digit code for certain locks uses the digits 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 according to the following constraints. The first digit cannot be 0 or 1, the second digit must be 0 or 1, and the second and third digits cannot both be 0 in the same code. How many different codes are possible?",
+    "options": ["144", "152", "160", "168", "176"],
+    "correctAnswer": "B",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "Jackie has two solutions that are 2 percent sulfuric acid and 12 percent sulfuric acid by volume, respectively. If these solutions are mixed in appropriate quantities to produce 60 liters of a solution that is 5 percent sulfuric acid, approximately how many liters of the 2 percent solution will be required?",
+    "options": ["18", "20", "24", "36", "42"],
+    "correctAnswer": "E",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "If Jake loses 8 pounds, he will weigh twice as much as his sister. Together they now weigh 278 pounds. What is Jake’s present weight, in pounds?",
+    "options": ["131", "135", "139", "147", "188"],
+    "correctAnswer": "E",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "For each student in a certain class, a teacher adjusted the student’s test score using the formula $y = 0.8x + 20$, where x is the student’s original test score and y is the student’s adjusted test score. If the standard deviation of the original test scores of the students in the class was 20, what was the standard deviation of the adjusted test scores of the students in the class?",
+    "options": ["12", "16", "28", "36", "40"],
+    "correctAnswer": "B",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "Last year 26 members of a certain club traveled to England, 26 members traveled to France, and 32 members traveled to Italy. Last year no members of the club traveled to both England and France, 6 members traveled to both England and Italy, and 11 members traveled to both France and Italy. How many members of the club traveled to at least one of these three countries last year?",
+    "options": ["52", "67", "71", "73", "79"],
+    "correctAnswer": "B",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "A store reported total sales of $385 million for February of this year. If the total sales for the same month last year was $320 million, approximately what was the percent increase in sales?",
+    "options": ["2%", "17%", "20%", "65%", "83%"],
+    "correctAnswer": "C",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "When positive integer x is divided by positive integer y, the remainder is 9. If $\\frac{x}{y} = 96.12$, what is the value of y?",
+    "options": ["96", "75", "48", "25", "12"],
+    "correctAnswer": "B",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "If $x(2x + 1) = 0$ and $(x - \\frac{1}{2})(2x - 3) = 0$, then $x =$",
+    "options": ["$-\\frac{1}{2}$", "0", "$\\frac{1}{2}$", "$\\frac{3}{2}$", "$-\\frac{1}{2}$ or $\\frac{3}{2}$"],
+    "correctAnswer": "B",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "A certain experimental mathematics program was tried out in 2 classes in each of 32 elementary schools and involved 37 teachers. Each of the classes had 1 teacher and each of the teachers taught at least 1, but not more than 3, of the classes. If the number of teachers who taught 3 classes is n, then the least and greatest possible values of n, respectively, are",
+    "options": ["0 and 13", "0 and 14", "1 and 10", "1 and 9", "2 and 8"],
+    "correctAnswer": "A",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "For the positive numbers, n, n + 1, n + 2, n + 4, and n + 8, the mean is how much greater than the median?",
+    "options": ["0", "1", "n + 1", "n + 2", "n + 3"],
+    "correctAnswer": "B",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "The present ratio of students to teachers at a certain school is 30 to 1. If the student enrollment were to increase by 50 students and the number of teachers were to increase by 5, the ratio of students to teachers would then be 25 to 1. What is the present number of teachers?",
+    "options": ["5", "8", "10", "12", "15"],
+    "correctAnswer": "E",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "What is the smallest integer n for which $25^n > 5^{12}$?",
+    "options": ["6", "7", "8", "9", "10"],
+    "correctAnswer": "B",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "Sixty percent of the members of a study group are women, and 45 percent of those women are lawyers. If one member of the study group is to be selected at random, what is the probability that the member selected is a woman lawyer?",
+    "options": ["0.10", "0.15", "0.27", "0.33", "0.45"],
+    "correctAnswer": "C",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "Each year for 4 years, a farmer increased the number of trees in a certain orchard by $\\frac{1}{4}$ of the number of trees in the orchard the preceding year. If all of the trees thrived and there were 6,250 trees in the orchard at the end of the 4-year period, how many trees were in the orchard at the beginning of the 4-year period?",
+    "options": ["1,250", "1,563", "2,250", "2,560", "2,752"],
+    "correctAnswer": "D",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  }
+]

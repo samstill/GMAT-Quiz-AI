@@ -1,0 +1,242 @@
+[
+  {
+    "questionText": "Two water pumps, working simultaneously at their respective constant rates, took exactly 4 hours to fill a certain swimming pool. If the constant rate of one pump was 1.5 times the constant rate of the other, how many hours would it have taken the faster pump to fill the pool if it had worked alone at its constant rate?",
+    "options": [
+      "5",
+      "$\\frac{16}{3}$",
+      "$\\frac{11}{2}$",
+      "6",
+      "$\\frac{20}{3}$"
+    ],
+    "correctAnswer": "E",
+    "answerExplanation": "Let t be the number of hours it would take the slower pump to fill the pool working alone. Since the faster pump works $1.5 = \\frac{3}{2}$ times faster than the slower pump, the faster pump will take $\\frac{1}{1.5}t = \\frac{2}{3}t$ hours to fill the pool working alone. It follows that $\\frac{1}{t} + \\frac{1}{\\frac{2}{3}t} = \\frac{1}{4}$ or $(1 + \\frac{3}{2})(\\frac{1}{t}) = \\frac{1}{4}$. Solving, we get $\\frac{1}{t} = \\frac{1}{4} \\div \\frac{5}{2} = \\frac{1}{10}$, and hence t = 10. Therefore, the faster pump would have taken $\\frac{2}{3}t = \\frac{2}{3} \\times 10 = \\frac{20}{3}$ hours to fill the pool if it had worked alone.<br><br>Alternatively, let r and $1.5r = \\frac{3}{2}r$ be the rates, respectively, at which the slower and faster pumps work. Working together, the pumps work at a combined rate of $r + \\frac{3}{2}r = \\frac{5}{2}r$ and can fill 1 pool in 4 hours. Therefore, when working alone, the faster pump, which works at a rate that is $\\frac{3}{5}$ times as fast as their combined rate (because $\\frac{\\frac{3}{2}r}{\\frac{5}{2}r} = \\frac{3}{5}$), will take $\\frac{1}{\\frac{3}{5}} = \\frac{5}{3}$ times as long as than when they are working together, or $\\frac{5}{3} \\times 4 = \\frac{20}{3}$ hours to fill the pool.",
+    "difficulty": "medium",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "If $0 < x < 1$, what is the median of the values x, $x^{-1}$, $x^{2}$, $\\sqrt{x}$, and $x^{3}$?",
+    "options": [
+      "x",
+      "$x^{-1}$",
+      "$x^{2}$",
+      "$\\sqrt{x}$",
+      "$x^{3}$"
+    ],
+    "correctAnswer": "A",
+    "answerExplanation": "Since we can assume the correct answer choice does not depend on the value of x between 0 and 1 that is used, choose a value of x between 0 and 1 for which all of these expressions can be easily evaluated, such as $x=\\frac{1}{4}$.<br>x: $\\frac{1}{4}$<br>$x^{-1}$: 4<br>$x^{2}$: $\\frac{1}{16}$<br>$\\sqrt{x}$: $\\frac{1}{2}$<br>$x^{3}$: $\\frac{1}{64}$<br>When these values are arranged in ascending order, $\\frac{1}{64}$, $\\frac{1}{16}$, $\\frac{1}{4}$, $\\frac{1}{2}$, 4, the median of the values will be the middle value, which is $x=\\frac{1}{4}$.",
+    "difficulty": "medium",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "The charge for a single room at Hotel P is 25 percent less than the charge for a single room at Hotel R and 10 percent less than the charge for a single room at Hotel G. The charge for a single room at Hotel R is what percent greater than the charge for a single room at Hotel G?",
+    "options": [
+      "15%",
+      "20%",
+      "40%",
+      "50%",
+      "150%"
+    ],
+    "correctAnswer": "B",
+    "answerExplanation": "Let p, r, and g be the charges, respectively, for a single room at Hotels P, R, and G. We are given $p=0.75r$ and $p=0.9g$, and we want to find the percent that r is greater than g. Since each of 0.75r and 0.9g is equal to p, we have $0.75r=0.9g$. It follows that $r=\\frac{0.9g}{0.75}=1.2g$, and therefore r is 20% greater than g.",
+    "difficulty": "medium",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "7.51 8.22 7.86 8.36<br>8.09 7.83 8.30 8.01<br>7.73 8.25 7.96 8.53<br><br>A vending machine is designed to dispense 8 ounces of coffee into a cup. After a test that recorded the number of ounces of coffee in each of 1,000 cups dispensed by the vending machine, the 12 listed amounts, in ounces, were selected from the data. If the 1,000 recorded amounts have a mean of 8.1 ounces and a standard deviation of 0.3 ounce, how many of the 12 listed amounts are within 1.5 standard deviations of the mean?",
+    "options": [
+      "Four",
+      "Six",
+      "Nine",
+      "Ten",
+      "Eleven"
+    ],
+    "correctAnswer": "E",
+    "answerExplanation": "Since 1.5 standard deviations is equal to $(1.5)(0.3)=0.45$, it follows that a recorded number of ounces of coffee is within 1.5 standard deviations of the mean if that number of ounces is within 0.45 of 8.1, or between $8.1-0.45=7.65$ and $8.1+0.45=8.55$. Since 7.51 is the only one of the 12 listed amounts that is not between 7.65 and 8.55, there are $12-1=11$ listed amounts that are between 7.65 and 8.55.",
+    "difficulty": "medium",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "The age of the Earth is approximately $1.3 \\times 10^{17}$ seconds, and one year is approximately $3.2 \\times 10^{7}$ seconds. Which of the following is closest to the age of the Earth in years?",
+    "options": [
+      "$2.5 \\times 10^{9}$",
+      "$4.1 \\times 10^{9}$",
+      "$1.9 \\times 10^{10}$",
+      "$2.5 \\times 10^{11}$",
+      "$4.1 \\times 10^{11}$"
+    ],
+    "correctAnswer": "B",
+    "answerExplanation": "Using these approximations, the number of years represented by $1.3 \\times 10^{17}$ seconds is the number of $(3.2 \\times 10^{7})$-second intervals of time represented by $1.3 \\times 10^{17}$ seconds, or $1.3 \\times 10^{17}$ divided by $3.2 \\times 10^{7}$.<br>$\\frac{1.3 \\times 10^{17}}{3.2 \\times 10^{7}} = \\frac{1.3}{3.2} \\times \\frac{10^{17}}{10^{7}}$<br>$= \\frac{1.3}{3.2} \\times 10^{17-7}$<br>$\\approx 0.41 \\times 10^{10}$<br>$= 4.1 \\times 10^{9}$",
+    "difficulty": "medium",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "If the median of a list of numbers is m, the first quartile of the list is the median of the numbers in the list that are less than m. What is the first quartile of the list of numbers 42, 24, 30, 22, 26, 19, 33, and 35?",
+    "options": [
+      "33",
+      "28",
+      "27",
+      "24",
+      "23"
+    ],
+    "correctAnswer": "E",
+    "answerExplanation": "The given list has 8 numbers, and 8 is even. Therefore, the median is the average of the two middle numbers when the given list is arranged in increasing numerical order. Below is the given list, arranged in increasing numerical order.<br>19 22 24 26 30 33 35 42<br>Thus, the median of the given list is $\\frac{26+30}{2}=28$. The first quartile of the given list is the median of the numbers in the given list that are less than 28. Below is the list of numbers in the given list that are less than 28, arranged in increasing numerical order.<br>19 22 24 26<br>Thus, the median of this list is $\\frac{22+24}{2}=23$. and therefore the first quartile of the given list is 23.",
+    "difficulty": "medium",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "If the speed of x meters per second is equivalent to the speed of y kilometers per hour, what is y in terms of x? (1 kilometer = 1,000 meters)",
+    "options": [
+      "$\\frac{5x}{18}$",
+      "$\\frac{6x}{5}$",
+      "$\\frac{18x}{5}$",
+      "60x",
+      "3,600,000x"
+    ],
+    "correctAnswer": "C",
+    "answerExplanation": "We are given that y kilometers per hour is the same speed as x meters per second. By converting from meters to kilometers using $1 km = 1,000$ m and seconds to hours using $1 hr = 3,600$ sec, we can obtain y in terms of x.<br>$y\\frac{km}{hr} = x\\frac{m}{sec}$<br>$y\\frac{km}{hr} = x\\frac{m}{sec} \\times \\frac{1 km}{1,000 m} \\times \\frac{3,600 sec}{1 hr}$<br>$y\\frac{km}{hr} = (\\frac{3,600}{1,000})x\\frac{km}{hr}$<br>$y\\frac{km}{hr} = \\frac{18x}{5}\\frac{km}{hr}$<br>From the last equality above it follows that $y=\\frac{18x}{5}$.",
+    "difficulty": "medium",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "The function f is defined by $f(x)=-\\frac{1}{x}$ for all nonzero numbers x. If $f(a)=-\\frac{1}{2}$ and $f(ab)=\\frac{1}{6}$, then $b=$",
+    "options": [
+      "3",
+      "$\\frac{1}{3}$",
+      "$-\\frac{1}{3}$",
+      "-3",
+      "-12"
+    ],
+    "correctAnswer": "D",
+    "answerExplanation": "From $f(x)=-\\frac{1}{x}$ and $f(a)=-\\frac{1}{2}$ we have $-\\frac{1}{a}=-\\frac{1}{2}$, or $a=2$. From $f(x)=-\\frac{1}{x}$ and $f(ab)=\\frac{1}{6}$ we have $-\\frac{1}{ab}=\\frac{1}{6}$, or $ab=-6$. Since $a=2$, it follows from $ab=-6$ that $2b=-6$ or $b=-3$.",
+    "difficulty": "medium",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "If $5^{x}-5^{x-3}=(124)(5^{y})$, what is y in terms of x?",
+    "options": [
+      "x",
+      "$x-6$",
+      "$x-3$",
+      "$2x + 3$",
+      "$2x + 6$"
+    ],
+    "correctAnswer": "C",
+    "answerExplanation": "A strategy that is useful in rewriting sums and/or differences of exponential terms having the same base is to use the term with the least exponent as a common factor. For example, in $5^{x}-5^{x-3}$ factor out $5^{x-3}$ since $x-3$ is less than x. This gives $5^{x}-5^{x-3}=5^{x-3}(5^{3}-1)$. Therefore, the given equation is equivalent to $5^{x-3}(5^{3}-1)=(124)(5^{y})$, or $5^{x-3}(124)=(124)(5^{y})$. Dividing both sides of the last equation by 124 gives $5^{x-3}=5^{y}$ and hence $y=x-3$.",
+    "difficulty": "medium",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "Working alone at its constant rate, Machine K took 3 hours to produce $\\frac{1}{4}$ of the units produced last Friday. Then Machine M started working and the two machines, working simultaneously at their respective constant rates, took 6 hours to produce the rest of the units produced last Friday. How many hours would it have taken Machine M, working alone at its constant rate, to produce all of the units produced last Friday?",
+    "options": [
+      "8",
+      "12",
+      "16",
+      "24",
+      "30"
+    ],
+    "correctAnswer": "D",
+    "answerExplanation": "Let n be the number of units produced last Friday and let t be the number of hours it would have taken Machine M, working alone, to produce n units. Then Machine M can produce $\\frac{n}{t}$ units each hour, and hence Machine M can produce $6(\\frac{n}{t})=\\frac{6n}{t}$ units in 6 hours. Moreover, Machine K can produce $\\frac{1}{4}n$ units in 3 hours, and hence Machine K can produce $2(\\frac{1}{4}n)=\\frac{n}{2}$ units in 6 hours. We are told that working together they produced $n-\\frac{1}{4}n=\\frac{3n}{4}$ units in 6 hours, and thus we have $\\frac{6n}{t}+\\frac{n}{2}=\\frac{3n}{4}$.<br>$\\frac{6n}{t}+\\frac{n}{2}=\\frac{3n}{4}$ from above<br>$\\frac{6}{t}+\\frac{1}{2}=\\frac{3}{4}$ divide both sides by n<br>$\\frac{6}{t}=\\frac{1}{4}$ subtract $\\frac{1}{2}$ from both sides<br>$t=24$ cross multiply<br>Therefore, working alone Machine M would take 24 hours to produce all n units.",
+    "difficulty": "medium",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "If $\\frac{x}{|y|}=-1$, which of the following must be true?",
+    "options": [
+      "$x=-y$",
+      "$x=y$",
+      "$x=y^{2}$",
+      "$x^{2}=y^{2}$",
+      "$x^{3}=y^{3}$"
+    ],
+    "correctAnswer": "D",
+    "answerExplanation": "When y ≠ 0, the given equation is equivalent to x = (−1)|y|. Since |y| is equal to y or −y, depending on whether y > 0 or y < 0, and $y^2 = (−y)^2$, it follows that $|y|^2 = y^2$. Therefore, squaring both sides of x = (−1)|y| gives $x^2 = (−1)^2|y|^2 = y^2$. <br><br>Alternatively, if x = −1, then for both y = 1 and y = −1 we have $\\frac{-1}{|y|} = -1$. The table shows that among the answer choices, only $x^2 = y^2$ is true for both of these choices of x and y.<br><table border='1' style='width:100%; text-align:center;'><tr><td></td><td>x = −y</td><td>x = y</td><td>$x = y^2$</td><td>$x^2 = y^2$</td><td>$x^3 = y^3$</td></tr><tr><td>x = −1 and y = 1</td><td>true</td><td>false</td><td>false</td><td>true</td><td>false</td></tr><tr><td>x = −1 and y = −1</td><td>false</td><td>true</td><td>false</td><td>true</td><td>true</td></tr></table>",
+    "difficulty": "medium",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "<table border='1' style='width:auto; text-align:center; margin:auto;'><tr><td style='padding:5px'>A</td><td style='padding:5px'>1</td><td style='padding:5px'>2</td></tr><tr><td style='padding:5px'>B</td><td style='padding:5px'>$\\sqrt{6}$</td><td style='padding:5px'>C</td></tr><tr><td style='padding:5px'>6</td><td style='padding:5px'>D</td><td style='padding:5px'>$\\sqrt{3}$</td></tr></table><br>The table above is a 3 by 3 grid of 9 numbers, 5 of which are given. The 4 numbers that are not given are denoted by A, B, C, and D. The product of the numbers in each row and in each column is the same for all rows and columns. What is the value of the product ABCD?",
+    "options": [
+      "36",
+      "72",
+      "$144\\sqrt{2}$",
+      "$288\\sqrt{2}$",
+      "5,184"
+    ],
+    "correctAnswer": "A",
+    "answerExplanation": "For each of the 3 rows and 3 columns, let x be the common product of the numbers in that row or column. The table below shows the products associated with the 3 rows and 3 columns. For example, the product of the numbers in the right-most column is $2 \\cdot C \\cdot \\sqrt{3}$, and so we have $2C\\sqrt{3} = x$.<br><br><b>Row Products:</b><br>$2A = x$<br>$BC \\sqrt{6} = x$<br>$6D \\sqrt{3} = x$<br><br><b>Column Products:</b><br>$6AB = x$<br>$D\\sqrt{6} = x$<br>$2C\\sqrt{3} = x$<br><br>Multiplying together the 3 left-hand sides and the 3 right-hand sides of the 3 column product equations gives $(6AB)(D\\sqrt{6})(2C\\sqrt{3}) = x^3$, or $12\\sqrt{18} ABCD = x^3$. Since $x = D\\sqrt{6}$ (the middle column product), it follows that $x^3 = (D\\sqrt{6})^3 = 6\\sqrt{6}D^3$. Therefore, $12\\sqrt{18} ABCD = 6\\sqrt{6}D^3$.<br><br>Alternatively, begin with $x^2 = (2A)(BC\\sqrt{6})$ instead of $x^3 = (6AB)(D\\sqrt{6})(2C\\sqrt{3})$. Now divide both sides by x and use $x = D\\sqrt{6}$ to get $x = \\frac{2ABC\\sqrt{6}}{D\\sqrt{6}} = \\frac{2ABC}{D}$, or $ABCD = 36$.",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "The cost to rent a small bus for a trip is x dollars, which is to be shared equally among the people taking the trip. If 10 people take the trip rather than 16, how many more dollars, in terms of x, will it cost per person?",
+    "options": [
+      "$\\frac{x}{6}$",
+      "$\\frac{x}{16}$",
+      "$\\frac{3x}{40}$",
+      "$\\frac{3x}{80}$",
+      "$\\frac{3x}{160}$"
+    ],
+    "correctAnswer": "D",
+    "answerExplanation": "If 16 people take the trip, the cost per person would be $\\frac{x}{16}$ dollars. If 10 people take the trip, the cost would be $\\frac{x}{10}$ dollars. (Note that the lowest common multiple of 10 and 16 is 80.) Thus, if 10 people take the trip, the increase in dollars per person would be $\\frac{x}{10} - \\frac{x}{16} = \\frac{8x-5x}{80} = \\frac{3x}{80}$.",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "Clarissa will create her summer reading list by randomly choosing 4 books from the 10 books approved for summer reading. She will list the books in the order in which they are chosen. How many different lists are possible?",
+    "options": [
+      "6",
+      "40",
+      "210",
+      "5,040",
+      "151,200"
+    ],
+    "correctAnswer": "D",
+    "answerExplanation": "Any of the 10 books can be listed first. Any of the 9 books remaining after the first book is listed can be listed second. Any of the 8 books remaining after the first and second books are listed can be listed third. Any of the 7 books remaining after the first, second, and third books are listed can be listed fourth. By the multiplication principle, there are (10)(9)(8)(7) = 5,040 different lists possible.",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "If n is a positive integer and the product of all the integers from 1 to n, inclusive, is divisible by 990, what is the least possible value of n?",
+    "options": [
+      "8",
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "correctAnswer": "D",
+    "answerExplanation": "For convenience, let N represent the product of all integers from 1 through n. Then, since N is divisible by 990, every prime factor of 990 must also be a factor of N. The prime factorization of 990 is $2 \\times 3^2 \\times 5 \\times 11$, and therefore, 11 must be a factor of N. Then the least possible value of N with factors of 2, 5, $3^2$, and 11 is $1 \\times 2 \\times 3 \\times ... \\times 11$, and the least possible value of n is 11.",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "The probability that event M will NOT occur is 0.8 and the probability that event R will NOT occur is 0.6. If events M and R CANNOT both occur, which of the following is the probability that either event M or event R will occur?",
+    "options": [
+      "$\\frac{1}{5}$",
+      "$\\frac{2}{5}$",
+      "$\\frac{3}{5}$",
+      "$\\frac{4}{5}$",
+      "$\\frac{6}{5}$"
+    ],
+    "correctAnswer": "C",
+    "answerExplanation": "Let P(M) be the probability that event M will occur, let P(R) be the probability that event R will occur, and let P(M and R) be the probability that events M and R both occur. Then the probability that either event M or event R will occur is P(M) + P(R) – P(M and R). From the given information, it follows that P(M) = 1.0 – 0.8 = 0.2, P(R) = 1.0 – 0.6 = 0.4, and P(M and R) = 0. Therefore, the probability that either event M or event R will occur is $0.2 + 0.4 – 0 = 0.6 = \\frac{3}{5}$.",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  }
+]

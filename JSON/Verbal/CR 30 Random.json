@@ -1,0 +1,422 @@
+[
+  {
+    "questionText": "PhishCo runs a number of farms in the arid province of Nufa, depending largely on irrigation. Now, as part of a plan to efficiently increase the farms’ total production, it plans to drill down to an aquifer containing warm, slightly salty water that will be used to raise fish in ponds. The water from the ponds will later be used to supplement piped-in irrigation water for PhishCo’s vegetable fields, and the ponds and accompanying vegetation should help reduce the heat in the area of the farms.<br><b> Which of the following would, if true, most strongly suggest that the plan, if implemented, would increase the overall efficiency of PhishCo’s farms?</b></br>",
+    "options": [
+      "Most of the vegetation to be placed around the ponds is native to Nufa.",
+      "Fish raised on PhishCo’s farms are likely to be saleable in the nearest urban areas.",
+      "Organic waste from fish in the pond water will help to fertilize fields where it is used for irrigation.",
+      "The government of Nufa will help to arrange loan financing to partially cover the costs of drilling.",
+      "Ponds will be located on low-lying land now partially occupied by grain crops."
+    ],
+    "correctAnswer": "C",
+    "difficulty": "easy",
+    "question_type": "Verbal",
+    "subsection": "CR"
+  },
+  {
+    "questionText": "Manufacturers are now required to make all cigarette lighters child-resistant by equipping them with safety levers. But this change is unlikely to result in a significant reduction in the number of fires caused by children playing with lighters, because children given the opportunity can figure out how to work the safety levers and __________.<br><b> Which of the following, if true, most logically completes the argument below?</b></br>",
+    "options": [
+      "the addition of the safety levers has made lighters more expensive than they were before the requirement was instituted",
+      "adults are more likely to leave child-resistant lighters than non-child-resistant lighters in places that are accessible to children",
+      "many of the fires started by young children are quickly detected and extinguished by their parents",
+      "unlike child-resistant lighters, lighters that are not child-resistant can be operated by children as young as two years old",
+      "approximately 5,000 fires per year have been attributed to children playing with lighters before the safety levers were required"
+    ],
+    "correctAnswer": "B",
+    "difficulty": "easy",
+    "question_type": "Verbal",
+    "subsection": "CR"
+  },
+  {
+    "questionText": "Sparrow Airlines is planning to reduce its costs by cleaning its planes’ engines once a month, rather than the industry standard of every six months. With cleaner engines, Sparrow can postpone engine overhauls, which take planes out of service for up to 18 months. Furthermore, cleaning an engine reduces its fuel consumption by roughly 1.2 percent.<br><b> The airline’s plan assumes that</b></br>",
+    "options": [
+      "fuel prices are likely to rise in the near future and therefore cutting fuel consumption is an important goal",
+      "the cost of monthly cleaning of an airplane’s engines is not significantly greater in the long run than is the cost of an engine overhaul",
+      "engine cleaning does not remove an airplane from service",
+      "Sparrow Airlines has had greater problems with engine overhauls and fuel consumption than other airlines have",
+      "cleaning engines once a month will give Sparrow Airlines a competitive advantage over other airlines"
+    ],
+    "correctAnswer": "B",
+    "difficulty": "easy",
+    "question_type": "Verbal",
+    "subsection": "CR"
+  },
+  {
+    "questionText": "Ythex has developed a small diesel engine that produces 30 percent less particulate pollution than the engine made by its main rival, Onez, now widely used in Marania; Ythex’s engine is well-suited for use in the thriving warehousing businesses in Marania, though it costs more than the Onez engine. The Maranian government plans to ban within the next two years the use of diesel engines with more than 80 percent of current diesel engine particulate emissions in Marania, and Onez will probably not be able to retool its engine to reduce emissions to reach this target. So if the ban is passed, the Ythex engine ought to sell well in Marania after that time.<br><b> Which of the following is an assumption on which the argument above depends?</b></br>",
+    "options": [
+      "Marania’s warehousing and transshipment business buys more diesel engines of any size than other types of engines.",
+      "Ythex is likely to be able to reduce the cost of its small diesel engine within the next two years.",
+      "The Maranian government is generally favorable to anti-pollution regulations.",
+      "The government’s ban on high levels of pollution caused by diesel engines, if passed, will not be difficult to enforce.",
+      "The other manufacturers of small diesel engines in Marania, if there are any, have not produced an engine as popular and clean running as Ythex’s new engine."
+    ],
+    "correctAnswer": "E",
+    "difficulty": "easy",
+    "question_type": "Verbal",
+    "subsection": "CR"
+  },
+  {
+    "questionText": "Psychologists conducted an experiment in which half of the volunteers were asked to describe an unethical action they had performed, while the other half were asked to describe an ethical action they had performed. Some of the volunteers, chosen at random from each of the two groups, were encouraged to wash their hands afterward. Among those who described unethical actions, those who washed their hands were significantly less likely to volunteer for another, similar experiment than those who did not wash their hands. The researchers concluded that some of the subjects failed to volunteer again in part because of their having described an unethical action.\n<br><b> Which of the following would, if true, most help to support the researchers’ conclusion?</b></br>",
+    "options": [
+      "Among the volunteers who described ethical actions, those who washed their hands were significantly less likely to volunteer for another, similar experiment than those who did not wash their hands.",
+      "The average likelihood of volunteering for another, similar experiment was higher among those who described ethical actions than among those who described unethical actions.",
+      "Most of the volunteers who were encouraged to wash their hands did so.",
+      "The volunteers in the study were not more disposed to washing their hands under normal circumstances than the general population was.",
+      "Equal numbers of volunteers from both groups were encouraged to wash their hands."
+    ],
+    "correctAnswer": "B",
+    "difficulty": "easy",
+    "question_type": "Verbal",
+    "subsection": "CR"
+  },
+  {
+    "questionText": "Many leadership theories have provided evidence that leaders affect group success rather than the success of particular individuals. So it is irrelevant to analyze the effects of supervisor traits on the attitudes of individuals whom they supervise. Instead, assessment of leadership effectiveness should occur only at the group level.\n<br><b> Which of the following would it be most useful to establish in order to evaluate the argument?</b></br>",
+    "options": [
+      "Whether supervisors’ documentation of individual supervisees’ attitudes toward them is usually accurate",
+      "Whether it is possible to assess individual supervisees’ attitudes toward their supervisors without thereby changing those attitudes",
+      "Whether any of the leadership theories in question hold that leaders should assess other leaders’ attitudes",
+      "Whether some types of groups do not need supervision in order to be successful in their endeavors",
+      "Whether individuals’ attitudes toward supervisors affect group success"
+    ],
+    "correctAnswer": "E",
+    "difficulty": "easy",
+    "question_type": "Verbal",
+    "subsection": "CR"
+  },
+  {
+    "questionText": "Nutritionists are advising people to eat more fish, since the omega-3 fatty acids in fish help combat many diseases. If everyone took this advice, however, there would not be enough fish in oceans, rivers, and lakes to supply the demand; the oceans are already being overfished. The obvious method to ease the pressure on wild fish populations is for people to increase their consumption of farmed fish.\n<br><b> Which of the following, if true, raises the most serious doubt concerning the prospects for success of the solution proposed above?</b></br>",
+    "options": [
+      "Aquaculture, or fish farming, raises more fish in a given volume of water than are generally present in the wild.",
+      "Some fish farming, particularly of shrimp and other shellfish, takes place in enclosures in the ocean.",
+      "There are large expanses of ocean waters that do not contain enough nutrients to support substantial fish populations.",
+      "The feed for farmed ocean fish is largely made from small wild-caught fish, including the young of many popular food species.",
+      "Some of the species that are now farmed extensively were not commonly eaten when they were only available in the wild."
+    ],
+    "correctAnswer": "D",
+    "difficulty": "easy",
+    "question_type": "Verbal",
+    "subsection": "CR"
+  },
+  {
+    "questionText": "Many office buildings designed to prevent outside air from entering have been shown to have elevated levels of various toxic substances circulating through the air inside, a phenomenon known as sick building syndrome. Yet the air in other office buildings does not have elevated levels of these substances, even though those buildings are the same age as the “sick” buildings and have similar designs and ventilation systems.\n<br><b> Which of the following, if true, most helps to explain why not all office buildings designed to prevent outside air from entering have air that contains elevated levels of toxic substances?</b></br>",
+    "options": [
+      "Certain adhesives and drying agents used in particular types of furniture, carpets, and paint contribute the bulk of the toxic substances that circulate in the air of office buildings.",
+      "Most office buildings with sick building syndrome were built between 1950 and 1990.",
+      "Among buildings designed to prevent outside air from entering, houses are no less likely than office buildings to have air that contains elevated levels of toxic substances.",
+      "The toxic substances that are found in the air of “sick” office buildings are substances that are found in at least small quantities in nearly every building.",
+      "Office buildings with windows that can readily be opened are unlikely to suffer from sick building syndrome."
+    ],
+    "correctAnswer": "A",
+    "difficulty": "easy",
+    "question_type": "Verbal",
+    "subsection": "CR"
+  },
+  {
+    "questionText": "Although many customers do not make a sufficient effort to conserve water, water companies must also be held responsible for wasteful consumption. Their own policies, in fact, encourage excessive water use, and attempts at conservation will succeed only if the water companies change their practices.\n<br><b> Which of the following, if true, would most strongly support the view above?</b></br>",
+    "options": [
+      "Most water companies reduce the cost per unit of water as the amount of water used by a customer increases.",
+      "Most water companies keep detailed records of the quantity of water used by different customers.",
+      "Most water companies severely curtail the use of water during periods of drought.",
+      "Federal authorities limit the range of policies that can be enforced by the water companies.",
+      "The price per unit of water charged by the water companies has risen steadily in the last 10 years."
+    ],
+    "correctAnswer": "A",
+    "difficulty": "easy",
+    "question_type": "Verbal",
+    "subsection": "CR"
+  },
+  {
+    "questionText": "When ducklings are exposed to music, they gain about 6 percent more weight for a given amount of feed than ducklings that are not exposed to music.\n<br><b> Which of the following, if true, most helps to explain the extra weight gains referred to above?</b></br>",
+    "options": [
+      "Music played for ducklings must be kept at a low level because ducklings exposed to loud music gain less weight than ducklings exposed to no music.",
+      "Ducklings exposed to classical music gained more weight than ducklings exposed to popular music.",
+      "Ducklings are less active when they hear music, so that less of the food they eat is expended in movement and more contributes directly to the ducklings’ growth.",
+      "When ducklings gain 6 percent more weight on a given amount of grain, the farmers’ profits increase because they can spend less money on grain to feed the ducklings.",
+      "When female ducklings were exposed to music, the percentage of fertile eggs that they laid as adults increased by over 27 percent in comparison to ducklings not exposed to music."
+    ],
+    "correctAnswer": "C",
+    "difficulty": "easy",
+    "question_type": "Verbal",
+    "subsection": "CR"
+  },
+  {
+    "questionText": "Donations of imported food will be distributed to children in famine-stricken countries in the form of free school meals. The process is efficient because the children are easy to reach at the schools and cooking facilities are often available on site.\n<br><b> Which of the following, if true, casts the most serious doubt on the efficiency of the proposed process?</b></br>",
+    "options": [
+      "The emphasis on food will detract from the major function of the schools, which is to educate the children.",
+      "A massive influx of donated food will tend to lower the price of food in the areas near the schools.",
+      "Supplies of fuel needed for cooking at the schools arrive there only intermittently and in inadequate quantities.",
+      "The reduction in farm surpluses in donor countries benefits the donor countries to a greater extent than the recipient countries are benefited by the donations.",
+      "The donation of food tends to strengthen the standing of the political party that happens to be in power when the donation is made."
+    ],
+    "correctAnswer": "C",
+    "difficulty": "medium",
+    "question_type": "Verbal",
+    "subsection": "CR"
+  },
+  {
+    "questionText": "From enlargements that are commonly found on the ulna bones of the forearms of Ice Age human skeletons, anthropologists have drawn the conclusion that the Ice Age humans represented by those skeletons frequently hunted by throwing spears. The bone enlargements, the anthropologists believe, resulted from the stresses of habitual throwing.\n<br><b> Which of the following, if true, would be the LEAST appropriate to use as support for the conclusion drawn by the anthropologists?</b></br>",
+    "options": [
+      "Humans typically favor one arm over the other when throwing, and most Ice Age human skeletons have enlargements on the ulna bone of only one arm.",
+      "Such enlargements on the ulna bone do not appear on skeletons from other human cultures of the same time period whose diets are believed to have been mainly vegetarian.",
+      "Cave paintings dating from approximately the same time period and located not far from where the skeletons were found show hunters carrying and throwing spears.",
+      "Damaged bones in the skeletons show evidence of diseases that are believed to have afflicted most people living during the Ice Age.",
+      "Twentieth-century athletes who use a throwing motion similar to that of a hunter throwing a spear often develop enlargements on the ulna bone similar to those detected on the Ice Age skeletons."
+    ],
+    "correctAnswer": "D",
+    "difficulty": "medium",
+    "question_type": "Verbal",
+    "subsection": "CR"
+  },
+  {
+    "questionText": "In Australia, in years with below-average rainfall, less water goes into rivers and more water is extracted from rivers for drinking and irrigation. Consequently, in such years, water levels drop considerably and the rivers flow more slowly. Because algae grow better the more slowly the water in which they are growing moves, such years are generally beneficial to populations of algae. But, by contrast, populations of algae drop in periods of extreme drought.\n<br><b> Which of the following, if true, does most to explain the contrast?</b></br>",
+    "options": [
+      "Algae grow better in ponds and lakes than in rivers.",
+      "The more slowly water moves, the more conducive its temperature is to the growth of algae.",
+      "Algae cannot survive in the absence of water.",
+      "Algae must be filtered out of water before it can be used for drinking.",
+      "The larger the population of algae in a body of water, the less sunlight reaches below the surface of the water."
+    ],
+    "correctAnswer": "C",
+    "difficulty": "medium",
+    "question_type": "Verbal",
+    "subsection": "CR"
+  },
+  {
+    "questionText": "While the total enrollment of public elementary and secondary schools in Sondland is one percent higher this academic year than last academic year, the number of teachers there increased by three percent. Thus, the Sondland Education Commission’s prediction of a teacher shortage as early as next academic year is unfounded.\n<br><b> Which of the following, if true, most seriously weakens the claim that the prediction of a teacher shortage as early as next academic year is unfounded?</b></br>",
+    "options": [
+      "Funding for public elementary schools in Sondland is expected to increase over the next ten years.",
+      "Average salaries for Sondland’s teachers increased at the rate of inflation from last academic year to this academic year.",
+      "A new law has mandated that there be ten percent more teachers per pupil in Sondland’s public schools next academic year than there were this academic year.",
+      "In the past, increases in enrollments in public elementary and secondary schools in Sondland have generally been smaller than increases in the number of teachers.",
+      "Because of reductions in funding, the number of students enrolling in teacher-training programs in Sondland is expected to decline beginning in the next academic year."
+    ],
+    "correctAnswer": "C",
+    "difficulty": "medium",
+    "question_type": "Verbal",
+    "subsection": "CR"
+  },
+  {
+    "questionText": "When mercury-vapor streetlights are used in areas inhabited by insect-eating bats, the bats feed almost exclusively around the lights, because the lights attract flying insects. In Greenville, the mercury-vapor streetlights are about to be replaced with energy-saving sodium streetlights, which do not attract insects. This change is likely to result in a drop in the population of insect-eating bats in Greenville, since __________.\n<br><b> Which of the following most logically completes the argument below?</b></br>",
+    "options": [
+      "the bats do not begin to hunt until after sundown",
+      "the bats are unlikely to feed on insects that do not fly",
+      "the highway department will be able to replace mercury-vapor streetlights with sodium streetlights within a relatively short time and without disrupting the continuity of lighting at the locations of the streetlights",
+      "in the absence of local concentrations of the flying insects on which bats feed, the bats expend much more energy on hunting for food, requiring much larger quantities of insects to sustain each bat",
+      "bats use echolocation to catch insects and therefore gain no advantage from the fact that insects flying in the vicinity of streetlights are visible at night"
+    ],
+    "correctAnswer": "D",
+    "difficulty": "medium",
+    "question_type": "Verbal",
+    "subsection": "CR"
+  },
+  {
+    "questionText": "A certain species of desert lizard digs tunnels in which to lay its eggs. The eggs must incubate inside the tunnel for several weeks before hatching, and they fail to hatch if they are disturbed at any time during this incubation period. Yet these lizards guard their tunnels for only a few days after laying their eggs.\n<br><b> Which of the following, if true, most helps explain why there is no need for lizards to guard their tunnels for more than a few days?</b></br>",
+    "options": [
+      "The eggs are at risk of being disturbed only during the brief egg-laying season when many lizards are digging in a relatively small area.",
+      "The length of the incubation period varies somewhat from one tunnel to another.",
+      "Each female lizard lays from 15 to 20 eggs, only about 10 of which hatch even if the eggs are not disturbed at any time during the incubation period.",
+      "The temperature and humidity within the tunnels will not be suitable for the incubating eggs unless the tunnels are plugged with sand immediately after the eggs are laid.",
+      "The only way to disturb the eggs of this lizard species is by opening up one of the tunnels in which they are laid."
+    ],
+    "correctAnswer": "A",
+    "difficulty": "medium",
+    "question_type": "Verbal",
+    "subsection": "CR"
+  },
+  {
+    "questionText": "A two-year study beginning in 1977 found that, among 85-year-old people, those whose immune systems were weakest were twice as likely to die within two years as others in the study. The cause of their deaths, however, was more often heart disease, against which the immune system does not protect, than cancer or infections, which are attacked by the immune system.\n<br><b> Which of the following, if true, would offer the best prospects for explaining deaths in which weakness of the immune system, though present, played no causal role?</b></br>",
+    "options": [
+      "There were twice as many infections among those in the study with the weakest immune systems as among those with the strongest immune systems.",
+      "The majority of those in the study with the strongest immune systems died from infection or cancer by 1987.",
+      "Some of the drugs that had been used to treat the symptoms of heart disease had a side effect of weakening the immune system.",
+      "Most of those in the study who survived beyond the two-year period had recovered from a serious infection sometime prior to 1978.",
+      "Those in the study who survived into the 1980s had, in 1976, strengthened their immune systems through drug therapy."
+    ],
+    "correctAnswer": "C",
+    "difficulty": "medium",
+    "question_type": "Verbal",
+    "subsection": "CR"
+  },
+  {
+    "questionText": "A photograph of the night sky was taken with the camera shutter open for an extended period. The normal motion of stars across the sky caused the images of the stars in the photograph to appear as streaks. However, one bright spot was not streaked. Even if the spot were caused, as astronomers believe, by a celestial object, that object could still have been moving across the sky during the time the shutter was open, since _____.\n<br><b> Which of the following most logically completes the argument?</b></br>",
+    "options": [
+      "the spot was not the brightest object in the photograph",
+      "the photograph contains many streaks that astronomers can identify as caused by noncelestial objects",
+      "stars in the night sky do not appear to shift position relative to each other",
+      "the spot could have been caused by an object that emitted a flash that lasted for only a fraction of the time that the camera shutter was open",
+      "if the camera shutter had not been open for an extended period, it would have recorded substantially fewer celestial objects"
+    ],
+    "correctAnswer": "D",
+    "difficulty": "medium",
+    "question_type": "Verbal",
+    "subsection": "CR"
+  },
+  {
+    "questionText": "Unless tiger hunting decreases, tigers will soon be extinct in the wild. The countries in which the tigers’ habitats are located are currently debating joint legislation that would ban tiger hunting. Thus, if these countries can successfully enforce this legislation, the survival of tigers in the wild will be ensured.\n<br><b> The reasoning in the argument is most vulnerable to criticism on the grounds that the argument</b></br>",
+    "options": [
+      "assumes without sufficient warrant that a ban on tiger hunting could be successfully enforced",
+      "considers the effects of hunting on tigers without also considering the effects of hunting on other endangered animal species",
+      "fails to take into account how often tiger hunters are unsuccessful in their attempts to kill tigers",
+      "neglects to consider the results of governmental attempts in the past to limit tiger hunting",
+      "takes the removal of an impediment to the tigers’ survival as a guarantee of their survival"
+    ],
+    "correctAnswer": "E",
+    "difficulty": "medium",
+    "question_type": "Verbal",
+    "subsection": "CR"
+  },
+  {
+    "questionText": "TrueSave is a mail-order company that ships electronic products from its warehouses to customers worldwide. The company’s shipping manager is proposing that customer orders be packed with newer, more expensive packing materials that virtually eliminate damage during shipping. The manager argues that overall costs would essentially remain unaffected, since the extra cost of the new packing materials roughly equals the current cost of replacing products returned by customers because they arrived in damaged condition.\n<br><b> Which of the following would it be most important to ascertain in determining whether implementing the shipping manager’s proposal would have the argued-for effect on costs?</b></br>",
+    "options": [
+      "Whether the products shipped by TrueSave are more vulnerable to incurring damage during shipping than are typical electronic products",
+      "Whether electronic products are damaged more frequently in transit than are most other products shipped by mail-order companies",
+      "Whether a sizable proportion of returned items are returned because of damage already present when those items were packed for shipping",
+      "Whether there are cases in which customers blame themselves for product damage that, though present on arrival of the product, is not discovered until later",
+      "Whether TrueSave continually monitors the performance of the shipping companies it uses to ship products to its customers"
+    ],
+    "correctAnswer": "C",
+    "difficulty": "medium",
+    "question_type": "Verbal",
+    "subsection": "CR"
+  },
+  {
+    "questionText": "Twenty-five years ago, 2,000 married people were asked to rank four categories—spouses, friends, jobs, and housework—according to the amount of time each category demanded. A recent follow-up survey indicates that a majority of those same people rank housework higher on the list now than they did twenty-five years ago. Yet most of the respondents also claim that housework has become less demanding of their time over the last twenty-five years.\n<br><b> Which of the following, if true, helps to explain the apparent discrepancy?</b></br>",
+    "options": [
+      "Some of the people surveyed were married to other people in the survey.",
+      "Many of the most time-consuming aspects of people’s lives do not appear as categories on either survey.",
+      "Most of those who responded to the follow-up survey have retired in the last twenty-five years.",
+      "At the time of the follow-up survey, some of the people surveyed did no housework.",
+      "Many of the respondents to the follow-up survey claim that they now spend much more time with their friends than they did twenty-five years ago."
+    ],
+    "correctAnswer": "C",
+    "difficulty": "hard",
+    "question_type": "Verbal",
+    "subsection": "CR"
+  },
+  {
+    "questionText": "Half of Metroburg’s operating budget comes from a payroll tax of 2 percent on salaries paid to people who work in the city. Recently, a financial services company, one of Metroburg’s largest private-sector employers, announced that it will be relocating just outside the city. All the company’s employees, amounting to 1 percent of all people now employed in Metroburg, will be employed at the new location.\n<br><b> From the information given, which of the following can most properly be concluded?</b></br>",
+    "options": [
+      "Unless other employers add a substantial number of jobs in Metroburg, the company’s relocation is likely to result in a 1 percent reduction in the revenue for the city’s operating budget.",
+      "Although the company’s relocation will have a negative effect on the city’s tax revenue, the company’s departure will not lead to any increase in the unemployment rate among city residents.",
+      "One of the benefits that the company will realize from its relocation is a reduction in the taxes paid by itself and its employees.",
+      "Revenue from the payroll tax will decline by 1 percent if there is no increase in jobs within the city to compensate, fully or partially, for the company’s departure.",
+      "The company’s relocation will tend to increase the proportion of jobs in Metroburg that are in the public sector, unless it results in a contraction of the public-sector payroll."
+    ],
+    "correctAnswer": "E",
+    "difficulty": "hard",
+    "question_type": "Verbal",
+    "subsection": "CR"
+  },
+  {
+    "questionText": "Many economists hold that keeping taxes low helps to spur economic growth, and that low taxes thus lead to greater national prosperity. But Country X, which has unusually high taxes, has greater per-capita income than the neighboring Country Y, which has much lower taxes. Some politicians have concluded from this that high taxes do not hinder national prosperity.\n<br><b> The politicians’ reasoning is most vulnerable to criticism on which of the following grounds?</b></br>",
+    "options": [
+      "It overlooks the possibility that even if Country X reduced its taxes, it would not experience greater national prosperity in the long term.",
+      "It confuses a claim that a factor does not hinder a given development with the claim that the same factor promotes that development.",
+      "It fails to adequately address the possibility that Country X and Country Y differ in relevant respects other than taxation.",
+      "It fails to take into account that the per-capita income of a country does not determine its rate of economic growth.",
+      "It assumes that the economists’ thesis must be correct despite a clear counterexample to that thesis."
+    ],
+    "correctAnswer": "C",
+    "difficulty": "hard",
+    "question_type": "Verbal",
+    "subsection": "CR"
+  },
+  {
+    "questionText": "Colorless diamonds can command high prices as gemstones. A type of less valuable diamonds can be treated to remove all color. Only sophisticated tests can distinguish such treated diamonds from naturally colorless ones. However, only 2 percent of diamonds mined are of the colored type that can be successfully treated, and many of those are of insufficient quality to make the treatment worthwhile. Surely, therefore, the vast majority of colorless diamonds sold by jewelers are naturally colorless.\n<br><b> A serious flaw in the reasoning of the argument is that</b></br>",
+    "options": [
+      "comparisons between the price diamonds command as gemstones and their value for other uses are omitted",
+      "information about the rarity of treated diamonds is not combined with information about the rarity of naturally colorless, gemstone diamonds",
+      "the possibility that colored diamonds might be used as gemstones, even without having been treated, is ignored",
+      "the currently available method for making colorless diamonds from colored ones is treated as though it were the only possible method for doing so",
+      "the difficulty that a customer of a jeweler would have in distinguishing a naturally colorless diamond from a treated one is not taken into account"
+    ],
+    "correctAnswer": "B",
+    "difficulty": "hard",
+    "question_type": "Verbal",
+    "subsection": "CR"
+  },
+  {
+    "questionText": "Economist: Construction moves faster in good weather than in bad, so mild winters in areas that usually experience harsh conditions can appear to create construction booms as builders complete projects that would otherwise have to wait. But forecasting one mild winter or even two for such areas generally does not lead to overall increases in construction during these periods, because construction loans are often obtained more than a year in advance, and because –––––––––.\n<br><b> Which of the following, if true, most logically completes the economist’s argument?</b></br>",
+    "options": [
+      "construction workers often travel to warmer climates in the wintertime in search of work",
+      "construction materials are often in short supply during construction booms",
+      "many builders in these areas are likely to apply for construction loans at the same time",
+      "it is frequently the case that forecasted weather trends do not actually occur",
+      "mild winters are generally followed by spring and summer weather that promotes more rapid construction"
+    ],
+    "correctAnswer": "D",
+    "difficulty": "hard",
+    "question_type": "Verbal",
+    "subsection": "CR"
+  },
+  {
+    "questionText": "Urban planner: When a city loses population due to migration, property taxes in that city tend to rise. This is because there are then fewer residents paying to maintain an infrastructure that was designed to support more people. Rising property taxes, in turn, drive more residents away, compounding the problem. Since the city of Stonebridge is starting to lose population, the city government should therefore refrain from raising property taxes.\n<br><b> Which of the following, if true, would most weaken the urban planner’s argument?</b></br>",
+    "options": [
+      "If Stonebridge does not raise taxes on its residents to maintain its infrastructure, the city will become much less attractive to live in as that infrastructure decays.",
+      "Stonebridge at present benefits from grants provided by the national government to help maintain certain parts of its infrastructure.",
+      "If there is a small increase in property taxes in Stonebridge and a slightly larger proportion of total revenue than at present is allocated to infrastructure maintenance, the funding will be adequate for that purpose.",
+      "Demographers project that the population of a region that includes Stonebridge will start to increase substantially within the next several years.",
+      "The property taxes in Stonebridge are significantly lower than those in many larger cities."
+    ],
+    "correctAnswer": "A",
+    "difficulty": "hard",
+    "question_type": "Verbal",
+    "subsection": "CR"
+  },
+  {
+    "questionText": "Plantings of cotton bioengineered to produce its own insecticide against bollworms, a major cause of crop failure, sustained little bollworm damage until this year. This year the plantings are being seriously damaged by bollworms. Bollworms, however, are not necessarily developing resistance to the cotton’s insecticide. Bollworms breed on corn, and last year more corn than usual was planted throughout cotton-growing regions. So it is likely that the cotton is simply being overwhelmed by corn-bred bollworms.\n<br><b> In evaluating the argument, which of the following would it be most useful to establish?</b></br>",
+    "options": [
+      "Whether corn could be bioengineered to produce the insecticide",
+      "Whether plantings of cotton that does not produce the insecticide are suffering unusually extensive damage from bollworms this year",
+      "Whether other crops that have been bioengineered to produce their own insecticide successfully resist the pests against which the insecticide was to protect them",
+      "Whether plantings of bioengineered cotton are frequently damaged by insect pests other than bollworms",
+      "Whether there are insecticides that can be used against bollworms that have developed resistance to the insecticide produced by the bioengineered cotton"
+    ],
+    "correctAnswer": "B",
+    "difficulty": "hard",
+    "question_type": "Verbal",
+    "subsection": "CR"
+  },
+  {
+    "questionText": "A product that represents a clear technological advance over competing products can generally command a high price. Because technological advances tend to be quickly surpassed and companies want to make large profits while they still can, many companies charge the maximum possible price for such a product. But large profits on the new product will give competitors a strong incentive to quickly match the new product’s capabilities. Consequently, the strategy to maximize overall profit from a new product is to charge less than the greatest possible price.\n<br><b> In the argument above, the two portions in boldface play which of the following roles?</b></br>",
+    "options": [
+      "The first is a consideration raised to argue that a certain strategy is counterproductive; the second presents that strategy.",
+      "The first is a consideration raised to support the strategy that the argument recommends; the second presents that strategy.",
+      "The first is a consideration raised to help explain the popularity of a certain strategy; the second presents that strategy.",
+      "The first is an assumption, rejected by the argument, that has been used to justify a course of action; the second presents that course of action.",
+      "The first is a consideration that has been used to justify adopting a certain strategy; the second presents the intended outcome of that strategy."
+    ],
+    "correctAnswer": "C",
+    "difficulty": "hard",
+    "question_type": "Verbal",
+    "subsection": "CR"
+  },
+  {
+    "questionText": "People with a college degree are more likely than others to search for a new job while they are employed. There are proportionately more people with college degrees among managers and other professionals than among service and clerical workers. Surprisingly, however, 2009 figures indicate that people employed as managers and other professionals were no more likely than people employed as service and clerical workers to have searched for a new job.\n<br><b> Which of the following, if true, most helps to resolve the apparent paradox?</b></br>",
+    "options": [
+      "People generally do not take a new job that is offered to them while they are employed unless the new job pays better.",
+      "Some service and clerical jobs pay more than some managerial and professional jobs.",
+      "People who felt they were overqualified for their current positions were more likely than others to search for a new job.",
+      "The percentage of employed people who were engaged in job searches declined from 2005 to 2009.",
+      "In 2009 employees with no college degree who retired were more likely to be replaced by people with a college degree if they retired from a managerial or professional job than from a service or clerical job."
+    ],
+    "correctAnswer": "C",
+    "difficulty": "hard",
+    "question_type": "Verbal",
+    "subsection": "CR"
+  },
+  {
+    "questionText": "Researchers have developed a technology that uses sound as a means of converting heat into electrical energy. Converters based on this technology can be manufactured small enough to be integrated into consumer electronics, where they will absorb significant quantities of heat. A group of engineers is now designing converters to be sold to laptop computer manufacturers, who are expected to use the electrical output of the converters to conserve battery power in their computers.\n<br><b> Which of the following would, if true, provide the strongest evidence that the engineers’ plan will be commercially successful for their group?</b></br>",
+    "options": [
+      "The sound that is used by the converters is generated by the converters themselves.",
+      "Most laptop computer manufacturers today receive fewer complaints than in previous years regarding shortness of operating time on a single battery charge.",
+      "The overheating of microprocessors in laptop computers presents a major technological challenge that manufacturers are prepared to meet at significant expense.",
+      "Although battery technology has improved significantly, the average capacity of laptop computer batteries has not.",
+      "Electrical power generated by the converters can be used to power the fans installed to cool computers’ components."
+    ],
+    "correctAnswer": "C",
+    "difficulty": "hard",
+    "question_type": "Verbal",
+    "subsection": "CR"
+  }
+]

@@ -1,0 +1,377 @@
+[
+  {
+    "questionText": "According to the \"conventional view\" referred to in line 13 of the passage, brighter carotenoid-based coloration in certain species suggests that an individual",
+    "options": [
+      "lives in a habitat rich in carotenoid-bearing plants and insects",
+      "has efficient detoxification processes",
+      "has a superior immune system",
+      "possesses superior foraging capacity",
+      "is currently capable of reproducing"
+    ],
+    "correctAnswer": "D",
+    "answerExplanation": "The passage states the conventional view holds that brighter coloration suggests a male has been <b>more effective in his foraging</b> and is therefore healthier. Option A is not directly stated as part of the conventional view regarding individual assessment. Options B and C relate to health outcomes, but foraging is the direct implication mentioned for the conventional view. Option E is not mentioned.",
+    "difficulty": "medium",
+    "question_type": "Verbal",
+    "subsection": "RC",
+    "rc_id": 7
+  },
+ {
+    "questionText": "The passage suggests that relatively bright carotenoid-based coloration is a signal of which of the following characteristics in males of certain animal species?",
+    "options": [
+      "Readiness for mating behavior",
+      "Ability to fight",
+      "Particular feeding preferences",
+      "Recovery from parasite infestation",
+      "Fitness as a mate"
+    ],
+    "correctAnswer": "E",
+    "answerExplanation": "The passage discusses females preferring males with brighter coloration because it signals either superior foraging (conventional view) or better health/genetic resistance (growing evidence). Both interpretations point to the male being a <b>fitter mate</b>, likely to pass on beneficial traits. <br>A, B, C, and D are too specific or not directly supported as the primary signal of bright coloration in the context of mate selection as described.",
+    "difficulty": "medium",
+    "question_type": "Verbal",
+    "subsection": "RC",
+    "rc_id": 7
+  },
+ {
+    "questionText": "Information in the passage suggests that which of the following is true of carotenoids that a male animal uses for detoxification processes?",
+    "options": [
+      "They were not acquired directly from plants and algae.",
+      "They cannot be replenished through foraging.",
+      "They cannot be used simultaneously to brighten coloration.",
+      "They do not affect the animal's susceptibility to parasites.",
+      "They increase the chances that the animal will be selected as a mate."
+    ],
+    "correctAnswer": "C",
+    "answerExplanation": "The passage states that males susceptible to disease/toxins 'must use their carotenoids to boost their immune systems and to detoxify; thus, they have fewer carotenoids available for display.' This implies a trade-off: carotenoids used for health (like detoxification) are not available for coloration. <br><b>C. Correct.</b> This directly follows from the idea that using carotenoids for health reduces their availability for display. <br>A and B are not supported. <br>D. Carotenoids are mentioned as boosting the immune system, which could affect parasite susceptibility. <br>E. Using carotenoids for detoxification leads to less bright coloration, which decreases mating chances according to the passage.",
+    "difficulty": "medium",
+    "question_type": "Verbal",
+    "subsection": "RC",
+    "rc_id": 7
+  },
+  {
+    "questionText": "The idea that carotenoid-based coloration is significant partly because carotenoids are required for health suggests that a lack of bright coloration in a male is most likely to indicate which of the following?",
+    "options": [
+      "Inefficient detoxification processes",
+      "Immunity to parasite infestation",
+      "Low genetic resistance to disease",
+      "Lack of interest in mating",
+      "Lack of carotenoid-storing tissues"
+    ],
+    "correctAnswer": "C",
+    "answerExplanation": "The passage explains that males susceptible to disease must use carotenoids for their immune systems, leaving fewer for display. Thus, a lack of bright coloration suggests carotenoids were used for health maintenance, implying potentially <b>low genetic resistance to disease</b>. <br>A. While carotenoids are used for detoxification, lack of brightness doesn't necessarily mean inefficient processes, rather that carotenoids were used up. <br>B. Lack of bright coloration suggests carotenoids were used to fight disease/parasites, not immunity without needing them. <br>D and E are not supported by the passage's explanation of carotenoid use for health vs. display.",
+    "difficulty": "medium",
+    "question_type": "Verbal",
+    "subsection": "RC",
+    "rc_id": 7
+  },
+ {
+    "questionText": "The passage implies which of the following about the insects from which animals acquire carotenoids?",
+    "options": [
+      "They do not produce carotenoids themselves.",
+      "They use carotenoids primarily for coloration.",
+      "They maintain constant levels of carotenoids in their tissues.",
+      "They are unable to use carotenoids to boost their immune system.",
+      "They are available in greater abundance than are carotenoid-bearing plants."
+    ],
+    "correctAnswer": "A",
+    "answerExplanation": "The passage states animals acquire carotenoids 'directly from the plants and algae they consume <b>or indirectly by eating insects</b> or other animals that have consumed carotenoid-rich producer organisms.' This implies that insects are intermediaries, getting carotenoids from producer organisms (plants/algae), not producing them. <br><b>A. Correct.</b> Insects are a source for other animals because they have consumed carotenoid-rich producers; this implies insects themselves don't synthesize carotenoids. <br>B, C, D, E are not supported or implied by the text.",
+    "difficulty": "medium",
+    "question_type": "Verbal",
+    "subsection": "RC",
+    "rc_id": 7
+  },
+  {
+    "questionText": "Sascha: The attempt to ban parliament's right to pass directed-spending bills—bills that contain provisions specifically funding the favorite projects of some powerful politicians—is antidemocratic. Our nation's constitution requires that money be drawn from our treasury only when so stipulated by laws passed by parliament, the branch of government most directly representative of the citizens. This requirement is based on the belief that exercising the power to spend public resources involves the ultimate exercise of state authority and that therefore",
+    "options": [
+      "designating funding specifically for the favorite projects of some powerful politicians should be considered antidemocratic",
+      "the right to exercise such a power should belong exclusively to the branch of government most directly representative of the citizens",
+      "exercising the power to spend public resources is in most cases—but not all—protected by the constitution",
+      "modifications to any spending bills should be considered expenditures authorized by law",
+      "only officials who are motivated by concerns for reelection should retain that power"
+    ],
+    "correctAnswer": "B",
+    "answerExplanation": "Sascha argues that banning directed-spending bills is antidemocratic because parliament, being most representative, should control public spending as it's the ultimate state authority. The logical completion connects this representativeness to the exclusive right to exercise spending power. <br><b>B. Correct.</b> This directly links parliament's representative nature to the exclusive right to spend public money, completing Sascha's line of reasoning about democratic principles. <br>A. This contradicts Sascha's main point. <br>C. This introduces a limitation not implied by Sascha's argument. <br>D. This discusses modifications, not the fundamental right to allocate funds. <br>E. Sascha's argument is about the branch of government, not individual motivations.",
+    "difficulty": "medium",
+    "question_type": "Verbal",
+    "subsection": "CR"
+  },
+ 
+  {
+    "questionText": "Boreal owls range over a much larger area than do other owls of similar size. <b>Scientists have hypothesized that it is scarcity of prey that leads the owls to range so widely.</b> This hypothesis would be hard to confirm directly, since it is not possible to produce a sufficiently accurate count of the populations of small mammals inhabiting the forests where boreal owls live. Careful study of owl behavior has, however, shown that <b>boreal owls do range over larger areas when they live in regions where food of the sort eaten by small mammals is comparatively sparse.</b> This indicates that the scientists' hypothesis is not sheer speculation.<br><br>In the argument given, the two boldfaced portions play which of the following roles?",
+    "options": [
+      "The first presents an explanatory hypothesis; the second states the main conclusion of the argument.",
+      "The first presents an explanatory hypothesis; the second presents evidence tending to support this hypothesis.",
+      "The first presents an explanatory hypothesis; the second presents evidence to support an alternative explanation.",
+      "The first describes a position that the argument opposes; the second presents evidence to undermine the support for the position being opposed.",
+      "The first describes a position that the argument opposes; the second states the main conclusion of the argument."
+    ],
+    "correctAnswer": "B",
+    "answerExplanation": "The first boldfaced portion clearly states the scientists' hypothesis about why boreal owls range widely. The second boldfaced portion describes an observation from a careful study of owl behavior (owls ranging more where their prey's food is sparse), which provides indirect support for the initial hypothesis by showing a correlation consistent with it. The argument's final sentence confirms this by stating this finding indicates the hypothesis isn't sheer speculation.<br><b>B. Correct.</b> The first is the hypothesis, and the second is evidence supporting it. <br>A. The second is evidence, not the main conclusion. The main conclusion is that the hypothesis is not sheer speculation. <br>C. The second supports the same hypothesis, not an alternative. <br>D. The argument supports the position in the first boldfaced portion. <br>E. The argument supports the position in the first boldfaced portion, and the second is evidence, not the main conclusion.",
+    "difficulty": "medium",
+    "question_type": "Verbal",
+    "subsection": "CR"
+  },
+  {
+    "questionText": "Ace Repairs ends up having to redo a significant number of the complex repair jobs it undertakes, <b>but when those repairs are redone, they are invariably done right.</b> Since we have established that there is no systematic difference between the mechanics who are assigned to do the initial repairs and those who are assigned to redo unsatisfactory jobs, we must reject the hypothesis that mistakes made in the initial repairs are due to the mechanics’ lack of competence. <b>Rather, it is likely that complex repairs require a level of focused attention that the company’s mechanics apply consistently only to repair jobs that have not been done right on the first try.</b><br><br>In the consultant’s reasoning, the two portions in boldface play which of the following roles?",
+    "options": [
+      "The first is the consultant’s main conclusion; the second provides evidence in support of that main conclusion.",
+      "The first is evidence that serves as the basis for rejecting one explanation of a certain finding; the second is the consultant’s own explanation of that finding.",
+      "The first is a claim whose truth is at issue in the reasoning; the second provides evidence to show that the claim is true.",
+      "The first presents a contrast whose explanation is at issue in the reasoning; the second is the consultant’s explanation of that contrast.",
+      "The first presents a contrast whose explanation is at issue in the reasoning; the second is evidence that has been used to challenge the consultant’s explanation of that contrast."
+    ],
+    "correctAnswer": "D",
+    "answerExplanation": "The first boldfaced portion highlights a contrast: initial repairs are often redone, but redone repairs are always successful. This contrast (initial failure vs. redo success) is what the consultant seeks to explain. The argument rejects incompetence as the explanation because there's no systematic difference in mechanics. The second boldfaced portion then offers the consultant's own explanation: mechanics apply more focused attention to redos. <br><b>D. Correct.</b> The first describes the puzzling contrast, and the second is the consultant's proposed explanation for it. <br>A. The first is a phenomenon to be explained, not the main conclusion. <br>B. The first is the phenomenon itself, not evidence for rejecting an explanation (though the subsequent sentence about 'no systematic difference' is such evidence). <br>C. The truth of the first claim (that redos are done right) isn't primarily at issue; it's a premise. The second is an explanation, not evidence for the first. <br>E. The second is the consultant's explanation, not evidence challenging it.",
+    "difficulty": "hard",
+    "question_type": "Verbal",
+    "subsection": "CR"
+  },
+  {
+    "questionText": "According to the passage, which of the following types of nectar-feeding pollinators is likely to be an unreliable pollinator of a particular cactus flower?",
+    "options": [
+      "A dietary specialist whose abundance is typically high in relation to that of the flower",
+      "A dietary specialist whose abundance is at times significantly lower than that of the flower",
+      "A dietary generalist for whom that flower's nectar is not a preferred food but is the most consistently available food",
+      "A dietary generalist for whom that flower's nectar is slightly preferred to other available foods",
+      "A dietary generalist that evolved from a species of dietary specialists"
+    ],
+    "correctAnswer": "B",
+    "answerExplanation": "The second paragraph states that pollinator unreliability can arise if dietary specialists \"are themselves temporally variable in abundance.\" This means if their numbers are sometimes low, they can't be relied upon. <br><b>B. Correct.</b> This matches the description of an unreliable specialist pollinator whose abundance varies. <br>A. High abundance would make it reliable. <br>C and D describe generalists that would likely be reliable for that flower. <br>E. Evolutionary history isn't directly linked to reliability in the passage.",
+    "difficulty": "medium",
+    "question_type": "Verbal",
+    "subsection": "RC",
+    "rc_id": 8
+  },
+ {
+    "questionText": "According to the passage, present-day columnar cacti in the Sonoran Desert differ from their close relatives in southern Mexico in that the Sonoran cacti",
+    "options": [
+      "have flowers that remain open after sunset",
+      "are pollinated primarily by dietary specialists",
+      "can be pollinated by nectar-feeding bats",
+      "have stigmas that are unreceptive to pollination at night",
+      "are sometimes pollinated by diurnal pollinators"
+    ],
+    "correctAnswer": "E",
+    "answerExplanation": "The first paragraph states that Sonoran cactus species have flowers that 'remain open after sunrise, an adaptation that makes them available to diurnal (daytime) pollinators... in addition to bats.' It contrasts this with cacti in southern Mexico which 'have not evolved this adaptation,' implying they are primarily nocturnally pollinated. <br><b>E. Correct.</b> This highlights the adaptation of Sonoran cacti for daytime pollination, a feature not shared by their southern Mexican relatives according to the passage. <br>A. Both are pollinated nocturnally by bats, so their flowers are open after sunset. <br>B & C. Both are pollinated by nectar-feeding bats (specialists). <br>D. Sonoran cacti are receptive at night (for bats) and during the day.",
+    "difficulty": "medium",
+    "question_type": "Verbal",
+    "subsection": "RC",
+    "rc_id": 8
+  },
+  {
+    "questionText": "Several industries have recently switched at least partly from older technologies powered by fossil fuels to new technologies powered by electricity. It is thus evident that less fossil fuel is being used as a result of the operations of these industries than would have been used if these industries had retained their older technologies.<br><br>Which of the following, if true, most strengthens the argument above?",
+    "options": [
+      "Many of the industries that have switched at least partly to the new technologies have increased their output.",
+      "Less fossil fuel was used to manufacture the machinery employed in the new technologies than was originally used to manufacture the machinery employed in the older technologies.",
+      "More electricity is used by those industries that have switched at least partly to the new technologies than by those industries that have not switched.",
+      "Some of the industries that have switched at least partly to the new technologies still use primarily technologies that are powered by fossil fuels.",
+      "The amount of fossil fuel used to generate the electricity needed to power the new technologies is less than the amount that would have been used to power the older technologies."
+    ],
+    "correctAnswer": "E",
+    "answerExplanation": "The argument concludes that switching to electricity reduces fossil fuel use. This conclusion assumes that the electricity itself isn't generated using an equivalent or greater amount of fossil fuel compared to what was saved directly. Option E directly addresses this assumption. <br><b>E. Correct.</b> If generating the electricity for new technologies uses less fossil fuel than directly powering the old technologies would have, the argument's conclusion that overall fossil fuel use is reduced is strongly supported. <br>A. Increased output could potentially offset fossil fuel savings if the electricity is fossil-fuel generated. <br>B. Manufacturing energy is a one-time cost, whereas the argument is about ongoing operational fuel use. <br>C. This is expected but doesn't confirm net fossil fuel reduction. <br>D. This might weaken the extent of the reduction but doesn't address the core logic about the switched portion.",
+    "difficulty": "hard",
+    "question_type": "Verbal",
+    "subsection": "CR"
+  },
+  {
+    "questionText": "Which of the following, if true, would most clearly support the contention attributed to SPEW in lines 17-20?",
+    "options": [
+      "Those white lead factories that most strongly enforced regulations concerning worker safety and hygiene had the lowest incidences of lead poisoning among employees.",
+      "The incidence of lead poisoning was much higher among women who worked in white lead factories than among women who worked in other types of factories.",
+      "There were many household sources of lead that could have contributed to the incidence of lead poisoning among women who also worked outside the home in the late nineteenth century.",
+      "White lead factories were more stringent than were certain other types of factories in their enforcement of workplace safety regulations.",
+      "Even brief exposure to the conditions typically found in white lead factories could cause lead poisoning among factory workers."
+    ],
+    "correctAnswer": "A",
+    "answerExplanation": "SPEW contended that 'controllable conditions in such factories were responsible for the development of lead poisoning.' This implies that if conditions were controlled (i.e., safety regulations enforced), lead poisoning would decrease or be eliminated. <br><b>A. Correct.</b> If factories with strong enforcement of safety/hygiene had the lowest poisoning rates, it directly supports the idea that factory conditions were controllable and responsible for poisoning. <br>B. This confirms lead factories are dangerous but doesn't speak to controllability. <br>C. This would weaken SPEW's contention by suggesting other sources for poisoning. <br>D. This might suggest that even with stringent enforcement, poisoning occurs, weakening SPEW's point. <br>E. This highlights the danger but doesn't address whether the conditions causing it are controllable.",
+    "difficulty": "hard",
+    "question_type": "Verbal",
+    "subsection": "RC",
+    "rc_id": 9
+  },
+ {
+    "questionText": "The passage is primarily concerned with",
+    "options": [
+      "presenting various groups' views of the motives of those proposing certain legislation",
+      "contrasting the reasoning of various groups concerning their positions on certain proposed legislation",
+      "tracing the process whereby certain proposed legislation was eventually enacted",
+      "assessing the success of tactics adopted by various groups with respect to certain proposed legislation",
+      "evaluating the arguments of various groups concerning certain proposed legislation"
+    ],
+    "correctAnswer": "B",
+    "answerExplanation": "The passage outlines the proposed legislation regarding white lead factories and then details the positions and reasoning of three groups: WTUL (supported it due to unenforced safety regulations), WIDC (opposed it as limiting women's work), and SPEW (agreed with WIDC that controllable conditions were responsible, not inherent danger requiring prohibition). The core of the passage contrasts why these groups took the stances they did. <br><b>B. Correct.</b> The passage focuses on the differing rationales of WTUL, WIDC, and SPEW regarding the proposed legislation. <br>A. Motives of the proposers (Home Secretary) are not discussed. <br>C. It only mentions the proposal was enacted, doesn't trace the process. <br>D. It implies WIDC/SPEW were unsuccessful, but doesn't assess tactics broadly. <br>E. It presents their arguments but doesn't evaluate their validity or soundness.",
+    "difficulty": "hard",
+    "question_type": "Verbal",
+    "subsection": "RC",
+    "rc_id": 9
+  },
+ {
+    "questionText": "The passage suggests that WIDC differed from WTUL in which of the following ways?",
+    "options": [
+      "WIDC believed that the existing safety regulations were adequate to protect women's health, whereas WTUL believed that such regulations needed to be strengthened.",
+      "WIDC believed that unions could not succeed in pressuring employers to comply with such regulations, whereas WTUL believed that unions could succeed in doing so.",
+      "WIDC believed that lead poisoning in white lead factories could be avoided by controlling conditions there, whereas WTUL believed that lead poisoning in such factories could not be avoided no matter how stringently safety regulations were enforced.",
+      "At the time that the legislation concerning white lead factories was proposed, WIDC was primarily concerned with addressing health conditions in white lead factories, whereas WTUL was concerned with improving working conditions in all types of factories.",
+      "At the time that WIDC was opposing legislative attempts to restrict women's labor, WTUL had already ceased to do so."
+    ],
+    "correctAnswer": "E",
+    "answerExplanation": "The passage states WIDC was formed in 1892 to oppose restrictions and was active in 1895. WTUL stopped opposing such restrictions in the late 1880s. <br><b>E. Correct.</b> This highlights a key difference in their timelines and stance on opposing restrictions on women's labor. <br>A. WTUL's concern was enforcement, not necessarily adequacy of regulations themselves if enforced. WIDC believed existing regulations, if enforced, were adequate. <br>B. WTUL believed unions were necessary for enforcement; WIDC's stance on unions' role isn't detailed. <br>C. Both WIDC and SPEW believed conditions were controllable. WTUL doubted enforcement. <br>D. WIDC's primary concern was opposing limits on women's work opportunities, not specifically health conditions in white lead factories as a primary focus.",
+    "difficulty": "hard",
+    "question_type": "Verbal",
+    "subsection": "RC",
+    "rc_id": 9
+  },
+  {
+    "questionText": "The difference in average annual income in favor of employees who have college degrees, compared with those who do not have such degrees, doubled between 1980 and 1990. Some analysts have hypothesized that increased competition between employers for employees with college degrees drove up income for such employees.<br><br>Which of the following, if true, most seriously undermines the explanation described above?",
+    "options": [
+      "During the 1980s a growing percentage of college graduates, unable to find jobs requiring a college degree, took unskilled jobs.",
+      "The average age of all employees increased slightly during the 1980s.",
+      "The unemployment rate changed very little throughout most of the 1980s.",
+      "From 1980 to 1990, the difference in average income between employees with advanced degrees and those with bachelor’s degrees also increased.",
+      "During the 1980s there were some employees with no college degree who earned incomes comparable to the top incomes earned by employees with a college degree."
+    ],
+    "correctAnswer": "A",
+    "answerExplanation": "The analysts' explanation is that increased competition for college-degreed employees drove up their income. If, however, a growing percentage of college graduates took unskilled jobs, it suggests a surplus of graduates, or a lack of demand for them in skilled positions. This would imply less, not more, competition among employers for college graduates. <br><b>A. Correct.</b> This indicates a potential oversupply of college graduates for available skilled jobs, which would reduce employer competition for them, thus undermining the analysts' hypothesis. <br>B. Average age increase doesn't directly address competition for specific degree holders. <br>C. A stable unemployment rate doesn't preclude shifts in competition within different segments of the labor market. <br>D. This is about disparity within college graduates, not between graduates and non-graduates. <br>E. The existence of some high-earning non-graduates doesn't negate the overall trend or the hypothesis about competition for graduates.",
+    "difficulty": "hard",
+    "question_type": "Verbal",
+    "subsection": "CR"
+  },
+ 
+
+  {
+    "questionText": "According to the last pre-election poll in Whippleton, most voters believe that the three problems government needs to address, in order of importance, are pollution, crime, and unemployment. Yet in the election, candidates from parties perceived as strongly against pollution were defeated, while those elected were all from parties with a history of opposing legislation designed to reduce pollution. These results should not be taken to indicate that the poll was inaccurate, however, since __________.",
+    "options": [
+      "some voters in Whippleton do not believe that pollution needs to be reduced",
+      "every candidate who was defeated had a strong antipollution record",
+      "there were no issues other than crime, unemployment, and pollution on which the candidates had significant differences of opinion",
+      "all the candidates who were elected were perceived as being stronger against both crime and unemployment than the candidates who were defeated",
+      "many of the people who voted in the election refused to participate in the poll"
+    ],
+    "correctAnswer": "D",
+    "answerExplanation": "The paradox is that voters prioritized pollution, yet anti-pollution candidates lost. The argument aims to show the poll could still be accurate. If voters prioritized pollution first, but crime and unemployment (ranked 2nd and 3rd) were considered collectively more important, or if the elected candidates were so strong on crime and unemployment that it outweighed their weaker pollution stance, the poll could be accurate. <br><b>D. Correct.</b> If elected candidates were perceived as much stronger on the other two important issues (crime and unemployment), voters might choose them despite a weaker stance on pollution, reconciling the poll with the election results. <br>A. If true, this would make the poll less accurate. <br>B. This reinforces the paradox rather than explaining it. <br>C. This limits other explanations but doesn't itself explain the outcome in line with the poll's accuracy. <br>E. This would suggest the poll was inaccurate.",
+    "difficulty": "hard",
+    "question_type": "Verbal",
+    "subsection": "CR"
+  },
+  {
+    "questionText": "Hea Sook: One should not readily believe urban legends. Most legends are propagated because the moral lesson underlying them supports a political agenda. People will repeat a tale if it fits their purpose. They may not deliberately spread untruths, but neither are they particularly motivated to investigate deeply to determine if the tale they are telling is true.<br>Kayla: But people would not repeat stories that they did not believe were true. Therefore, one can safely assume that if a story has been repeated by enough people, then it is more likely to be true.<br><br>Kayla's reply is most vulnerable to the criticism that it",
+    "options": [
+      "does not specify how many people need to repeat a story before someone is justified in believing it",
+      "overstates the significance of political agendas in the retelling of stories",
+      "fails to address the claim that people will not verify the truth of a story that fits their purpose",
+      "implicitly supports the claim that the people repeating legends are not deliberately spreading untruths",
+      "cannot distinguish people's motivations for repeating urban legends from their motivations for repeating other types of story"
+    ],
+    "correctAnswer": "C",
+    "answerExplanation": "Hea Sook's core point is that people repeat legends fitting their agenda without deeply investigating their truth, even if they don't deliberately lie. Kayla argues people only repeat what they believe is true, implying repetition increases likelihood of truth. However, Kayla doesn't address Hea Sook's central mechanism: the lack of verification when a story serves a purpose. People can believe something without verifying it, especially if it aligns with their views. <br><b>C. Correct.</b> Kayla focuses on belief but ignores Hea Sook's point about the lack of motivation to verify stories that fit one's purpose, which is crucial to Hea Sook's skepticism about urban legends. <br>A. This is a minor point and doesn't get to the core flaw. <br>B. Kayla doesn't address political agendas directly. <br>D. Both agree on this, so it's not a vulnerability of Kayla's reply specifically. <br>E. This is not the primary vulnerability; the issue is about belief vs. verification.",
+    "difficulty": "medium",
+    "question_type": "Verbal",
+    "subsection": "CR"
+  },
+  {
+    "questionText": "Rainwater contains hydrogen of a heavy form called deuterium. The deuterium content of wood reflects the deuterium content of rainwater available to trees during their growth. Wood from trees that grew between 16,000 and 24,000 years ago in North America contains significantly more deuterium than wood from trees growing today. But water trapped in several North American caves that formed during that same early period contains significantly less deuterium than rainwater in North America contains today.<br><br>Which of the following, if true, most helps to reconcile the two findings?",
+    "options": [
+      "There is little deuterium in the North American caves other than the deuterium in the water trapped there.",
+      "Exposure to water after a tree has died does not change the deuterium content of the wood.",
+      "Industrialization in North America over the past 100 years has altered the deuterium content of rain.",
+      "Trees draw on shallow groundwater from rain that falls during their growth, whereas water trapped in caves may have fallen as rainwater thousands of years before the caves formed.",
+      "Wood with a high deuterium content is no more likely to remain preserved for long periods than is wood with a low deuterium content."
+    ],
+    "correctAnswer": "D",
+    "answerExplanation": "The discrepancy is: ancient wood suggests ancient rainwater had high deuterium, while ancient cave water suggests ancient rainwater had low deuterium (compared to today). We need to explain why these two 'ancient water' proxies give different signals relative to today's rainwater. Option D suggests that the water in the caves is much older than the wood and the cave formation period itself. <br><b>D. Correct.</b> If cave water is from a much earlier period (thousands of years before the 16,000-24,000 year ago period when the caves formed and the trees grew), then it could have a different deuterium content reflecting that even earlier period's rainwater, thus not contradicting the wood data for the 16,000-24,000 year period. The wood reflects rainwater from its growth period, while the cave water reflects a much older rainwater. <br>A, B, E. These options tend to confirm the reliability of one of the measurements or rule out other complexities but don't resolve the discrepancy between the two findings relative to today's rainwater. <br>C. This explains a change in today's rainwater but not the discrepancy between the two ancient sources.",
+    "difficulty": "medium",
+    "question_type": "Verbal",
+    "subsection": "CR"
+  },
+  {
+    "questionText": "Proposal: Carbon dioxide and methane in the atmosphere block the escape of heat into space. So, emission of these “greenhouse” gases contributes to global warming. In order to reduce global warming, emission of greenhouse gases needs to be reduced. Therefore, the methane now emitted from open landfills should instead be burned to produce electricity.<br>Objection: The burning of methane generates carbon dioxide that is released into the atmosphere.<br><br>Which of the following, if true, most adequately counters the objection made to the proposal?",
+    "options": [
+      "Every time a human being or other mammal exhales, there is some carbon dioxide released into the air.",
+      "The conversion of methane to electricity would occur at a considerable distance from the landfills.",
+      "The methane that is used to generate electricity would generally be used as a substitute for a fuel that does not produce any greenhouse gases when burned.",
+      "Methane in the atmosphere is more effective in blocking the escape of heat from the Earth than is carbon dioxide.",
+      "The amount of methane emitted from the landfills could be reduced if the materials whose decomposition produces methane were not discarded but recycled."
+    ],
+    "correctAnswer": "D",
+    "answerExplanation": "The proposal is to burn landfill methane (CH4) to produce electricity, aiming to reduce global warming. The objection is that burning methane produces carbon dioxide (CO2), another greenhouse gas. To counter this objection, we need a reason why burning CH4 to produce CO2 is still a net benefit for reducing global warming. <br><b>D. Correct.</b> If methane is a significantly more potent greenhouse gas than carbon dioxide (per molecule or per unit mass), then converting methane to carbon dioxide through burning would result in a net reduction in warming potential, even though CO2 is also a greenhouse gas. This directly counters the objection by showing the proposed action is comparatively better. <br>A. This is irrelevant to the specific impact of the proposal. <br>B. Location of conversion is irrelevant to the greenhouse gas emissions. <br>C. This would weaken the proposal, as it suggests a missed opportunity to use a non-greenhouse fuel. <br>E. This suggests an alternative way to reduce methane, but doesn't counter the objection to burning the methane that *is* emitted.",
+    "difficulty": "hard",
+    "question_type": "Verbal",
+    "subsection": "CR"
+  },
+ 
+  {
+    "questionText": "In Vargonia has just introduced a legal requirement that student-teacher ratios in government-funded schools not exceed a certain limit. All Vargonian children are entitled to education, free of charge, in these schools. When a recession occurs and average incomes fall, the number of children enrolled in government-funded schools tends to increase. Therefore, though most employment opportunities contract in economic recessions, getting a teaching job in Vargonia’s government-funded schools will not be made more difficult by a recession.<br><br>Which of the following would be most important to determine in order to evaluate the argument?",
+    "options": [
+      "Whether in Vargonia there are any schools not funded by the government that offer children an education free of charge",
+      "Whether the number of qualified applicants for teaching positions in government-funded schools increases significantly during economic recessions",
+      "What the current student-teacher ratio in Vargonia’s government-funded schools is",
+      "What proportion of Vargonia’s workers currently hold jobs as teachers in government-funded schools",
+      "Whether in the past a number of government-funded schools in Vargonia have had student-teacher ratios well in excess of the new limit"
+    ],
+    "correctAnswer": "B",
+    "answerExplanation": "The argument is that teaching jobs won't be harder to get in a recession because increased enrollment (due to falling incomes) combined with a student-teacher ratio limit will create demand for teachers. However, this only considers the demand side. The ease of getting a job also depends on the supply of applicants. <br><b>B. Correct.</b> If the number of qualified applicants for teaching positions *also* increases significantly during a recession (perhaps because other job opportunities contract), then despite the increased demand for teachers, competition for those jobs could still make them harder to get. Knowing this is crucial to evaluating the argument's conclusion. <br>A. Irrelevant, as the argument focuses on government-funded schools. <br>C. The current ratio isn't as important as how it compares to the new limit and how enrollment changes. <br>D. The current proportion of teachers is irrelevant to the change in difficulty of obtaining a job. <br>E. Past ratios are less important than the effect of the *new* limit combined with recession-driven enrollment changes and applicant numbers.",
+    "difficulty": "hard",
+    "question_type": "Verbal",
+    "subsection": "CR"
+  },
+  {
+    "questionText": "Enforcement of local speed limits through police monitoring has proven unsuccessful in the town of Ardane. In many nearby towns, speed humps (raised areas of pavement placed across residential streets, about 300 feet apart) have reduced traffic speeds on residential streets by 20 to 25 percent. In order to reduce traffic speed and thereby enhance safety in residential neighborhoods, Ardane's transportation commission plans to install multiple speed humps in those neighborhoods.<br><br>Which of the following, if true, identifies a potentially serious drawback to the plan for installing speed humps in Ardane?",
+    "options": [
+      "On residential streets without speed humps, many vehicles travel at speeds more than 25 percent above the posted speed limit.",
+      "Because of their high weight, emergency vehicles such as fire trucks and ambulances must slow almost to a stop at speed humps.",
+      "The residential speed limit in Ardane is higher than that of the nearby towns where speed humps were installed.",
+      "Motorists who are not familiar with the streets in Ardane's residential districts would be likely to encounter the speed humps unawares unless warned by signs and painted indicators.",
+      "Bicyclists generally prefer that speed humps be constructed so as to leave a space on the side of the road where bicycles can travel without going over the humps."
+    ],
+    "correctAnswer": "B",
+    "answerExplanation": "The plan's goal is to reduce speed and enhance safety. A serious drawback would be something that significantly negates these benefits or introduces a new safety concern. <br><b>B. Correct.</b> If emergency vehicles must slow almost to a stop at speed humps, this could critically delay their response times to emergencies, which is a serious drawback related to safety, potentially outweighing the benefits of generally slower traffic. <br>A. This describes the problem speed humps are meant to solve, not a drawback of the solution. <br>C. This might affect the percentage reduction but isn't necessarily a drawback of the humps themselves. <br>D. This is a potential issue if warnings aren't provided, but proper implementation would include warnings. <br>E. This is a design preference for a specific group, not necessarily a serious drawback to the overall plan's goal of enhancing safety for the neighborhood.",
+    "difficulty": "medium",
+    "question_type": "Verbal",
+    "subsection": "CR"
+  },
+ 
+  {
+    "questionText": "An experiment was done in which human subjects recognize a pattern within a matrix of abstract designs and then select another design that completes that pattern. The results of the experiment were surprising. The lowest expenditure of energy in neurons in the brain was found in those subjects who performed most successfully in the experiments.<br><br>Which of the following hypotheses best accounts for the findings of the experiment?",
+    "options": [
+      "The neurons of the brain react less when a subject is trying to recognize patterns than when the subject is doing other kinds of reasoning.",
+      "Those who performed best in the experiment experienced more satisfaction when working with abstract patterns than did those who performed less well.",
+      "People who are better at abstract pattern recognition have more energy-efficient neural connections.",
+      "The energy expenditure of the subjects’ brains increases when a design that completes the initially recognized pattern is determined.",
+      "The task of completing a given design is more capably performed by athletes, whose energy expenditure is lower when they are at rest."
+    ],
+    "correctAnswer": "C",
+    "answerExplanation": "The finding is that better performance on a pattern recognition task correlates with lower neural energy expenditure. We need a hypothesis that links skill/success with energy efficiency. <br><b>C. Correct.</b> This hypothesis directly proposes a mechanism: those who are good at the task (perform best) do so because their brains are more efficient at it, thus using less energy. <br>A. The experiment only involved pattern recognition; it didn't compare it to other reasoning types. <br>B. Satisfaction is not measured or linked to energy expenditure in the findings. <br>D. This would suggest higher energy for successful subjects (assuming they determine more completions), contradicting the findings. <br>E. There's no information about subjects being athletes or about energy expenditure at rest.",
+    "difficulty": "hard",
+    "question_type": "Verbal",
+    "subsection": "CR"
+  },
+  {
+    "questionText": "Cognitive scientist: Using the pioneering work of comparative psychologist Gordon Gallup as a model, several studies have investigated animals' capacity for mirror self-recognition (MSR). Most animals exposed to a mirror respond only with social behavior, such as aggression. However, in the case of the great apes, repeated exposure to mirrors leads to self-directed behaviors, such as exploring the inside of the mouth, suggesting that these animals recognize the reflection as an image of self. The implication of these studies is that the great apes have a capacity for self-awareness unique among nonhuman species.<br><br>The cognitive scientist makes which of the following assumptions in the argument above?",
+    "options": [
+      "Gallup's work has established that the great apes have a capacity for MSR unique among nonhuman species.",
+      "If an animal does not have the capacity for MSR, it does not have the capacity for self-awareness.",
+      "If a researcher exposes an animal to a mirror and that animal exhibits social behavior, that animal is incapable of being self-aware.",
+      "When exposed to a mirror, all animals display either social behavior or self-directed behavior.",
+      "Animals that do not exhibit MSR may demonstrate a capacity for self-awareness in other ways."
+    ],
+    "correctAnswer": "B",
+    "answerExplanation": "The argument moves from great apes showing MSR (and thus self-recognition) to the conclusion that they have a unique capacity for self-awareness among nonhuman species. For this conclusion to hold based on the MSR evidence, it must be assumed that MSR is a necessary condition for self-awareness, or at least that the absence of MSR in other nonhuman animals implies they lack self-awareness. <br><b>B. Correct.</b> If animals lacking MSR could still be self-aware, then the great apes' MSR capability wouldn't make their self-awareness unique among nonhumans. The argument relies on MSR being a key indicator, and its absence in others pointing to their lack of self-awareness. <br>A. The argument uses Gallup's work as a model, not necessarily that Gallup *established* the uniqueness. The studies imply uniqueness. <br>C. Exhibiting social behavior initially doesn't preclude later self-directed behavior or underlying self-awareness if MSR is not the only path. <br>D. Animals might show other behaviors or no specific behavior. <br>E. This would weaken the argument's conclusion about uniqueness based on MSR.",
+    "difficulty": "medium",
+    "question_type": "Verbal",
+    "subsection": "CR"
+  },
+  {
+    "questionText": "Last year a record number of new manufacturing jobs were created. Will this year bring another record? Well, a new manufacturing job is created either within an existing company or by the start-up of a new company. Within existing firms, new jobs have been created this year at well below last year’s record pace. At the same time, there is considerable evidence that the number of new companies starting up will be no higher this year than it was last year, and <b>there is no reason to think that the new companies starting up this year will create more jobs per company than did last year’s start-ups.</b> So clearly, <b>the number of new jobs created this year will fall short of last year’s record.</b><br><br>In the argument given, the two portions in boldface play which of the following roles?",
+    "options": [
+      "The first provides evidence in support of the main conclusion of the argument; the second is a claim that the argument challenges.",
+      "The first is a generalization that the argument seeks to establish; the second is a conclusion that the argument draws in order to support that generalization.",
+      "The first is a generalization that the argument seeks to establish; the second is a judgment that has been advanced in order to challenge that generalization.",
+      "The first is presented as an obvious truth on which the argument is based; the second is a claim that has been advanced in support of a position that the argument opposes.",
+      "The first is presented as an obvious truth on which the argument is based; the second is a judgment advanced in support of the main conclusion of the argument."
+    ],
+    "correctAnswer": "E",
+    "answerExplanation": "The first boldfaced statement ('any new manufacturing job is created either within an existing company or by the start-up of a new company') sets up the categories for analysis; it's a foundational, definitional statement taken as given. The second boldfaced statement ('there is no reason to think that the new companies starting up this year will create more jobs per company than did last year’s start-ups') is one of the pieces of evidence or judgments used, along with the information about existing firms and the number of start-ups, to support the main conclusion that job creation will fall short. <br><b>E. Correct.</b> The first is a foundational premise (an obvious truth for the argument's structure). The second is a premise/judgment that supports the main conclusion (which is that 'the number of new jobs created this year will fall short of last year’s record'). The question actually asks about different bolded parts than in Q687. This question is for Q722. In Q722, the first boldface is 'any new manufacturing job is created either within an existing company or by the start-up of a new company.' The second boldface is 'there is no reason to think that the new companies starting up this year will create more jobs per company than did last year’s start-ups.' The main conclusion is 'So clearly, the number of new jobs created this year will fall short of last year’s record.' Thus the second bolded part is a judgement advanced in support of the main conclusion. <br>A. The second is not a claim the argument challenges. <br>B. The first is not something the argument seeks to establish; it's a premise. <br>C. The first is a premise, not something established. The second supports, not challenges. <br>D. The second supports the argument's conclusion, not an opposing position.",
+    "difficulty": "medium",
+    "question_type": "Verbal",
+    "subsection": "CR"
+  }
+]

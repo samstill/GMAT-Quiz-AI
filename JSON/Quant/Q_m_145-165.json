@@ -1,0 +1,317 @@
+[
+  {
+    "questionText": "After driving to a riverfront parking lot, Bob plans to run south along the river, turn around, and return to the parking lot, running north along the same path.  After running 3.25 miles south, he decides to run for only 50 minutes more.  If Bob runs at a constant rate of 8 minutes per mile, how many miles farther south can he run and still be able to return to the parking lot in 50 minutes? ",
+    "options": [
+      "1.5",
+      "2.25",
+      "3.0",
+      "3.25",
+      "4.75"
+    ],
+    "correctAnswer": "A",
+    "answerExplanation": "After running 3.25 miles south, Bob has been running for $(3.25 \\text{ miles})(8 \\frac{\\text{minutes}}{\\text{mile}}) = 26$ minutes.  Thus, if t is the number of additional minutes that Bob can run south before turning around, then the number of minutes that Bob will run north, after turning around, will be t + 26. Since Bob will be running a total of 50 minutes after the initial 26 minutes of running, it follows that $t + (t + 26) = 50$ or $t = 12$.  Therefore, Bob can run south an additional $\\frac{12 \\text{ minutes}}{8 \\frac{\\text{minutes}}{\\text{mile}}} = 1.5$ miles before turning around. ",
+    "difficulty": "medium",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "Alex deposited x dollars into a new account that earned 8 percent annual interest, compounded annually.  One year later Alex deposited an additional x dollars into the account.  If there were no other transactions and if the account contained w dollars at the end of two years, which of the following expresses x in terms of w? ",
+    "options": [
+      "$\\frac{w}{1+1.08}$",
+      "$\\frac{w}{1.08+1.16}$",
+      "$\\frac{w}{1.16+1.24}$",
+      "$\\frac{w}{1.08+(1.08)^{2}}$",
+      "$\\frac{w}{(1.08)^{2}+(1.08)^{3}}$"
+    ],
+    "correctAnswer": "D",
+    "answerExplanation": "At the end of the first year, the value of Alex's initial investment was $x(1.08)$ dollars, and after he deposited an additional x dollars into the account, its value was $[x(1.08)+x]$ dollars.  At the end of the second year, the value was w dollars, where $w = [x(1.08)+x](1.08) = x(1.08)^{2} + x(1.08) = x[(1.08)^{2}+1.08]$.  Thus, $x = \\frac{w}{1.08+(1.08)^{2}}$. ",
+    "difficulty": "medium",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "M is the sum of the reciprocals of the consecutive integers from 201 to 300, inclusive.  Which of the following is true? ",
+    "options": [
+      "$\\frac{1}{3} < M < \\frac{1}{2}$",
+      "$\\frac{1}{5} < M < \\frac{1}{3}$",
+      "$\\frac{1}{7} < M < \\frac{1}{5}$",
+      "$\\frac{1}{9} < M < \\frac{1}{7}$",
+      "$\\frac{1}{12} < M < \\frac{1}{9}$"
+    ],
+    "correctAnswer": "A",
+    "answerExplanation": "M is the sum of 100 terms: $M = \\frac{1}{201} + \\frac{1}{202} + ... + \\frac{1}{300}$.  To find the lower bound, if all terms were the smallest value, $\\frac{1}{300}$, the sum would be $100 \\times \\frac{1}{300} = \\frac{1}{3}$. Since most terms are larger, $M > \\frac{1}{3}$. To find the upper bound, if all terms were the largest value, $\\frac{1}{201}$, the sum would be $100 \\times \\frac{1}{201}$. A simpler upper bound can be found by using a value slightly larger than any term, like $\\frac{1}{200}$. The sum would be less than $100 \\times \\frac{1}{200} = \\frac{1}{2}$.  Therefore, $\\frac{1}{3} < M < \\frac{1}{2}$. ",
+    "difficulty": "medium",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "Working simultaneously at their respective constant rates, Machines A and B produce 800 nails in x hours.  Working alone at its constant rate, Machine A produces 800 nails in y hours.  In terms of x and y, how many hours does it take Machine B, working alone at its constant rate, to produce 800 nails? ",
+    "options": [
+      "$\\frac{x}{x+y}$",
+      "$\\frac{y}{x+y}$",
+      "$\\frac{xy}{x+y}$",
+      "$\\frac{xy}{x-y}$",
+      "$\\frac{xy}{y-x}$"
+    ],
+    "correctAnswer": "E",
+    "answerExplanation": "Let $R_A$ and $R_B$ be the constant rates, in nails per hour, at which Machines A and B work, respectively.  From the given information, it follows that $R_A + R_B = \\frac{800}{x}$ and $R_A = \\frac{800}{y}$.  Hence, $\\frac{800}{y} + R_B = \\frac{800}{x}$, or $R_B = \\frac{800}{x} - \\frac{800}{y} = 800(\\frac{1}{x} - \\frac{1}{y}) = 800(\\frac{y-x}{xy})$. Therefore, the time, in hours, it would take Machine B to produce 800 nails is given by $\\frac{800}{800(\\frac{y-x}{xy})} = \\frac{xy}{y-x}$. ",
+    "difficulty": "medium",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "Carol purchased one basket of fruit consisting of 4 apples and 2 oranges and another basket of fruit consisting of 3 apples and 5 oranges.  Carol is to select one piece of fruit at random from each of the two baskets.  What is the probability that one of the two pieces of fruit selected will be an apple and the other will be an orange? ",
+    "options": [
+      "$\\frac{1}{4}$",
+      "$\\frac{13}{24}$",
+      "$\\frac{1}{2}$",
+      "$\\frac{1}{24}$",
+      "$\\frac{5}{24}$"
+    ],
+    "correctAnswer": "E",
+    "answerExplanation": "The desired probability is the sum of the probabilities of two disjoint events. <br><b>Event 1:</b> Apple from the first basket AND Orange from the second basket.<br>The probability is $(\\frac{4}{6})(\\frac{5}{8}) = \\frac{20}{48}$. <br><b>Event 2:</b> Orange from the first basket AND Apple from the second basket.<br>The probability of this event is $(\\frac{2}{6})(\\frac{3}{8}) = \\frac{6}{48}$. <br>The total probability is the sum of the probabilities of these two events: $\\frac{20}{48} + \\frac{6}{48} = \\frac{26}{48} = \\frac{13}{24}$. ",
+    "difficulty": "medium",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "Last year Brand X shoes were sold by dealers in 403 different regions worldwide, with an average (arithmetic mean) of 98 dealers per region.  If last year these dealers sold an average of 2,488 pairs of Brand X shoes per dealer, which of the following is closest to the total number of pairs of Brand X shoes sold last year by the dealers worldwide? ",
+    "options": [
+      "$10^{4}$",
+      "$10^{5}$",
+      "$10^{6}$",
+      "$10^{7}$",
+      "$10^{8}$"
+    ],
+    "correctAnswer": "E",
+    "answerExplanation": "The total number of dealers is the number of regions multiplied by the average number of dealers per region: $(403)(98)$.  The total number of pairs sold is the total number of dealers multiplied by the average number of pairs sold per dealer: $(403)(98)(2,488)$.  To estimate, we can approximate the values: $(400)(100)(2,500) = (4 \\times 10^2)(10^2)(2.5 \\times 10^3) = (4 \\times 2.5) \\times 10^{(2+2+3)} = 10 \\times 10^7 = 10^8$. ",
+    "difficulty": "medium",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "10, 4, 26, 16<br>What is the median of the numbers shown above? ",
+    "options": [
+      "10",
+      "13",
+      "14",
+      "15",
+      "16"
+    ],
+    "correctAnswer": "B",
+    "answerExplanation": "To find the median, first put the numbers in numerical order: 4, 10, 16, 26.  Since there is an even number of values (4), the median is the average of the two middle values, 10 and 16. The median is $\\frac{10+16}{2} = 13$. ",
+    "difficulty": "medium",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "<table><tr><td></td><td><b>Number of Marbles in Each of Three Bags</b></td><td><b>Percent of Marbles in Each Bag That Are Blue (to the nearest tenth)</b></td></tr><tr><td>Bag P</td><td>37</td><td>10.8%</td></tr><tr><td>Bag Q</td><td>x</td><td>66.7%</td></tr><tr><td>Bag R</td><td>32</td><td>50.0%</td></tr></table>If $\\frac{1}{3}$ of the total number of marbles in the three bags listed in the table above are blue, how many marbles are there in Bag Q? ",
+    "options": [
+      "5",
+      "9",
+      "12",
+      "23",
+      "46"
+    ],
+    "correctAnswer": "B",
+    "answerExplanation": "From the table, the number of blue marbles are:<br>Bag P: $(37)(0.108) \\approx 4$ <br>Bag Q: $(x)(0.667) \\approx \\frac{2}{3}x$ <br>Bag R: $(32)(0.5) = 16$ <br>Total blue marbles = $4 + \\frac{2}{3}x + 16 = 20 + \\frac{2}{3}x$. <br>Total number of marbles = $37 + x + 32 = 69 + x$.<br>We are given that blue marbles are $\\frac{1}{3}$ of the total, so: $20 + \\frac{2}{3}x = \\frac{1}{3}(69+x) = 23 + \\frac{1}{3}x$. <br>Solving for x: $\\frac{2}{3}x - \\frac{1}{3}x = 23 - 20$, which simplifies to $\\frac{1}{3}x = 3$, so $x=9$. ",
+    "difficulty": "medium",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "<table><tr><td><b>Age Category (in years)</b></td><td><b>Number of Employees</b></td></tr><tr><td>Less than 20</td><td>29</td></tr><tr><td>20-29</td><td>58</td></tr><tr><td>30-39</td><td>36</td></tr><tr><td>40-49</td><td>21</td></tr><tr><td>50-59</td><td>10</td></tr><tr><td>60-69</td><td>5</td></tr><tr><td>70 and over</td><td>2</td></tr></table>The table above gives the age categories of the 161 employees at Company X and the number of employees in each category.  According to the table, if m is the median age, in years, of the employees at Company X, then m must satisfy which of the following? ",
+    "options": [
+      "$20 \\le m \\le 29$",
+      "$25 \\le m \\le 34$",
+      "$30 \\le m \\le 39$",
+      "$35 \\le m \\le 44$",
+      "$40 \\le m \\le 49$"
+    ],
+    "correctAnswer": "A",
+    "answerExplanation": "The median of 161 ages is the $81^{st}$ age when the ages are listed in order.  The cumulative count of employees is:<br>Less than 20: 29 employees.<br>Less than or equal to 29: $29 + 58 = 87$ employees. <br>Since the $81^{st}$ employee falls after the $29^{th}$ but before the $87^{th}$, their age must be in the 20-29 category. Therefore, the median age m must satisfy $20 \\le m \\le 29$. ",
+    "difficulty": "medium",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "If k and n are positive integers such that $n>k$, then $k! + (n-k) \\cdot (k-1)!$ is equivalent to which of the following? ",
+    "options": [
+      "$k \\cdot n!$",
+      "$k! \\cdot n$",
+      "$(n-k)!$",
+      "$n \\cdot (k+1)!$",
+      "$n \\cdot (k-1)!$"
+    ],
+    "correctAnswer": "E",
+    "answerExplanation": "We can rewrite $k!$ as $k \\cdot (k-1)!$.  The expression becomes:<br>$k \\cdot (k-1)! + (n-k) \\cdot (k-1)!$<br>Factor out the common term $(k-1)!$:<br>$(k + (n-k)) \\cdot (k-1)!$<br>Simplify the term in the parenthesis:<br>$(n) \\cdot (k-1)!$ ",
+    "difficulty": "medium",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "Ron is 4 inches taller than Amy, and Barbara is 1 inch taller than Ron.  If Barbara's height is 65 inches, what is the median height, in inches, of these three people? ",
+    "options": [
+      "60",
+      "61",
+      "62",
+      "63",
+      "64"
+    ],
+    "correctAnswer": "E",
+    "answerExplanation": "Let R, A, and B be the heights of Ron, Amy, and Barbara, respectively.<br>We are given:<br>$B = 65$ <br>$B = R + 1 \\implies 65 = R + 1 \\implies R = 64$ <br>$R = A + 4 \\implies 64 = A + 4 \\implies A = 60$ <br>The three heights are 60, 64, and 65 inches. The median is the middle value, which is 64. ",
+    "difficulty": "medium",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "If x and y are positive numbers such that $x+y=1$, which of the following could be the value of $100x+200y$? <br>I. 80<br>II. 140<br>III. 199",
+    "options": [
+      "II only",
+      "III only",
+      "I and II",
+      "I and III",
+      "II and III"
+    ],
+    "correctAnswer": "E",
+    "answerExplanation": "From $x+y=1$, we have $x = 1-y$.  Substitute this into the expression:<br>$100(1-y) + 200y = 100 - 100y + 200y = 100 + 100y$.<br>Since x and y are positive, $0 < x < 1$ and $0 < y < 1$.<br>This means the value of $100+100y$ must be greater than $100+100(0)=100$ and less than $100+100(1)=200$.<br>I. 80 is not possible as it's not between 100 and 200. <br>II. 140 is a possible value. ($100+100y=140 \\implies 100y=40 \\implies y=0.4$, so $x=0.6$. Both are positive). <br>III. 199 is a possible value. ($100+100y=199 \\implies 100y=99 \\implies y=0.99$, so $x=0.01$. Both are positive). <br>Thus, II and III are possible. ",
+    "difficulty": "medium",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "If X is the hundredths digit in the decimal 0.1X and if Y is the thousandths digit in the decimal 0.02Y, where X and Y are nonzero digits, which of the following is closest to the greatest possible value of $\\frac{0.1X}{0.02Y}$? ",
+    "options": [
+      "4",
+      "5",
+      "6",
+      "9",
+      "10"
+    ],
+    "correctAnswer": "D",
+    "answerExplanation": "To get the greatest possible value, we need to maximize the numerator (0.1X) and minimize the denominator (0.02Y).  Since X and Y are nonzero digits, the maximum value for X is 9, and the minimum value for Y is 1.  This gives the expression $\\frac{0.19}{0.021}$.  Calculating this value: $\\frac{0.19}{0.021} \\approx 9.0476$. The closest integer value is 9. ",
+    "difficulty": "medium",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "If each of the 12 teams participating in a certain tournament plays exactly one game with each of the other teams, how many games will be played? ",
+    "options": [
+      "144",
+      "132",
+      "66",
+      "33",
+      "23"
+    ],
+    "correctAnswer": "C",
+    "answerExplanation": "This is a combination problem, as the game between Team A and Team B is the same as the game between Team B and Team A. We need to find the number of ways to choose 2 teams from a group of 12.  The formula for combinations is $C(n, k) = \\frac{n!}{k!(n-k)!}$.<br>Here, $n=12$ and $k=2$.<br>$C(12, 2) = \\frac{12!}{2!(12-2)!} = \\frac{12!}{2!10!} = \\frac{(12)(11)}{2} = 66$. ",
+    "difficulty": "medium",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "The average (arithmetic mean) cost per book for the 12 books on a certain table is k dollars. If a book that costs 18 dollars is removed from the table and replaced by a book that costs 42 dollars, then in terms of k, what will be the average cost per book, in dollars, for the books on the table? ",
+    "options": [
+      "$k+2$",
+      "$k-2$",
+      "$12+\\frac{24}{k}$",
+      "$12-\\frac{24}{k}$",
+      "$12k-6$"
+    ],
+    "correctAnswer": "A",
+    "answerExplanation": "The initial total cost of the 12 books is $12k$.  When an $18 book is replaced with a $42 book, the total cost changes. The change in total cost is $42 - 18 = 24$.  The new total cost is $12k + 24$. The new average cost for the 12 books is $\\frac{12k+24}{12} = \\frac{12(k+2)}{12} = k+2$. ",
+    "difficulty": "medium",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "What is the remainder when $3^{19}$ is divided by 10? ",
+    "options": [
+      "1",
+      "3",
+      "5",
+      "7",
+      "9"
+    ],
+    "correctAnswer": "D",
+    "answerExplanation": "The remainder when a positive integer is divided by 10 is its units digit.  We need to find the units digit of $3^{19}$. Let's look at the pattern of the units digits of powers of 3:<br>$3^1 = 3$<br>$3^2 = 9$<br>$3^3 = 27 \\rightarrow 7$<br>$3^4 = 81 \\rightarrow 1$<br>$3^5 = 243 \\rightarrow 3$<br>The pattern of the units digits is 3, 9, 7, 1, and it repeats every 4 powers.  To find the units digit of $3^{19}$, we need to find the remainder of 19 divided by 4. $19 \\div 4 = 4$ with a remainder of 3. The third digit in the pattern is 7. ",
+    "difficulty": "medium",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "Of 200 people surveyed, 80 percent own a cellular phone and 45 percent own a pager.  If all 200 people surveyed own a cellular phone, or a pager, or both, what percent of those surveyed either do not own a cellular phone or do not own a pager? ",
+    "options": [
+      "35%",
+      "45%",
+      "55%",
+      "65%",
+      "75%"
+    ],
+    "correctAnswer": "E",
+    "answerExplanation": "Let C be the set of people who own a cellular phone and P be the set of people who own a pager. <br>Number of people with a cell phone = $0.80 \\times 200 = 160$. <br>Number of people with a pager = $0.45 \\times 200 = 90$. <br>Since everyone owns at least one device, $|C \\cup P| = 200$.<br>We know that $|C \\cup P| = |C| + |P| - |C \\cap P|$.<br>$200 = 160 + 90 - |C \\cap P| \\implies |C \\cap P| = 250 - 200 = 50$. <br>Number who do not own a cell phone = Total - Number who own a cell phone = $200 - 160 = 40$.<br>Number who do not own a pager = Total - Number who own a pager = $200 - 90 = 110$.<br>The question asks for the percent who 'either do not own a cellular phone OR do not own a pager'. This is everyone except those who own BOTH. <br>Number who do not own a cell phone OR do not own a pager = (Owns only Pager) + (Owns only Cell) = $(90-50) + (160-50) = 40 + 110 = 150$.<br>Percentage = $\\frac{150}{200} = 75\\%$. ",
+    "difficulty": "medium",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "At the end of the first quarter, the share price of a certain mutual fund was 20 percent higher than it was at the beginning of the year.  At the end of the second quarter, the share price was 50 percent higher than it was at the beginning of the year.  What was the percent increase in the share price from the end of the first quarter to the end of the second quarter? ",
+    "options": [
+      "20%",
+      "25%",
+      "30%",
+      "33%",
+      "40%"
+    ],
+    "correctAnswer": "B",
+    "answerExplanation": "Let P be the share price at the beginning of the year. <br>Price at the end of Q1 = $P + 0.20P = 1.2P$. <br>Price at the end of Q2 = $P + 0.50P = 1.5P$. <br>The percent increase from Q1 to Q2 is calculated based on the Q1 price.<br>Percent Increase = $\\frac{\\text{Q2 Price} - \\text{Q1 Price}}{\\text{Q1 Price}} \\times 100\\% = \\frac{1.5P - 1.2P}{1.2P} \\times 100\\% = \\frac{0.3P}{1.2P} \\times 100\\% = \\frac{1}{4} \\times 100\\% = 25\\%$. ",
+    "difficulty": "medium",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "In the sequence $\\frac{1}{2}, \\frac{1}{4}, \\frac{1}{8}, \\frac{1}{16}, \\frac{1}{32},...$, each term after the first is one-half the previous term.  If x is the tenth term of the sequence, then x satisfies which of the following inequalities? ",
+    "options": [
+      "$0.1 < x < 1$",
+      "$0.01 < x < 0.1$",
+      "$0.001 < x < 0.01$",
+      "$0.0001 < x < 0.001$",
+      "$0.00001 < x < 0.0001$"
+    ],
+    "correctAnswer": "D",
+    "answerExplanation": "The terms of the sequence are powers of $\\frac{1}{2}$. The nth term is $(\\frac{1}{2})^n$.  The tenth term, x, is $(\\frac{1}{2})^{10} = \\frac{1}{1024}$. <br>We need to compare this fraction with the decimal boundaries.<br>$\\frac{1}{1000} = 0.001$<br>$\\frac{1}{10000} = 0.0001$<br>Since $1000 < 1024 < 10000$, taking the reciprocal reverses the inequalities: $\\frac{1}{10000} < \\frac{1}{1024} < \\frac{1}{1000}$. <br>Therefore, $0.0001 < x < 0.001$. ",
+    "difficulty": "medium",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "If $xy+z = x(y+z)$, which of the following must be true? ",
+    "options": [
+      "$x=0$ and $z=0$",
+      "$x=1$ and $y=1$",
+      "$y=1$ and $z=0$",
+      "$x=1$ or $y=0$",
+      "$x=1$ or $z=0$"
+    ],
+    "correctAnswer": "E",
+    "answerExplanation": "Start with the given equation: $xy+z = x(y+z)$<br>Distribute the x on the right side: $xy+z = xy+xz$ <br>Subtract xy from both sides: $z = xz$ <br>Move all terms to one side: $xz - z = 0$ <br>Factor out z: $z(x-1) = 0$ <br>This equation is true if either $z=0$ or $x-1=0$. Therefore, it must be that $x=1$ or $z=0$. ",
+    "difficulty": "medium",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "Two water pumps, working simultaneously at their respective constant rates, took exactly 4 hours to fill a certain swimming pool.  If the constant rate of one pump was 1.5 times the constant rate of the other, how many hours would it have taken the faster pump to fill the pool if it had worked alone at its constant rate? ",
+    "options": [
+      "5",
+      "$\\frac{16}{3}$",
+      "$\\frac{11}{2}$",
+      "6",
+      "$\\frac{20}{3}$"
+    ],
+    "correctAnswer": "E",
+    "answerExplanation": "Let the rate of the slower pump be $r$ pools per hour. Then the rate of the faster pump is $1.5r = \\frac{3}{2}r$ pools per hour.  Their combined rate is $r + \\frac{3}{2}r = \\frac{5}{2}r$ pools per hour. <br>Working together, they fill 1 pool in 4 hours, so their combined rate is $\\frac{1}{4}$ pools per hour.<br>$\\frac{5}{2}r = \\frac{1}{4} \\implies r = \\frac{1}{4} \\times \\frac{2}{5} = \\frac{1}{10}$.<br>The rate of the faster pump is $\\frac{3}{2}r = \\frac{3}{2} \\times \\frac{1}{10} = \\frac{3}{20}$ pools per hour. <br>The time it takes the faster pump to fill the pool alone is the reciprocal of its rate: Time = $\\frac{1}{\\text{rate}} = \\frac{1}{3/20} = \\frac{20}{3}$ hours. ",
+    "difficulty": "medium",
+    "question_type": "Quant",
+    "subsection": null
+  }
+]

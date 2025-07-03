@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Quizzes | GMAT Prep</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* * === CSS Variables for Theming === */
+        :root {
+            --bg-color: #05050A;
+            --text-color: #E4E4E7;
+            --text-color-muted: #A1A1AA;
+            --text-gradient-from: #E5E7EB;
+            --text-gradient-to: #9CA3AF;
+            --glass-bg: rgba(20, 20, 25, 0.4);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --glass-shadow: 0 16px 48px rgba(0, 0, 0, 0.2);
+            --cta-bg: rgba(30, 30, 35, 0.5);
+            --cta-bg-hover: rgba(45, 45, 50, 0.7);
+            --cta-border: rgba(255, 255, 255, 0.1);
+            --input-bg: rgba(255, 255, 255, 0.05);
+            --gradient-1: hsla(215, 80%, 50%, 0.3);
+            --gradient-2: hsla(280, 70%, 55%, 0.3);
+            --gradient-3: hsla(180, 60%, 50%, 0.2);
+        }
+
+        .light-mode {
+            --bg-color: #F4F4F5;
+            --text-color: #18181B;
+            --text-color-muted: #52525B;
+            --text-gradient-from: #18181B;
+            --text-gradient-to: #3F3F46;
+            --glass-bg: rgba(255, 255, 255, 0.4);
+            --glass-border: rgba(0, 0, 0, 0.1);
+            --glass-shadow: 0 16px 48px rgba(0, 0, 0, 0.1);
+            --cta-bg: rgba(250, 250, 250, 0.5);
+            --cta-bg-hover: rgba(255, 255, 255, 0.8);
+            --cta-border: rgba(0, 0, 0, 0.1);
+            --input-bg: rgba(0, 0, 0, 0.05);
+            --gradient-1: hsla(215, 90%, 60%, 0.4);
+            --gradient-2: hsla(280, 80%, 65%, 0.4);
+            --gradient-3: hsla(180, 70%, 60%, 0.35);
+        }
+
+        /* * === Base Styles & Animated Background === */
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+            transition: background-color 0.5s ease, color 0.5s ease;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: -10%; left: -10%; right: -10%; bottom: -10%;
+            z-index: -1;
+            background: 
+                radial-gradient(circle at 20% 30%, var(--gradient-1) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, var(--gradient-2) 0%, transparent 40%),
+                radial-gradient(circle at 50% 50%, var(--gradient-3) 0%, transparent 35%);
+            background-size: 150% 150%;
+            animation: moveGradient 25s ease-in-out infinite;
+            transition: background 0.5s ease;
+        }
+
+        @keyframes moveGradient {
+            0% { background-position: 0% 50%; transform: scale(1); }
+            25% { transform: scale(1.1) rotate(2deg); }
+            50% { background-position: 100% 50%; transform: scale(1); }
+            75% { transform: scale(0.9) rotate(-2deg); }
+            100% { background-position: 0% 50%; transform: scale(1); }
+        }
+
+        /* * === Glassmorphism Card & Themed Elements === */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--glass-shadow);
+            animation: fadeIn 1.5s ease-out;
+            transition: background 0.5s ease, border 0.5s ease, box-shadow 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px) scale(0.98); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .heading-gradient {
+            background-image: linear-gradient(to right, var(--text-gradient-from), var(--text-gradient-to));
+            transition: background-image 0.5s ease;
+        }
+
+        .muted-text { color: var(--text-color-muted); transition: color 0.5s ease; }
+
+        .cta-link {
+            background: var(--cta-bg);
+            border: 1px solid var(--cta-border);
+            color: var(--text-color);
+            transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease, color 0.5s ease;
+        }
+
+        .cta-link:hover {
+            background: var(--cta-bg-hover);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+        }
+        
+        .cta-link svg { transition: transform 0.3s ease; }
+        .cta-link:hover svg { transform: translateX(4px); }
+        a.cta-link:hover svg { transform: translateX(-4px); } /* For back button */
+
+        /* * === Icon Buttons === */
+        .icon-button {
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; background: var(--glass-bg);
+            border: 1px solid var(--glass-border); border-radius: 50%;
+            transition: transform 0.3s ease, background 0.5s ease, border 0.5s ease;
+        }
+        .icon-button:hover { transform: scale(1.1); }
+        .icon-button svg { color: var(--text-color); transition: color 0.5s ease; }
+        .theme-toggle { position: fixed; top: 20px; right: 20px; z-index: 100; width: 50px; height: 50px; }
+        .theme-toggle:hover { transform: scale(1.1) rotate(15deg); }
+        .theme-toggle svg { width: 24px; height: 24px; }
+        .fullscreen-toggle { position: fixed; top: 20px; right: 80px; z-index: 100; width: 50px; height: 50px; }
+        .fullscreen-toggle svg { width: 22px; height: 22px; }
+
+        /* * === Form & List Styles === */
+        .modal-input {
+            background: var(--input-bg);
+            border: 1px solid var(--glass-border);
+            color: var(--text-color);
+        }
+        .modal-input::placeholder { color: var(--text-color-muted); }
+        
+        .quiz-list-item {
+            background: var(--cta-bg);
+            border: 1px solid var(--cta-border);
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+        .quiz-list-item:hover {
+            background: var(--cta-bg-hover);
+            transform: translateY(-2px);
+        }
+
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen p-4">
+
+    <!-- Theme Toggle Button -->
+    <button id="theme-toggle" class="icon-button theme-toggle" aria-label="Toggle theme">
+        <svg id="theme-icon-sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sun hidden"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+        <svg id="theme-icon-moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-moon"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+    </button>
+    
+    <!-- Fullscreen Toggle Button -->
+    <button id="fullscreen-toggle" class="icon-button fullscreen-toggle" aria-label="Toggle fullscreen">
+        <svg id="icon-expand" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-expand"><path d="m21 21-6-6m6 6v-4m0 4h-4"/><path d="M3 3l6 6m-6-6v4m0-4h4"/></svg>
+        <svg id="icon-shrink" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shrink hidden"><path d="M15 15l6 6m-6-6v4m0-4h4"/><path d="M9 9l-6-6m6 6v-4m0 4H5"/></svg>
+    </button>
+
+    <main class="w-full max-w-4xl text-left">
+        <div class="glass-card rounded-3xl p-8 md:p-12">
+            
+            <div class="flex flex-wrap justify-between items-center gap-4 mb-8">
+                <h1 class="heading-gradient text-3xl md:text-4xl font-extrabold text-transparent bg-clip-text">Manage Quizzes</h1>
+                <a href="index.html" class="cta-link inline-flex items-center gap-2 px-5 py-2.5 rounded-full font-semibold text-base">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+                    Back to Home
+                </a>
+            </div>
+
+            <!-- Create Quiz Form -->
+            <div class="mb-12">
+                <h2 class="text-2xl font-bold mb-4 muted-text">Create New Quiz</h2>
+                <form id="create-quiz-form" class="grid md:grid-cols-5 gap-4 items-end">
+                    <div class="md:col-span-2">
+                        <label for="quiz-name" class="block text-sm font-medium muted-text mb-1">Quiz Name</label>
+                        <input type="text" id="quiz-name" class="modal-input w-full p-3 rounded-xl" required placeholder="e.g., Verbal Practice #1">
+                    </div>
+                    <div>
+                        <label for="time-limit" class="block text-sm font-medium muted-text mb-1">Time (min)</label>
+                        <input type="number" id="time-limit" min="1" value="10" class="modal-input w-full p-3 rounded-xl" required>
+                    </div>
+                    <div class="md:col-span-2">
+                        <button type="submit" class="cta-link w-full text-center justify-center inline-flex items-center gap-3 px-8 py-3 rounded-xl font-semibold text-lg h-full">Create Quiz</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Existing Quizzes -->
+            <div>
+                <div class="flex justify-between items-center mb-4">
+                     <h2 class="text-2xl font-bold muted-text">Existing Quizzes</h2>
+                     <a href="performance.html" class="text-sky-400 hover:text-sky-300 transition-colors">View Performance Dashboard →</a>
+                </div>
+                <div id="message" class="text-center muted-text mb-4"></div>
+                <ul id="quiz-list" class="space-y-4">
+                    <!-- JS will populate this -->
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // --- Theme & Fullscreen Logic (copied from main app) ---
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const sunIcon = document.getElementById('theme-icon-sun');
+        const moonIcon = document.getElementById('theme-icon-moon');
+        const fullscreenToggleBtn = document.getElementById('fullscreen-toggle');
+        const expandIcon = document.getElementById('icon-expand');
+        const shrinkIcon = document.getElementById('icon-shrink');
+
+        const applyTheme = (theme) => {
+            document.body.classList.toggle('light-mode', theme === 'light');
+            sunIcon.classList.toggle('hidden', theme !== 'light');
+            moonIcon.classList.toggle('hidden', theme === 'light');
+        };
+
+        let currentTheme = localStorage.getItem('theme') || 'dark';
+        applyTheme(currentTheme);
+
+        themeToggleBtn.addEventListener('click', () => {
+            currentTheme = document.body.classList.contains('light-mode') ? 'dark' : 'light';
+            localStorage.setItem('theme', currentTheme);
+            applyTheme(currentTheme);
+        });
+
+        const toggleFullscreenState = () => {
+            const isFullscreen = !!document.fullscreenElement;
+            expandIcon.classList.toggle('hidden', isFullscreen);
+            shrinkIcon.classList.toggle('hidden', !isFullscreen);
+        };
+
+        fullscreenToggleBtn.addEventListener('click', () => {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen().catch(err => console.error(`Fullscreen error: ${err.message}`));
+            } else {
+                if (document.exitFullscreen) document.exitFullscreen();
+            }
+        });
+        document.addEventListener('fullscreenchange', toggleFullscreenState);
+        toggleFullscreenState();
+
+        // --- Quiz Management Logic (preserved from original file) ---
+        const API_BASE_URL = 'http://127.0.0.1:8000/api';
+        const messageEl = document.getElementById('message');
+        const createQuizForm = document.getElementById('create-quiz-form');
+        const quizNameInput = document.getElementById('quiz-name');
+        const timeLimitInput = document.getElementById('time-limit');
+        const quizListEl = document.getElementById('quiz-list');
+
+        async function fetchAndDisplayQuizzes() {
+            messageEl.textContent = 'Loading quizzes...';
+            try {
+                const response = await fetch(`${API_BASE_URL}/quizzes/`);
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(errorData.detail || `HTTP error! status: ${response.status}`);
+                }
+                const quizzes = await response.json();
+                renderQuizList(quizzes);
+                messageEl.textContent = '';
+            } catch (error) {
+                console.error('Error fetching quizzes:', error);
+                messageEl.textContent = `Failed to load quizzes. Ensure the backend is running.`;
+            }
+        }
+
+        function renderQuizList(quizzes) {
+            quizListEl.innerHTML = '';
+            if (quizzes.length === 0) {
+                quizListEl.innerHTML = '<li class="text-center muted-text">No quizzes created yet.</li>';
+                return;
+            }
+            quizzes.forEach(quiz => {
+                const listItem = document.createElement('li');
+                listItem.className = "quiz-list-item p-4 rounded-xl flex flex-wrap items-center justify-between gap-4";
+                listItem.innerHTML = `
+                    <span class="font-semibold text-lg">${quiz.name}</span>
+                    <div class="flex items-center gap-2 flex-shrink-0">
+                        <a href="quiz.html?quiz_id=${quiz.id}" title="Take Quiz" class="icon-button w-10 h-10"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg></a>
+                        <a href="manage_questions.html?quiz_id=${quiz.id}&quiz_name=${encodeURIComponent(quiz.name)}" title="Manage Questions" class="icon-button w-10 h-10"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg></a>
+                        <button class="delete-btn icon-button w-10 h-10" data-quiz-id="${quiz.id}" title="Delete Quiz"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg></button>
+                    </div>
+                `;
+                quizListEl.appendChild(listItem);
+            });
+        }
+
+        createQuizForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const quizName = quizNameInput.value.trim();
+            const timeLimitMinutes = parseInt(timeLimitInput.value);
+            if (!quizName || isNaN(timeLimitMinutes) || timeLimitMinutes <= 0) {
+                messageEl.textContent = 'Please enter a valid quiz name and time limit.';
+                return;
+            }
+            messageEl.textContent = 'Creating quiz...';
+            try {
+                const response = await fetch(`${API_BASE_URL}/quizzes/`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name: quizName, time_limit_minutes: timeLimitMinutes }),
+                });
+                if (!response.ok) throw new Error('Failed to create quiz.');
+                quizNameInput.value = '';
+                timeLimitInput.value = '10';
+                messageEl.textContent = 'Quiz created successfully!';
+                fetchAndDisplayQuizzes();
+            } catch (error) {
+                console.error('Error creating quiz:', error);
+                messageEl.textContent = 'Failed to create quiz.';
+            }
+        });
+
+        quizListEl.addEventListener('click', (event) => {
+            const button = event.target.closest('button.delete-btn');
+            if (button) {
+                const quizId = button.dataset.quizId;
+                if (confirm('Are you sure you want to delete this quiz and all its data? This action cannot be undone.')) {
+                    deleteQuiz(quizId);
+                }
+            }
+        });
+
+        async function deleteQuiz(quizId) {
+            messageEl.textContent = `Deleting quiz...`;
+            try {
+                const response = await fetch(`${API_BASE_URL}/quizzes/${quizId}`, { method: 'DELETE' });
+                if (!response.ok) throw new Error('Failed to delete quiz.');
+                messageEl.textContent = `Quiz deleted successfully.`;
+                fetchAndDisplayQuizzes();
+            } catch (error) {
+                console.error('Error deleting quiz:', error);
+                messageEl.textContent = `Failed to delete quiz.`;
+            }
+        }
+
+        window.onload = fetchAndDisplayQuizzes;
+    </script>
+</body>
+</html>

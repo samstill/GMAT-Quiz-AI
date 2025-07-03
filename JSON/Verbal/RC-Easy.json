@@ -1,0 +1,542 @@
+[
+  {
+    "questionText": "According to the passage, traditional corporate leaders differ from leaders in learning organizations in that the former",
+    "options": [
+      "encourage employees to concentrate on developing a wide range of skills",
+      "enable employees to recognize and confront dominant corporate models and to develop alternative models",
+      "make important policy decisions alone and then require employees in the corporation to abide by those decisions",
+      "instill confidence in employees because of their willingness to make risky decisions and accept their consequences",
+      "are concerned with offering employees frequent advice and career guidance"
+    ],
+    "correctAnswer": "C",
+    "difficulty": "easy",
+    "question_type": "Verbal",
+    "subsection": "RC",
+    "rc_id": 1
+  },
+  {
+    "questionText": "Which of the following best describes employee behavior encouraged within learning organizations, as such organizations are described in the passage?",
+    "options": [
+      "Carefully defining one’s job description and taking care to avoid deviations from it",
+      "Designing mentoring programs that train new employees to follow procedures that have been used for many years",
+      "Concentrating one’s efforts on mastering one aspect of a complicated task",
+      "Studying an organizational problem, preparing a report, and submitting it to a corporate leader for approval",
+      "Analyzing a problem related to productivity, making a decision about a solution, and implementing that solution"
+    ],
+    "correctAnswer": "E",
+    "difficulty": "easy",
+    "question_type": "Verbal",
+    "subsection": "RC",
+    "rc_id": 1
+  },
+  {
+    "questionText": "According to the author of the passage, corporate leaders of the future should do which of the following?",
+    "options": [
+      "They should encourage employees to put long-term goals ahead of short-term profits.",
+      "They should exercise more control over employees in order to constrain production costs.",
+      "They should redefine incentives for employees’ performance improvement.",
+      "They should provide employees with opportunities to gain new skills and expand their capabilities.",
+      "They should promote individual managers who are committed to established company policies."
+    ],
+    "correctAnswer": "D",
+    "difficulty": "easy",
+    "question_type": "Verbal",
+    "subsection": "RC",
+    "rc_id": 1
+  },
+  {
+    "questionText": "The primary purpose of the passage is to",
+    "options": [
+      "endorse a traditional corporate structure",
+      "introduce a new approach to corporate leadership and evaluate criticisms of it",
+      "explain competing theories about management practices and reconcile them",
+      "contrast two typical corporate organizational structures",
+      "propose an alternative to a common corporate approach"
+    ],
+    "correctAnswer": "E",
+    "difficulty": "easy",
+    "question_type": "Verbal",
+    "subsection": "RC",
+    "rc_id": 1
+  },
+  {
+    "questionText": "All of the following are mentioned as ways of controlling the magnitude of structural unemployment EXCEPT",
+    "options": [
+      "using public funds to create jobs",
+      "teaching new skills to displaced workers",
+      "allowing displaced workers to retire",
+      "controlling the movement of capital",
+      "encouraging workers to move to where jobs are available"
+    ],
+    "correctAnswer": "A",
+    "difficulty": "easy",
+    "question_type": "Verbal",
+    "subsection": "RC",
+    "rc_id": 2
+  },
+  {
+    "questionText": "The passage suggests that a potential outcome of higher structural unemployment is",
+    "options": [
+      "increased public spending for social services",
+      "placement of workers in jobs for which they are not qualified",
+      "higher wages for those workers who have skills that are in demand",
+      "an increase in the length of time jobs remain unfilled",
+      "a shift in the government’s economic policy priorities"
+    ],
+    "correctAnswer": "C",
+    "difficulty": "easy",
+    "question_type": "Verbal",
+    "subsection": "RC",
+    "rc_id": 2
+  },
+  {
+    "questionText": "It can be inferred from the passage that even when there are unemployed workers, labor shortages are still likely to occur if",
+    "options": [
+      "the inflation rate is unusually high",
+      "there is insufficient technological innovation",
+      "the level of structural unemployment is exceptionally low",
+      "the jobs available in certain places require skills that the labor force in those areas lacks",
+      "the workers in some industries are dissatisfied with the pay offered in those industries"
+    ],
+    "correctAnswer": "D",
+    "difficulty": "easy",
+    "question_type": "Verbal",
+    "subsection": "RC",
+    "rc_id": 2
+  },
+  {
+    "questionText": "The passage suggests that the phenomenon of combined unemployment and inflation is",
+    "options": [
+      "a socioeconomic problem that can only be addressed by government intervention",
+      "a socioeconomic problem that can be characteristic of periods of structural unemployment",
+      "an economic problem that results from government intervention in management-labor relations",
+      "an economic problem that results from imperfect applications of technology",
+      "an economic problem that can be eliminated by relatively small changes in the labor force"
+    ],
+    "correctAnswer": "B",
+    "difficulty": "easy",
+    "question_type": "Verbal",
+    "subsection": "RC",
+    "rc_id": 2
+  },
+  {
+    "questionText": "The passage is primarily concerned with",
+    "options": [
+      "clarifying the definition of a concept",
+      "proposing a way to eliminate an undesirable condition",
+      "discussing the sources and consequences of a problem",
+      "suggesting ways to alleviate the effects of a particular social policy",
+      "evaluating the steps that have been taken to correct an imbalance"
+    ],
+    "correctAnswer": "C",
+    "difficulty": "easy",
+    "question_type": "Verbal",
+    "subsection": "RC",
+    "rc_id": 2
+  },
+  {
+    "questionText": "According to the passage, small downward shifts in the demand for labor will not usually cause unemployment because",
+    "options": [
+      "such shifts are frequently accompanied by upswings in the economy",
+      "such shifts usually occur slowly",
+      "workers can be encouraged to move to where there are jobs",
+      "normal attrition is often sufficient to reduce the size of the work force",
+      "workers are usually flexible enough to learn new skills and switch to new jobs"
+    ],
+    "correctAnswer": "D",
+    "difficulty": "easy",
+    "question_type": "Verbal",
+    "subsection": "RC",
+    "rc_id": 2
+  },
+  {
+    "questionText": "The passage is primarily concerned with",
+    "options": [
+      "explaining why one method of earthquake prediction has proven more practicable than an alternative method",
+      "suggesting that accurate earthquake forecasting must combine elements of long-term and short-term prediction",
+      "challenging the usefulness of dilatancy theory for explaining the occurrence of precursory phenomena",
+      "discussing the deficiency of two methods by which researchers have attempted to predict the occurrence of earthquakes",
+      "describing the development of methods for establishing patterns in the occurrence of past earthquakes"
+    ],
+    "correctAnswer": "D",
+    "difficulty": "easy",
+    "question_type": "Verbal",
+    "subsection": "RC",
+    "rc_id": 3
+  },
+  {
+    "questionText": "According to the passage, laboratory evidence concerning the effects of stress on rocks might help account for",
+    "options": [
+      "differences in magnitude among earthquakes",
+      "certain phenomena that occur prior to earthquakes",
+      "variations in the intervals between earthquakes in a particular area",
+      "differences in the frequency with which earthquakes occur in various areas",
+      "the unreliability of short-term earthquake predictions"
+    ],
+    "correctAnswer": "B",
+    "difficulty": "easy",
+    "question_type": "Verbal",
+    "subsection": "RC",
+    "rc_id": 3
+  },
+  {
+    "questionText": "It can be inferred from the passage that one problem with using precursory phenomena to predict earthquakes is that minor tremors",
+    "options": [
+      "typically occur some distance from the sites of the large earthquakes that follow them",
+      "are directly linked to the mechanisms that cause earthquakes",
+      "are difficult to distinguish from major tremors",
+      "have proven difficult to measure accurately",
+      "are not always followed by large earthquakes"
+    ],
+    "correctAnswer": "E",
+    "difficulty": "easy",
+    "question_type": "Verbal",
+    "subsection": "RC",
+    "rc_id": 3
+  },
+  {
+    "questionText": "According to the passage, some researchers based their research about long-term earthquake prediction on which of the following facts?",
+    "options": [
+      "The historical record confirms that most earthquakes have been preceded by minor tremors.",
+      "The average interval between earthquakes in one region of the San Andreas Fault is 132 years.",
+      "Some regions tend to be the site of numerous earthquakes over the course of many years.",
+      "Changes in the volume of rock can occur as a result of building stress and can lead to the weakening of rock.",
+      "Paleoseismologists have been able to unearth and date geological features caused by past earthquakes."
+    ],
+    "correctAnswer": "C",
+    "difficulty": "easy",
+    "question_type": "Verbal",
+    "subsection": "RC",
+    "rc_id": 3
+  },
+  {
+    "questionText": "The passage suggests which of the following about the paleoseismologists’ findings described in lines 42-50?",
+    "options": [
+      "They suggest that the frequency with which earthquakes occurred at a particular site decreased significantly over the past two millennia.",
+      "They suggest that paleoseismologists may someday be able to make reasonably accurate long-term earthquake predictions.",
+      "They suggest that researchers may someday be able to determine which past occurrences of minor tremors were actually followed by large earthquakes.",
+      "They suggest that the recurrence of earthquakes in earthquake-prone sites is too irregular to serve as a basis for earthquake prediction.",
+      "They indicate that researchers attempting to develop long-term methods of earthquake prediction have overlooked important evidence concerning the causes of earthquakes."
+    ],
+    "correctAnswer": "D",
+    "difficulty": "easy",
+    "question_type": "Verbal",
+    "subsection": "RC",
+    "rc_id": 3
+  },
+  {
+    "questionText": "The author implies which of the following about the ability of the researchers mentioned in line 17 to predict earthquakes?",
+    "options": [
+      "They can identify when an earthquake is likely to occur but not how large it will be.",
+      "They can identify the regions where earthquakes are likely to occur but not when they will occur.",
+      "They are unable to determine either the time or the place that earthquakes are likely to occur.",
+      "They are likely to be more accurate at short-term earthquake prediction than at long-term earthquake prediction.",
+      "They can determine the regions where earthquakes have occurred in the past but not the regions where they are likely to occur in the future."
+    ],
+    "correctAnswer": "C",
+    "difficulty": "easy",
+    "question_type": "Verbal",
+    "subsection": "RC",
+    "rc_id": 3
+  },
+  {
+    "questionText": "It can be inferred from the passage that one reason an advertiser might prefer a hard-sell approach to a soft-sell approach is that",
+    "options": [
+      "the risks of boomerang effects are minimized when the conclusions an advertiser wants the consumer to draw are themselves left unstated",
+      "counterargumentation is likely from consumers who fail to draw their own conclusions regarding an advertising claim",
+      "inferential activity is likely to occur even if consumers perceive themselves to be more knowledgeable than the individuals presenting product claims",
+      "research on consumer memory suggests that the explicit conclusions provided by an advertiser using the hard-sell approach have a significant impact on decision making",
+      "the information presented by an advertiser using the soft-sell approach may imply different conclusions to different consumers"
+    ],
+    "correctAnswer": "E",
+    "difficulty": "easy",
+    "question_type": "Verbal",
+    "subsection": "RC",
+    "rc_id": 4
+  },
+  {
+    "questionText": "Each of the following is mentioned in the passage as a characteristic of the hard-sell approach EXCEPT:",
+    "options": [
+      "Its overall message is readily grasped.",
+      "It appeals to consumers’ knowledge about the product.",
+      "It makes explicit claims that the advertised brand is superior to other brands.",
+      "It uses statements that are expressed very clearly.",
+      "It makes claims in the form of direct conclusions."
+    ],
+    "correctAnswer": "B",
+    "difficulty": "easy",
+    "question_type": "Verbal",
+    "subsection": "RC",
+    "rc_id": 4
+  },
+  {
+    "questionText": "It can be inferred from the passage that advertisers could reduce one of the risks discussed in the last paragraph if they were able to provide",
+    "options": [
+      "motivation for consumers to think about the advertisement’s message",
+      "information that implies the advertiser’s intended conclusion but leaves that conclusion unstated",
+      "subtle evidence that the advertised product is superior to that of competitors",
+      "information comparing the advertised product with its competitors",
+      "opportunity for consumers to generate their own beliefs or conclusions"
+    ],
+    "correctAnswer": "A",
+    "difficulty": "easy",
+    "question_type": "Verbal",
+    "subsection": "RC",
+    "rc_id": 4
+  },
+  {
+    "questionText": "The primary purpose of the passage is to",
+    "options": [
+      "point out the risks involved in the use of a particular advertising strategy",
+      "make a case for the superiority of one advertising strategy over another",
+      "illustrate the ways in which two advertising strategies may be implemented",
+      "present the advantages and disadvantages of two advertising strategies",
+      "contrast the types of target markets for which two advertising strategies are appropriate"
+    ],
+    "correctAnswer": "D",
+    "difficulty": "easy",
+    "question_type": "Verbal",
+    "subsection": "RC",
+    "rc_id": 4
+  },
+  {
+    "questionText": "Which of the following best describes the function of the sentence in lines 25-28 in the context of the passage as a whole?",
+    "options": [
+      "It reiterates a distinction between two advertising strategies that is made in the first paragraph.",
+      "It explains how a particular strategy avoids a drawback described earlier in the paragraph.",
+      "It suggests that a risk described earlier in the paragraph is less serious than some researchers believe it to be.",
+      "It outlines why the strategy described in the previous sentence involves certain risks for an advertiser.",
+      "It introduces an argument that will be refuted in the following paragraph."
+    ],
+    "correctAnswer": "B",
+    "difficulty": "easy",
+    "question_type": "Verbal",
+    "subsection": "RC",
+    "rc_id": 4
+  },
+  {
+    "questionText": "It can be inferred from the passage that one situation in which the boomerang effect often occurs is when consumers",
+    "options": [
+      "have been exposed to forceful claims that are diametrically opposed to those in an advertiser’s message",
+      "have previous self-generated beliefs or conclusions that are readily accessible from memory",
+      "are subjected to advertising messages that are targeted at specific markets to which those consumers do not belong",
+      "are confused regarding the point of the advertiser’s message",
+      "come to view the advertiser’s message with suspicion"
+    ],
+    "correctAnswer": "E",
+    "difficulty": "easy",
+    "question_type": "Verbal",
+    "subsection": "RC",
+    "rc_id": 4
+  },
+  {
+    "questionText": "It can be inferred from the passage that the research mentioned in line 29 supports which of the following statements?",
+    "options": [
+      "Implicit conclusions are more likely to capture accurately the point of the advertiser’s message than are explicit conclusions.",
+      "Counterargumentation is less likely to occur if an individual’s beliefs or conclusions are readily accessible from memory.",
+      "The hard-sell approach results in conclusions that are more difficult for the consumer to recall than are conclusions resulting from the soft-sell approach.",
+      "When the beliefs of others are presented as definite and forceful claims, they are perceived to be as accurate as self-generated beliefs.",
+      "Despite the advantages of implicit conclusions, the hard-sell approach involves fewer risks for the advertiser than does the soft-sell approach."
+    ],
+    "correctAnswer": "C",
+    "difficulty": "easy",
+    "question_type": "Verbal",
+    "subsection": "RC",
+    "rc_id": 4
+  },
+  {
+    "questionText": "It can be inferred from the passage that the two procedures described in the passage have which of the following in common?",
+    "options": [
+      "They have been applied in practice.",
+      "They rely on the use of a device that measures tension.",
+      "Their purpose is to determine an unknown mass.",
+      "They can only be applied to small solid objects.",
+      "They involve attraction between objects of similar mass."
+    ],
+    "correctAnswer": "C",
+    "difficulty": "easy",
+    "question_type": "Verbal",
+    "subsection": "RC",
+    "rc_id": 5
+  },
+  {
+    "questionText": "According to the passage, the tension in the string mentioned in lines 8-9 is analogous to which of the following aspects of a double-star system?",
+    "options": [
+      "The speed with which one star orbits the other",
+      "The gravitational attraction between the stars",
+      "The amount of time it takes for the stars to circle one another",
+      "The distance between the two stars",
+      "The combined mass of the two stars"
+    ],
+    "correctAnswer": "B",
+    "difficulty": "easy",
+    "question_type": "Verbal",
+    "subsection": "RC",
+    "rc_id": 5
+  },
+  {
+    "questionText": "Which of the following best describes the relationship between the first and the second paragraph of the passage?",
+    "options": [
+      "The first paragraph provides an illustration useful for understanding a procedure described in the second paragraph.",
+      "The first paragraph describes a hypothetical situation whose plausibility is tested in the second paragraph.",
+      "The first paragraph evaluates the usefulness of a procedure whose application is described further in the second paragraph.",
+      "The second paragraph provides evidence to support a claim made in the first paragraph.",
+      "The second paragraph analyzes the practical implications of a methodology proposed in the first paragraph."
+    ],
+    "correctAnswer": "A",
+    "difficulty": "easy",
+    "question_type": "Verbal",
+    "subsection": "RC",
+    "rc_id": 5
+  },
+  {
+    "questionText": "The author of the passage mentions observations regarding the period of a double-star system as being useful for determining",
+    "options": [
+      "the distance between the two stars in the system",
+      "the time it takes for each star to rotate on its axis",
+      "the size of the orbit the system’s two stars occupy",
+      "the degree of gravitational attraction between the system’s stars",
+      "the speed at which the star system moves through space"
+    ],
+    "correctAnswer": "D",
+    "difficulty": "easy",
+    "question_type": "Verbal",
+    "subsection": "RC",
+    "rc_id": 5
+  },
+  {
+    "questionText": "The primary purpose of the passage is to",
+    "options": [
+      "analyze a natural phenomenon in terms of its behavior under special conditions",
+      "describe the steps by which a scientific measurement is carried out",
+      "point out the conditions under which a scientific procedure is most useful",
+      "contrast two different uses of a methodological approach in science",
+      "explain a method by which scientists determine an unknown quantity"
+    ],
+    "correctAnswer": "E",
+    "difficulty": "easy",
+    "question_type": "Verbal",
+    "subsection": "RC",
+    "rc_id": 5
+  },
+  {
+    "questionText": "The passage is primarily concerned with",
+    "options": [
+      "describing a resource and indicating various methods used to study it",
+      "presenting a theory and offering an opposing point of view",
+      "providing an explanation for unexpected findings",
+      "demonstrating why a particular theory is unfounded",
+      "resolving a disagreement regarding the uses of a technology"
+    ],
+    "correctAnswer": "C",
+    "difficulty": "easy",
+    "question_type": "Verbal",
+    "subsection": "RC",
+    "rc_id": 6
+  },
+  {
+    "questionText": "The author of the passage discusses productivity in the retail industry in the first paragraph primarily in order to",
+    "options": [
+      "suggest a way in which IT can be used to create a competitive advantage",
+      "provide an illustration of the “productivity paradox”",
+      "emphasize the practical value of the introduction of IT",
+      "cite an industry in which productivity did not stagnate during the 1980s",
+      "counter the argument that IT could potentially create competitive advantage"
+    ],
+    "correctAnswer": "B",
+    "difficulty": "easy",
+    "question_type": "Verbal",
+    "subsection": "RC",
+    "rc_id": 6
+  },
+{
+    "questionText": "The passage suggests that proponents of resource-based theory would be likely to explain IT’s inability to produce direct competitive advantages for individual firms by pointing out that",
+    "options": [
+      "IT is not a resource that is difficult to obtain",
+      "IT is not an economically valuable resource",
+      "IT is a complex, intangible resource",
+      "economic progress has resulted from IT only in the service sector",
+      "changes brought about by IT cannot be detected by macroeconomic measures"
+    ],
+    "correctAnswer": "A",
+    "difficulty": "easy",
+    "question_type": "Verbal",
+    "subsection": "RC",
+    "rc_id": 6
+  },
+  {
+    "questionText": "Which of the following best describes the content of the first paragraph?",
+    "options": [
+      "It presents two explanations for the success of IT.",
+      "It provides evidence that decreases in productivity will continue.",
+      "It presents reasons for a decline in productivity.",
+      "It demonstrates the effect IT has had on productivity.",
+      "It contrasts views concerning the degree of IT’s success."
+    ],
+    "correctAnswer": "E",
+    "difficulty": "easy",
+    "question_type": "Verbal",
+    "subsection": "RC",
+    "rc_id": 6
+  },
+  {
+    "questionText": "The passage suggests that the recent study of retail firms discussed in the second paragraph supports which of the following conclusions regarding a firm’s competitive advantage?",
+    "options": [
+      "Human resources alone are more likely to contribute to competitive advantage than is IT alone.",
+      "Human resources combined with IT are more likely than human resources alone to have a negative effect on competitive advantage.",
+      "Human resources combined with IT often have a negative effect on competitive advantage.",
+      "IT by itself is much more likely to have a positive effect than a negative effect on competitive advantage.",
+      "The positive effect of IT on competitive advantage increases with time."
+    ],
+    "correctAnswer": "A",
+    "difficulty": "easy",
+    "question_type": "Verbal",
+    "subsection": "RC",
+    "rc_id": 6
+  },
+  {
+    "questionText": "According to the passage, most pre-1990 literature on businesses’ use of IT included which of the following?",
+    "options": [
+      "Recommendations regarding effective ways to use IT to gain competitive advantage",
+      "Explanations of the advantages and disadvantages of adopting IT",
+      "Information about ways in which IT combined with human resources could be used to increase competitive advantage",
+      "A warning regarding the negative effect on competitive advantage that would occur if IT were not adopted",
+      "A belief in the likelihood of increased competitive advantage for firms using IT"
+    ],
+    "correctAnswer": "E",
+    "difficulty": "easy",
+    "question_type": "Verbal",
+    "subsection": "RC",
+    "rc_id": 6
+  },
+  {
+    "questionText": "The author of the passage implies that toward the end of the 1980s, some economists described which of the following as a “productivity paradox” (see line 8)?",
+    "options": [
+      "Investments in IT would not result in increases in productivity until the 1990s.",
+      "Investments in IT did not lead to expected gains in productivity.",
+      "Productivity in the retail industry rose less rapidly than did productivity in other industries.",
+      "The gains in productivity due to the introduction of IT were not reflected in macroeconomic measures of productivity.",
+      "Most gains in productivity occurred in the service sector and were therefore particularly difficult to measure."
+    ],
+    "correctAnswer": "B",
+    "difficulty": "easy",
+    "question_type": "Verbal",
+    "subsection": "RC",
+    "rc_id": 6
+  },
+  {
+    "questionText": "According to the passage, the recent study of retail firms discussed in the second paragraph (lines 33-36) best supports which of the following assessments of IT’s potential?",
+    "options": [
+      "Even when IT gives a firm a temporary competitive advantage, that firm is unlikely to continue to achieve productivity gains.",
+      "The competitive advantages conferred by a firm’s introduction of IT are outweighed by IT’s development costs.",
+      "A firm’s introduction of IT is less likely to limit its ability to achieve productivity gains than to enhance that ability.",
+      "Although IT by itself is unlikely to give a firm a competitive advantage, IT combined with other resources may do so.",
+      "Although IT by itself is unlikely to give a firm a competitive advantage, a firm that does not employ IT cannot achieve a competitive advantage."
+    ],
+    "correctAnswer": "D",
+    "difficulty": "easy",
+    "question_type": "Verbal",
+    "subsection": "RC",
+    "rc_id": 6
+  }
+]

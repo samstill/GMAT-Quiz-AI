@@ -1,0 +1,24 @@
+PDF Question Number to JSON Index Map:
+
+PDF Q272 -> JSON Index 0
+PDF Q273 -> JSON Index 1
+PDF Q274 -> JSON Index 2 (has a table in explanation)
+PDF Q286 -> JSON Index 3
+PDF Q299 -> JSON Index 4 (has a figure)
+PDF Q305 -> JSON Index 5 (has a figure/table note, and tables in explanation)
+PDF Q315 -> JSON Index 6
+PDF Q322 -> JSON Index 7
+PDF Q325 -> JSON Index 8
+PDF Q326 -> JSON Index 9 (has a table in explanation)
+PDF Q333 -> JSON Index 10
+PDF Q341 -> JSON Index 11 (has a figure note)
+PDF Q346 -> JSON Index 12
+PDF Q351 -> JSON Index 13 (has a table in explanation)
+PDF Q354 -> JSON Index 14
+PDF Q362 -> JSON Index 15
+PDF Q365 -> JSON Index 16
+PDF Q366 -> JSON Index 17 (has a figure note)
+PDF Q368 -> JSON Index 18
+PDF Q387 -> JSON Index 19 (has a figure/table note)
+PDF Q396 -> JSON Index 20 (has a figure note)
+PDF Q403 -> JSON Index 21 (has a figure note)

@@ -1,0 +1,354 @@
+[
+  {
+    "questionText": "According to the passage, which of the following was true of the treaty establishing the Fort Berthold Indian Reservation? (RC Passage on PDF pages 439-440)",
+    "options": [
+      "It was challenged in the Supreme Court a number of times.",
+      "It was rescinded by the federal government, an action that gave rise to the Winters case.",
+      "It cited American Indians’ traditional use of the land’s resources.",
+      "It failed to mention water rights to be enjoyed by the reservation’s inhabitants.",
+      "It was modified by the Supreme Court in Arizona v. California."
+    ],
+    "correctAnswer": "D",
+    "answerExplanation": "This question depends on recognizing what the passage says about the treaty that established the Fort Berthold Indian Reservation. The passage indicates that the treaty <b>does not mention water rights</b>, but the federal government had intended, according to the Supreme Court, to reserve for the inhabitants of the reservation the waters that were essential to the usefulness of the land.<br />A. The passage does discuss Supreme Court cases, but it does not explicitly mention any challenges in the Supreme Court to the treaty.<br />B. The passage does not state that the federal government rescinded the treaty.<br />C. The passage does not indicate that the treaty made any reference to the traditional use of the land’s resources.<br />D. <b>Correct.</b> The passage indicates that the treaty does not mention water rights.<br />E. The passage’s reference to Arizona v. California relates to the treaty that established the Fort Berthold Indian Reservation only in that Arizona v. California refers to the Winters doctrine, which was established in a case regarding that treaty; Arizona v. California does not modify that treaty in any way.",
+    "difficulty": "medium",
+    "question_type": "Verbal",
+    "subsection": "RC",
+    "rc_id": 1
+  },
+  {
+    "questionText": "The passage suggests that, if the criteria discussed in lines 10–20 of the text were the only criteria for establishing a reservation’s water rights, which of the following would be true? (RC Passage on PDF pages 439-440)",
+    "options": [
+      "The water rights of the inhabitants of the Fort Berthold Indian Reservation would not take precedence over those of other citizens.",
+      "Reservations established before 1848 would be judged to have no water rights.",
+      "There would be no legal basis for the water rights of the Rio Grande pueblos.",
+      "Reservations other than American Indian reservations could not be created with reserved water rights.",
+      "Treaties establishing reservations would have to mention water rights explicitly in order to reserve water for a particular purpose."
+    ],
+    "correctAnswer": "C",
+    "answerExplanation": "The question requires you to make an inference based on a hypothetical situation in which the criteria discussed in lines 10–20 are the only criteria relevant to establishing a reservation’s water rights. These criteria relate to any reservation that has been formally withdrawn from federal public lands, in which the circumstances of that withdrawal make clear that the government had intended to reserve both water and land when the reservation was established. Because the Rio Grande pueblos never formally constituted a part of federal public lands, they were never formally withdrawn from these lands, and so this set of criteria does not apply to these pueblos. Thus, if these were the only legal criteria for establishing water rights, then there would be no legal basis for water rights for the Rio Grande pueblos.<br />C. <b>Correct.</b> If the criteria were the only criteria relevant for establishing water rights, then the passage suggests that, because the Rio Grande pueblos were never formally withdrawn from federal public lands, there would be no legal basis for water rights for these pueblos.",
+    "difficulty": "medium",
+    "question_type": "Verbal",
+    "subsection": "RC",
+    "rc_id": 1
+  },
+  {
+    "questionText": "Which of the following most accurately summarizes the relationship between Arizona v. California, as that decision is described in the passage, and the criteria discussed in lines 10–20? (RC Passage on PDF pages 439-440)",
+    "options": [
+      "Arizona v. California abolishes these criteria and establishes a competing set of criteria for applying the Winters doctrine.",
+      "Arizona v. California establishes that the Winters doctrine applies to a broader range of situations than those defined by these criteria.",
+      "Arizona v. California represents the sole example of an exception to the criteria as they were set forth in the Winters doctrine.",
+      "Arizona v. California does not refer to the Winters doctrine to justify water rights, whereas these criteria do rely on the Winters doctrine.",
+      "Arizona v. California applies the criteria derived from the Winters doctrine only to federal lands other than American Indian reservations."
+    ],
+    "correctAnswer": "B",
+    "answerExplanation": "This question requires you to determine how Arizona v. California, as it is described in the passage, relates to the criteria discussed in lines 10–20. Those criteria, which were established in various court decisions based on the precedent of Winters v. United States, lay down conditions under which courts can uphold federal rights to reserve water. One of the criteria is related to land formally withdrawn from federal public lands. Arizona v. California establishes that the Winters doctrine—which stipulates that water rights need not have been granted explicitly— applies to a broader range of situations than those defined by the criteria. For instance, the doctrine can apply in cases in which the land in question was never formally withdrawn from public lands.<br />B. <b>Correct.</b> The passage indicates that Arizona v. California applies the Winters doctrine to a situation that falls outside these criteria.",
+    "difficulty": "medium",
+    "question_type": "Verbal",
+    "subsection": "RC",
+    "rc_id": 1
+  },
+  {
+    "questionText": "Which of the following can be inferred about supplier partnerships, as they are described in the passage? (RC Passage on PDF page 442)",
+    "options": [
+      "They cannot be sustained unless the goods or services provided are available from a large number of suppliers.",
+      "They can result in purchasers paying more for goods and services than they would in a competitive-bidding situation.",
+      "They typically are instituted at the urging of the supplier rather than the purchaser.",
+      "They are not feasible when the goods or services provided are directly related to the purchasers’ end products.",
+      "They are least appropriate when the purchasers’ ability to change suppliers is limited."
+    ],
+    "correctAnswer": "B",
+    "answerExplanation": "According to the passage, in supplier partnerships a corporate purchaser forgoes the right to pursue alternative suppliers for certain goods or services. This tends to reduce or eliminate the threat of competition for the supplier in the partnership. It can be inferred that the corporate purchaser in a supplier partnership risks paying more for goods or services than it would if the supplier had to compete for the business.<br />B. <b>Correct.</b> The passage indicates that supplier partnerships, by definition, reduce the supplier’s exposure to competition, and it can be inferred from this that a purchaser in such a partnership could sometimes pay more for the supplied goods or services than if not in the partnership.",
+    "difficulty": "medium",
+    "question_type": "Verbal",
+    "subsection": "RC",
+    "rc_id": 2
+  },
+  {
+    "questionText": "Which of the following best describes the relation of the second paragraph to the first? (RC Passage on PDF page 442)",
+    "options": [
+      "The second paragraph offers proof of an assertion made in the first paragraph.",
+      "The second paragraph provides an explanation for the occurrence of a situation described in the first paragraph.",
+      "The second paragraph discusses the application of a strategy proposed in the first paragraph.",
+      "The second paragraph examines the scope of a problem presented in the first paragraph.",
+      "The second paragraph discusses the contradictions inherent in a relationship described in the first paragraph."
+    ],
+    "correctAnswer": "C",
+    "answerExplanation": "The first paragraph recommends that a corporate purchaser of certain categories of goods and services should consider two variables to evaluate how, if at all, it might exert pressure on a supplier to gain economic advantage. Applying the two variables, the second paragraph identifies four different scenarios and, for each scenario, explains how the purchaser can gain some economic advantage.<br />C. <b>Correct.</b> The first paragraph recommends that corporate purchasers consider two variables in analyzing the feasibility of exerting pressure on suppliers with a view to economic advantage; the second paragraph shows how purchasers can apply those variables to identify four different types of situations affecting the degree to which economic advantage can be gained by exerting competitive pressure.",
+    "difficulty": "medium",
+    "question_type": "Verbal",
+    "subsection": "RC",
+    "rc_id": 2
+  },
+  {
+    "questionText": "It can be inferred that the author of the passage would be most likely to make which of the following recommendations to a company purchasing health care benefits for its employees? (RC Passage on PDF page 442)",
+    "options": [
+      "Devise strategies for circumventing the obstacles to replacing the current provider of health care benefits.",
+      "Obtain health care benefits from a provider that also provides other indirect products and services.",
+      "Obtain bids from other providers of health care benefits in order to be in a position to negotiate a better deal with the current provider.",
+      "Switch providers of health care benefits whenever a different provider offers a more competitive price.",
+      "Acknowledge the difficulties involved in replacing the current provider of health care benefits and offer to form a partnership with the provider."
+    ],
+    "correctAnswer": "C",
+    "answerExplanation": "In the passage, health care benefits are used as an example of a Type 2 situation, where there are many competing providers but changing from one provider to another is difficult. In Type 2 situations, the author of the passage recommends that the corporate purchaser examine the alternative providers to provide leverage in bargaining with the existing provider.<br />C. <b>Correct.</b> The recommendation offered in the passage is to review competitive alternatives to the existing provider, with a view to bargaining effectively for better terms with the existing provider.",
+    "difficulty": "medium",
+    "question_type": "Verbal",
+    "subsection": "RC",
+    "rc_id": 2
+  },
+  {
+    "questionText": "The primary purpose of the passage is to (RC Passage on PDF page 465)",
+    "options": [
+      "examine two sides of a historiographical debate",
+      "call into question an author’s approach to a historiographical debate",
+      "examine one author’s approach to a historiographical debate",
+      "discuss two authors’ works in relationship to a historiographical debate",
+      "explain the prevalent perspective on a historiographical debate"
+    ],
+    "correctAnswer": "D",
+    "answerExplanation": "This question requires understanding what the passage as a whole is attempting to do. The passage opens by introducing two books published in 1984 that both concern the history of women in the United States. The passage then makes it clear that one book deals <b>directly</b> (line 15) with the issue of women’s status, while the other does not. The passage then goes on to discuss the perspective that each book takes and what each book has to offer for an assessment of women’s status in the eighteenth and nineteenth centuries.<br />D. <b>Correct.</b> The passage discusses what two different books have to offer in relation to a particular historiographical debate.",
+    "difficulty": "hard",
+    "question_type": "Verbal",
+    "subsection": "RC",
+    "rc_id": 3
+  },
+  {
+    "questionText": "The author of the passage mentions the supervision of schools primarily in order to (RC Passage on PDF page 465)",
+    "options": [
+      "remind readers of the role education played in the cultural changes of the nineteenth century in the United States",
+      "suggest an area in which nineteenth-century American women were relatively free to exercise power",
+      "provide an example of an occupation for which accurate data about women’s participation are difficult to obtain",
+      "speculate about which occupations were considered suitable for United States women of the nineteenth century",
+      "illustrate how the answers to questions about women’s status depend on particular contexts"
+    ],
+    "correctAnswer": "E",
+    "answerExplanation": "Answering this question depends on understanding what role a particular piece of information plays in the passage as a whole. The author implicitly supports Lebsock’s contention (beginning at line 20) that different frames of reference can produce different perspectives on the debate about women’s status in the eighteenth and nineteenth centuries. The author then summarizes different contexts cited by Lebsock to support the contention about frames of reference. As part of this summary, the author refers to <b>supervising schools</b> (lines 24–25) as an example of a job that apparently showed women losing power.<br />E. <b>Correct.</b> The passage mentions supervising schools as part of an illustration of Lebsock’s claim that the debate about women’s status depends on the context being examined.",
+    "difficulty": "hard",
+    "question_type": "Verbal",
+    "subsection": "RC",
+    "rc_id": 3
+  },
+  {
+    "questionText": "With which of the following characterizations of Lebsock’s contribution to the controversy concerning women’s status in the nineteenth-century United States would the author of the passage be most likely to agree? (RC Passage on PDF page 465)",
+    "options": [
+      "Lebsock has studied women from a formerly neglected region and time period.",
+      "Lebsock has demonstrated the importance of frame of reference in answering questions about women’s status.",
+      "Lebsock has addressed the controversy by using women’s current status as a frame of reference.",
+      "Lebsock has analyzed statistics about occupations and property that were previously ignored.",
+      "Lebsock has applied recent historiographical methods to the biography of a nineteenth-century woman."
+    ],
+    "correctAnswer": "B",
+    "answerExplanation": "Answering this question requires recognizing information explicitly given in the passage. The passage introduces the work of Lebsock in line 6 and then goes on to describe several characteristics of Lebsock’s book. In lines 20–22, the author introduces Lebsock’s claim that the historiographical debate about women’s status is <b>dependent on frame of reference</b> and calls that claim important; the passage then gives an example showing how frame of reference affects views of women’s status. In so doing, the author displays an implicit agreement with Lebsock’s discussion on this point.<br />B. <b>Correct.</b> The author describes as important Lebsock’s idea that frame of reference informs the debate about women’s status.",
+    "difficulty": "hard",
+    "question_type": "Verbal",
+    "subsection": "RC",
+    "rc_id": 3
+  },
+  {
+    "questionText": "Airline representative: The percentage of flight delays caused by airline error decreased significantly this year. This indicates that airlines listened to complaints about preventable errors and addressed the problems. Although delays caused by weather and other uncontrollable factors will always be part of travel, preventable delays are clearly decreasing.<br />Which of the following most clearly points to a logical flaw in the representative’s reasoning?",
+    "options": [
+      "Airlines may be motivated by financial concerns to underreport the percentage of flight delays caused by airline error.",
+      "The delays caused by uncontrollable factors could have led to an increase in complaints to airlines.",
+      "Complaints may not be the most reliable measure of how many errors occurred in a given year.",
+      "Delays caused by weather and other uncontrollable factors could have increased dramatically during the year under discussion.",
+      "Airline customers might not believe that particular delays were caused by uncontrollable factors rather than airline error."
+    ],
+    "correctAnswer": "D",
+    "answerExplanation": "<b>Argument Evaluation</b><br /><b>Situation</b> An airline representative claims that because the <b>percentage</b> of flight delays caused by airline error has decreased, preventable delays are clearly decreasing.<br /><b>Reasoning</b> What is the logical flaw in this reasoning? The argument makes a claim about the <b>number</b> of preventable delays based on evidence about the <b>percentage</b> of delays due to airline error. However, a decrease in the percentage of delays due to airline error does not guarantee a decrease in the number of preventable delays, if the overall number of delays has significantly increased. ... D. Correct. If the total number of delays increased dramatically, then the actual number of preventable delays could have increased even if the percentage of delays due to airline error decreased.",
+    "difficulty": "medium",
+    "question_type": "Verbal",
+    "subsection": "CR",
+    "rc_id": null
+  },
+  {
+    "questionText": "Although the school would receive financial benefits if it had soft drink vending machines in the cafeteria, we should not allow them. Allowing soft drink machines there would not be in our students’ interest. If our students start drinking more soft drinks, they will be less healthy.<br />The argument depends on which of the following?",
+    "options": [
+      "If the soft drink vending machines were placed in the cafeteria, students would consume more soft drinks as a result.",
+      "The amount of soft drinks that most students at the school currently drink is not detrimental to their health.",
+      "Students are apt to be healthier if they do not drink soft drinks at all than if they just drink small amounts occasionally.",
+      "Students will not simply bring soft drinks from home if the soft drink vending machines are not placed in the cafeteria.",
+      "The school’s primary concern should be to promote good health among its students."
+    ],
+    "correctAnswer": "A",
+    "answerExplanation": "<b>Argument Construction</b><br /><b>Situation</b> Placing soft drink vending machines in the school cafeteria would provide financial benefits to the school. However, the argument is that this is not in students’ interest because if students drink more soft drinks, their health will suffer.<br /><b>Reasoning</b> Which statement is an assumption on which the argument depends? The argument assumes that placing the vending machines in the cafeteria will result in students drinking more soft drinks. If that were not the case, then the machines would pose no threat to students’ health, and there would be no health-related reason for disallowing them.<br />A. <b>Correct.</b> If placing the machines in the cafeteria would not lead to increased consumption of soft drinks by students, the argument’s conclusion cannot be supported by the reasoning given.<br />B. The argument is about whether students will become less healthy if the machines are placed in the cafeteria; what their current consumption patterns are is not relevant to this point.<br />C. The argument is not about whether students should drink any soft drinks at all; it focuses on whether placing vending machines in the cafeteria would lead to increased consumption.<br />D. The argument makes no claim about what will happen if the machines are not placed in the cafeteria, but only about what will happen if they are placed there.<br />E. While the argument is concerned with student health, it does not assume or state that this is the school’s primary concern; it only states that placing the machines in the cafeteria is not in the students’ interest.",
+    "difficulty": "medium",
+    "question_type": "Verbal",
+    "subsection": "CR",
+    "rc_id": null
+  },
+  {
+    "questionText": "Many athletes inhale pure oxygen after exercise in an attempt to increase muscular reabsorption of oxygen. Measured continuously after exercise, however, the blood lactate levels of athletes who inhale pure oxygen are practically identical, on average, to those of athletes who breathe normal air. The lower the blood lactate level is, the higher the muscular reabsorption of oxygen is.<br />If the statements above are all true, they most strongly support which of the following conclusions?",
+    "options": [
+      "Athletes’ muscular reabsorption of oxygen is not increased when they inhale pure oxygen instead of normal air.",
+      "High blood lactate levels cannot be reduced.",
+      "Blood lactate levels are a poor measure of oxygen reabsorption by muscles.",
+      "The amount of oxygen reabsorbed by an athlete’s muscles always remains constant.",
+      "The inhaling of pure oxygen has no legitimate role in athletics."
+    ],
+    "correctAnswer": "A",
+    "answerExplanation": "<b>Argument Construction</b><br /><b>Situation</b> Athletes inhale pure oxygen after exercise to increase muscular reabsorption of oxygen. An athlete’s blood lactate level is inversely related to their muscular reabsorption of oxygen. Athletes who inhale pure oxygen after exercise have, on average, the same blood lactate levels as those who breathe normal air.<br /><b>Reasoning</b> What conclusion do these statements most strongly support? Since muscular reabsorption of oxygen is higher when blood lactate levels are lower, and since blood lactate levels are not lower for athletes who inhale pure oxygen, it follows that athletes’ muscular reabsorption of oxygen is not increased by inhaling pure oxygen.<br />A. <b>Correct.</b> This is the conclusion that logically follows from the premises.<br />B. The passage does not suggest that high blood lactate levels cannot be reduced, only that inhaling pure oxygen does not reduce them.<br />C. The passage uses blood lactate levels to measure muscular reabsorption of oxygen; there is nothing in the passage to suggest that they are a poor measure.<br />D. The passage makes no claim about whether oxygen reabsorption rates remain constant.<br />E. The passage makes no claim about whether inhaling pure oxygen has other legitimate roles in athletics.",
+    "difficulty": "medium",
+    "question_type": "Verbal",
+    "subsection": "CR",
+    "rc_id": null
+  },
+  {
+    "questionText": "Historian: Fifteenth-century advances in mapmaking contributed to the rise of modern nation-states. In medieval Europe (from the fifth to the fifteenth century), sovereignty centered in cities and towns and radiated outward, with boundaries often ambiguously defined. The conceptual shift toward the modern state began in the late fifteenth century, when mapmakers learned to reflect geography accurately by basing maps on latitude-longitude grids. By the mid-seventeenth century, nearly all maps showed boundary lines.<br />Which of the following would, if true, most strengthen the historian’s reasoning?",
+    "options": [
+      "Borders did not become codified in Europe until certain treaties were signed in the early nineteenth century.",
+      "During the medieval period, various authorities in Europe claimed power over collections of cities and towns, not contiguous territories.",
+      "Many members of the political elite collected maps as a hobby during the late sixteenth and early seventeenth centuries.",
+      "Seventeenth-century treatises and other sources of political authority describe areas of sovereignty rather than illustrate them using maps.",
+      "During the fifteenth century in Europe, mapmakers simplified the borders of sovereignty by drawing clear lines of demarcation between political powers."
+    ],
+    "correctAnswer": "E",
+    "answerExplanation": "<b>Argument Evaluation</b><br /><b>Situation</b> Fifteenth-century advances in mapmaking, specifically the use of latitude-longitude grids, contributed to the rise of modern nation-states. In medieval Europe, boundaries were ambiguously defined. By the mid-seventeenth century, most maps showed boundary lines.<br /><b>Reasoning</b> What additional information would most strengthen the historian's argument? The argument connects advances in mapmaking to the rise of nation-states, implying a causal link where more accurate and defined maps helped solidify the concept of clearly bounded national territories. Information suggesting that mapmakers actively contributed to defining these boundaries would reinforce this link.<br />A. The codification of borders in the nineteenth century is too late to strengthen the argument about fifteenth-century mapmaking's contribution to the rise of modern nation-states, which began in the late fifteenth century according to the historian.<br />B. This statement describes the medieval situation, which the historian contrasts with the modern nation-state concept. It doesn't directly strengthen the link between mapmaking and the rise of nation-states.<br />C. The hobbies of the political elite do not directly explain how mapmaking contributed to the rise of nation-states.<br />D. This statement might even weaken the argument by suggesting that maps were not the primary means of illustrating sovereignty during the period when nation-states were rising.<br />E. <b>Correct.</b> If mapmakers simplified borders by drawing clear lines, this would be a direct way in which advances in mapmaking contributed to the conceptual shift toward clearly defined territories characteristic of modern nation-states, thus strengthening the historian's reasoning.",
+    "difficulty": "medium",
+    "question_type": "Verbal",
+    "subsection": "CR",
+    "rc_id": null
+  },
+  {
+    "questionText": "Cognitive scientist: Using the pioneering work of comparative psychologist Gordon Gallup as a model, several studies have investigated animals’ capacity for mirror self-recognition (MSR). Most animals exposed to a mirror respond only with social behavior, such as aggression. However, in the case of the great apes, repeated exposure to mirrors leads to self-directed behaviors, such as exploring the inside of the mouth, suggesting that these animals recognize the reflection as an image of self. The implication of these studies is that the great apes have a capacity for self-awareness unique among nonhuman species.<br />The cognitive scientist makes which of the following assumptions in the argument above?",
+    "options": [
+      "Gallup’s work has established that the great apes have a capacity for MSR unique among nonhuman species.",
+      "If an animal does not have the capacity for MSR, it does not have the capacity for self-awareness.",
+      "If a researcher exposes an animal to a mirror and that animal exhibits social behavior, that animal is incapable of being self-aware.",
+      "When exposed to a mirror, all animals display either social behavior or self-directed behavior.",
+      "Animals that do not exhibit MSR may demonstrate a capacity for self-awareness in other ways."
+    ],
+    "correctAnswer": "B",
+    "answerExplanation": "<b>Argument Construction</b><br /><b>Situation</b> Studies of animals’ capacity for mirror self-recognition (MSR) show that most animals respond to mirrors with social behavior. Great apes, however, respond with self-directed behavior, which suggests they recognize the reflection as an image of self. This implies that great apes have a capacity for self-awareness unique among nonhuman species.<br /><b>Reasoning</b> On what assumption does the argument depend? The argument concludes that great apes possess a capacity for self-awareness unique among nonhuman species because they are unique (among nonhuman species) in exhibiting MSR. This relies on the assumption that MSR is a necessary condition for self-awareness; if it were not, then other nonhuman species might have self-awareness even if they lack MSR.<br />A. The argument states that Gallup’s work served as a model for studies investigating animals’ capacity for MSR, not that Gallup’s work established anything about the uniqueness of great apes’ MSR capacity.<br />B. <b>Correct.</b> The argument concludes that great apes have a unique capacity for self-awareness because they are the only nonhuman animals that have MSR. This argument depends on assuming that MSR is a necessary condition for self-awareness; if some animals lacked MSR but still had self-awareness, then the conclusion would not follow.<br />C. The argument assumes that the capacity for MSR is evidence of self-awareness. However, it does not assume that animals that do not exhibit MSR, such as those that exhibit only social behavior when exposed to a mirror, are incapable of self-awareness.<br />D. The argument does not depend on the assumption that all animals display either social or self-directed behavior when exposed to a mirror; some animals might display neither.<br />E. If this were true, it would weaken the argument, not be an assumption on which it depends. The argument depends on assuming that MSR is a necessary condition for self-awareness.",
+    "difficulty": "medium",
+    "question_type": "Verbal",
+    "subsection": "CR",
+    "rc_id": null
+  },
+  {
+    "questionText": "A study of ticket sales at a summer theater festival found that people who bought tickets to individual plays had a no-show rate of less than 1 percent, while those who paid in advance for all ten plays being performed that summer had a no-show rate of nearly 30 percent. This may be at least in part because the greater the awareness customers retain about the cost of an item, the more likely they are to use it.<br />Which of the following would, if true, best serve as an alternative explanation of the results of the study?",
+    "options": [
+      "The price per ticket was slightly cheaper for those who bought all ten tickets in advance.",
+      "Many people who attended the theater festival believed strongly that they should support it financially.",
+      "Those who attended all ten plays became eligible for a partial refund.",
+      "Usually, people who bought tickets to individual plays did so immediately prior to each performance that they attended.",
+      "People who arrived just before the performance began could not be assured of obtaining seats in a preferred location."
+    ],
+    "correctAnswer": "D",
+    "answerExplanation": "<b>Argument Construction</b><br /><b>Situation</b> At a summer theater festival, the no-show rate for people who bought tickets to individual plays was less than 1 percent, while for those who bought tickets in advance for all ten plays, the no-show rate was nearly 30 percent. This may be because people are more likely to use an item if they remain more aware of its cost.<br /><b>Reasoning</b> What is an alternative explanation for the results of the study? One possible alternative explanation is that there was some other relevant difference between the two groups of ticket purchasers. For example, if people who bought tickets for individual plays typically bought them immediately before the performance, then they would have been far less likely to have had some other conflicting event arise unexpectedly, or to have forgotten about the play, than the people who bought all ten tickets in advance.<br />A. This would give people who bought all ten tickets in advance slightly less reason to attend any particular performance than those who bought tickets individually (since those who bought all ten tickets would have paid less per ticket), but it is not clear how this would help explain the large difference in no-show rates.<br />B. This might explain why many people would buy tickets, but it would not explain the difference in no-show rates.<br />C. This would, if anything, make those who attended all ten plays even more likely to attend all the plays, so it would not explain the difference in no-show rates.<br />D. <b>Correct.</b> If tickets for individual plays are typically bought immediately before the performance, this would make it less likely that the ticket holder would fail to show up for the performance. Those who bought all ten tickets in advance would have been more likely to find that their plans had changed or that they had forgotten about a performance.<br />E. People who buy tickets to individual plays, if they buy them immediately before the performance, would seem to be at higher risk of being unable to find seats in a preferred location than would those who bought tickets in advance. This information is not relevant as an explanation for the difference in no-show rates.",
+    "difficulty": "medium",
+    "question_type": "Verbal",
+    "subsection": "CR",
+    "rc_id": null
+  },
+  {
+    "questionText": "Although there is no record of poet Edmund Spenser’s parentage, we do know that as a youth, Spenser attended the Merchant Tailors’ School in London for a period between 1560 and 1570. Records from this time indicate that the Merchant Tailors’ Guild then had only three members named Spenser: Robert Spenser, listed as a gentleman; Nicholas Spenser, elected the Guild’s Warden in 1568; and John Spenser, listed as a “journeyman cloth-maker.” Of these, the last was likely the least affluent of the three—and most likely Edmund’s father, since school accounting records list Edmund as a scholar who attended the school at a reduced fee.<br />Which of the following is an assumption on which the argument depends?",
+    "options": [
+      "Anybody in sixteenth-century London who made clothing professionally would have had to be a member of the Merchant Tailors’ Guild.",
+      "The fact that Edmund Spenser attended the Merchant Tailors’ School did not necessarily mean that he planned to become a tailor.",
+      "No member of the Guild could become Guild warden in sixteenth-century London unless he was a gentleman.",
+      "Most of those whose fathers were members of the Merchant Tailors’ Guild were students at the Merchant Tailors’ School.",
+      "The Merchant Tailors’ School did not reduce its fees for the children of the more affluent Guild members."
+    ],
+    "correctAnswer": "E",
+    "answerExplanation": "<b>Argument Construction</b><br /><b>Situation</b> Records from 1560–1570 list three members of the Merchant Tailors’ Guild named Spenser. School records list Edmund Spenser as a scholar attending the Merchant Tailors’ School at a reduced fee.<br /><b>Reasoning</b> What must be true for the argument to be valid? The argument reasons that because Edmund Spenser attended the school at a reduced fee, his father was likely the least affluent of the three Spensers in the Guild. This reasoning depends upon the assumption that the school reduced fees for children of less affluent Guild members but not for children of more affluent members. If the school reduced fees for children of all Guild members, then the fact that Edmund Spenser attended at a reduced fee would provide no basis for identifying his father as the least affluent of the three Guild members named Spenser.<br />A. The argument concerns only the members of the Merchant Tailors’ Guild named Spenser, not anyone else who made clothing professionally.<br />B. Edmund Spenser’s career plans are irrelevant to the argument.<br />C. The argument does not mention the qualifications for becoming Guild warden.<br />D. The argument does not concern the proportion of students at the school whose fathers were members of the Guild.<br />E. <b>Correct.</b> This statement properly identifies an assumption required by the argument.",
+    "difficulty": "medium",
+    "question_type": "Verbal",
+    "subsection": "CR",
+    "rc_id": null
+  },
+  {
+    "questionText": "Duckbill dinosaurs, like today’s monitor lizards, had particularly long tails, which they could whip at considerable speed. Monitor lizards use their tails to strike predators. However, although duckbill tails were otherwise very similar to those of monitor lizards, the duckbill’s tailbones were proportionately much thinner and thus more delicate. Moreover, to ward off their proportionately much larger predators, duckbills would have had to whip their tails considerably faster than monitor lizards do.<br />The information given, if accurate, provides the strongest support for which of the following hypotheses?",
+    "options": [
+      "If duckbills whipped their tails faster than monitor lizards do, the duckbill’s tail would have been effective at warding off the duckbills’ fiercest predators.",
+      "Duckbills used their tails to strike predators, and their tailbones were frequently damaged from the impact.",
+      "Using their tails was not the only means duckbills had for warding off predators.",
+      "Duckbills were at much greater risk of being killed by a predator than monitor lizards are.",
+      "The tails of duckbills, if used to ward off predators, would have been more likely than the tails of monitor lizards to sustain damage from the impact."
+    ],
+    "correctAnswer": "E",
+    "answerExplanation": "<b>Argument Construction</b><br /><b>Situation</b> Duckbill dinosaurs had long tails that were similar to those of today’s monitor lizards, which use their tails to strike predators. However, duckbill tailbones were proportionately thinner and more delicate than those of monitor lizards. To ward off their much larger predators, duckbills would have had to whip their tails faster than monitor lizards do.<br /><b>Reasoning</b> Which hypothesis is most strongly supported by this information? Since duckbill tailbones were much thinner and more delicate than those of monitor lizards, and since duckbills would have had to whip their tails faster than monitor lizards do to ward off their predators, it is reasonable to conclude that duckbills’ tails, if used to ward off predators, would have been more likely than monitor lizards’ tails to be damaged from the impact.<br />A. The information that duckbills’ tailbones were thinner and more delicate makes it unlikely that whipping their tails faster would have been effective in warding off predators; instead, it suggests their tails would have been more likely to break.<br />B. The information provided does not indicate whether duckbills used their tails to strike predators. In fact, the information suggests that doing so would have been dangerous for the duckbills themselves.<br />C. The argument does not discuss other means duckbills may have had for warding off predators.<br />D. The argument discusses only the tails of duckbills and monitor lizards, not any other aspects of their lives that might have put them at risk of being killed by a predator.<br />E. <b>Correct.</b> This statement is well supported by the information that duckbills’ tailbones were thinner and more delicate and that they would have had to whip their tails faster than monitor lizards do.",
+    "difficulty": "hard",
+    "question_type": "Verbal",
+    "subsection": "CR",
+    "rc_id": null
+  },
+  {
+    "questionText": "In an attempt to produce a coffee plant that would yield beans containing no caffeine, the synthesis of a substance known to be integral to the initial stages of caffeine production was blocked either in the beans, in the leaves, or both. For those plants in which synthesis of the substance was blocked only in the leaves, the resulting beans contained no caffeine.<br />Any of the following, if true, would provide the basis for an explanation of the observed results EXCEPT:",
+    "options": [
+      "In coffee plants, the substance is synthesized only in the leaves and then moves to the beans, where the initial stages of caffeine production take place.",
+      "In coffee plants, the last stage of caffeine production takes place in the beans using a compound that is produced only in the leaves by the substance.",
+      "In coffee plants, the initial stages of caffeine production take place only in the beans, but later stages depend on another substance that is synthesized only in the leaves and does not depend on the blocked substance.",
+      "In coffee plants, caffeine production takes place only in the leaves, but the caffeine then moves to the beans.",
+      "Caffeine was produced in the beans of the modified coffee plants, but all of it moved to the leaves, which normally produce their own caffeine."
+    ],
+    "correctAnswer": "C",
+    "answerExplanation": "<b>Argument Construction</b><br /><b>Situation</b> In an attempt to produce caffeine-free coffee beans, scientists blocked the synthesis of a substance integral to the initial stages of caffeine production, either in the beans, in the leaves, or in both. When the synthesis was blocked only in the leaves, the beans contained no caffeine.<br /><b>Reasoning</b> Which statement would NOT provide a basis for explaining the observed results? The observed result is that blocking synthesis of the substance in the leaves prevents caffeine from being in the beans. This suggests that either caffeine or some precursor substance necessary for its production is normally synthesized in the leaves and then moves to the beans.<br />A. If the substance is synthesized only in the leaves and then moves to the beans, where the initial stages of caffeine production take place, then blocking its synthesis in the leaves would prevent caffeine production in the beans.<br />B. If the last stage of caffeine production takes place in the beans using a compound produced only in the leaves by the substance, then blocking the substance’s synthesis in the leaves would prevent caffeine production in the beans.<br />C. <b>Correct.</b> If the initial stages of caffeine production occur only in the beans, and the later stages depend on another substance synthesized only in the leaves that does not depend on the blocked substance, then blocking the synthesis of the first substance in the leaves would have no effect on caffeine production in the beans.<br />D. If caffeine production takes place only in the leaves, and caffeine then moves to the beans, then blocking synthesis of the substance integral to caffeine production in the leaves would prevent caffeine from being in the beans.<br />E. If caffeine was produced in the beans but then all of it moved to the leaves, this would explain why the beans contained no caffeine.",
+    "difficulty": "hard",
+    "question_type": "Verbal",
+    "subsection": "CR",
+    "rc_id": null
+  },
+  {
+    "questionText": "Which of the following most logically completes the passage?<br />Laminated glass is much harder to break than the glass typically used in the windows of cars driven in Relnia. It is more difficult for thieves to break into cars with laminated glass windows than into cars with ordinary glass windows, and laminated glass windows are less likely to break in a collision. Nevertheless, considerations of security and safety do not unambiguously support a proposal to require that in Relnia all glass installed in cars be laminated glass, since __________.",
+    "options": [
+      "most people cannot visually distinguish laminated glass from the glass typically used for car windows",
+      "a significant proportion of cars driven in Relnia are manufactured elsewhere",
+      "some cars in Relnia already have laminated glass in their windows",
+      "the rates of car theft and of collisions have both fallen slightly in Relnia in recent years",
+      "there are times when breaking a car’s window is the best way to provide timely help for people trapped inside"
+    ],
+    "correctAnswer": "E",
+    "answerExplanation": "<b>Argument Construction</b><br /><b>Situation</b> Laminated glass is harder to break than ordinary glass. Cars with laminated glass windows are harder to break into and less likely to have their windows break in a collision. However, this does not mean that requiring all cars to have laminated glass is unambiguously a good idea.<br /><b>Reasoning</b> Why might requiring laminated glass not be unambiguously a good idea, despite the safety and security advantages it provides? The phrase “since __________” indicates that what follows will be a reason for this. If there are situations where it would be better for car windows to be easier to break, then requiring laminated glass would not be unambiguously a good idea.<br />A. Whether people can distinguish laminated glass from ordinary glass is irrelevant to whether requiring laminated glass is a good idea.<br />B. The origin of cars driven in Relnia is irrelevant to whether requiring laminated glass is a good idea.<br />C. That some cars already have laminated glass does not affect whether it would be a good idea to require all cars to have it.<br />D. That rates of car theft and collisions have fallen does not mean they cannot fall further, so this does not provide a reason against requiring laminated glass.<br />E. <b>Correct.</b> If laminated glass makes it harder to break into a car, it could make it harder to rescue people trapped inside. This would be a disadvantage of requiring laminated glass.",
+    "difficulty": "hard",
+    "question_type": "Verbal",
+    "subsection": "CR",
+    "rc_id": null
+  },
+  {
+    "questionText": "To reduce waste of raw materials, the government of Sperland is considering requiring household appliances to be broken down for salvage when discarded. To cover the cost of salvage, the government is planning to charge a fee, which would be imposed when the appliance is first sold. Imposing the fee at the time of salvage would reduce waste more effectively, however, because consumers tend to keep old appliances longer if they are faced with a fee for discarding them.<br />Which of the following, if true, most seriously weakens the argument?",
+    "options": [
+      "Increasing the cost of disposing of an appliance properly increases the incentive to dispose of it improperly.",
+      "The fee provides manufacturers with no incentive to produce appliances that are more durable.",
+      "For people who have bought new appliances recently, the salvage fee would not need to be paid for a number of years.",
+      "People who sell their used, working appliances to others would not need to pay the salvage fee.",
+      "Many nonfunctioning appliances that are currently discarded could be repaired at relatively little expense."
+    ],
+    "correctAnswer": "A",
+    "answerExplanation": "<b>Argument Evaluation</b><br /><b>Situation</b> To reduce waste, the government of Sperland plans to require that discarded household appliances be salvaged. To cover salvage costs, a fee will be imposed when an appliance is sold. However, imposing the fee at the time of salvage would be more effective in reducing waste because consumers keep old appliances longer if faced with a fee for discarding them.<br /><b>Reasoning</b> Which statement most seriously weakens the argument that imposing the fee at the time of salvage would reduce waste more effectively? If imposing the fee at the time of salvage created a strong incentive for consumers to dispose of appliances improperly (e.g., by dumping them in landfills or by the roadside), then this approach might not reduce waste more effectively.<br />A. <b>Correct.</b> This statement suggests that imposing the fee at the time of salvage could lead to improper disposal, which would not reduce waste.<br />B. This statement is irrelevant to whether imposing the fee at the time of salvage would reduce waste more effectively than imposing it at the time of sale.<br />C. This statement is irrelevant to the argument, which concerns when the fee should be imposed, not on whom or when it should be paid.<br />D. This statement is irrelevant to the argument, which concerns when appliances are discarded, not whether they are sold or given to others.<br />E. This statement suggests that repairing appliances might reduce waste, but it is irrelevant to the question of when the salvage fee should be imposed.",
+    "difficulty": "hard",
+    "question_type": "Verbal",
+    "subsection": "CR",
+    "rc_id": null
+  },
+  {
+    "questionText": "When there is less rainfall than normal, the water level of Australian rivers falls and the rivers flow more slowly. Because algae whose habitat is river water grow best in slow-moving water, the amount of algae per unit of water generally increases when there has been little rain. By contrast, however, following a period of extreme drought, algae levels are low even in very slow-moving river water.<br />Which of the following, if true, does most to explain the contrast described above?",
+    "options": [
+      "During periods of extreme drought, the populations of some of the species that feed on algae tend to fall.",
+      "The more slowly water moves, the more conducive its temperature is to the growth of algae.",
+      "When algae populations reach very high levels, conditions within the river can become toxic for some of the other species that normally live there.",
+      "Australian rivers dry up completely for short intervals in periods of extreme drought.",
+      "Except during periods of extreme drought, algae levels tend to be higher in rivers in which the flow has been controlled by damming than in rivers that flow freely."
+    ],
+    "correctAnswer": "D",
+    "answerExplanation": "<b>Argument Construction</b><br /><b>Situation</b> Algae in Australian rivers grow best in slow-moving water, so when rainfall is below normal, algae levels increase. However, after extreme drought, algae levels are low even in very slow-moving river water.<br /><b>Reasoning</b> What explains this contrast? If rivers dry up completely during extreme droughts, most of the algae would die. When rain eventually replenishes the rivers, the water would flow slowly, but algae levels would be low until the algae have had time to repopulate the rivers.<br />A. If populations of algae-eating species fall, algae populations would be expected to be higher, not lower.<br />B. This is consistent with the observation that algae levels are high when water moves slowly due to little rain, but it does not explain why algae levels are low after extreme droughts.<br />C. This does not explain why algae levels are low after extreme droughts.<br />D. <b>Correct.</b> This statement provides a good explanation for the contrast.<br />E. This is irrelevant to explaining why algae levels are low in Australian rivers after extreme droughts.",
+    "difficulty": "hard",
+    "question_type": "Verbal",
+    "subsection": "CR",
+    "rc_id": null
+  },
+  {
+    "questionText": "Increased use of incineration is sometimes advocated as a safe way to dispose of chemical waste. But opponents of incineration point to the 40 incidents involving unexpected releases of dangerous chemical agents that were reported just last year at two existing incinerators commissioned to destroy a quantity of chemical waste material. Since designs for proposed new incinerators include no additional means of preventing such releases, leaks will only become more prevalent if use of incineration increases.<br />Which of the following, if true, most seriously weakens the argument?",
+    "options": [
+      "At the two incinerators at which leaks were reported, staff had had only cursory training on the proper procedures for incinerating chemical waste.",
+      "Other means of disposing of chemical waste, such as chemical neutralization processes, have not been proven safer than incineration.",
+      "The capacity of existing incinerators is sufficient to allow for increased incineration of chemical waste without any need for new incinerators.",
+      "The frequency of reports of unexpected releases of chemical agents at newly built incinerators is about the same as the frequency at older incinerators.",
+      "In only three of the reported incidents of unexpected chemical leaks did the releases extend outside the property on which the incinerators were located."
+    ],
+    "correctAnswer": "A",
+    "answerExplanation": "<b>Argument Evaluation</b><br /><b>Situation</b> Opponents of incineration argue that because 40 incidents of dangerous chemical releases were reported last year at two incinerators, and because new incinerators include no additional safety features, leaks will become more prevalent if incineration use increases.<br /><b>Reasoning</b> What would weaken this argument? If the 40 incidents were due to factors that could be controlled without new safety features—such as better staff training—then increasing the use of incineration (perhaps with better-trained staff) would not necessarily lead to more leaks.<br />A. <b>Correct.</b> This statement indicates that the leaks may have been preventable with better staff training, so it weakens the argument that more incineration will lead to more leaks.<br />B. Whether other disposal methods are safer is irrelevant to whether incineration is safe.<br />C. If existing incinerators are used more, and new ones are not built, leaks might still become more prevalent if the argument’s reasoning is sound.<br />D. This suggests that new incinerators are no safer than older ones, which would tend to strengthen the argument if existing incinerators are mostly old.<br />E. That most leaks were contained on-site does not affect the argument that leaks will become more prevalent.",
+    "difficulty": "hard",
+    "question_type": "Verbal",
+    "subsection": "CR",
+    "rc_id": null
+  }
+]

@@ -1,0 +1,242 @@
+[
+  {
+    "questionText": "According to the passage, which of the following is true of plant antiherbivore chemistry?",
+    "options": [
+      "Changes in a plant's antiherbivore chemistry may affect insect feeding behavior.",
+      "A plant's repellent effects often involve interactions between gum and resin.",
+      "A plant's antiherbivore responses assist in combating bacterial infections.",
+      "Plant antiherbivore chemistry plays only a minor role in the coevolution of plants and insects.",
+      "Researchers first studied repellent effects in plants beginning in the 1950s."
+    ],
+    "correctAnswer": "A",
+    "answerExplanation": "<b>Supporting Idea</b><br><br>This question addresses what the information in the passage indicates about plant antiherbivore chemistry—that is, plants' chemical defenses against herbivore attacks. The second paragraph of the passage cites the views of various scientists regarding the possible role of resin in antiherbivore chemistry; plants could have evolved resin specifically to repel insects.<br><br>A. <b>Correct.</b> According to the second paragraph, various scientists have suggested that a change in antiherbivore chemistry, here specifically involving resin, could repel insects; alternatively, some insects could have been attracted to resin, feeding more heavily on plants that produced it. Other researchers have suggested that even if resin does not directly repel or attract insects, it may indirectly affect insect-feeding behavior by mediating changes in plants' antiherbivore chemistry.<br>B. The first paragraph states that plants produce gum in response to bacterial infections. Although this does not rule out the hypothesis that gum also contributes to plants' antiherbivore chemistry, the passage provides no evidence that it does so.<br>C. According to the passage, a plant's antiherbivore responses have developed to combat predators, such as insects, that eat plants. The passage provides no evidence that such responses also combat bacterial infections.<br>D. The second paragraph indicates that plant antiherbivore chemistry plays a major role in the discipline of chemical ecology, and chemical ecology concerns itself with coevolution of plants and insects.<br>E. According to the passage, it was in the 1950s that entomologists began discussing resin's possible role in repelling and attracting insects. The passage does not suggest that this marked the beginning of their study of repellent effects more generally.",
+    "difficulty": "medium",
+    "question_type": "Verbal",
+    "subsection": "RC",
+    "rc_id": 17
+  },
+  {
+    "questionText": "Of the following topics, which would be most likely to be studied within the discipline of chemical ecology as it is described in the passage?",
+    "options": [
+      "Seeds that become attached to certain insects, which in turn carry away the seeds and aid in the reproductive cycle of the plant species in question",
+      "An insect species that feeds on weeds detrimental to crop health and yield, and how these insects might aid in agricultural production",
+      "The effects of deforestation on the life cycles of subtropical carnivorous plants and the insect species on which the plants feed",
+      "The growth patterns of a particular species of plant that has proved remarkably resistant to herbicides",
+      "Insects that develop a tolerance for feeding on a plant that had previously been toxic to them, and the resultant changes within that plant species"
+    ],
+    "correctAnswer": "E",
+    "answerExplanation": "<b>Application</b><br><br>The discipline of chemical ecology, as it is described in the passage, deals with how plants use chemicals to interact with other organisms—in particular, how they defend against attack—and how those interactions have evolved. To be studied within that discipline, a specific topic would need to address some aspect of that chemical interaction.<br><br>A. The passage provides no reason to suppose that the topic of seeds and how they travel would be studied within chemical ecology, given that it does not discuss how chemicals might be involved in the reproductive cycle.<br>B. The passage provides no indication that chemical ecology would be concerned with how weed-destroying insects would aid agricultural production.<br>C. The passage provides no indication that deforestation would involve plant chemicals or that its effects would be studied in chemical ecology.<br>D. The passage provides no indication that a plant's resistance to herbicides would be studied in chemical ecology, but the passage does suggest that the focus of chemical ecology is on how plants chemically interact with other organisms.<br>E. <b>Correct.</b> Chemical ecology developed to deal with the interdependence between plants and insects. Insects' developing a tolerance for feeding on a once-toxic plant, and the plants' resultant changes, is a situation of just such interdependence: plants and insects coevolving.",
+    "difficulty": "medium",
+    "question_type": "Verbal",
+    "subsection": "RC",
+    "rc_id": 17
+  },
+  {
+    "questionText": "The author refers to \"bacterial infections\" (see line 11) most likely in order to",
+    "options": [
+      "describe the physiological function that gum performs in plants",
+      "demonstrate that sap is not the only substance that is transported through a plant's tissues",
+      "explain how modern chemical analysis has been used to clarify the function of resin",
+      "show that gum cannot serve as an effective defense against herbivores",
+      "give an example of how confusion has arisen with regard to the nature of resin"
+    ],
+    "correctAnswer": "A",
+    "answerExplanation": "<b>Evaluation</b><br><br>The author mentions bacterial infections in the first paragraph as the reason why plants produce the substance known as gum.<br><br>A. <b>Correct.</b> The author states directly that plants produce gum in response to bacterial infections.<br>B. The author states directly that sap is transported through plant tissues. The passage does not address the question of whether bacterial infections or anything related to them are similarly transported.<br>C. The passage indicates that rigorous chemical analysis is now available, but scientists still do not know resin's function. The reference to bacterial infections is related to gum, not resin.<br>D. The reference to bacterial infections indicates the actual purpose served by gum; it does not function to show ways in which gum is inadequate.<br>E. Gum itself serves as an example of the confusion surrounding the nature of resin; bacterial infections, to which gum production is a response, do not serve as that example.",
+    "difficulty": "medium",
+    "question_type": "Verbal",
+    "subsection": "RC",
+    "rc_id": 17
+  },
+  {
+    "questionText": "The author of the passage refers to Pliny most probably in order to",
+    "options": [
+      "give an example of how the nature of amber has been misunderstood in the past",
+      "show that confusion about amber has long been more pervasive than confusion about resin",
+      "make note of the first known reference to amber as a semiprecious gem",
+      "point out an exception to a generalization about the history of people's understanding of amber",
+      "demonstrate that Pliny believed amber to be a mineral"
+    ],
+    "correctAnswer": "D",
+    "answerExplanation": "<b>Evaluation</b><br><br>The passage states generally that amber has been widely misunderstood but cites Pliny as noting correctly, in the first century, that amber resulted from a substance discharged by trees.<br><br>A. Pliny's observation was, according to the author, accurate and not a misunderstanding.<br>B. The author equates confusion about amber with confusion about resin; the reference to Pliny does not indicate which of the two, amber or resin, has been more widely misunderstood.<br>C. The author indicates that others, not Pliny, mischaracterized amber as a semiprecious gem—and when that mischaracterization first occurred is not identified.<br>D. <b>Correct.</b> Pliny's recognition that amber came from a substance discharged by trees stands, in the author's account, as an exception to the widespread incorrect identifications of the substance.<br>E. Others held the belief that amber was a mineral. The passage indicates that Pliny recognized that amber came from trees but provides no evidence that he also considered it a mineral.",
+    "difficulty": "medium",
+    "question_type": "Verbal",
+    "subsection": "RC",
+    "rc_id": 17
+  },
+  {
+    "questionText": "The primary purpose of the passage is to",
+    "options": [
+      "compare the impact of the Great Depression on Latin America with its impact on the United States",
+      "criticize a school of economic historians for failing to analyze the Great Depression in Latin America within a global context",
+      "illustrate the risks inherent in comparing different types of economic enterprises to explain economic phenomena",
+      "call into question certain scholars' views concerning the severity of the Great Depression in Latin America",
+      "demonstrate that the Great Depression had a more severe impact on industry in Latin American than in certain other regions"
+    ],
+    "correctAnswer": "D",
+    "answerExplanation": "<b>Main Idea</b><br><br>This question depends on understanding the passage as a whole. The passage first describes the view of many economic historians of the 1980s. It next describes the evidence on which that view is based. The remainder of the passage raises issues about the rationale for that view.<br><br>A. The comparison between Latin America and the United States is only a small part of a larger argument analyzing studies of the Great Depression in Latin America.<br>B. The passage does not discuss a global context for the Great Depression.<br>C. The passage does not primarily aim to illustrate risks that may be generally inherent in explaining economic phenomena.<br>D. <b>Correct.</b> The passage claims that certain scholars underestimate the severity of the Great Depression in Latin America.<br>E. The passage does not claim that the impact of the Great Depression on Latin American industry was generally more severe than its impact on industry elsewhere.",
+    "difficulty": "medium",
+    "question_type": "Verbal",
+    "subsection": "RC",
+    "rc_id": 18
+  },
+  {
+    "questionText": "Which of the following conclusions about the Great Depression is best supported by the passage?",
+    "options": [
+      "It did not impede Latin American industrial growth as much as historians had previously thought.",
+      "It had a more severe impact on the Brazilian and the Mexican textile industries than it had on Latin America as a region.",
+      "It affected the Latin American textile industry more severely than it did any other industry in Latin America.",
+      "The overall impact on Latin American industrial growth should be reevaluated by economic historians.",
+      "Its impact on Latin America should not be compared with its impact on the United States."
+    ],
+    "correctAnswer": "D",
+    "answerExplanation": "<b>Inference</b><br><br>This question asks which conclusion is most strongly supported by the passage. The passage presents the rationale of some historians for their conclusion that the Great Depression did not significantly interfere with economic growth in Latin America. It then critiques that rationale and conclusion. By questioning the historians' claims, the passage suggests that a reevaluation of the Great Depression's effect on Latin America is needed.<br><br>A. The passage does not significantly support this. The passage indicates that, in fact, the Great Depression impeded Latin American economic development more than some historians had thought.<br>B. The passage does not significantly support this. The passage does not compare the impact on the Brazilian and Mexican textile industries to the impact on the Latin American region.<br>C. The passage does not significantly support this. The passage does not compare the effect of the Great Depression on the textile industry to its effect on other industries.<br>D. <b>Correct.</b> As presented in the passage, the passage author's critique of the historians' rationale for their claims provides significant support for the conclusion that their claims should be reevaluated.<br>E. The passage does not significantly support the claim that the comparison in question should not be made.",
+    "difficulty": "medium",
+    "question_type": "Verbal",
+    "subsection": "RC",
+    "rc_id": 18
+  },
+  {
+    "questionText": "Which of the following, if true, would most strengthen the author's assertion regarding economic indicators in lines 25-27?",
+    "options": [
+      "During an economic depression, European textile manufacturers' profits rise while their industrial output remains steady.",
+      "During a national economic recession, United States microchips manufacturers' profits rise sharply while United States steel manufacturers' profits plunge.",
+      "During the years following a severe economic depression, textile manufacturers' output levels and profit levels increase in Brazil and Mexico but not in the rest of Latin America.",
+      "Although Japanese industry as a whole recovers after an economic recession, it does not regain its previously high levels of production.",
+      "While European industrial output increases in the years following an economic depression, total output remains below that of Japan or the United States."
+    ],
+    "correctAnswer": "B",
+    "answerExplanation": "<b>Application</b><br><br>The question involves applying information from outside the passage to a claim made by the author. The text in lines 25-27 asserts that broad economic indicators pertaining to a nation or region can obscure differences between individual firms or industries within that nation or region. The question asks which evidence would most strengthen the support for that conclusion.<br><br>A. This refers only to the relationship between a single industry's profits and its output, not to general economic indicators.<br>B. <b>Correct.</b> The phrase a national recession refers to a general economic indicator. Suppose that in a situation described as a national recession, one industry (microchip manufacturing) prospers while another industry (steel manufacturing) does not. This would provide some additional support, over and above that given in the passage, for the assertion that broad economic indicators may mask differences between industries.<br>C. Economic differences between countries do not strengthen the support for the author's assertion regarding variations among different firms and industries in one country or region.<br>D. This has no obvious bearing on how sweeping economic indicators can mask differences between industries or enterprises in a single country or region.<br>E. A comparison of different countries does not pertain to the assertion regarding variation among firms and industries in the same country.",
+    "difficulty": "medium",
+    "question_type": "Verbal",
+    "subsection": "RC",
+    "rc_id": 18
+  },
+  {
+    "questionText": "It can be inferred from the passage that a large plant might have to spend more than a similar but smaller plant on environmental compliance because the larger plant is",
+    "options": [
+      "more likely to attract attention from local regulators",
+      "less likely to be exempt from permit and reporting requirements",
+      "less likely to have regulatory costs passed on to it by companies that supply its raw materials",
+      "more likely to employ older production technologies",
+      "more likely to generate wastes that are more environmentally damaging than those generated by smaller plants"
+    ],
+    "correctAnswer": "B",
+    "answerExplanation": "<b>Inference</b><br><br>This item depends on understanding the implications of the passage's discussion of differences between large and small plants. It asks what might be true of a larger plant that would compel it to spend more than a smaller plant on environmental compliance. The passage addresses this issue by stating that smaller plants are often not subject to the same permit or reporting requirements that larger plants are.<br><br>A. The likelihood of attracting regulatory attention is discussed only in the context of comparing plants that are isolated with small plants that are near large noncompliant ones. The passage does not suggest that size is generally the crucial determining factor in attracting regulatory attention.<br>B. <b>Correct.</b> According to the passage, certain permit or reporting requirements may not apply to smaller plants; this suggests that larger plants are less likely than smaller plants to be exempt from these requirements, and thus that the larger plants would have to spend more to comply.<br>C. The passage does not discuss the passing on of regulatory costs from suppliers to plants.<br>D. The passage does not suggest that larger plants are any more likely than smaller plants to employ older production technologies.<br>E. The passage does not distinguish between the types of wastes emitted by larger plants and those emitted by smaller plants.",
+    "difficulty": "medium",
+    "question_type": "Verbal",
+    "subsection": "RC",
+    "rc_id": 19
+  },
+  {
+    "questionText": "According to the passage, which of the following statements about sulfur dioxide and nitrogen oxide outputs is true?",
+    "options": [
+      "Older production technologies cannot be adapted so as to reduce production of these outputs as waste products.",
+      "Under the most recent environmental regulations, industrial plants are no longer permitted to produce these outputs.",
+      "Although these outputs are environmentally hazardous, some plants still generate them as waste products despite the high compliance costs they impose.",
+      "Many older plants have developed innovative technological processes that reduce the amounts of these outputs generated as waste products.",
+      "Since the production processes that generate these outputs are less costly than alternative processes, these less expensive processes are sometimes adopted despite their acknowledged environmental hazards."
+    ],
+    "correctAnswer": "C",
+    "answerExplanation": "<b>Supporting Idea</b><br><br>This item depends on identifying what the passage states explicitly about outputs of sulfur dioxide and nitrogen oxide. The passage says that plants that produce these outputs are those that use older industrial coal-fired burners, and that such plants are subject to extensive compliance costs imposed by new regulations.<br><br>A. The passage does not address the question of whether older production technologies might be adapted to reduce outputs of sulfur dioxide and nitrogen oxide.<br>B. The passage states that new regulations have imposed high compliance costs on companies that produce sulfur dioxide and nitrogen oxide outputs, not that these outputs are prohibited.<br>C. <b>Correct.</b> The passage states that some companies are still using the older kinds of burners that generate sulfur dioxide and nitrogen oxide outputs, and that new regulations have imposed high compliance costs on these companies.<br>D. The passage does not address the question of whether older plants have developed new processes to reduce the amounts of sulfur dioxide and nitrogen oxide they produce.<br>E. Sulfur dioxide and nitrogen oxide outputs, the passage suggests, are produced only by older industrial coal-fired burners; newer facilities (using alternative processes) do not employ this technology, the expense of which is not mentioned in the passage.",
+    "difficulty": "medium",
+    "question_type": "Verbal",
+    "subsection": "RC",
+    "rc_id": 19
+  },
+  {
+    "questionText": "Which of the following best describes the relationship of the statement about large plants (lines 12-17) to the passage as a whole?",
+    "options": [
+      "It presents a hypothesis that is disproved later in the passage.",
+      "It highlights an opposition between two ideas mentioned in the passage.",
+      "It provides examples to support a claim made earlier in the passage.",
+      "It exemplifies a misconception mentioned earlier in the passage.",
+      "It draws an analogy between two situations described in the passage."
+    ],
+    "correctAnswer": "C",
+    "answerExplanation": "<b>Evaluation</b><br><br>This question asks about the role played in the passage by the following statement: Additionally, large plants can spread compliance costs such as waste treatment across a larger revenue base; on the other hand, some smaller plants may not even be subject to certain provisions such as permit or reporting requirements by virtue of their size. This statement describes situations in which compliance costs for plants of different sizes may differ, which serve as evidence in support of the passage's main claim: that environmental regulations do not affect all competitors in a given industry uniformly.<br><br>A. The statement in question is not a hypothesis; rather, it reports factors that are known to affect the varying impact of environmental regulations.<br>B. This is too vague to be a good description of the kind of relationship the question asks about. The statement in question does present a contrast—it suggests that larger plants' compliance costs are lower under some circumstances, while smaller plants' compliance costs are lower under other circumstances. But this purports to state two facts rather than mere ideas; they are contrasting facts but not in any meaningful sense opposed, since they can easily coexist.<br>C. <b>Correct.</b> The statement provides examples to support the initial claim made in the passage that regulatory costs fall unevenly on competitors in an industry: large plants can spread compliance costs around, and smaller plants may not even have to pay certain costs.<br>D. This statement helps to dispel, not exemplify, a misconception mentioned earlier in the passage—i.e., the myth that environmental regulations affect all companies in an industry the same way.<br>E. The statement does not suggest that the situation of larger and smaller plants is similar (or analogous) to any other situation mentioned in the passage.",
+    "difficulty": "medium",
+    "question_type": "Verbal",
+    "subsection": "RC",
+    "rc_id": 19
+  },
+  {
+    "questionText": "The primary purpose of the passage is to",
+    "options": [
+      "address a widespread environmental management problem and suggest possible solutions",
+      "illustrate varying levels of compliance with environmental regulation among different corporations",
+      "describe the various alternatives to traditional methods of environmental management",
+      "advocate increased corporate compliance with environmental regulation",
+      "correct a common misconception about the impact of environmental regulations"
+    ],
+    "correctAnswer": "E",
+    "answerExplanation": "<b>Main Idea</b><br><br>This question depends on understanding the passage as a whole. Its first sentence indicates its main purpose: to dispel a myth about environmental regulations that is often taken as fact.<br><br>A. The passage is not about the management of any environmental problem, which would be a problem about how to prevent or undo damage to the environment. The passage primarily aims to dispel a belief that the passage says is widely held by environmental managers.<br>B. The passage refers to variations in firms' levels of compliance with environmental regulations, but its primary purpose is not to illustrate those varying levels, nor does it do so.<br>C. The passage suggests that most environmental managers are mistaken about a key concept; its primary purpose is not to describe traditional methods of environmental management or alternatives to those traditional methods, nor does it do so.<br>D. The passage takes no position on whether companies should increase their compliance with environmental regulation.<br>E. <b>Correct.</b> The passage primarily aims to dispel the belief that environmental regulations affect all companies in an industry uniformly.",
+    "difficulty": "medium",
+    "question_type": "Verbal",
+    "subsection": "RC",
+    "rc_id": 19
+  },
+  {
+    "questionText": "The primary purpose of the passage is to",
+    "options": [
+      "review research demonstrating the benefits of corporate mergers and acquisitions and examine some of the drawbacks that acquisition behavior entails",
+      "contrast the effects of corporate mergers and acquisitions on acquiring firms and on firms that are acquired",
+      "report findings that raise questions about a reason for corporate mergers and acquisitions and suggest possible alternative reasons",
+      "explain changes in attitude on the part of acquiring firms toward corporate mergers and acquisitions",
+      "account for a recent decline in the rate of corporate mergers and acquisitions"
+    ],
+    "correctAnswer": "C",
+    "answerExplanation": "<b>Main Idea</b><br><br>This question requires understanding what the passage as a whole is trying to do. The passage begins by citing three studies that demonstrate that when firms acquire other firms, there is not necessarily a worthwhile economic gain. The passage then cites economic interests as the reason given by firms when they acquire other firms but calls into question the veracity of this reasoning. The passage then goes on to speculate as to why mergers and acquisitions occur.<br><br>A. The research cited in the passage calls into question whether mergers and acquisitions are beneficial to firms.<br>B. The passage is not concerned with comparing the relative effects of mergers and acquisitions on the acquired and acquiring firms.<br>C. <b>Correct.</b> The passage surveys reports that question the reason given by firms when they acquire other firms and suggests other reasons for these acquisitions.<br>D. The passage does not indicate that there has been a change in the attitude of acquiring firms toward mergers and acquisitions.<br>E. The passage does not indicate that there has been a decline in the rate of mergers and acquisitions.",
+    "difficulty": "medium",
+    "question_type": "Verbal",
+    "subsection": "RC",
+    "rc_id": 20
+  },
+  {
+    "questionText": "It can be inferred from the passage that the author would be most likely to agree with which of the following statements about corporate acquisitions?",
+    "options": [
+      "Their known benefits to national economies explain their appeal to individual firms during the 1970s and 1980s.",
+      "Despite their adverse impact on some firms, they are the best way to channel resources from less to more productive sectors of a nation's economy.",
+      "They are as likely to occur because of poor monitoring by boards of directors as to be caused by incentive compensation for managers.",
+      "They will be less prevalent in the future, since their actual effects will gain wider recognition.",
+      "Factors other than economic benefit to the acquiring firm help to explain the frequency with which they occur."
+    ],
+    "correctAnswer": "E",
+    "answerExplanation": "<b>Inference</b><br><br>This question requires understanding what view the author has about a particular issue. The three studies cited by the passage all suggest that mergers and acquisitions do not necessarily bring economic benefit to the acquiring firms. The author concludes therefore that factors having little to do with corporate economic interests explain acquisitions and then goes on to speculate as to what the reasons may actually be.<br><br>A. The passage indicates that while mergers and acquisitions may benefit the national economy, the appeal of mergers and acquisitions must be tied to companies' private economic interests.<br>B. The passage makes no judgment as to the best way for firms to channel resources from less to more efficient economic sectors.<br>C. The passage makes no comparison between the influence of poor monitoring by boards and that of executive incentives.<br>D. The passage makes no prediction as to future trends in the market for mergers and acquisitions.<br>E. <b>Correct.</b> The passage states that factors other than economic interests drive mergers and acquisitions.",
+    "difficulty": "medium",
+    "question_type": "Verbal",
+    "subsection": "RC",
+    "rc_id": 20
+  },
+  {
+    "questionText": "The author of the passage mentions the effect of acquisitions on national economies most probably in order to",
+    "options": [
+      "provide an explanation for the mergers and acquisitions of the 1970s and 1980s overlooked by the findings discussed in the passage",
+      "suggest that national economic interests played an important role in the mergers and acquisitions of the 1970s and 1980s",
+      "support a noneconomic explanation for the mergers and acquisitions of the 1970s and 1980s that was cited earlier in the passage",
+      "cite and point out the inadequacy of one possible explanation for the prevalence of mergers and acquisitions during the 1970s and 1980s",
+      "explain how modeling affected the decisions made by managers involved in mergers and acquisitions during the 1970s and 1980s"
+    ],
+    "correctAnswer": "D",
+    "answerExplanation": "<b>Evaluation</b><br><br>This question requires understanding why a piece of information is included in the passage. After the passage cites the results of the three studies on mergers and acquisitions, which call into question the economic benefits of acquisitions, it indicates that firms nonetheless claim that their objectives are economic. The passage then states that while acquisitions may well have a desirable effect on national economies, the results of the studies suggest that factors other than economic interest must drive executives to arrange mergers and acquisitions.<br><br>A. The passage does not mention national economies as part of an explanation for the occurrence of mergers and acquisitions.<br>B. The passage suggests that the effect of acquisitions on national economies is not tied to any explanations for why acquisitions occur.<br>C. The effect of acquisitions on national economies is not mentioned in the passage as an explanation for why acquisitions occur.<br>D. <b>Correct.</b> The passage uses the mention of national economies as part of a larger point questioning the stated motivations behind firms' efforts to acquire other firms.<br>E. In the passage, modeling is unrelated to the idea that acquisitions may have a desirable effect on national economies.",
+    "difficulty": "medium",
+    "question_type": "Verbal",
+    "subsection": "RC",
+    "rc_id": 20
+  },
+  {
+    "questionText": "The author of the passage implies that which of the following is a possible partial explanation for acquisition behavior during the 1970s and 1980s?",
+    "options": [
+      "Managers wished to imitate other managers primarily because they saw how financially beneficial other firms' acquisitions were.",
+      "Managers miscalculated the value of firms that were to be acquired.",
+      "Lack of consensus within boards of directors resulted in their imposing conflicting goals on managers.",
+      "Total compensation packages for managers increased during that period.",
+      "The value of bidding firms' stock increased significantly when prospective mergers were announced."
+    ],
+    "correctAnswer": "B",
+    "answerExplanation": "<b>Inference</b><br><br>This question requires recognizing what can be inferred from the information in the passage. After providing the results of the studies of mergers and acquisitions, the author concludes that even though acquiring firms state that their objectives are economic, factors having little to do with corporate economic interests explain acquisitions (lines 10-11). Among alternative explanations, the author points to managerial error in estimating the value of firms targeted for acquisition (lines 12-13) as possibly contributing to acquisition behavior in the 1970s and 1980s.<br><br>A. While the passage indicates that managers may have modeled their behavior on other managers, it does not provide a reason for why this would be so.<br>B. <b>Correct.</b> The author states that one explanation for acquisition behavior may be that managers erred when they estimated the value of firms being acquired.<br>C. The author discusses a lack of monitoring by boards of directors but makes no mention of consensus within these boards.<br>D. The author does not discuss compensation packages for managers.<br>E. The passage does not state how significantly the value of the bidding firm's stock increased upon announcing a merger but only that it increased less in value than did the stock of the prospective firm being acquired.",
+    "difficulty": "medium",
+    "question_type": "Verbal",
+    "subsection": "RC",
+    "rc_id": 20
+  }
+]

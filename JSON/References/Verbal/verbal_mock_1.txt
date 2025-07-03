@@ -1,0 +1,32 @@
+RC Passages and Questions:
+
+rc_id: 1
+Corresponds to the Reading Comprehension passage for questions 501-508, found on PDF pages 439-440 (Source 1, Page 525-526 in internal numbering).
+JSON Question 1 = PDF Question 501 (Page 440)
+JSON Question 2 = PDF Question 502 (Page 440)
+JSON Question 3 = PDF Question 503 (Page 440)
+rc_id: 2
+Corresponds to the Reading Comprehension passage for questions 509-513, found on PDF page 442 (Source 1, Page 528 in internal numbering).
+JSON Question 4 = PDF Question 509 (Page 442)
+JSON Question 5 = PDF Question 510 (Page 442)
+JSON Question 6 = PDF Question 511 (Page 443)
+rc_id: 3
+Corresponds to the Reading Comprehension passage for questions 560-565, found on PDF page 465 (Source 1, Page 551 in internal numbering).
+JSON Question 7 = PDF Question 560 (Page 465)
+JSON Question 8 = PDF Question 561 (Page 465)
+JSON Question 9 = PDF Question 562 (Page 466)
+CR Questions:
+
+JSON Question 10 = PDF Question 680 (Page 738)
+JSON Question 11 = PDF Question 681 (Page 738)
+JSON Question 12 = PDF Question 682 (Page 739)
+JSON Question 13 = PDF Question 683 (Page 739)
+JSON Question 14 = PDF Question 686 (Page 741)
+JSON Question 15 = PDF Question 688 (Page 742)
+JSON Question 16 = PDF Question 689 (Page 742)
+JSON Question 17 = PDF Question 738 (Page 763)
+JSON Question 18 = PDF Question 739 (Page 764)
+JSON Question 19 = PDF Question 740 (Page 765)
+JSON Question 20 = PDF Question 742 (Page 767)
+JSON Question 21 = PDF Question 743 (Page 768)
+JSON Question 22 = PDF Question 744 (Page 769)

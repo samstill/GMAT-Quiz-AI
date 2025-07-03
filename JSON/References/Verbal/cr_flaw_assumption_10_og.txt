@@ -1,0 +1,10 @@
+JSON Question 1 (Airline representative...) corresponds to PDF Question 680.
+JSON Question 2 (Although the school would receive financial benefits...) corresponds to PDF Question 681.
+JSON Question 3 (Although there is no record of poet Edmund Spenser's parentage...) corresponds to PDF Question 689.
+JSON Question 4 (Economist: The most economically efficient way to reduce emissions...) corresponds to PDF Question 697.
+JSON Question 5 (Linguist: In English, the past is described as "behind"...) corresponds to PDF Question 702.
+JSON Question 6 (Birds have been said to be descended from certain birdlike dinosaur species...) corresponds to PDF Question 715.
+JSON Question 7 (Debater: The average amount of overtime per month...) corresponds to PDF Question 757.
+JSON Question 8 (In Wareland last year, 16 percent of licensed drivers under 21...) corresponds to PDF Question 759.
+JSON Question 9 (Exposure to certain chemicals commonly used in elementary schools...) corresponds to PDF Question 761.
+JSON Question 10 (In an experiment, each volunteer was allowed to choose between an easy task...) corresponds to PDF Question 776.

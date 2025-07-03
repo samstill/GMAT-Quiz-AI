@@ -1,0 +1,1736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Questions</title>
+<!-- Add this to your other pages, like manage_quizzes.html -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Check if the user was in fullscreen on the previous page
+        if (sessionStorage.getItem('isFullscreenPreferred') === 'true') {
+            
+            // Create a button to prompt the user to re-enter fullscreen
+            const reEnterFullscreenBtn = document.createElement('button');
+            reEnterFullscreenBtn.textContent = 'Re-enter Fullscreen';
+            
+            // Style the button to be noticeable but not intrusive
+            reEnterFullscreenBtn.style.position = 'fixed';
+            reEnterFullscreenBtn.style.bottom = '20px';
+            reEnterFullscreenBtn.style.right = '20px';
+            reEnterFullscreenBtn.style.zIndex = '100';
+            reEnterFullscreenBtn.style.padding = '10px 20px';
+            reEnterFullscreenBtn.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
+            reEnterFullscreenBtn.style.color = 'white';
+            reEnterFullscreenBtn.style.border = '1px solid rgba(255, 255, 255, 0.2)';
+            reEnterFullscreenBtn.style.borderRadius = '12px';
+            reEnterFullscreenBtn.style.cursor = 'pointer';
+            
+            // Add the event listener to the button
+            reEnterFullscreenBtn.addEventListener('click', () => {
+                document.documentElement.requestFullscreen().catch(err => {
+                    console.error(`Error attempting to re-enter full-screen mode: ${err.message}`);
+                });
+                // Remove the button after it's clicked
+                reEnterFullscreenBtn.remove();
+            });
+            
+            // Add the button to the page
+            document.body.appendChild(reEnterFullscreenBtn);
+        }
+
+        // Also, keep the fullscreen state updated on this new page
+        document.addEventListener('fullscreenchange', () => {
+             sessionStorage.setItem('isFullscreenPreferred', !!document.fullscreenElement);
+        });
+    });
+</script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" async></script>
+    <script>
+      // MathJax configuration
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']], // Enable $...$ and \(...\) for inline math
+          displayMath: [['$$', '$$'], ['\\[', '\\]']] // Enable $$...$$ and \[...\] for display math
+        },
+        svg: {
+          fontCache: 'global'
+        },
+        options: {
+             startup: {
+                 ready: () => {
+                     MathJax.startup.defaultReady();
+                 }
+             }
+        }
+      };
+    </script>
+     <style>
+        /* --- CSS Variables for Theming --- */
+        :root {
+            /* Light Mode */
+            --bg-color: #F5F5F7;
+            --surface-color: rgba(255, 255, 255, 0.9); /* 90% opacity */
+            --border-color: rgba(0, 0, 0, 0.1); /* 10% opacity */
+            --primary-accent: #0066FF;
+            --secondary-accent: #8A2BE2;
+            --text-color: #1D1D1F;
+            --secondary-text-color: #86868B;
+            --shadow: 0 8px 32px rgba(0,0,0,0.05);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --glass-bg: rgba(255, 255, 255, 0.15);
+             --code-bg: rgba(0, 0, 0, 0.3);
+             --code-color: #90ee90;
+        }
+
+        body.dark-mode {
+            /* Dark Mode */
+            --bg-color: #000000;
+            --surface-color: rgba(28, 28, 30, 0.9); /* Dark gray with 90% opacity */
+            --border-color: rgba(255, 255, 255, 0.1); /* 10% opacity */
+            --primary-accent: #0A84FF;
+            --secondary-accent: #BF5AF2;
+            --text-color: #FFFFFF;
+            --secondary-text-color: #86868B;
+            --shadow: 0 8px 32px rgba(255, 255, 255, 0.05); /* Adjust shadow for dark mode */
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --glass-bg: rgba(255, 255, 255, 0.15); /* Keep glass background consistent or slightly adjust */
+            --code-bg: rgba(0, 0, 0, 0.5);
+            --code-color: #90ee90;
+        }
+
+        /* --- Base Styles --- */
+        body {
+            /* Use variable for solid background and layer gradients on top */
+            background: radial-gradient(circle at 20% 30%, var(--primary-accent) 0%, transparent 40%),
+                        radial-gradient(circle at 80% 70%, var(--secondary-accent) 0%, transparent 40%),
+                        var(--bg-color); /* Fallback background color / Base color */
+            background-size: 150% 150%; /* Make gradients larger than viewport */
+            background-position: center center; /* Center the gradients */
+            background-repeat: no-repeat; /* Prevent tiling */
+            color: var(--text-color); /* Use variable */
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; /* System fonts */
+            font-weight: 400;
+            min-height: 100vh;
+            padding: 20px;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+            transition: background 0.5s ease, color 0.5s ease; /* Smooth theme transition */
+            position: relative; /* Needed for pseudo-elements positioning */
+        }
+
+         /* Remove animated pseudo-elements */
+         /* The background gradients are now directly on the body */
+        body::before, body::after {
+            content: none;
+        }
+
+
+        /* --- Glassmorphic Container --- */
+        .glass-container {
+            background-color: var(--glass-bg);
+            backdrop-filter: blur(15px); /* Slightly more blur */
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px; /* More rounded */
+            box-shadow: var(--shadow); /* Use variable shadow */
+            padding: 30px;
+            width: 95%;
+            max-width: 800px; /* Adjust as needed */
+            margin: 20px auto;
+            position: relative; /* Ensure container is above background effects */
+            z-index: 1;
+        }
+
+        /* --- Typography --- */
+        h1, h2 {
+            color: var(--text-color); /* Use variable */
+            font-weight: 600; /* Semi-bold */
+            font-size: 2rem; /* Large heading */
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        h2 {
+            color: var(--text-color); /* Ensure consistent heading color */
+            font-size: 1.5rem; /* Medium heading */
+            margin-bottom: 1rem;
+        }
+
+        /* --- Forms and Inputs --- */
+        form {
+            background-color: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--text-color); /* Use text color for labels */
+        }
+
+        form input[type="text"],
+        form input[type="file"],
+        form select,
+        form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            background-color: rgba(255, 255, 255, 0.08); /* Slightly transparent input */
+            color: var(--text-color);
+            box-sizing: border-box; /* Include padding and border in element's total width */
+            outline: none;
+             transition: border-color 0.2s ease;
+        }
+
+         form input[type="text"]:focus,
+         form input[type="file"]:focus,
+         form select:focus,
+         form textarea:focus {
+             border-color: var(--primary-accent);
+         }
+
+        form button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: var(--primary-accent);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 500;
+            transition: background-color 0.2s ease;
+        }
+
+        form button:hover {
+            background-color: color-mix(in srgb, var(--primary-accent) 80%, black 20%);
+        }
+
+        /* Options specific styling */
+        .options-input-group label {
+             display: inline-block; /* Keep label next to input */
+             width: 30px; /* Fixed width for letter label */
+             margin-right: 5px;
+             text-align: right;
+             font-weight: bold;
+             color: var(--text-color); /* Use text color */
+        }
+         .options-input-group input[type="text"] {
+             display: inline-block; /* Keep input next to label */
+             width: calc(100% - 40px); /* Adjust width */
+             margin-bottom: 10px; /* Less margin than general inputs */
+             vertical-align: top; /* Align with label */
+         }
+
+
+        /* Drag and Drop Image Area */
+        .image-drop-zone {
+            border: 2px dashed var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            margin-bottom: 15px;
+            transition: background-color 0.2s ease, border-color 0.2s ease;
+            background-color: rgba(255, 255, 255, 0.05);
+            position: relative; /* Needed for absolute positioning of preview */
+            display: flex; /* Use flex for centering content */
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100px; /* Minimum height */
+        }
+
+        .image-drop-zone.dragover {
+            background-color: rgba(150, 200, 255, 0.1); /* Light blue on drag over */
+            border-color: var(--primary-accent);
+        }
+
+        .image-drop-zone p {
+            margin: 0 0 10px 0;
+            color: var(--secondary-text-color);
+        }
+
+         .image-drop-zone i {
+             font-size: 2.5em; /* Larger icon */
+             color: var(--secondary-text-color);
+             margin-bottom: 10px;
+         }
+
+        .image-drop-zone img {
+            max-width: 100%;
+            max-height: 150px; /* Max height for preview */
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            display: none; /* Hidden by default */
+            margin-top: 10px;
+        }
+
+        /* Hide the actual file input */
+        #question-image-file {
+            display: none;
+        }
+
+
+        /* --- RC Passage Management --- */
+        .rc-passage-section {
+            margin-bottom: 32px;
+            padding: 20px;
+            background-color: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+        }
+
+        .rc-passage-section h2 {
+             margin-top: 0;
+             margin-bottom: 1rem;
+             text-align: left;
+        }
+
+        .rc-passage-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+
+        .rc-passage-list li {
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            transition: background-color 0.2s ease;
+             flex-wrap: wrap;
+        }
+
+        .rc-passage-list li:hover {
+             background-color: rgba(255, 255, 255, 0.08);
+        }
+
+        .rc-passage-list li .passage-content {
+             flex-grow: 1;
+             margin-right: 10px;
+             max-width: calc(100% - 120px);
+             word-break: break-word;
+             color: var(--text-color);
+        }
+
+         .rc-passage-list li .passage-content strong {
+             display: block;
+             margin-bottom: 5px;
+             color: var(--primary-accent);
+         }
+
+        .rc-passage-list li .button-group {
+            display: flex;
+            flex-direction: column;
+            flex-shrink: 0;
+            gap: 5px;
+            align-items: flex-end;
+        }
+
+         .rc-passage-list li button {
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: background-color 0.2s ease;
+             width: 100px;
+         }
+
+         .rc-passage-list li .edit-btn {
+             background-color: var(--secondary-accent);
+             color: white;
+         }
+         .rc-passage-list li .edit-btn:hover {
+             background-color: color-mix(in srgb, var(--secondary-accent) 80%, black 20%);
+         }
+
+         .rc-passage-list li .delete-btn {
+             background-color: #FF3B30; /* Red */
+             color: white;
+         }
+         .rc-passage-list li .delete-btn:hover {
+             background-color: color-mix(in srgb, #FF3B30 80%, black 20%);
+         }
+
+
+        /* --- Question List --- */
+        .question-list-container {
+             background-color: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .question-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .question-list li {
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start; /* Align items to the top */
+            transition: background-color 0.2s ease;
+            flex-wrap: wrap; /* Allow wrapping */
+        }
+
+        .question-list li:hover {
+            background-color: rgba(255, 255, 255, 0.08);
+        }
+
+        .question-list li .question-content { /* Container for text, options, image */
+            flex-grow: 1; /* Allow content to take space */
+            margin-right: 10px;
+             max-width: calc(100% - 120px); /* Leave space for buttons */
+             word-break: break-word; /* Break long words */
+        }
+
+         .question-list li .question-content p {
+             margin-bottom: 8px;
+             font-weight: 500;
+             color: var(--text-color);
+         }
+
+          .question-list li .question-content ul {
+              list-style: none; /* Remove bullet points */
+              padding-left: 20px; /* Keep indentation */
+              font-size: 0.9em;
+          }
+           .question-list li .question-content ul li {
+               background: none;
+               border: none;
+               padding: 2px 0; /* Keep a small vertical padding */
+               margin-bottom: 2px;
+               display: list-item; /* Ensure it behaves like a list item with a marker */
+               color: var(--text-color); /* Set color using the primary text color variable */
+           }
+
+          .question-list li .question-content .question-image-preview {
+              max-width: 100px; /* Smaller preview */
+              height: auto;
+              margin-top: 10px;
+              border-radius: 4px;
+              border: 1px solid var(--border-color);
+          }
+
+        .question-list li .button-group { /* Group buttons together */
+            display: flex;
+            flex-direction: column; /* Stack buttons vertically */
+            flex-shrink: 0; /* Prevent buttons from shrinking */
+            gap: 5px; /* Space between buttons */
+            align-items: flex-end; /* Align buttons to the right */
+        }
+
+        .question-list li button {
+            padding: 5px 10px; /* Adjusted padding */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: background-color 0.2s ease;
+            width: 100px; /* Fixed width for delete button */
+        }
+
+         .question-list li .delete-btn {
+             background-color: #FF3B30; /* Red */
+             color: white;
+         }
+         .question-list li .delete-btn:hover {
+             background-color: color-mix(in srgb, #FF3B30 80%, black 20%);
+         }
+
+
+        /* --- Theme Toggle --- */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+            z-index: 10;
+        }
+        .theme-toggle svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--text-color); /* Icon color matches text */
+            transition: fill 0.3s ease;
+        }
+
+         /* --- Navigation Link --- */
+        .nav-link {
+            display: block;
+            text-align: center;
+            margin-bottom: 20px; /* Add margin below link */
+            color: var(--primary-accent);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+        .nav-link:hover {
+            color: color-mix(in srgb, var(--primary-accent) 80%, black 20%);
+            text-decoration: underline;
+        }
+
+        /* --- Loading/Message --- */
+        #message {
+            text-align: center;
+            font-size: 1.1em;
+            color: var(--secondary-text-color);
+            margin-top: 20px;
+        }
+
+        /* MathJax specific styling to ensure correct rendering */
+        .question-list .MathJax {
+            outline: none; /* Remove outline */
+        }
+         .question-list .mjx-chtml {
+             overflow-x: auto; /* Allow horizontal scrolling for wide equations */
+             padding-bottom: 5px; /* Add some padding if scrolling occurs */
+         }
+
+        .rc-passage-list .MathJax {
+             outline: none;
+        }
+         .rc-passage-list .mjx-chtml {
+             overflow-x: auto;
+             padding-bottom: 5px;
+         }
+
+
+        /* --- Responsive Adjustments --- */
+        @media (max-width: 768px) { /* Use 768px breakpoint */
+            .glass-container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+            h2 {
+                font-size: 1.3rem;
+            }
+             form, .question-list-container, .rc-passage-section {
+                padding: 15px;
+             }
+
+             .rc-passage-list li {
+                 flex-direction: column;
+                 align-items: center;
+             }
+             .rc-passage-list li .passage-content {
+                  margin-right: 0;
+                 margin-bottom: 15px;
+                 max-width: 100%;
+                 text-align: center;
+             }
+              .rc-passage-list li .button-group {
+                 width: 100%;
+                 flex-direction: row;
+                 justify-content: center;
+                 gap: 10px;
+             }
+              .rc-passage-list li .button-group button {
+                   width: auto;
+                   flex-grow: 1;
+              }
+
+
+             .question-list li {
+                 flex-direction: column;
+                 align-items: center; /* Center items when stacked */
+             }
+             .question-list li .question-content {
+                 margin-right: 0;
+                 margin-bottom: 15px;
+                 max-width: 100%; /* Take full width */
+                 text-align: center; /* Center text content */
+             }
+              .question-list li .question-content ul {
+                  padding-left: 0; /* Remove padding for options list */
+                  text-align: left; /* Align options left */
+                  width: 100%; /* Options list takes full width */
+              }
+             .question-list li .button-group {
+                 width: 100%; /* Button group takes full width */
+                 flex-direction: row; /* Arrange buttons horizontally */
+                 justify-content: center; /* Center buttons horizontally */
+                 gap: 10px; /* Add space between horizontal buttons */
+             }
+             .question-list li .button-group button {
+                  width: auto; /* Auto width for horizontal buttons */
+                  flex-grow: 1; /* Allow buttons to grow */
+             }
+        }
+
+        /* Ensure LaTeX options inherit color and font, and are inline */
+        .latex-option {
+            color: inherit; /* Inherit color from the list item */
+            font: inherit;
+            display: inline-block; /* Use inline-block for better control */
+            margin: 0; /* Remove margin */
+            padding: 0; /* Remove padding */
+            vertical-align: middle; /* Attempt to vertically align with the letter */
+            /* Also target potential MathJax output elements within */
+        }
+
+        .latex-option .MathJax_Display, /* For block equations within inline (shouldn't happen here but for safety) */
+        .latex-option .mjx-chtml {
+            display: inline-block !important; /* Force inline-block */
+            margin: 0 !important; /* Remove MathJax default margins */
+            padding: 0 !important; /* Remove MathJax default padding */
+            vertical-align: middle !important; /* Force vertical alignment */
+            color: inherit !important; /* Ensure color inheritance */
+        }
+
+    </style>
+</head>
+<body>
+    <button class="theme-toggle" id="theme-toggle">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.818 5.182a.75.75 0 011.06 0l1.591 1.591a.75.75 0 11-1.06 1.06l-1.591-1.59a.75.75 0 010-1.06zM5.182 5.182a.75.75 0 010 1.06L3.591 7.832a.75.75 0 01-1.06-1.06l1.59-1.591a.75.75 0 011.06 0zM16.5 7.5a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V8.25a.75.75 0 01.75-.75zM7.5 16.5a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V17.25a.75.75 0 01.75-.75zM3 12a.75.75 0 01.75-.75h2.25a.75.75 0 010 1.5H3.75A.75.75 0 013 12zM19.5 12a.75.75 0 01.75-.75h2.25a.75.75 0 010 1.5H20.25a.75.75 0 01-.75-.75zM6.659 18.818a.75.75 0 01-1.06 0l-1.591-1.591a.75.75 0 111.06-1.06l1.591 1.59a.75.75 0 010 1.06zM18.818 18.818a.75.75 0 01-1.06 0l-1.591-1.591a.75.75 0 111.06-1.06l1.591 1.59a.75.75 0 010 1.06z"></path></svg>
+    </button>
+
+    <div class="glass-container">
+        <h1 id="page-title">Manage Questions</h1>
+
+         <a href="manage_quizzes.html" class="nav-link">Back to Manage Quizzes</a>
+         <a href="performance.html" class="nav-link">View Performance Dashboard</a>
+
+        <div id="message"></div>
+
+        <!-- RC Passage Management Section -->
+        <div class="rc-passage-section" id="rc-passage-management-section" style="display: none;">
+            <h2>Manage Reading Comprehension Passages</h2>
+            <form id="add-rc-passage-form">
+                 <label for="rc-passage-title">Passage Title (Optional):</label>
+                 <input type="text" id="rc-passage-title">
+
+                <label for="rc-passage-text">Passage Text (supports LaTeX <code>$...$</code> and <code>$$...$$</code>):</label>
+                <textarea id="rc-passage-text" rows="6" required></textarea>
+
+                <button type="submit">Add Passage</button>
+                 <button type="button" id="cancel-rc-edit" style="display:none;">Cancel Edit</button>
+            </form>
+
+            <h3>Existing Passages</h3>
+            <ul id="rc-passages-list" class="rc-passage-list">
+                 <!-- RC passages will be listed here -->
+            </ul>
+        </div>
+
+
+        <!-- Bulk Upload JSON Questions -->
+        <div id="bulk-upload-section" style="margin-bottom: 32px;">
+            <h2>Bulk Upload Questions (JSON)</h2>
+            <div id="json-upload-drop-zone" style="border: 2px dashed var(--border-color); border-radius: 12px; padding: 24px; text-align: center; background: rgba(255,255,255,0.07); cursor: pointer; margin-bottom: 10px; transition: background 0.2s, border-color 0.2s;">
+                <i class="bi bi-upload" style="font-size:2em; color:var(--primary-accent);"></i>
+                <p style="margin: 10px 0 0 0; color: var(--secondary-text-color);">Drag & drop a <b>.json</b> file here, or click to select.<br><span style="font-size:0.95em;">Format: Array of question objects (see below)</span></p>
+                <input type="file" id="json-upload-input" accept="application/json" style="display:none;">
+            </div>
+            <details style="font-size:0.95em; color:var(--secondary-text-color);">
+                <summary>JSON Example</summary>
+                <pre style="text-align:left; background:rgba(0,0,0,0.04); border-radius:8px; padding:10px; margin-top:8px; overflow-x:auto;">
+[
+  {
+    "questionText": "What is 2+2?",
+    "options": ["1", "2", "3", "4", "5"],
+    "correctAnswer": "D",
+    "answerExplanation": "Adding 2 and 2 gives us 4, which corresponds to option D.",
+    "difficulty": "easy",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "What is the capital of France?",
+    "options": ["Berlin", "London", "Paris", "Rome", "Madrid"],
+    "correctAnswer": "C",
+    "answerExplanation": "Paris is the capital and most populous city of France.",
+    "difficulty": "medium",
+    "question_type": "Verbal",
+    "subsection": "CR"
+  },
+   {
+    "questionText": "Based on Passage 1, what is the main idea?",
+    "options": ["Idea A", "Idea B", "Idea C", "Idea D", "Idea E"],
+    "correctAnswer": "A",
+    "answerExplanation": "The main idea is found in the first paragraph where the author states...",
+    "difficulty": "hard",
+    "question_type": "Verbal",
+    "subsection": "RC",
+    "rc_id": 1
+   },
+    {
+    "questionText": "Interpret the graph.",
+    "options": ["Interpretation A", "Interpretation B", "Interpretation C"],
+    "correctAnswer": "A",
+    "answerExplanation": "Looking at the trend line, we can see that the data shows...",
+    "difficulty": "medium",
+    "question_type": "Data Insights",
+    "subsection": null
+   }
+]
+                </pre>
+            </details>
+        </div>
+
+        <div id="add-question-section">
+            <h2>Add New Question</h2>
+            <form id="add-question-form">
+
+                <label for="question-type">Question Type:</label>
+                 <select id="question-type" required>
+                     <option value="">-- Select Type --</option>
+                     <option value="Quant">Quant</option>
+                     <option value="Verbal">Verbal</option>
+                     <option value="Data Insights">Data Insights</option>
+                 </select>
+
+                 <div id="verbal-subtype-select" style="display: none;">
+                     <label for="verbal-type">Verbal Sub-type:</label>
+                     <select id="verbal-type">
+                         <option value="">-- Select Sub-type --</option>
+                         <option value="RC">Reading Comprehension (RC)</option>
+                         <option value="CR">Critical Reasoning (CR)</option>
+                     </select>
+                 </div>
+
+
+                 <div id="rc-passage-select-container" style="display: none;">
+                    <label for="rc-passage-select">Link to RC Passage (Optional):</label>
+                    <select id="rc-passage-select">
+                        <option value="">-- Select a Passage --</option>
+                        <!-- Options will be populated by JavaScript -->
+                    </select>
+                 </div>
+
+
+                <label for="question-text">
+                  Question Text <span style="font-weight:normal;">(supports LaTeX <code>$...$</code> and <code>$$...$$</code>)</span>:
+                </label>
+                <textarea id="question-text" rows="4" required></textarea>
+
+                <div class="options-input-container">
+                    <label>Options:</label>
+                    <div class="options-input-group">
+                        <label for="optionA">A.</label>
+                        <input type="text" id="optionA" required>
+                    </div>
+                    <div class="options-input-group">
+                        <label for="optionB">B.</label>
+                        <input type="text" id="optionB" required>
+                    </div>
+                    <div class="options-input-group">
+                        <label for="optionC">C.</label>
+                        <input type="text" id="optionC" required>
+                    </div>
+                    <div class="options-input-group">
+                        <label for="optionD">D.</label>
+                        <input type="text" id="optionD" required>
+                    </div>
+                    <div class="options-input-group">
+                        <label for="optionE">E.</label>
+                        <input type="text" id="optionE" required> </div>
+                     </div>
+
+
+                <label for="correct-answer">Correct Answer:</label>
+                <select id="correct-answer" required>
+                    <option value="">--Select Correct Answer--</option>
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                    <option value="E">E</option>
+                </select>
+
+                <label for="difficulty">Difficulty Level:</label>
+                <select id="difficulty" required>
+                    <option value="easy">Easy</option>
+                    <option value="medium">Medium</option>
+                    <option value="hard">Hard</option>
+                </select>
+
+                <label for="answer-explanation">
+                    Answer Explanation <span style="font-weight:normal;">(supports LaTeX <code>$...$</code> and <code>$$...$$</code>)</span>:
+                </label>
+                <textarea id="answer-explanation" rows="3" placeholder="Provide the official explanation for the correct answer (optional)"></textarea>
+
+                <label>Question Image (Optional):</label>
+                <div class="image-drop-zone" id="image-drop-zone">
+                     <i class="bi bi-cloud-upload"></i>
+                     <p>Drag & drop an image here, or click to select a file.</p>
+                     <img id="image-preview" src="#" alt="Image Preview">
+                </div>
+                 <input type="file" id="question-image-file" accept="image/*">
+
+
+                <button type="submit">Add Question</button>
+            </form>
+        </div>
+
+        <div id="existing-questions-section">
+            <h2 id="existing-questions-title">Existing Questions</h2>
+            <ul id="questions-list" class="question-list">
+                </ul>
+        </div>
+
+    </div>
+
+    <script>
+        const API_BASE_URL = 'http://127.0.0.1:8000/api'; // Adjust if your server is on a different address/port
+
+        const pageTitleEl = document.getElementById('page-title');
+        const messageEl = document.getElementById('message');
+        const addQuestionForm = document.getElementById('add-question-form');
+        const questionTextarea = document.getElementById('question-text');
+        const optionsInputContainer = document.querySelector('.options-input-container'); // Get the container
+        const correctAnswerSelect = document.getElementById('correct-answer'); // Changed to select
+        const difficultySelect = document.getElementById('difficulty');
+        const answerExplanationTextarea = document.getElementById('answer-explanation');
+        const imageFileInput = document.getElementById('question-image-file'); // Hidden file input
+        const imageDropZone = document.getElementById('image-drop-zone'); // Drop zone element
+        const imagePreview = document.getElementById('image-preview'); // Image preview element
+        const questionsListEl = document.getElementById('questions-list');
+        const existingQuestionsTitle = document.getElementById('existing-questions-title');
+        const themeToggleBtn = document.getElementById('theme-toggle');
+
+        // New elements for RC Passage Management
+        const rcPassageManagementSection = document.getElementById('rc-passage-management-section');
+        const addRcPassageForm = document.getElementById('add-rc-passage-form');
+        const rcPassageTitleInput = document.getElementById('rc-passage-title');
+        const rcPassageTextarea = document.getElementById('rc-passage-text');
+        const rcPassagesListEl = document.getElementById('rc-passages-list');
+        const rcPassageSelect = document.getElementById('rc-passage-select'); // Dropdown in question form
+        const rcPassageSelectContainer = document.getElementById('rc-passage-select-container'); // Container for the dropdown
+        const cancelRcEditBtn = document.getElementById('cancel-rc-edit');
+
+        // New elements for Question Type Selection
+        const questionTypeSelect = document.getElementById('question-type');
+        const verbalSubtypeSelectDiv = document.getElementById('verbal-subtype-select');
+        const verbalTypeSelect = document.getElementById('verbal-type');
+
+
+        let currentQuizId = null;
+        let currentQuizName = 'Selected Quiz'; // Default name
+        let editingQuestionId = null; // For editing questions
+        let editingRcPassageId = null; // For editing RC passages
+
+        let rcPassages = []; // Array to hold fetched RC passages
+
+
+        // --- Theme Toggle Logic ---
+        // Apply theme on load
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        document.body.classList.add(currentTheme + '-mode');
+
+        // Add event listener to toggle theme
+        themeToggleBtn.addEventListener('click', () => {
+            if (document.body.classList.contains('light-mode')) {
+                document.body.classList.remove('light-mode');
+                document.body.classList.add('dark-mode');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                document.body.classList.remove('dark-mode');
+                document.body.classList.add('light-mode');
+                localStorage.setItem('theme', 'light');
+            }
+        });
+
+
+        // --- Get Quiz ID and Name from URL ---
+        function getQuizInfoFromUrl() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const quizId = urlParams.get('quiz_id');
+            const quizName = urlParams.get('quiz_name');
+
+            if (!quizId) {
+                messageEl.textContent = "Error: No quiz ID specified in the URL. Please go back to Manage Quizzes.";
+                messageEl.style.color = 'red';
+                // Hide sections if no quiz ID
+                 document.getElementById('add-question-section').style.display = 'none'; // Hide add question section
+                document.getElementById('existing-questions-section').style.display = 'none';
+                 rcPassageManagementSection.style.display = 'none'; // Hide RC section
+                pageTitleEl.textContent = 'Manage Questions'; // Reset title
+                return null;
+            }
+
+            currentQuizId = parseInt(quizId);
+            currentQuizName = quizName ? decodeURIComponent(quizName) : `Quiz ID ${currentQuizId}`;
+            pageTitleEl.textContent = `Manage Questions for "${currentQuizName}"`;
+            existingQuestionsTitle.textContent = `Questions in "${currentQuizName}"`;
+
+            return currentQuizId;
+        }
+
+
+        // --- Update Form Visibility based on Question Type ---
+        function updateFormVisibility() {
+            const selectedType = questionTypeSelect.value;
+            const selectedVerbalSubtype = verbalTypeSelect.value;
+
+            // Hide all conditional sections initially
+            verbalSubtypeSelectDiv.style.display = 'none';
+            rcPassageManagementSection.style.display = 'none';
+            rcPassageSelectContainer.style.display = 'none';
+
+
+            if (selectedType === 'Verbal') {
+                verbalSubtypeSelectDiv.style.display = 'block';
+                if (selectedVerbalSubtype === 'RC') {
+                    rcPassageManagementSection.style.display = 'block';
+                    rcPassageSelectContainer.style.display = 'block';
+                }
+            } else if (selectedType === 'Quant' || selectedType === 'Data Insights') {
+                 // Standard question form elements (except RC link) are always visible once a type is selected.
+                 // RC passage management and link should remain hidden.
+            }
+             // If no type is selected, everything remains hidden (handled by initial state/reset)
+        }
+
+        // --- Add Event Listeners for Type Selection ---
+        questionTypeSelect.addEventListener('change', () => {
+            // Reset verbal subtype when main type changes
+            verbalTypeSelect.value = '';
+            updateFormVisibility();
+        });
+
+        verbalTypeSelect.addEventListener('change', () => {
+            updateFormVisibility();
+        });
+
+
+        // --- Fetch and Display Questions for the Quiz ---
+        // Modified to also populate RC passage dropdown and update form visibility
+        async function fetchAndDisplayQuestions(quizId) {
+            messageEl.textContent = 'Loading questions and passages...';
+            questionsListEl.innerHTML = ''; // Clear previous list
+            rcPassagesListEl.innerHTML = ''; // Clear previous RC list
+            rcPassageSelect.innerHTML = '<option value="">-- Select a Passage --</option>'; // Reset dropdown
+
+            try {
+                // Fetch RC Passages first
+                const rcResponse = await fetch(`${API_BASE_URL}/rc_passages/`);
+                if (!rcResponse.ok) {
+                    const errorData = await rcResponse.json();
+                    console.error('Error fetching RC passages:', errorData);
+                     // Don't stop execution, but show an error for RC passages
+                    messageEl.textContent = `Warning: Failed to load RC passages: ${errorData.detail || rcResponse.statusText}. Ensure backend is running. Loading questions...`;
+                    messageEl.style.color = 'orange';
+                    rcPassages = []; // Ensure rcPassages is empty array
+                } else {
+                    rcPassages = await rcResponse.json();
+                    renderRCPassageList(rcPassages);
+                    populateRCPassageDropdown(rcPassages);
+                     messageEl.textContent = 'Loading questions...'; // Update message after loading passages
+                     messageEl.style.color = ''; // Reset color
+                }
+
+
+                // Fetch Questions for the quiz
+                const response = await fetch(`${API_BASE_URL}/quizzes/${quizId}/questions/`);
+                if (!response.ok) {
+                     const errorData = await response.json();
+                     // If quiz not found, show specific message
+                     if (response.status === 404) {
+                          messageEl.textContent = `Error: Quiz with ID ${quizId} not found.`;
+                          messageEl.style.color = 'red';
+                          document.getElementById('add-question-section').style.display = 'none'; // Hide form
+                          rcPassageManagementSection.style.display = 'none'; // Hide RC section
+                     } else {
+                         throw new Error(errorData.detail || `HTTP error! status: ${response.status}`);
+                     }
+                    return; // Stop if fetch failed
+                }
+                const questions = await response.json();
+                renderQuestionsList(questions);
+                 messageEl.textContent = ''; // Clear message on success
+
+            } catch (error) {
+                console.error('Error fetching questions or passages:', error);
+                messageEl.textContent = `Failed to load data: ${error.message}. Ensure backend is running.`;
+                messageEl.style.color = 'red';
+            } finally {
+                 // Ensure visibility is updated after loading, even on error
+                 updateFormVisibility();
+            }
+        }
+
+        // --- Render RC Passages List ---
+        function renderRCPassageList(passages) {
+            rcPassagesListEl.innerHTML = ''; // Clear existing list
+            if (passages.length === 0) {
+                rcPassagesListEl.innerHTML = '<li>No RC passages added yet.</li>';
+                 if (typeof MathJax !== 'undefined') { // Typeset the empty message if needed
+                     MathJax.typesetPromise([rcPassagesListEl]).catch((err) => console.error('MathJax typesetting failed', err));
+                 }
+                return;
+            }
+            passages.forEach(passage => {
+                const listItem = document.createElement('li');
+                listItem.dataset.passageId = passage.id;
+
+                listItem.innerHTML = `
+                    <div class="passage-content">
+                         <strong>Passage ID: ${passage.id}${passage.title ? ' - ' + passage.title : ''}</strong>
+                        <p>${passage.passage_text}</p>
+                    </div>
+                    <div class="button-group">
+                        <button class="edit-btn" data-passage-id="${passage.id}">Edit</button>
+                        <button class="delete-btn" data-passage-id="${passage.id}">Delete</button>
+                    </div>
+                `;
+                rcPassagesListEl.appendChild(listItem);
+            });
+             // --- Trigger MathJax rendering for the new list items ---
+             if (typeof MathJax !== 'undefined') {
+                 MathJax.typesetPromise([rcPassagesListEl]).catch((err) => console.error('MathJax typesetting failed', err));
+             }
+        }
+
+        // --- Populate RC Passage Dropdown ---
+        function populateRCPassageDropdown(passages) {
+            rcPassageSelect.innerHTML = '<option value="">-- Select a Passage --</option>'; // Keep default option
+            passages.forEach(passage => {
+                const option = document.createElement('option');
+                option.value = passage.id;
+                option.textContent = `ID: ${passage.id}${passage.title ? ' - ' + passage.title : ''}`;
+                rcPassageSelect.appendChild(option);
+            });
+        }
+
+
+        // --- Handle RC Passage Form Submission (Add/Update) ---
+        addRcPassageForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            const title = rcPassageTitleInput.value.trim();
+            const passageText = rcPassageTextarea.value.trim();
+
+            if (!passageText) {
+                messageEl.textContent = 'Please enter the passage text.';
+                messageEl.style.color = 'orange';
+                return;
+            }
+
+            const passageData = {
+                title: title || null, // Send null if title is empty
+                passage_text: passageText
+            };
+
+            messageEl.textContent = editingRcPassageId ? 'Updating passage...' : 'Adding passage...';
+            messageEl.style.color = '';
+
+            try {
+                let response;
+                let method;
+                let url;
+
+                if (editingRcPassageId) {
+                    // Update (PUT) request
+                    method = 'PUT';
+                    url = `${API_BASE_URL}/rc_passages/${editingRcPassageId}`;
+                } else {
+                    // Add (POST) request
+                    method = 'POST';
+                    url = `${API_BASE_URL}/rc_passages/`;
+                }
+
+                response = await fetch(url, {
+                    method: method,
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(passageData)
+                });
+
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(errorData.detail || `HTTP error! status: ${response.status}`);
+                }
+
+                // Clear and reset form
+                addRcPassageForm.reset();
+                editingRcPassageId = null;
+                addRcPassageForm.querySelector('button[type="submit"]').textContent = 'Add Passage';
+                cancelRcEditBtn.style.display = 'none';
+
+
+                messageEl.textContent = method === 'PUT' ? 'Passage updated successfully!' : 'Passage added successfully!';
+                messageEl.style.color = '#34C759'; // Green for success
+
+                // Refresh both passage and question lists
+                fetchAndDisplayQuestions(currentQuizId); // This fetches both
+                 resetQuestionFormAndVisibility(); // Reset question form and visibility
+
+            } catch (error) {
+                console.error(editingRcPassageId ? 'Error updating passage:' : 'Error adding passage:', error);
+                messageEl.textContent = (editingRcPassageId ? 'Failed to update passage: ' : 'Failed to add passage: ') + error.message;
+                messageEl.style.color = 'red';
+            }
+        });
+
+         // --- Handle Cancel RC Edit ---
+         cancelRcEditBtn.addEventListener('click', () => {
+             addRcPassageForm.reset();
+             editingRcPassageId = null;
+             addRcPassageForm.querySelector('button[type="submit"]').textContent = 'Add Passage';
+             cancelRcEditBtn.style.display = 'none';
+             messageEl.textContent = ''; // Clear message
+             messageEl.style.color = '';
+         });
+
+
+        // --- Delegate Click Events for RC Passage List Buttons (Edit/Delete) ---
+        rcPassagesListEl.addEventListener('click', async (event) => {
+            const target = event.target;
+            const button = target.closest('button');
+
+            if (button) {
+                const passageId = button.dataset.passageId;
+
+                if (button.classList.contains('edit-btn')) {
+                     // Find the passage in the fetched list
+                     const passageToEdit = rcPassages.find(p => p.id == passageId);
+                     if (passageToEdit) {
+                          rcPassageTitleInput.value = passageToEdit.title || '';
+                          rcPassageTextarea.value = passageToEdit.passage_text;
+                          editingRcPassageId = passageId;
+                          addRcPassageForm.querySelector('button[type="submit"]').textContent = 'Update Passage';
+                          cancelRcEditBtn.style.display = 'inline-block';
+                          messageEl.textContent = 'Editing passage. Make changes and click Update Passage.';
+                          messageEl.style.color = '#0066FF';
+                     } else {
+                          messageEl.textContent = 'Error: Passage not found for editing.';
+                          messageEl.style.color = 'red';
+                     }
+
+                } else if (button.classList.contains('delete-btn')) {
+                    if (confirm(`Are you sure you want to delete this RC passage (ID: ${passageId})? This will unlink it from any questions.`)) {
+                        deleteRCPassage(passageId);
+                    }
+                }
+            }
+        });
+
+
+        // --- Delete RC Passage ---
+        async function deleteRCPassage(passageId) {
+             messageEl.textContent = `Deleting passage ${passageId}...`;
+             messageEl.style.color = ''; // Reset color
+            try {
+                const response = await fetch(`${API_BASE_URL}/rc_passages/${passageId}`, {
+                    method: 'DELETE',
+                });
+
+                if (!response.ok) {
+                     const errorData = await response.json();
+                    throw new Error(errorData.detail || `HTTP error! status: ${response.status}`);
+                }
+
+                 messageEl.textContent = `Passage ${passageId} deleted successfully.`;
+                 messageEl.style.color = '#34C759'; // Green color for success
+                fetchAndDisplayQuestions(currentQuizId); // Refresh the lists
+                 // If the deleted passage was being edited, cancel the edit state
+                 if (editingRcPassageId == passageId) {
+                      editingRcPassageId = null;
+                      addRcPassageForm.reset();
+                      addRcPassageForm.querySelector('button[type="submit"]').textContent = 'Add Passage';
+                      cancelRcEditBtn.style.display = 'none';
+                 }
+                 // If any question currently being edited was linked to this passage, update its form state
+                 if (editingQuestionId !== null) {
+                      // Re-fetch the question being edited to update its rc_id
+                      editQuestion(editingQuestionId); // This will re-populate the form including the dropdown
+                 }
+
+
+            } catch (error) {
+                console.error('Error deleting passage:', error);
+                messageEl.textContent = `Failed to delete passage ${passageId}: ${error.message}`;
+                messageEl.style.color = 'red';
+            }
+        }
+
+
+        // --- Render Questions List ---
+        // Modified to show RC passage link
+        function renderQuestionsList(questions) {
+            questionsListEl.innerHTML = ''; // Clear existing list
+            if (questions.length === 0) {
+                questionsListEl.innerHTML = '<li>No questions added to this quiz yet.</li>';
+                // Trigger MathJax typesetting even for this message if it contains LaTeX
+                 if (typeof MathJax !== 'undefined') {
+                     MathJax.typesetPromise([questionsListEl]).catch((err) => console.error('MathJax typesetting failed', err));
+                 }
+                return;
+            }
+            questions.forEach(question => {
+                const listItem = document.createElement('li');
+                listItem.dataset.questionId = question.id; // Store question ID
+
+                let optionsHtml = '<ul>';
+                question.options.forEach((opt, i) => {
+                     optionsHtml += `<li>${String.fromCharCode(65 + i)}. <span class="latex-option">${opt}</span></li>`;
+                });
+                optionsHtml += '</ul>';
+
+                let imageHtml = '';
+                if (question.image) {
+                     const imageUrl = `${API_BASE_URL.replace('/api', '')}/images/${question.image}`;
+                     imageHtml = `<img src="${imageUrl}" alt="Question Image Preview" class="question-image-preview">`;
+                }
+
+                 // Display linked RC passage
+                 let rcPassageLinkHtml = '';
+                 if (question.rc_id) {
+                      const linkedPassage = rcPassages.find(p => p.id === question.rc_id);
+                      // Display title and ID, or just ID if no title
+                     rcPassageLinkHtml = `<p style="font-size: 0.9em; color: var(--secondary-text-color); margin-top: 5px;"><strong>Linked RC Passage:</strong> ID ${question.rc_id}${linkedPassage && linkedPassage.title ? ' - "' + linkedPassage.title + '"' : ''}</p>`;
+                }
+
+
+                listItem.innerHTML = `
+                    <div class="question-content">
+                        <p><strong>Q${question.id}:</strong> ${question.questionText}</p>
+                        ${rcPassageLinkHtml} <!-- Display RC link here -->
+                        ${optionsHtml}
+                        <p><strong>Correct Answer:</strong> ${question.correctAnswer}</p>
+                        <p><strong>Difficulty:</strong> ${question.difficulty.charAt(0).toUpperCase() + question.difficulty.slice(1)}</p>
+                        ${question.answerExplanation ? `<p><strong>Answer Explanation:</strong> ${question.answerExplanation}</p>` : ''}
+                        ${imageHtml}
+                    </div>
+                    <div class="button-group">
+                        <button class="edit-btn" data-question-id="${question.id}"><i class="bi bi-pencil"></i> Edit</button>
+                        <button class="delete-btn" data-question-id="${question.id}">Delete</button>
+                    </div>
+                `;
+                questionsListEl.appendChild(listItem);
+            });
+
+             // --- Trigger MathJax rendering for the new list items ---
+             if (typeof MathJax !== 'undefined') {
+                 MathJax.typesetPromise([questionsListEl]).catch((err) => console.error('MathJax typesetting failed', err));
+             }
+        }
+
+
+        // --- Delegate Click Events for Question List Buttons (Delete) ---
+        questionsListEl.addEventListener('click', (event) => {
+            const target = event.target;
+             const button = target.closest('button'); // Use closest to handle clicks on icon/text inside button
+
+            if (button && button.classList.contains('delete-btn')) {
+                const questionId = button.dataset.questionId;
+                if (confirm(`Are you sure you want to delete this question (ID: ${questionId})?`)) {
+                    deleteQuestion(questionId);
+                }
+            }
+            // Edit button logic
+            if (button && button.classList.contains('edit-btn')) {
+                const questionId = button.dataset.questionId;
+                editQuestion(questionId);
+            }
+        });
+
+
+        // --- Delete Question ---
+        async function deleteQuestion(questionId) {
+             messageEl.textContent = `Deleting question ${questionId}...`;
+             messageEl.style.color = ''; // Reset color
+            try {
+                // Use the backend endpoint for deleting a specific question
+                const response = await fetch(`${API_BASE_URL}/questions/${questionId}`, {
+                    method: 'DELETE',
+                });
+
+                if (!response.ok) {
+                     const errorData = await response.json();
+                    throw new Error(errorData.detail || `HTTP error! status: ${response.status}`);
+                }
+
+                 messageEl.textContent = `Question ${questionId} deleted successfully.`;
+                 messageEl.style.color = '#34C759'; // Green color for success
+                fetchAndDisplayQuestions(currentQuizId); // Refresh the list (and RC lists)
+                 // If the deleted question was being edited, cancel the edit state
+                 if (editingQuestionId == questionId) {
+                      resetQuestionFormAndVisibility();
+                 }
+
+
+            } catch (error) {
+                console.error('Error deleting question:', error);
+                messageEl.textContent = `Failed to delete question ${questionId}: ${error.message}`;
+                messageEl.style.color = 'red';
+            }
+        }
+
+        // --- Edit Question Logic ---
+        async function editQuestion(questionId) {
+            // Fetch the specific question details (including rc_id)
+             try {
+                 const response = await fetch(`${API_BASE_URL}/quizzes/${currentQuizId}/questions/`); // Fetch all questions for the quiz to find the one to edit
+                 if (!response.ok) {
+                      const errorData = await response.json();
+                      throw new Error(errorData.detail || `HTTP error! status: ${response.status}`);
+                 }
+            const questions = await response.json();
+            const question = questions.find(q => q.id == questionId);
+
+                 if (!question) {
+                      messageEl.textContent = 'Error: Question not found for editing.';
+                      messageEl.style.color = 'red';
+                      return;
+                 }
+
+                 // Determine and set the question type and subtype for the form
+                 if (question.rc_id !== null) {
+                      questionTypeSelect.value = 'Verbal';
+                      verbalTypeSelect.value = 'RC';
+                 } else if (question.question_type === 'Quant') {
+                     questionTypeSelect.value = 'Quant';
+                     verbalTypeSelect.value = ''; // Reset verbal subtype
+                 } else if (question.question_type === 'Data Insights') {
+                      questionTypeSelect.value = 'Data Insights';
+                      verbalTypeSelect.value = ''; // Reset verbal subtype
+                 } else if (question.question_type === 'Verbal') {
+                      questionTypeSelect.value = 'Verbal';
+                      verbalTypeSelect.value = 'CR'; // Default to CR for Verbal if not RC
+                 } else {
+                      // Fallback - try to determine from subsection or default to the question_type
+                      questionTypeSelect.value = question.question_type || 'Quant';
+                      verbalTypeSelect.value = question.subsection || '';
+                 }
+
+                 // Update form visibility based on the determined type/subtype *before* filling other fields*
+                 updateFormVisibility();
+
+            // Fill the form
+            questionTextarea.value = question.questionText;
+            const optionInputs = optionsInputContainer.querySelectorAll('input[type="text"]');
+            for (let i = 0; i < optionInputs.length; i++) {
+                optionInputs[i].value = question.options[i] || '';
+            }
+            correctAnswerSelect.value = question.correctAnswer;
+            difficultySelect.value = question.difficulty;
+            answerExplanationTextarea.value = question.answerExplanation || '';
+
+                 // Set the RC passage dropdown (only visible if type is Verbal -> RC)
+                 if (question.rc_id !== null && rcPassageSelect) { // Check if rcPassageSelect exists (i.e., is visible)
+                      rcPassageSelect.value = question.rc_id;
+                 }
+
+            // Image: skip for now (user must re-upload if changing)
+                 clearImagePreview(); // Clear previous preview
+                 if (question.image) {
+                      // Optional: Fetch and display the current image for editing reference
+                      // For simplicity, we'll just rely on the user re-uploading.
+                      messageEl.textContent += " (Note: Current image is not shown for editing. Upload a new one if needed.)";
+                      messageEl.style.color = 'orange';
+                 }
+
+
+            editingQuestionId = questionId;
+            addQuestionForm.querySelector('button[type="submit"]').textContent = 'Update Question';
+            messageEl.textContent = 'Editing question. Make changes and click Update Question.';
+            messageEl.style.color = '#0066FF';
+
+             } catch (error) {
+                 console.error('Error fetching question for editing:', error);
+                 messageEl.textContent = `Failed to fetch question for editing: ${error.message}`;
+                 messageEl.style.color = 'red';
+             }
+        }
+
+        // --- Add or Update Question ---
+        addQuestionForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+             // Basic validation for question type selection
+             const selectedType = questionTypeSelect.value;
+             const selectedVerbalSubtype = verbalTypeSelect.value;
+             if (selectedType === '') {
+                 messageEl.textContent = 'Please select a Question Type.';
+                 messageEl.style.color = 'orange';
+                 return;
+             }
+             if (selectedType === 'Verbal' && selectedVerbalSubtype === '') {
+                  messageEl.textContent = 'Please select a Verbal Sub-type (RC or CR).';
+                  messageEl.style.color = 'orange';
+                  return;
+             }
+
+
+            const questionText = questionTextarea.value.trim();
+            // Get options from the new input fields
+            const options = [];
+            const optionInputs = optionsInputContainer.querySelectorAll('input[type="text"]');
+            optionInputs.forEach(input => {
+                const optionValue = input.value.trim();
+                options.push(optionValue); // Include empty options to match backend expected list size, though backend might filter
+            });
+
+            const correctAnswer = correctAnswerSelect.value; // Get value from select
+            const difficulty = difficultySelect.value;
+            const answerExplanation = answerExplanationTextarea.value.trim();
+            const imageFile = imageFileInput.files[0]; // Get file from hidden input
+            // Get selected RC passage ID only if the dropdown is visible and a passage is selected
+            const rcId = (selectedType === 'Verbal' && selectedVerbalSubtype === 'RC' && rcPassageSelect.value) ? parseInt(rcPassageSelect.value) : null;
+
+
+            // Filter out empty options for validation, but send all to backend (backend handles validation)
+            const nonNullOptions = options.filter(opt => opt !== '');
+
+            if (!questionText || nonNullOptions.length < 2 || !correctAnswer || !difficulty) { // Require at least 2 non-empty options
+                messageEl.textContent = 'Please fill in question text, at least two options, correct answer, and difficulty.';
+                messageEl.style.color = 'orange';
+                return;
+            }
+
+            // Basic validation for correct answer letter against the number of provided non-empty options
+            const correctOptionIndex = correctAnswer.charCodeAt(0) - 65; // A=0, B=1, etc.
+             // Validate against the full options array including empty ones to match backend structure
+            if (correctOptionIndex < 0 || correctOptionIndex >= options.length || options[correctOptionIndex].trim() === '') {
+                 messageEl.textContent = `Correct answer "${correctAnswer}" does not correspond to a valid option (A-${String.fromCharCode(65 + options.length - 1)}). Please check your options and correct answer selection.`;
+                 messageEl.style.color = 'orange';
+                 return;
+            }
+
+             // Additional validation for RC questions: rc_id must be selected if Verbal RC
+             if (selectedType === 'Verbal' && selectedVerbalSubtype === 'RC' && rcId === null) {
+                  messageEl.textContent = 'Please select an RC Passage for this Reading Comprehension question.';
+                  messageEl.style.color = 'orange';
+                  return;
+             }
+
+
+            messageEl.textContent = editingQuestionId ? 'Updating question...' : 'Adding question...';
+            messageEl.style.color = '';
+
+            const formData = new FormData();
+            const questionData = {
+                questionText: questionText,
+                options: options, // Send the full options array
+                correctAnswer: correctAnswer,
+                answerExplanation: answerExplanation || null, // Include answer explanation (null if empty)
+                difficulty: difficulty,
+                rc_id: rcId, // Include the selected RC passage ID (will be null for Quant, CR, DI)
+                question_type: selectedType, // Include question type
+                subsection: (selectedType === 'Verbal') ? selectedVerbalSubtype : null // Include subsection only if type is Verbal, otherwise null
+            };
+            formData.append('question', JSON.stringify(questionData));
+            if (imageFile) {
+                formData.append('image_file', imageFile);
+            }
+
+            try {
+                let response;
+                if (editingQuestionId) {
+                    // Update (PUT) request
+                    response = await fetch(`${API_BASE_URL}/questions/${editingQuestionId}`, {
+                        method: 'PUT',
+                        body: formData,
+                    });
+                } else {
+                    // Add (POST) request
+                    response = await fetch(`${API_BASE_URL}/quizzes/${currentQuizId}/questions/`, {
+                        method: 'POST',
+                        body: formData,
+                    });
+                }
+
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(errorData.detail || `HTTP error! status: ${response.status}`);
+                }
+
+                messageEl.textContent = editingQuestionId ? 'Question updated successfully!' : 'Question added successfully!';
+                messageEl.style.color = '#34C759';
+
+                fetchAndDisplayQuestions(currentQuizId); // Refresh the list (which also refreshes RC list and dropdown)
+                 resetQuestionFormAndVisibility(); // Reset form and visibility after successful save
+
+            } catch (error) {
+                console.error(editingQuestionId ? 'Error updating question:' : 'Error adding question:', error);
+                messageEl.textContent = (editingQuestionId ? 'Failed to update question: ' : 'Failed to add question: ') + error.message;
+                messageEl.style.color = 'red';
+            }
+        });
+
+         // --- Reset Question Form and Visibility ---
+         function resetQuestionFormAndVisibility() {
+             addQuestionForm.reset();
+             clearImagePreview();
+             editingQuestionId = null;
+             addQuestionForm.querySelector('button[type="submit"]').textContent = 'Add Question';
+             // Reset type and subtype selections and update visibility
+             questionTypeSelect.value = '';
+             verbalTypeSelect.value = '';
+             updateFormVisibility();
+         }
+
+
+        // --- Image Drag and Drop and Preview Logic ---
+        // Prevent default drag behaviors
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            imageDropZone.addEventListener(eventName, preventDefaults, false);
+            document.body.addEventListener(eventName, preventDefaults, false); // Prevent default on body too
+        });
+
+        // Highlight drop zone when dragging over
+        ['dragenter', 'dragover'].forEach(eventName => {
+            imageDropZone.addEventListener(eventName, () => imageDropZone.classList.add('dragover'), false);
+        });
+
+        ['dragleave', 'drop'].forEach(eventName => {
+            imageDropZone.addEventListener(eventName, () => imageDropZone.classList.remove('dragover'), false);
+        });
+
+        // Handle dropped files
+        imageDropZone.addEventListener('drop', handleDrop, false);
+
+        // Handle click on drop zone to open file picker
+        imageDropZone.addEventListener('click', () => {
+            imageFileInput.click(); // Trigger click on the hidden file input
+        });
+
+        // Handle file selection from file input
+        imageFileInput.addEventListener('change', (event) => {
+            handleFiles(event.target.files);
+        });
+
+
+        function preventDefaults(event) {
+            event.preventDefault();
+            event.stopPropagation();
+        }
+
+        function handleDrop(event) {
+            const dt = event.dataTransfer;
+            const files = dt.files;
+            handleFiles(files);
+        }
+
+        function handleFiles(files) {
+            if (files.length > 0) {
+                // Set the selected file to the hidden file input
+                imageFileInput.files = files;
+                // Display preview
+                previewFile(files[0]);
+            }
+        }
+
+        function previewFile(file) {
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onloadend = function() {
+                imagePreview.src = reader.result;
+                imagePreview.style.display = 'block';
+                 // Hide the default text and icon
+                 imageDropZone.querySelector('i').style.display = 'none';
+                 imageDropZone.querySelector('p').style.display = 'none';
+            }
+        }
+
+         function clearImagePreview() {
+             imagePreview.src = '#';
+             imagePreview.style.display = 'none';
+             imageFileInput.value = ''; // Clear the file input value
+              // Show the default text and icon
+             imageDropZone.querySelector('i').style.display = 'block';
+             imageDropZone.querySelector('p').style.display = 'block';
+         }
+
+
+        // --- Initial Load ---
+        window.onload = () => {
+            const quizId = getQuizInfoFromUrl();
+            if (quizId !== null) {
+                fetchAndDisplayQuestions(quizId); // This now also fetches RC passages
+            }
+            // Initial call to set form visibility based on default selections
+             updateFormVisibility();
+        };
+
+        // --- Bulk Upload JSON Logic ---
+        const jsonUploadDropZone = document.getElementById('json-upload-drop-zone');
+        const jsonUploadInput = document.getElementById('json-upload-input');
+        if (jsonUploadDropZone && jsonUploadInput) {
+            // Drag events
+            ['dragenter', 'dragover'].forEach(eventName => {
+                jsonUploadDropZone.addEventListener(eventName, (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    jsonUploadDropZone.style.background = 'rgba(0,102,255,0.08)';
+                    jsonUploadDropZone.style.borderColor = 'var(--primary-accent)';
+                });
+            });
+            ['dragleave', 'drop'].forEach(eventName => {
+                jsonUploadDropZone.addEventListener(eventName, (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    jsonUploadDropZone.style.background = 'rgba(255,255,255,0.07)';
+                    jsonUploadDropZone.style.borderColor = 'var(--border-color)';
+                });
+            });
+            // Drop event
+            jsonUploadDropZone.addEventListener('drop', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+                    handleJsonFile(e.dataTransfer.files[0]);
+                }
+            });
+            // Click to open file picker
+            jsonUploadDropZone.addEventListener('click', () => {
+                jsonUploadInput.value = '';
+                jsonUploadInput.click();
+            });
+            // File input change
+            jsonUploadInput.addEventListener('change', (e) => {
+                if (e.target.files && e.target.files.length > 0) {
+                    handleJsonFile(e.target.files[0]);
+                }
+            });
+        }
+        async function handleJsonFile(file) {
+            if (!file.name.endsWith('.json')) {
+                messageEl.textContent = 'Please upload a .json file.';
+                messageEl.style.color = 'orange';
+                return;
+            }
+            messageEl.textContent = 'Reading file...';
+            messageEl.style.color = '';
+            const reader = new FileReader();
+            reader.onload = async function(e) {
+                try {
+                    const questions = JSON.parse(e.target.result);
+                    if (!Array.isArray(questions)) throw new Error('JSON must be an array of question objects.');
+                    
+                    // Debug: Log the first question to see its structure
+                    console.log('First question from JSON:', questions[0]);
+                    
+                    // Basic validation for each question (now includes optional rc_id, required type, subsection)
+                    const validTypes = ["Quant", "Verbal", "Data Insights"];
+                    const validVerbalSubsections = ["RC", "CR"];
+                    const validDifficulties = ["easy", "medium", "hard"];
+
+                    for (const q of questions) {
+                        if (!q.questionText || !q.options || !q.correctAnswer || !q.difficulty || !q.question_type) {
+                            throw new Error(`Question with text "${q.questionText ? q.questionText.substring(0, 50) + '...' : 'missing text'}" is missing required fields (questionText, options, correctAnswer, difficulty, question_type).`);
+                        }
+
+                        if (!validTypes.includes(q.question_type)) {
+                             throw new Error(`Question with text "${q.questionText.substring(0, 50)}..." has invalid question_type: "${q.question_type}". Must be one of ${validTypes.join(', ')}.`);
+                        }
+
+                        if (!validDifficulties.includes(q.difficulty)) {
+                            throw new Error(`Question with text "${q.questionText.substring(0, 50)}..." has invalid difficulty: "${q.difficulty}". Must be one of ${validDifficulties.join(', ')}.`);
+                        }
+
+                        if (q.question_type === 'Verbal') {
+                             if (!q.subsection || !validVerbalSubsections.includes(q.subsection)) {
+                                  throw new Error(`Question with text "${q.questionText.substring(0, 50)}..." is Verbal type but has invalid or missing subsection: "${q.subsection}". Must be one of ${validVerbalSubsections.join(', ')}.`);
+                             }
+                             if (q.subsection === 'RC') {
+                                  if (q.rc_id === undefined || q.rc_id === null) {
+                                       throw new Error(`RC question with text "${q.questionText.substring(0, 50)}..." must have an rc_id linked to an existing passage.`);
+                                  }
+                                   // Validate rc_id existence
+                                  if (!rcPassages.some(p => p.id === q.rc_id)) {
+                                       throw new Error(`RC question with text "${q.questionText.substring(0, 50)}..." links to non-existent rc_id: ${q.rc_id}. Please ensure RC passages exist before linking questions.`);
+                                  }
+                             } else if (q.subsection === 'CR') { // CR questions must not have rc_id
+                                  if (q.rc_id !== undefined && q.rc_id !== null) {
+                                       throw new Error(`CR question with text "${q.questionText.substring(0, 50)}..." cannot be linked to an RC passage (rc_id must be null or absent).`);
+                                  }
+                                   // Ensure rc_id is explicitly null for CR if it exists in JSON
+                                   q.rc_id = null;
+                             }
+                        } else { // Quant or Data Insights types
+                             if (q.subsection !== undefined && q.subsection !== null) {
+                                  throw new Error(`Question with text "${q.questionText.substring(0, 50)}..." has type "${q.question_type}" but an invalid subsection: "${q.subsection}". Subsection must be null for this type.`);
+                             }
+                              // Ensure subsection is explicitly null for non-Verbal if it exists in JSON
+                             q.subsection = null;
+
+                              if (q.rc_id !== undefined && q.rc_id !== null) {
+                                  throw new Error(`Question with text "${q.questionText.substring(0, 50)}..." has type "${q.question_type}" but is linked to an RC passage (rc_id must be null or absent).`);
+                             }
+                               // Ensure rc_id is explicitly null for non-Verbal if it exists in JSON
+                             q.rc_id = null;
+                        }
+
+                         // Ensure options is an array
+                         if (!Array.isArray(q.options)) {
+                              throw new Error(`Question with text "${q.questionText.substring(0, 50)}..." has options field that is not an array.`);
+                         }
+                          // Basic validation for correct answer letter against the number of provided options
+                          const correctOptionIndex = q.correctAnswer.charCodeAt(0) - 65; // A=0, B=1, etc.
+                           if (correctOptionIndex < 0 || correctOptionIndex >= q.options.length) {
+                               throw new Error(`Question with text "${q.questionText.substring(0, 50)}..." has an invalid correct answer "${q.correctAnswer}" for the provided options.`);
+                           }
+                    }
+                    
+                    // Debug: Log the questions before sending to backend
+                    console.log('Questions after validation:', questions.map(q => ({
+                        questionText: q.questionText.substring(0, 30) + '...',
+                        difficulty: q.difficulty,
+                        question_type: q.question_type,
+                        subsection: q.subsection
+                    })));
+                    
+                    messageEl.textContent = 'Uploading questions...';
+                    messageEl.style.color = '';
+                    // Send to backend
+                    const response = await fetch(`${API_BASE_URL}/quizzes/${currentQuizId}/questions/bulk/`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(questions)
+                    });
+                    if (!response.ok) {
+                        const errorData = await response.json();
+                        throw new Error(errorData.detail || `HTTP error! status: ${response.status}`);
+                    }
+                    messageEl.textContent = 'Questions uploaded successfully!';
+                    messageEl.style.color = '#34C759';
+                    fetchAndDisplayQuestions(currentQuizId);
+                     resetQuestionFormAndVisibility(); // Reset form and visibility after successful bulk upload
+
+                } catch (err) {
+                    console.error('Bulk upload processing error:', err);
+                    messageEl.textContent = 'Bulk upload failed: ' + err.message;
+                    messageEl.style.color = 'red';
+                }
+            };
+            reader.readAsText(file);
+        }
+
+    </script>
+</body>
+</html>

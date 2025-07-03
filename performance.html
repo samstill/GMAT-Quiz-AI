@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Performance Dashboard | GMAT Prep</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+    
+    <!-- MathJax for LaTeX math rendering -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script async src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        /* * === CSS Variables for Theming === */
+        :root {
+            --bg-color: #05050A;
+            --text-color: #E4E4E7;
+            --text-color-muted: #A1A1AA;
+            --text-gradient-from: #E5E7EB;
+            --text-gradient-to: #9CA3AF;
+            --glass-bg: rgba(20, 20, 25, 0.4);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --glass-shadow: 0 16px 48px rgba(0, 0, 0, 0.2);
+            --cta-bg: rgba(30, 30, 35, 0.5);
+            --cta-bg-hover: rgba(45, 45, 50, 0.7);
+            --cta-border: rgba(255, 255, 255, 0.1);
+            --input-bg: rgba(255, 255, 255, 0.05);
+            --gradient-1: hsla(215, 80%, 50%, 0.3);
+            --gradient-2: hsla(280, 70%, 55%, 0.3);
+            --gradient-3: hsla(180, 60%, 50%, 0.2);
+            --danger-color: #FF453A;
+            --danger-hover-color: #FF6B61;
+            --user-bubble-bg: rgba(88, 101, 242, 0.3);
+            --user-bubble-border: rgba(88, 101, 242, 0.5);
+        }
+
+        .light-mode {
+            --bg-color: #F4F4F5;
+            --text-color: #18181B;
+            --text-color-muted: #52525B;
+            --text-gradient-from: #18181B;
+            --text-gradient-to: #3F3F46;
+            --glass-bg: rgba(255, 255, 255, 0.4);
+            --glass-border: rgba(0, 0, 0, 0.1);
+            --glass-shadow: 0 16px 48px rgba(0, 0, 0, 0.1);
+            --cta-bg: rgba(250, 250, 250, 0.5);
+            --cta-bg-hover: rgba(255, 255, 255, 0.8);
+            --cta-border: rgba(0, 0, 0, 0.1);
+            --input-bg: rgba(0, 0, 0, 0.05);
+            --gradient-1: hsla(215, 90%, 60%, 0.4);
+            --gradient-2: hsla(280, 80%, 65%, 0.4);
+            --gradient-3: hsla(180, 70%, 60%, 0.35);
+            --danger-color: #FF3B30;
+            --danger-hover-color: #D92C20;
+            --user-bubble-bg: rgba(88, 101, 242, 0.8);
+            --user-bubble-border: rgba(88, 101, 242, 1);
+        }
+
+        /* * === Base Styles & Animated Background === */
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+            transition: background-color 0.5s ease, color 0.5s ease;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: -10%; left: -10%; right: -10%; bottom: -10%;
+            z-index: -1;
+            background: 
+                radial-gradient(circle at 20% 30%, var(--gradient-1) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, var(--gradient-2) 0%, transparent 40%),
+                radial-gradient(circle at 50% 50%, var(--gradient-3) 0%, transparent 35%);
+            background-size: 150% 150%;
+            animation: moveGradient 25s ease-in-out infinite;
+            transition: background 0.5s ease;
+        }
+
+        @keyframes moveGradient {
+            0% { background-position: 0% 50%; transform: scale(1); }
+            25% { transform: scale(1.1) rotate(2deg); }
+            50% { background-position: 100% 50%; transform: scale(1); }
+            75% { transform: scale(0.9) rotate(-2deg); }
+            100% { background-position: 0% 50%; transform: scale(1); }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px) scale(0.98); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        /* * === UI Components === */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--glass-shadow);
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        .heading-gradient {
+            background-image: linear-gradient(to right, var(--text-gradient-from), var(--text-gradient-to));
+        }
+
+        .muted-text { color: var(--text-color-muted); }
+
+        .cta-link {
+            background: var(--cta-bg);
+            border: 1px solid var(--cta-border);
+            color: var(--text-color);
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+        .cta-link:hover {
+            background: var(--cta-bg-hover);
+            transform: translateY(-2px);
+        }
+        a.cta-link:hover svg { transform: translateX(-4px); }
+
+        .icon-button {
+            display: inline-flex; align-items: center; justify-content: center;
+            cursor: pointer; background: var(--glass-bg);
+            border: 1px solid var(--glass-border); border-radius: 50%;
+            transition: transform 0.3s ease, background 0.5s ease;
+        }
+        .icon-button:hover { transform: scale(1.1); }
+        .icon-button svg { color: var(--text-color); }
+        
+        .theme-toggle { position: fixed; top: 20px; right: 20px; z-index: 100; width: 50px; height: 50px; }
+        .theme-toggle svg { width: 24px; height: 24px; }
+        
+        .modal-input {
+            background: var(--input-bg);
+            border: 1px solid var(--glass-border);
+            color: var(--text-color);
+        }
+        .modal-input::placeholder { color: var(--text-color-muted); }
+
+        .modal-input option {
+            background: var(--bg-color);
+            color: var(--text-color);
+        }
+
+        /* * === Page Specific Styles === */
+        .chart-container {
+            background: var(--cta-bg);
+            border: 1px solid var(--cta-border);
+            padding: 1.5rem;
+            border-radius: 1.5rem;
+            position: relative;
+        }
+        .performance-table-container {
+            background: var(--cta-bg);
+            border: 1px solid var(--cta-border);
+            border-radius: 1.5rem;
+            padding: 1rem;
+            overflow-x: auto;
+        }
+        .performance-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .performance-table th, .performance-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--cta-border);
+        }
+        .performance-table th { font-weight: 600; }
+        .performance-table tbody tr:last-child td { border-bottom: none; }
+        
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+            display: flex; align-items: center; justify-content: center;
+            z-index: 999; opacity: 0; visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        .modal-overlay.active { opacity: 1; visibility: visible; }
+        
+        .loader {
+            border: 4px solid var(--glass-border);
+            border-top: 4px solid var(--text-color);
+            border-radius: 50%;
+            width: 40px; height: 40px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        /* Custom Scrollbar for AI Analysis Modal */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 12px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background-color: var(--glass-border);
+            border-radius: 20px;
+            border: 3px solid transparent;
+            background-clip: content-box;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        .custom-scrollbar {
+            scrollbar-width: thin;
+            scrollbar-color: var(--glass-border) transparent;
+        }
+
+        /* AI Chat Styles */
+        #ai-analysis-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        /* Analysis Chips */
+        .analysis-chip {
+            transition: all 0.2s ease;
+            white-space: nowrap;
+            cursor: pointer;
+            user-select: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .analysis-chip:hover {
+            transform: scale(1.02);
+            background: var(--cta-bg-hover);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        .analysis-chip:active {
+            transform: scale(0.98);
+        }
+        
+        .chat-bubble {
+            padding: 0.75rem 1rem;
+            border-radius: 1rem;
+            max-width: 85%;
+            line-height: 1.6;
+            word-wrap: break-word;
+        }
+        .chat-bubble.model {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            align-self: flex-start;
+        }
+        .chat-bubble.user {
+            background: var(--user-bubble-bg);
+            border: 1px solid var(--user-bubble-border);
+            align-self: flex-end;
+            color: var(--text-color);
+        }
+        .light-mode .chat-bubble.user {
+            color: #fff;
+        }
+        .chat-bubble h4 {
+            font-size: 1.1em;
+            margin-bottom: 0.5em;
+            font-weight: 700;
+        }
+        .chat-bubble ul, .chat-bubble ol {
+            list-style-position: inside;
+            padding-left: 0.5em;
+        }
+        .chat-bubble li {
+            margin-bottom: 0.25em;
+        }
+        .chat-bubble p {
+            margin-bottom: 0.5em;
+        }
+        .chat-bubble p:last-child {
+            margin-bottom: 0;
+        }
+        
+        /* Enhanced formatting for AI responses */
+        .chat-bubble table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1em 0;
+            font-size: 0.9em;
+        }
+        .chat-bubble table th,
+        .chat-bubble table td {
+            border: 1px solid var(--glass-border);
+            padding: 0.5em 0.75em;
+            text-align: left;
+        }
+        .chat-bubble table th {
+            background-color: var(--cta-bg);
+            font-weight: 600;
+            color: var(--text-color);
+        }
+        .chat-bubble table tr:nth-child(even) {
+            background-color: rgba(255, 255, 255, 0.02);
+        }
+        .light-mode .chat-bubble table tr:nth-child(even) {
+            background-color: rgba(0, 0, 0, 0.02);
+        }
+        
+        .chat-bubble pre {
+            background-color: var(--input-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 0.5rem;
+            padding: 1rem;
+            overflow-x: auto;
+            margin: 0.5em 0;
+        }
+        .chat-bubble code {
+            background-color: var(--input-bg);
+            padding: 0.2em 0.4em;
+            border-radius: 0.25rem;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        .chat-bubble pre code {
+            background: none;
+            padding: 0;
+        }
+        
+        .chat-bubble h1, .chat-bubble h2, .chat-bubble h3, 
+        .chat-bubble h4, .chat-bubble h5, .chat-bubble h6 {
+            margin-top: 1em;
+            margin-bottom: 0.5em;
+            font-weight: 700;
+        }
+        .chat-bubble h1 { font-size: 1.4em; }
+        .chat-bubble h2 { font-size: 1.3em; }
+        .chat-bubble h3 { font-size: 1.2em; }
+        .chat-bubble h4 { font-size: 1.1em; }
+        
+        .chat-bubble ol {
+            list-style-type: decimal;
+            list-style-position: inside;
+            padding-left: 1em;
+        }
+        .chat-bubble ul {
+            list-style-type: disc;
+            list-style-position: inside;
+            padding-left: 1em;
+        }
+        .chat-bubble li {
+            margin-bottom: 0.25em;
+            line-height: 1.5;
+        }
+        
+        /* Math display styling */
+        .chat-bubble .MathJax {
+            font-size: 1em !important;
+        }
+        .chat-bubble .MathJax_Display {
+            margin: 1em 0 !important;
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8">
+
+    <!-- Theme Toggle Button -->
+    <button id="theme-toggle" class="icon-button theme-toggle" aria-label="Toggle theme">
+        <svg id="theme-icon-sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sun hidden"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+        <svg id="theme-icon-moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-moon"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+    </button>
+
+    <main class="w-full max-w-7xl mx-auto">
+        <div class="glass-card rounded-3xl p-6 md:p-10">
+            
+            <div class="flex flex-wrap justify-between items-center gap-4 mb-8">
+                <h1 class="heading-gradient text-3xl md:text-4xl font-extrabold text-transparent bg-clip-text">Performance Dashboard</h1>
+                <div class="flex gap-4">
+                    <button id="ai-analysis-btn" class="cta-link inline-flex items-center gap-2 px-5 py-2.5 rounded-full font-semibold text-base">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.45 4.14L6.4 8.59l4.14 1.45L12 14l1.45-4.14L17.6 8.59l-4.14-1.45L12 3z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></svg>
+                        Get AI Analysis
+                    </button>
+                    <a href="manage_quizzes.html" class="cta-link inline-flex items-center gap-2 px-5 py-2.5 rounded-full font-semibold text-base">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+                        Manage Quizzes
+                    </a>
+                </div>
+            </div>
+
+            <div id="loading-message" class="text-center muted-text text-lg py-16">Loading performance data...</div>
+
+            <div id="performance-data-container" style="display: none;">
+                <div class="quiz-selector-container mb-8">
+                    <label for="quiz-select" class="block text-lg font-medium muted-text mb-2 text-center">Filter by Quiz</label>
+                    <select id="quiz-select" class="modal-input w-full max-w-sm mx-auto p-3 rounded-xl block">
+                        <option value="">All Quizzes</option>
+                    </select>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+                    <div class="chart-container h-96 flex flex-col"><h2 class="text-xl font-bold text-center mb-4 flex-shrink-0">Score by Difficulty</h2><div class="relative flex-grow"><canvas id="scoreDistributionChart"></canvas></div></div>
+                    <div class="chart-container h-96 flex flex-col"><h2 class="text-xl font-bold text-center mb-4 flex-shrink-0">Performance by Type</h2><div class="relative flex-grow"><canvas id="questionTypeChart"></canvas></div></div>
+                    <div class="chart-container h-96 lg:col-span-2 flex flex-col"><h2 class="text-xl font-bold text-center mb-4 flex-shrink-0">Score Over Time</h2><div class="relative flex-grow"><canvas id="scoreOverTimeChart"></canvas></div></div>
+                    <div class="chart-container h-96 lg:col-span-2 flex flex-col"><h2 class="text-xl font-bold text-center mb-4 flex-shrink-0">Time Taken Over Time</h2><div class="relative flex-grow"><canvas id="timeTakenOverTimeChart"></canvas></div></div>
+                    <div id="verbal-chart-container" class="chart-container h-96 lg:col-span-2 flex flex-col" style="display: none;"><h2 class="text-xl font-bold text-center mb-4 flex-shrink-0">Verbal Subsection Performance</h2><div class="relative flex-grow"><canvas id="verbalSubsectionChart"></canvas></div></div>
+                </div>
+
+                <div class="performance-table-container">
+                    <h2 class="text-2xl font-bold text-center mb-6">Quiz History</h2>
+                    <table class="performance-table">
+                        <thead>
+                            <tr>
+                                <th>Quiz Name</th>
+                                <th>Date</th>
+                                <th>Score</th>
+                                <th>Accuracy</th>
+                                <th>Time Taken</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="performance-table-body"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="delete-confirm-modal" class="modal-overlay">
+        <div class="glass-card rounded-2xl p-8 text-center max-w-sm w-full">
+            <h3 class="text-2xl font-bold mb-2">Confirm Deletion</h3>
+            <p class="muted-text mb-6">Are you sure? This action cannot be undone.</p>
+            <div class="flex justify-center gap-4">
+                <button id="cancel-delete-btn" class="cta-link px-6 py-2 rounded-lg font-semibold">Cancel</button>
+                <button id="confirm-delete-btn" class="px-6 py-2 rounded-lg font-semibold text-white" style="background-color: var(--danger-color);">Delete</button>
+            </div>
+        </div>
+    </div>
+    
+    <div id="ai-analysis-modal" class="modal-overlay">
+        <div class="glass-card rounded-2xl p-6 md:p-8 text-left max-w-2xl w-full h-[90vh] flex flex-col">
+            <div class="flex justify-between items-center mb-4 flex-shrink-0">
+                <h3 class="text-2xl font-bold">AI Performance Analysis</h3>
+                <button id="close-ai-modal-btn" class="icon-button w-10 h-10">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
+            
+            <!-- Quick Analysis Chips -->
+            <div id="analysis-chips" class="mb-6 flex-shrink-0">
+                <h4 class="text-lg font-semibold mb-3 muted-text">Quick Analysis Options:</h4>
+                <div class="flex flex-wrap gap-3">
+                    <button class="analysis-chip cta-link px-4 py-2 rounded-full text-sm font-medium hover:transform-none" data-prompt="Provide a comprehensive summary of my overall GMAT performance across all quizzes. Include my strengths, weaknesses, accuracy trends, and specific recommendations for improvement.">
+                        📊 Overall Performance Summary
+                    </button>
+                    <button class="analysis-chip cta-link px-4 py-2 rounded-full text-sm font-medium hover:transform-none" data-prompt="Analyze my most recent quiz performance in detail. What did I do well? What mistakes did I make? What patterns do you notice in my errors?">
+                        🎯 Latest Quiz Analysis
+                    </button>
+                    <button class="analysis-chip cta-link px-4 py-2 rounded-full text-sm font-medium hover:transform-none" data-prompt="Identify my biggest weaknesses and knowledge gaps. Which question types and difficulty levels am I struggling with most? Provide specific study recommendations.">
+                        🎓 Weakness Analysis
+                    </button>
+                    <button class="analysis-chip cta-link px-4 py-2 rounded-full text-sm font-medium hover:transform-none" data-prompt="Show me my progress trends over time. Am I improving? In which areas am I getting better or worse? What does my learning curve look like?">
+                        📈 Progress Tracking
+                    </button>
+                    <button class="analysis-chip cta-link px-4 py-2 rounded-full text-sm font-medium hover:transform-none" data-prompt="Based on my performance data, create a personalized 2-week study plan. Focus on my weak areas while maintaining my strengths.">
+                        📅 Study Plan
+                    </button>
+                    <button class="analysis-chip cta-link px-4 py-2 rounded-full text-sm font-medium hover:transform-none" data-prompt="Analyze my time management during quizzes. Am I spending too much time on certain types of questions? How can I improve my pacing?">
+                        ⏱️ Time Management
+                    </button>
+                </div>
+            </div>
+            
+            <div id="ai-analysis-content" class="max-w-none flex-grow overflow-y-auto custom-scrollbar pr-4 -mr-4">
+                <div class="text-center muted-text mt-8">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="mx-auto mb-4 opacity-50"><path d="m12 3-1.45 4.14L6.4 8.59l4.14 1.45L12 14l1.45-4.14L17.6 8.59l-4.14-1.45L12 3z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></svg>
+                    <p class="text-lg mb-2">Choose an analysis option above or ask a specific question below</p>
+                    <p class="text-sm">I'll analyze your performance data to provide personalized insights</p>
+                </div>
+            </div>
+            <form id="ai-chat-form" class="flex gap-3 mt-4 flex-shrink-0">
+                <input type="text" id="ai-chat-input" class="modal-input flex-grow p-3 rounded-xl text-base" placeholder="Ask me anything about your GMAT performance...">
+                <button type="submit" class="cta-link px-4 py-2 rounded-xl font-semibold flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-send-horizontal"><path d="m3 3 3 9-3 9 19-9Z"/><path d="M6 12h16"/></svg>
+                </button>
+            </form>
+        </div>
+    </div>
+
+
+    <script>
+        // --- API and DOM Elements ---
+        const API_BASE_URL = 'http://127.0.0.1:8000/api';
+        const loadingMessageEl = document.getElementById('loading-message');
+        const performanceDataContainerEl = document.getElementById('performance-data-container');
+        const performanceTableBodyEl = document.getElementById('performance-table-body');
+        const quizSelectEl = document.getElementById('quiz-select');
+        const deleteConfirmModalEl = document.getElementById('delete-confirm-modal');
+        const confirmDeleteBtn = document.getElementById('confirm-delete-btn');
+        const cancelDeleteBtn = document.getElementById('cancel-delete-btn');
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const sunIcon = document.getElementById('theme-icon-sun');
+        const moonIcon = document.getElementById('theme-icon-moon');
+        const aiAnalysisBtn = document.getElementById('ai-analysis-btn');
+        const aiAnalysisModal = document.getElementById('ai-analysis-modal');
+        const aiAnalysisContent = document.getElementById('ai-analysis-content');
+        const closeAiModalBtn = document.getElementById('close-ai-modal-btn');
+        const aiChatForm = document.getElementById('ai-chat-form');
+        const aiChatInput = document.getElementById('ai-chat-input');
+
+        // --- Global State Variables ---
+        let performanceRecords = [];
+        let quizzes = [];
+        let aiChatHistory = [];
+        let recordIdToDelete = null; // Variable to store the ID of the record to be deleted
+
+        // --- Theme Logic ---
+        const applyTheme = (theme) => {
+            document.body.classList.toggle('light-mode', theme === 'light');
+            sunIcon.classList.toggle('hidden', theme !== 'light');
+            moonIcon.classList.toggle('hidden', theme === 'light');
+            // Re-render charts on theme change to update colors
+            if (performanceRecords.length > 0) {
+                renderAllCharts(performanceRecords);
+            }
+        };
+
+        let currentTheme = localStorage.getItem('theme') || 'dark';
+        applyTheme(currentTheme);
+
+        themeToggleBtn.addEventListener('click', () => {
+            currentTheme = document.body.classList.contains('light-mode') ? 'dark' : 'light';
+            localStorage.setItem('theme', currentTheme);
+            applyTheme(currentTheme);
+        });
+
+        // --- Utility Functions ---
+        function formatTimeMMSS(totalSeconds) {
+            if (isNaN(totalSeconds) || totalSeconds === null) return 'N/A';
+            const minutes = Math.floor(totalSeconds / 60);
+            const seconds = totalSeconds % 60;
+            return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+        }
+
+        // --- Chart Rendering ---
+        function renderChart(canvasId, type, data, options) {
+            const canvas = document.getElementById(canvasId);
+            if (!canvas) return;
+            const existingChart = Chart.getChart(canvas);
+            if (existingChart) {
+                existingChart.destroy();
+            }
+            const ctx = canvas.getContext('2d');
+            new Chart(ctx, { type, data, options });
+        }
+
+        function getChartOptions(xLabel, yLabel, yBeginAtZero = true, yMax = null, isTimeScaleX = false) {
+            const textColor = getComputedStyle(document.body).getPropertyValue('--text-color').trim();
+            const gridColor = getComputedStyle(document.body).getPropertyValue('--cta-border').trim();
+
+            const options = {
+                responsive: true, maintainAspectRatio: false,
+                scales: {
+                    y: { 
+                        beginAtZero: yBeginAtZero, 
+                        max: yMax, 
+                        title: { display: true, text: yLabel, font: { weight: '500'}, color: textColor },
+                        ticks: { color: textColor },
+                        grid: { color: gridColor }
+                    },
+                    x: { 
+                        title: { display: true, text: xLabel, font: { weight: '500'}, color: textColor },
+                        ticks: { color: textColor },
+                        grid: { color: gridColor }
+                    }
+                },
+                plugins: { 
+                    legend: { 
+                        labels: { font: { weight: '500'}, color: textColor }
+                    } 
+                }
+            };
+            if (isTimeScaleX) {
+                options.scales.x.type = 'time';
+                options.scales.x.time = { unit: 'day', tooltipFormat: 'MMM dd, HH:mm', displayFormats: { day: 'MMM dd' } };
+            }
+            if (yLabel.includes('(mm:ss)')) {
+                options.scales.y.ticks.callback = value => formatTimeMMSS(value);
+                options.plugins.tooltip = { callbacks: { label: context => `Time: ${formatTimeMMSS(context.parsed.y)}` } };
+            }
+            return options;
+        }
+
+        function renderAllCharts(data) {
+            const verbalChartContainer = document.getElementById('verbal-chart-container');
+            if (!data || data.length === 0) {
+                ['scoreDistributionChart', 'questionTypeChart', 'scoreOverTimeChart', 'timeTakenOverTimeChart', 'verbalSubsectionChart'].forEach(id => {
+                    const chart = Chart.getChart(id);
+                    if (chart) chart.destroy();
+                });
+                if (verbalChartContainer) verbalChartContainer.style.display = 'none';
+                return;
+            }
+
+            const difficultyScores = { easy: { correct: 0, total: 0 }, medium: { correct: 0, total: 0 }, hard: { correct: 0, total: 0 } };
+            const questionTypeData = {};
+            const verbalSubsectionData = {};
+            data.forEach(record => {
+                record.detailedResults?.forEach(q => {
+                    const diff = q.difficulty?.toLowerCase() || 'unknown';
+                    if (difficultyScores[diff]) {
+                        difficultyScores[diff].total++;
+                        if (q.correct) difficultyScores[diff].correct++;
+                    }
+                    const type = q.question_type || 'Unknown';
+                    if (!questionTypeData[type]) questionTypeData[type] = { correct: 0, total: 0 };
+                    questionTypeData[type].total++;
+                    if (q.correct) questionTypeData[type].correct++;
+
+                    if (type === 'Verbal') {
+                        const sub = q.subsection || 'Unknown';
+                        if (!verbalSubsectionData[sub]) verbalSubsectionData[sub] = { correct: 0, total: 0 };
+                        verbalSubsectionData[sub].total++;
+                        if (q.correct) verbalSubsectionData[sub].correct++;
+                    }
+                });
+            });
+
+            renderChart('scoreDistributionChart', 'bar', {
+                labels: Object.keys(difficultyScores).map(d => d.charAt(0).toUpperCase() + d.slice(1)),
+                datasets: [{ label: 'Avg Score (%)', data: Object.values(difficultyScores).map(d => d.total > 0 ? (d.correct / d.total) * 100 : 0), backgroundColor: 'rgba(54, 162, 235, 0.7)' }]
+            }, getChartOptions('Difficulty', 'Avg Score (%)', true, 100));
+
+            renderChart('questionTypeChart', 'pie', {
+                labels: Object.keys(questionTypeData),
+                datasets: [{ label: 'Question Types', data: Object.values(questionTypeData).map(d => d.total), backgroundColor: ['rgba(255, 99, 132, 0.7)', 'rgba(75, 192, 192, 0.7)', 'rgba(255, 206, 86, 0.7)'] }]
+            }, { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'top', labels: { color: getComputedStyle(document.body).getPropertyValue('--text-color').trim() } } } });
+
+            if (Object.keys(verbalSubsectionData).length > 0) {
+                verbalChartContainer.style.display = 'block';
+                renderChart('verbalSubsectionChart', 'doughnut', {
+                    labels: Object.keys(verbalSubsectionData),
+                    datasets: [{ label: 'Verbal Subsections Accuracy (%)', data: Object.values(verbalSubsectionData).map(d => d.total > 0 ? (d.correct / d.total) * 100 : 0), backgroundColor: ['rgba(153, 102, 255, 0.7)', 'rgba(255, 159, 64, 0.7)'] }]
+                }, { responsive: true, maintainAspectRatio: false, cutout: '50%', plugins: { legend: { position: 'top', labels: { color: getComputedStyle(document.body).getPropertyValue('--text-color').trim() } } } });
+            } else {
+                if (verbalChartContainer) verbalChartContainer.style.display = 'none';
+            }
+
+            const timeSeriesData = data.slice().sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
+            renderChart('scoreOverTimeChart', 'line', {
+                labels: timeSeriesData.map(r => new Date(r.timestamp)),
+                datasets: [{ label: 'Score (%)', data: timeSeriesData.map(r => r.totalQuestions > 0 ? (r.correctAnswers / r.totalQuestions) * 100 : 0), borderColor: 'rgba(0, 102, 255, 1)', tension: 0.1, fill: false }]
+            }, getChartOptions('Date', 'Score (%)', true, 100, true));
+
+            renderChart('timeTakenOverTimeChart', 'line', {
+                labels: timeSeriesData.map(r => new Date(r.timestamp)),
+                datasets: [{ label: 'Time Taken (seconds)', data: timeSeriesData.map(r => r.timeTakenSeconds), borderColor: 'rgba(255, 99, 132, 1)', tension: 0.1, fill: false }]
+            }, getChartOptions('Date', 'Time Taken (mm:ss)', false, null, true));
+        }
+
+        // --- Data Fetching and Table Rendering ---
+        function renderPerformanceTable(data) {
+            performanceTableBodyEl.innerHTML = '';
+            if (!data || data.length === 0) return;
+            const sortedData = data.slice().sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+            sortedData.forEach(record => {
+                const row = document.createElement('tr');
+                const quiz = quizzes.find(q => q.id === record.quizId);
+                row.innerHTML = `
+                    <td class="py-3 px-4">${quiz ? quiz.name : 'Unknown'}</td>
+                    <td class="py-3 px-4">${new Date(record.timestamp).toLocaleDateString()}</td>
+                    <td class="py-3 px-4">${record.correctAnswers}/${record.totalQuestions}</td>
+                    <td class="py-3 px-4">${(record.totalQuestions > 0 ? (record.correctAnswers / record.totalQuestions) * 100 : 0).toFixed(0)}%</td>
+                    <td class="py-3 px-4">${formatTimeMMSS(record.timeTakenSeconds)}</td>
+                    <td class="py-3 px-4 flex gap-2">
+                        <a href="quiz.html?mode=review&recordId=${record.id}&quizId=${record.quizId}" title="Review Quiz" class="icon-button w-9 h-9"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></a>
+                        <button class="delete-btn icon-button w-9 h-9" data-record-id="${record.id}" title="Delete Record"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg></button>
+                    </td>
+                `;
+                performanceTableBodyEl.appendChild(row);
+            });
+        }
+
+        function populateQuizSelector(allQuizzes) {
+            const recordedQuizIds = new Set(performanceRecords.map(record => record.quizId));
+            const quizzesWithHistory = allQuizzes.filter(quiz => recordedQuizIds.has(quiz.id));
+            
+            quizSelectEl.innerHTML = '<option value="">All Quizzes</option>';
+            quizzesWithHistory.forEach(quiz => {
+                const option = document.createElement('option');
+                option.value = quiz.id;
+                option.textContent = quiz.name;
+                quizSelectEl.appendChild(option);
+            });
+        }
+        
+        async function fetchAllData(selectedQuizId = null) {
+            loadingMessageEl.style.display = 'block';
+            performanceDataContainerEl.style.display = 'none';
+            try {
+                const [quizzesRes, performanceRes] = await Promise.all([
+                    fetch(`${API_BASE_URL}/quizzes/`),
+                    fetch(`${API_BASE_URL}/performance/${selectedQuizId ? `?quiz_id=${selectedQuizId}` : ''}`)
+                ]);
+                if (!quizzesRes.ok) throw new Error('Failed to fetch quizzes.');
+                quizzes = await quizzesRes.json();
+                
+                if (!performanceRes.ok) throw new Error('Failed to fetch performance data.');
+                const currentPerformanceRecords = await performanceRes.json();
+                
+                // If we are loading for the first time, fetch all performance records to populate the dropdown correctly
+                if (quizSelectEl.options.length <= 1) {
+                    const allPerformanceRes = await fetch(`${API_BASE_URL}/performance/`);
+                    performanceRecords = await allPerformanceRes.json();
+                    populateQuizSelector(quizzes);
+                }
+                
+                performanceRecords = currentPerformanceRecords;
+
+                if (performanceRecords.length === 0) {
+                    loadingMessageEl.textContent = 'No performance data available for this selection.';
+                    renderAllCharts([]);
+                    renderPerformanceTable([]);
+                } else {
+                    performanceDataContainerEl.style.display = 'block';
+                    renderPerformanceTable(performanceRecords);
+                    renderAllCharts(performanceRecords);
+                }
+            } catch (error) {
+                console.error('Error fetching data:', error);
+                loadingMessageEl.textContent = `Failed to load data. Ensure backend is running. ${error.message}`;
+            } finally {
+                loadingMessageEl.style.display = 'none';
+            }
+        }
+
+        // --- AI Chat Logic ---
+        function markdownToHtml(markdown) {
+            if (!markdown) return '';
+            
+            let html = markdown;
+            
+            // Preserve math expressions by temporarily replacing them
+            const mathExpressions = [];
+            let mathIndex = 0;
+            
+            // Handle display math ($$...$$)
+            html = html.replace(/\$\$([\s\S]*?)\$\$/g, (match, expr) => {
+                const placeholder = `__MATH_DISPLAY_${mathIndex}__`;
+                mathExpressions[mathIndex] = `$$${expr}$$`;
+                mathIndex++;
+                return placeholder;
+            });
+            
+            // Handle inline math ($...$)
+            html = html.replace(/\$([^$\n]+)\$/g, (match, expr) => {
+                const placeholder = `__MATH_INLINE_${mathIndex}__`;
+                mathExpressions[mathIndex] = `$${expr}$`;
+                mathIndex++;
+                return placeholder;
+            });
+            
+            // Handle code blocks (```...```)
+            html = html.replace(/```([\s\S]*?)```/g, '<pre><code>$1</code></pre>');
+            
+            // Handle inline code (`...`)
+            html = html.replace(/`([^`]+)`/g, '<code>$1</code>');
+            
+            // Handle headers
+            html = html.replace(/^##### (.*$)/gm, '<h5>$1</h5>');
+            html = html.replace(/^#### (.*$)/gm, '<h4>$1</h4>');
+            html = html.replace(/^### (.*$)/gm, '<h3>$1</h3>');
+            html = html.replace(/^## (.*$)/gm, '<h2>$1</h2>');
+            html = html.replace(/^# (.*$)/gm, '<h1>$1</h1>');
+            
+            // Handle tables
+            html = html.replace(/\n\|(.*)\|\n\|(.*)\|\n((?:\|(.*)\|\n?)*)/g, (match, headers, separator, rows) => {
+                const headerCells = headers.split('|').map(cell => `<th>${cell.trim()}</th>`).join('');
+                const rowsHtml = rows.trim().split('\n').map(row => {
+                    if (row.includes('|')) {
+                        const cells = row.split('|').slice(1, -1).map(cell => `<td>${cell.trim()}</td>`).join('');
+                        return `<tr>${cells}</tr>`;
+                    }
+                    return '';
+                }).filter(row => row).join('');
+                
+                return `<table><thead><tr>${headerCells}</tr></thead><tbody>${rowsHtml}</tbody></table>`;
+            });
+            
+            // Handle simple tables (without proper markdown table format)
+            html = html.replace(/(\|.*\|.*\n)+/g, (match) => {
+                const lines = match.trim().split('\n');
+                if (lines.length < 2) return match;
+                
+                const headers = lines[0].split('|').filter(cell => cell.trim()).map(cell => `<th>${cell.trim()}</th>`).join('');
+                const rows = lines.slice(1).map(line => {
+                    if (line.includes('|') && !line.match(/^[\s\|:\-]+$/)) {
+                        const cells = line.split('|').filter(cell => cell.trim()).map(cell => `<td>${cell.trim()}</td>`).join('');
+                        return cells ? `<tr>${cells}</tr>` : '';
+                    }
+                    return '';
+                }).filter(row => row).join('');
+                
+                return `<table><thead><tr>${headers}</tr></thead><tbody>${rows}</tbody></table>`;
+            });
+            
+            // Handle bold and italic
+            html = html.replace(/\*\*\*(.*?)\*\*\*/g, '<strong><em>$1</em></strong>');
+            html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+            html = html.replace(/\*(.*?)\*/g, '<em>$1</em>');
+            
+            // Handle numbered lists
+            html = html.replace(/^\d+\.\s+(.*$)/gm, '<ol-item>$1</ol-item>');
+            html = html.replace(/(<ol-item>.*<\/ol-item>)/gs, (match) => {
+                const items = match.replace(/<ol-item>/g, '<li>').replace(/<\/ol-item>/g, '</li>');
+                return `<ol>${items}</ol>`;
+            });
+            
+            // Handle unordered lists
+            html = html.replace(/^[\-\*\+]\s+(.*$)/gm, '<ul-item>$1</ul-item>');
+            html = html.replace(/(<ul-item>.*<\/ul-item>)/gs, (match) => {
+                const items = match.replace(/<ul-item>/g, '<li>').replace(/<\/ul-item>/g, '</li>');
+                return `<ul>${items}</ul>`;
+            });
+            
+            // Handle line breaks
+            html = html.replace(/\n\n/g, '</p><p>');
+            html = html.replace(/\n/g, '<br>');
+            
+            // Wrap in paragraphs if not already wrapped
+            if (!html.includes('<p>') && !html.includes('<h') && !html.includes('<table') && !html.includes('<ul') && !html.includes('<ol')) {
+                html = `<p>${html}</p>`;
+            } else if (!html.startsWith('<')) {
+                html = `<p>${html}`;
+            }
+            if (!html.endsWith('>') && !html.includes('</p>')) {
+                html = `${html}</p>`;
+            }
+            
+            // Clean up extra paragraph tags around headers and lists
+            html = html.replace(/<p>(<h[1-6]>.*?<\/h[1-6]>)<\/p>/g, '$1');
+            html = html.replace(/<p>(<[uo]l>.*?<\/[uo]l>)<\/p>/gs, '$1');
+            html = html.replace(/<p>(<table>.*?<\/table>)<\/p>/gs, '$1');
+            html = html.replace(/<p>(<pre>.*?<\/pre>)<\/p>/gs, '$1');
+            
+            // Restore math expressions
+            mathExpressions.forEach((expr, index) => {
+                html = html.replace(`__MATH_DISPLAY_${index}__`, expr);
+                html = html.replace(`__MATH_INLINE_${index}__`, expr);
+            });
+            
+            return html;
+        }
+
+        function renderAiChatHistory() {
+            aiAnalysisContent.innerHTML = '';
+            aiChatHistory.forEach(message => {
+                const messageDiv = document.createElement('div');
+                messageDiv.classList.add('chat-bubble', message.role);
+                
+                const content = message.parts[0].text;
+                messageDiv.innerHTML = message.role === 'model' ? markdownToHtml(content) : content;
+                
+                aiAnalysisContent.appendChild(messageDiv);
+            });
+            aiAnalysisContent.scrollTop = aiAnalysisContent.scrollHeight;
+            
+            // Trigger MathJax rendering for any math expressions
+            if (window.MathJax && window.MathJax.typesetPromise) {
+                window.MathJax.typesetPromise([aiAnalysisContent]).catch((err) => console.log('MathJax typeset failed: ' + err.message));
+            }
+        }
+
+        async function callAIAnalysisAPI(history) {
+            try {
+                const payload = {
+                    history: history,
+                    quiz_id: quizSelectEl.value ? parseInt(quizSelectEl.value) : null
+                };
+
+                const response = await fetch(`${API_BASE_URL}/ai/analyze`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(errorData.detail || `HTTP error! status: ${response.status}`);
+                }
+                
+                const result = await response.json();
+                return result.text;
+
+            } catch (error) {
+                console.error("Error calling AI analysis API:", error);
+                return `An error occurred while fetching the analysis: ${error.message}`;
+            }
+        }
+
+        async function getAIAnalysis() {
+            aiAnalysisModal.classList.add('active');
+            
+            // Always show the chips interface - no auto analysis
+            if (aiChatHistory.length === 0) {
+                // Show welcome message instead of auto-analysis
+                const welcomeDiv = document.createElement('div');
+                welcomeDiv.className = 'text-center muted-text mt-8';
+                welcomeDiv.innerHTML = `
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="mx-auto mb-4 opacity-50"><path d="m12 3-1.45 4.14L6.4 8.59l4.14 1.45L12 14l1.45-4.14L17.6 8.59l-4.14-1.45L12 3z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></svg>
+                    <p class="text-lg mb-2">Choose an analysis option above or ask a specific question below</p>
+                    <p class="text-sm">I'll analyze your performance data to provide personalized insights</p>
+                `;
+                aiAnalysisContent.innerHTML = '';
+                aiAnalysisContent.appendChild(welcomeDiv);
+            } else {
+                renderAiChatHistory();
+            }
+        }
+
+        async function handleAiChatSubmit(event) {
+            event.preventDefault();
+            const userInput = aiChatInput.value.trim();
+            if (!userInput) return;
+
+            // Hide analysis chips once user starts chatting
+            const analysisChips = document.getElementById('analysis-chips');
+            if (analysisChips) {
+                analysisChips.style.display = 'none';
+            }
+
+            // Add user message to history and render immediately
+            aiChatHistory.push({ role: 'user', parts: [{ text: userInput }] });
+            renderAiChatHistory();
+            aiChatInput.value = '';
+
+            // Add a temporary loader bubble
+            const loaderBubble = document.createElement('div');
+            loaderBubble.classList.add('chat-bubble', 'model');
+            loaderBubble.innerHTML = '<div class="flex items-center justify-center p-2"><div class="loader !w-6 !h-6"></div></div>';
+            aiAnalysisContent.appendChild(loaderBubble);
+            aiAnalysisContent.scrollTop = aiAnalysisContent.scrollHeight;
+
+            // Call the API with the full history
+            const modelResponseText = await callAIAnalysisAPI(aiChatHistory);
+            
+            // Remove loader and add the actual model response
+            loaderBubble.remove();
+            aiChatHistory.push({ role: 'model', parts: [{ text: modelResponseText }] });
+            renderAiChatHistory();
+        }
+
+        // --- Deletion Logic ---
+        function handleDeleteClick(event) {
+            const deleteButton = event.target.closest('.delete-btn');
+            if (deleteButton) {
+                recordIdToDelete = deleteButton.dataset.recordId;
+                deleteConfirmModalEl.classList.add('active');
+            }
+        }
+
+        async function confirmDeletion() {
+            if (!recordIdToDelete) return;
+            try {
+                const response = await fetch(`${API_BASE_URL}/performance/${recordIdToDelete}`, {
+                    method: 'DELETE'
+                });
+                if (!response.ok) {
+                    throw new Error('Failed to delete the record.');
+                }
+                // Refresh data to reflect the deletion
+                await fetchAllData(quizSelectEl.value ? parseInt(quizSelectEl.value) : null);
+            } catch (error) {
+                console.error('Deletion failed:', error);
+                alert('Could not delete the performance record.');
+            } finally {
+                recordIdToDelete = null;
+                deleteConfirmModalEl.classList.remove('active');
+            }
+        }
+
+        // --- Event Listeners ---
+        quizSelectEl.addEventListener('change', (event) => {
+            const selectedId = event.target.value ? parseInt(event.target.value) : null;
+            fetchAllData(selectedId);
+            aiChatHistory = []; // Reset AI chat when filter changes
+        });
+        
+        performanceTableBodyEl.addEventListener('click', handleDeleteClick);
+        confirmDeleteBtn.addEventListener('click', confirmDeletion);
+        cancelDeleteBtn.addEventListener('click', () => {
+            deleteConfirmModalEl.classList.remove('active');
+            recordIdToDelete = null;
+        });
+
+        aiAnalysisBtn.addEventListener('click', getAIAnalysis);
+        closeAiModalBtn.addEventListener('click', () => {
+            aiAnalysisModal.classList.remove('active');
+        });
+        aiChatForm.addEventListener('submit', handleAiChatSubmit);
+        
+        // Analysis chip event listeners
+        document.addEventListener('click', async (event) => {
+            if (event.target.classList.contains('analysis-chip')) {
+                const prompt = event.target.getAttribute('data-prompt');
+                
+                // Hide analysis chips once user starts chatting
+                const analysisChips = document.getElementById('analysis-chips');
+                if (analysisChips) {
+                    analysisChips.style.display = 'none';
+                }
+                
+                // Add user message to history and render immediately
+                aiChatHistory.push({ role: 'user', parts: [{ text: prompt }] });
+                renderAiChatHistory();
+
+                // Add a temporary loader bubble
+                const loaderBubble = document.createElement('div');
+                loaderBubble.classList.add('chat-bubble', 'model');
+                loaderBubble.innerHTML = '<div class="flex items-center justify-center p-2"><div class="loader !w-6 !h-6"></div></div>';
+                aiAnalysisContent.appendChild(loaderBubble);
+                aiAnalysisContent.scrollTop = aiAnalysisContent.scrollHeight;
+
+                // Call the API with the full history
+                const modelResponseText = await callAIAnalysisAPI(aiChatHistory);
+                
+                // Remove loader and add the actual model response
+                loaderBubble.remove();
+                aiChatHistory.push({ role: 'model', parts: [{ text: modelResponseText }] });
+                renderAiChatHistory();
+            }
+        });
+
+        // --- Initial Load ---
+        document.addEventListener('DOMContentLoaded', () => fetchAllData());
+    </script>
+</body>
+</html>

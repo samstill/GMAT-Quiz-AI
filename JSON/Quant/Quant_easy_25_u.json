@@ -1,0 +1,227 @@
+[
+  {
+    "questionText": "The numbers of cars sold at a certain dealership on six of the last seven business days were 4, 7, 2, 8, 3, and 6, respectively. If the number of cars sold on the seventh business day was either 2, 4, or 5, for which of the three values does the average (arithmetic mean) number of cars sold per business day, for the seven business days, equal the median number of cars sold per day for the seven days?<br>I. 2<br>II. 4<br>III. 5",
+    "options": ["II only", "III only", "I and II only", "II and III only", "I, II, and III"],
+    "correctAnswer": "B",
+    "answerExplanation": "Listed in numerical order, the given numbers are 2, 3, 4, 6, 7, and 8. If the $7^{th}$ number were 2 or 4, then the numbers in numerical order would be 2, 2, 3, 4, 6, 7, and 8 or 2, 3, 4, 4, 6, 7, and 8. In either case the median would be 4 and the average would be $\\frac{2+2+3+4+6+7+8}{7}=\\frac{32}{7}$ or $\\frac{2+3+4+4+6+7+8}{7}=\\frac{34}{7},$ neither of which equals 4. So, for neither of the values in Statement I or II does the average equal the median. If the $7^{th}$ number were 5, then the numbers in numerical order would be 2, 3, 4, 5, 6, 7, and 8. The median would be 5 and the average would be $\\frac{2+3+4+5+6+7+8}{7}=\\frac{35}{7}=5.$ Thus, for the value in Statement III, the average equals the mean.",
+    "difficulty": "easy",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "The table shows a summary of the ticket sales from four performances of a certain play. What is the difference between the maximum and the minimum ticket-sale revenue from a single performance?<br><br><table><tr><th>Performance Time</th><th>Ticket Price</th><th>Number of Tickets Sold</th></tr><tr><td>Thursday night</td><td>\\$40</td><td>200</td></tr><tr><td>Friday night</td><td>\\$50</td><td>240</td></tr><tr><td>Saturday afternoon</td><td>\\$40</td><td>220</td></tr><tr><td>Saturday night</td><td>\\$50</td><td>300</td></tr></table>",
+    "options": ["\\$4,000", "\\$5,100", "\\$6,200", "\\$7,000", "\\$9,600"],
+    "correctAnswer": "D",
+    "answerExplanation": "For each performance, the product of the ticket price and the number of tickets sold is the ticket-sale revenue. The following table shows these values.<br><br><table><tr><th>Performance Time</th><th>Ticket-sale Revenue</th></tr><tr><td>Thursday night</td><td>\\(200(\\text{\\$40})=\\text{\\$8,000}\\)</td></tr><tr><td>Friday night</td><td>\\(240(\\text{\\$50})=\\text{\\$12,000}\\)</td></tr><tr><td>Saturday afternoon</td><td>\\(220(\\text{\\$40})=\\text{\\$8,800}\\)</td></tr><tr><td>Saturday night</td><td>\\(300(\\text{\\$50})=\\text{\\$15,000}\\)</td></tr></table><br>From these values it follows that for a single performance, the maximum ticket-sale revenue is \\$15,000 and the minimum ticket-sale revenue is \\$8,000, and therefore the difference between these two revenues is \\(\\$15,000-\\$8,000=\\$7,000\\).",
+    "difficulty": "easy",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "During a trip that they took together, Carmen, Juan, Maria, and Rafael drove an average (arithmetic mean) of 80 miles each. Carmen drove 72 miles, Juan drove 78 miles, and Maria drove 83 miles. How many miles did Rafael drive?",
+    "options": ["80", "82", "85", "87", "89"],
+    "correctAnswer": "D",
+    "answerExplanation": "Let C, J, M, and R be the numbers of miles, respectively, that Carmen, Juan, Maria, and Rafael drove. Since the average of the numbers of miles they drove is 80, it follows that $$\\frac{C+J+M+R}{4}=80$$ or $C+J+M+R=4(80)=320.$ It is given that $C=72$, $J=78,$ and $M=83$. Therefore, $72+78+83+R=320,$ or $R=87.$",
+    "difficulty": "easy",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "Each week, a clothing salesperson receives a commission equal to 15 percent of the first \\$500 in sales and 20 percent of all additional sales that week. What commission would the salesperson receive on total sales for the week of \\$1,300?",
+    "options": ["\\$195", "\\$227", "\\$235", "\\$260", "\\$335"],
+    "correctAnswer": "C",
+    "answerExplanation": "The commission on the total sales can be calculated as follows:<br>commission on first \\$500<br>+ commission on amount over \\$500<br>=\\((0.15)(\\$500)+(0.20)(\\$1,300-\\$500)\\)<br>=\\(\\$75+\\$160\\)<br>Therefore, the commission on the total sales is \\(\\$75+\\$160=\\$235\\).",
+    "difficulty": "easy",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "A certain restaurant that regularly advertises through the mail has 1,040 cover letters and 3,000 coupons in stock. In its next mailing, each envelope will contain 1 cover letter and 2 coupons. If all of the cover letters in stock are used, how many coupons will remain in stock after this mailing?",
+    "options": ["920", "1,040", "1,500", "1,960", "2,080"],
+    "correctAnswer": "A",
+    "answerExplanation": "In the next mailing there will be 1,040 cover letters and $2(1,040)=2,080$ coupons. Therefore, after the next mailing the number of coupons remaining in stock will be $3,000-2,080=920.$",
+    "difficulty": "easy",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "List S consists of 10 consecutive odd integers, and list T consists of 5 consecutive even integers. If the least integer in S is 7 more than the least integer in T, how much greater is the average (arithmetic mean) of the integers in S than the average of the integers in T?",
+    "options": ["2", "7", "8", "12", "22"],
+    "correctAnswer": "D",
+    "answerExplanation": "Let the integers in S be s, $s+2,s+4,...,s+18$ where s is odd. Let the integers in T be t, $t+2, t+4, t+6, t+8$ where t is even. Given that $s=t+7$ it follows that $s-t=7$. The average of the integers in S is $\\frac{10s+90}{10}=s+9,$ and, similarly, the average of the integers in T is $\\frac{5t+20}{5}=t+4.$ The difference in these averages is $(s+9)-(t+4)=(s-t)+(9-4)=7+5=12$. Thus, the average of the integers in S is 12 greater than the average of the integers in T.",
+    "difficulty": "easy",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "The price of a coat in a certain store is \\$500. If the price of the coat is to be reduced by \\$150, by what percent is the price to be reduced?",
+    "options": ["10%", "15%", "20%", "25%", "30%"],
+    "correctAnswer": "E",
+    "answerExplanation": "A reduction of \\$150 from \\$500 represents a percent decrease of \\((\\frac{150}{500}\\times100)\\%=30\\%\\). Therefore, the price of the coat was reduced by 30%.",
+    "difficulty": "easy",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "$(\\frac{1}{2}-\\frac{1}{3})+(\\frac{1}{3}-\\frac{1}{4})+(\\frac{1}{4}-\\frac{1}{5})+(\\frac{1}{5}-\\frac{1}{6})=$",
+    "options": ["$-\\frac{1}{6}$", "0", "$\\frac{1}{3}$", "$\\frac{1}{2}$", "$\\frac{2}{3}$"],
+    "correctAnswer": "C",
+    "answerExplanation": "The parentheses can be removed without any change of signs, and after doing this most of the terms can be additively cancelled as shown below.<br>$\\frac{1}{2}-\\frac{1}{3}+\\frac{1}{3}-\\frac{1}{4}+\\frac{1}{4}-\\frac{1}{5}+\\frac{1}{5}-\\frac{1}{6}=\\frac{1}{2}-\\frac{1}{6}$<br>$=\\frac{1}{3}$",
+    "difficulty": "easy",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "While a family was away on vacation, they paid a neighborhood boy \\$11 per week to mow their lawn and \\$4 per day to feed and walk their dog. If the family was away for exactly 3 weeks, how much did they pay the boy for his services?",
+    "options": ["\\$45", "\\$54", "\\$71", "\\$95", "\\$117"],
+    "correctAnswer": "E",
+    "answerExplanation": "A period of exactly 3 weeks consists of exactly $3(7)=21$ days. Therefore, the boy was paid for 3 weeks of mowing the lawn and for 21 days of feeding and walking the dog, for a total pay of \\(3(\\$11)+21(\\$4)=\\$33+\\$84=\\$117.\\)",
+    "difficulty": "easy",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "Last year \\$48,000 of a certain store's profit was shared by its 2 owners and their 10 employees. Each of the 2 owners received 3 times as much as each of their 10 employees. How much did each owner receive from the \\$48,000?",
+    "options": ["\\$12,000", "\\$9,000", "\\$6,000", "\\$4,000", "\\$3,000"],
+    "correctAnswer": "B",
+    "answerExplanation": "Let A be the amount received by each owner and let B be the amount received by each employee. From the given information, it follows that \\(A=3B\\) and \\(2A+10B=48,000\\). Thus, \\(2(3B)+10B=48,000\\) or \\(16B=48,000\\), or \\(B=3,000.\\) Therefore, the amount received by each owner was \\(A=3B=3(\\$3,000)=\\$9,000.\\)",
+    "difficulty": "easy",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "On a vacation, Rose exchanged \\$500.00 for euros at an exchange rate of 0.80 euro per dollar and spent \\(\\frac{3}{4}\\) of the euros she received. If she exchanged the remaining euros for dollars at an exchange rate of \\$1.20 per euro, what was the dollar amount she received?",
+    "options": ["\\$60.00", "\\$80.00", "\\$100.00", "\\$120.00", "\\$140.00"],
+    "correctAnswer": "D",
+    "answerExplanation": "At the exchange rate of 0.80 euro per dollar, Rose exchanged \\$500.00 for \\((0.80)(500)=400\\) euros. She spent \\(\\frac{3}{4}(400)=300\\) euros, had \\(400-300=100\\) euros left, and exchanged them for dollars at the exchange rate of \\$1.20 per euro. Therefore, the dollar amount she received was \\((1.20)(100)=\\$120.00.\\)",
+    "difficulty": "easy",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "Each of the 12 squares shown is labeled x, y, v, or w. What is the ratio of the number of these squares labeled x or y to the number of these squares labeled v or w?",
+    "options": ["1:2", "2:3", "4:3", "3:2", "2:1"],
+    "correctAnswer": "E",
+    "answerExplanation": "By a direct count, there are 8 squares labeled x or y (5 labeled x, 3 labeled y) and there are 4 squares labeled v or w (2 labeled v, 2 labeled w). Therefore, the ratio of the number of squares labeled x or y to the number of squares labeled v or w is 8:4, which reduces to 2:1.",
+    "difficulty": "easy",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "In the table above, what is the number of green marbles in Jar R?<br><br><table><tr><th>Jar</th><th>Number of red marbles</th><th>Number of green marbles</th><th>Total number of red and green marbles</th></tr><tr><td>P</td><td>X</td><td>y</td><td>80</td></tr><tr><td>Q</td><td>y</td><td>Z</td><td>120</td></tr><tr><td>R</td><td>X</td><td>Z</td><td>160</td></tr></table>",
+    "options": ["70", "80", "90", "100", "110"],
+    "correctAnswer": "D",
+    "answerExplanation": "First, set up an equation to find the total number of marbles in the three jars as follows:<br>$x+y+y+z+x+z=80+120+160$<br>$2x+2y+2z=360$<br>$x+y+z=180$ combine the like terms<br>Then, since it can be seen from the table that the number of green marbles in Jar R is z, solve for z to answer the problem. To do this most efficiently, use the information from the table for Jar P, which is that $x+y=80$.<br>$x+y+z=180$<br>$80+z=180$ substitute 80 for $x+y$<br>$z=100$",
+    "difficulty": "easy",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "Bouquets are to be made using white tulips and red tulips, and the ratio of the number of white tulips to the number of red tulips is to be the same in each bouquet. If there are 15 white tulips and 85 red tulips available for the bouquets, what is the greatest number of bouquets that can be made using all the tulips available?",
+    "options": ["3", "5", "8", "10", "13"],
+    "correctAnswer": "B",
+    "answerExplanation": "Because all the tulips are to be used and the same number of white tulips will be in each bouquet, the number of white tulips in each bouquet times the number of bouquets must equal the total number of white tulips, or 15. Thus, the number of bouquets must be a factor of 15, and so the number must be 1, 3, 5, or 15. Also, the number of red tulips in each bouquet times the number of bouquets must equal the total number of red tulips, or 85. Thus, the number of bouquets must be a factor of 85, and so the number must be 1, 5, 17, or 85. Since the number of bouquets must be 1, 3, 5, or 15, and the number of bouquets must be 1, 5, 17, or 85, it follows that the number of bouquets must be 1 or 5, and thus the greatest number of bouquets that can be made is 5. Note that each of the 5 bouquets will have 3 white tulips, because $(5)(3)=15$ and each of the 5 bouquets will have 17 red tulips, because $(5)(17)=85.$",
+    "difficulty": "easy",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "Over the past 7 weeks, the Smith family had weekly grocery bills of \\$74, \\$69, \\$64, \\$79, \\$64, \\$84, and \\$77. What was the Smiths' average (arithmetic mean) weekly grocery bill over the 7-week period?",
+    "options": ["\\$64", "\\$70", "\\$73", "\\$74", "\\$85"],
+    "correctAnswer": "C",
+    "answerExplanation": "The average weekly grocery bill over the 7-week period can be calculated by dividing the total of the 7 weekly grocery bills by 7.<br>\\(=\\frac{\\$74+\\$69+\\$64+\\$79+\\$64+\\$84+\\$77}{7}\\)<br>\\(=\\frac{\\$511}{7}=\\$73\\)<br>An alternative method is suggested by the fact that the bills, in dollars, are close to 70. Note that if all the bills were 70, then the average would be 70. This method makes use of the amount by which the bills are over 70 or under 70.<br><br><table><tr><th>bill</th><th>amount over 70</th><th>amount under 70</th></tr><tr><td>74</td><td>4</td><td></td></tr><tr><td>69</td><td></td><td>1</td></tr><tr><td>64</td><td></td><td>6</td></tr><tr><td>79</td><td>9</td><td></td></tr><tr><td>64</td><td></td><td>6</td></tr><tr><td>84</td><td>14</td><td></td></tr><tr><td>77</td><td>7</td><td></td></tr><tr><td>total</td><td>34</td><td>13</td></tr></table><br>Therefore, since \\(34>13,\\) the average is over 70 by \\(\\frac{34-13}{7}=\\frac{21}{7}=3,\\) so 73.<br>Tip: When calculating an average value where the values are roughly clustered together, it is often quicker to pick a fixed value and add to this fixed value the average of the signed differences from the fixed value. In the solution above, the fixed value was 70 and the signed differences are 4, -1, -6, 9, -6, 14, and 7.<br>Additional Example: Calculate the average of 99, 102, 101, 98, and 96. Letting 100 be the fixed value, the average can be calculated as follows:<br>\\(100+\\frac{-1+2+1-2-4}{5}=100-\\frac{4}{5}=100-0.8=99.2\\)<br>Note that these values cluster more closely to 99 than to 100, but 100 is probably simpler to work with.",
+    "difficulty": "easy",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "125% of $5=$",
+    "options": ["5.125", "5.25", "6", "6.125", "6.25"],
+    "correctAnswer": "E",
+    "answerExplanation": "125% of 5 represents $\\frac{125}{100}\\times5,$ or $1.25\\times5=6.25$.",
+    "difficulty": "easy",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "During a recent storm, 9 neighborhoods experienced power failures of durations 34, 29, 27, 46, 18, 25, 12, 35, and 16 minutes, respectively. For these 9 neighborhoods, what was the median duration, in minutes, of the power failures?",
+    "options": ["34", "29", "27", "25", "18"],
+    "correctAnswer": "C",
+    "answerExplanation": "To find the median of these 9 numbers, put the numbers in numerical order in a list and determine the middle value in the list:<br>12, 16, 18, 25, 27, 29, 34, 35, 46<br>From this list it follows that the median is 27.",
+    "difficulty": "easy",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "When traveling at a constant speed of 32 miles per hour, a certain motorboat consumes 24 gallons of fuel per hour. What is the fuel consumption of this boat at this speed measured in miles traveled per gallon of fuel?",
+    "options": ["$\\frac{2}{3}$", "$\\frac{3}{4}$", "$\\frac{4}{5}$", "$\\frac{4}{3}$", "$\\frac{3}{2}$"],
+    "correctAnswer": "D",
+    "answerExplanation": "If the motorboat consumes 24 gallons of fuel in 1 hour, then it consumes 1 gallon of fuel in $\\frac{1}{24}$ hour. If the motorboat travels 32 miles in 1 hour, then it travels $\\frac{32}{24}=\\frac{4}{3}$ miles in $\\frac{1}{24}$ hour, which is the length of time it takes to consume 1 gallon of fuel. Thus, the motorboat travels $\\frac{4}{3}$ miles per gallon of fuel.",
+    "difficulty": "easy",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "A technician makes a round trip to and from a certain service center by the same route. If the technician completes the drive to the center and then completes 10 percent of the drive from the center, what percent of the round trip has the technician completed?",
+    "options": ["5%", "10%", "25%", "40%", "55%"],
+    "correctAnswer": "E",
+    "answerExplanation": "In completing the drive to the service center, the technician has completed 50% of the round trip. The drive from the center is the other 50% of the round trip. In completing 10% of the drive from the center, the technician has completed an additional 10% of 50%, or 5% of the round trip. Thus, the technician has completed $50\\%+5\\%=55\\%$ of the round trip.",
+    "difficulty": "easy",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "From 2000 to 2003, the number of employees at a certain company increased by a factor of $\\frac{1}{4}$. From 2003 to 2006, the number of employees at this company decreased by a factor of $\\frac{1}{3}$. If there were 100 employees at the company in 2006, how many employees were there at the company in 2000?",
+    "options": ["200", "120", "100", "75", "60"],
+    "correctAnswer": "B",
+    "answerExplanation": "Let N be the number of employees in 2000. In 2003 there were $\\frac{1}{4}(\\text{number in 2000})=\\frac{1}{4}N$ more employees than in 2000, for a total of $N+\\frac{1}{4}N=\\frac{5}{4}N$ employees. In 2006 there were $\\frac{1}{3}(\\text{number in 2003})=\\frac{1}{3}(\\frac{5}{4})N$ fewer employees than in 2003, for a total of $\\frac{5}{4}N-\\frac{1}{3}(\\frac{5}{4}N)=\\frac{5}{6}N$ employees. It is given that there were 100 employees in 2006, so $\\frac{5}{6}N=100,$ or $N=\\frac{6}{5}(100)=120.$",
+    "difficulty": "easy",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "Which of the following statements must be true about the average (arithmetic mean) and the median of 5 consecutive integers?<br>I. The average is one of the integers.<br>II. The median is one of the integers.<br>III. The median equals the average.",
+    "options": ["I only", "II only", "III only", "I and II only", "I, II, and III"],
+    "correctAnswer": "E",
+    "answerExplanation": "If n is the least of the 5 consecutive integers, then, in increasing order, the integers are n, $n+1$, $n+2$, $n+3,$ $n+4.$<br>Statement I must be true because the average of the integers is $\\frac{n+(n+1)+(n+2)+(n+3)+(n+4)}{5},$ or $\\frac{5n+10}{5}=n+2,$ and $n+2$ is one of the integers.<br>Statement II must be true because the median is the middle number in the list, which is $n+2,$ and $n+2$ is one of the integers.<br>Statement III must be true because $n+2$ is both the average and the median.",
+    "difficulty": "easy",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "A collection of 16 coins, each with a face value of either 10 cents or 25 cents, has a total face value of \\$2.35. How many of the coins have a face value of 25 cents?",
+    "options": ["3", "5", "7", "9", "11"],
+    "correctAnswer": "B",
+    "answerExplanation": "Let x represent the number of coins each with a face value of 25 cents. Then, since there are 16 coins in all, \\(16-x\\) represents the number of coins each with a face value of 10 cents. The total face value of the coins is \\$2.35 or 235 cents so,<br>\\(25x+10(16-x)=235\\) given<br>\\(25x+160-10x=235\\) distributive property<br>\\(15x+160=235\\) combine like terms<br>\\(15x=75\\) subtract 160 from both sides<br>\\(x=5\\) divide both sides by 15<br>Therefore, 5 of the coins have a face value of 25 cents.",
+    "difficulty": "easy",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "A retailer purchased eggs at \\$2.80 per dozen and sold the eggs at 3 eggs for \\$0.90. What was the retailer's gross profit from purchasing and selling 5 dozen eggs? (1 dozen eggs = 12 eggs)",
+    "options": ["\\$0.90", "\\$2.40", "\\$4.00", "\\$11.30", "\\$12.00"],
+    "correctAnswer": "C",
+    "answerExplanation": "The retailer's cost was \\$2.80 per dozen eggs and the retailer's revenue was \\$0.90 per 3 eggs, or \\(4(\\$0.90)=\\$3.60\\) per dozen eggs. Therefore, the retailer's profit for 5 dozen eggs-revenue minus cost for 5 dozen eggs-was \\(5(\\$3.60-\\$2.80)=5(\\$0.80)=\\$4.00.\\)",
+    "difficulty": "easy",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "In a set of 24 cards, each card is numbered with a different positive integer from 1 to 24. One card will be drawn at random from the set. What is the probability that the card drawn will have either a number that is divisible by both 2 and 3 or a number that is divisible by 7?",
+    "options": ["$\\frac{3}{24}$", "$\\frac{4}{24}$", "$\\frac{7}{24}$", "$\\frac{8}{24}$", "$\\frac{17}{24}$"],
+    "correctAnswer": "C",
+    "answerExplanation": "The desired probability is N divided by 24, where N is the number of positive integers from 1 through 24 that are either divisible by both 2 and 3, or divisible by 7. Since an integer is divisible by both 2 and 3 if and only if the integer is divisible by 6, it follows that N is the number of positive integers from 1 through 24 that are either divisible by 6 or divisible by 7. There are 4 numbers from 1 through 24 that are divisible by 6, namely 6, 12, 18, and 24. There are 3 numbers from 1 through 24 that are divisible by 7, namely 7, 14, and 21. Since these numbers are all different from each other, it follows that $N=4+3=7$ and the desired probability is $\\frac{N}{24}=\\frac{7}{24}.$ ",
+    "difficulty": "easy",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "As a salesperson, Phyllis can choose one of two methods of annual payment: either an annual salary of \\$35,000 with no commission or an annual salary of \\$10,000 plus a 20% commission on her total annual sales. What must her total annual sales be to give her the same annual pay with either method?",
+    "options": ["\\$100,000", "\\$120,000", "\\$125,000", "\\$130,000", "\\$132,000"],
+    "correctAnswer": "C",
+    "answerExplanation": "Letting s be Phyllis's total annual sales needed to generate the same annual pay with either method, the given information can be expressed as \\(\\$35,000=\\$10,000+0.2s.\\) Solve this equation for s.<br>\\(\\$35,000=\\$10,000+0.2s\\)<br>\\(\\$25,000=0.2s\\)<br>\\(\\$125,000=s\\)",
+    "difficulty": "easy",
+    "question_type": "Quant",
+    "subsection": null
+  }
+]

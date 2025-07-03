@@ -1,0 +1,302 @@
+[
+  {
+    "questionText": "Four extra-large sandwiches of exactly the same size were ordered for m students, where m > 4. Three of the sandwiches were evenly divided among the students. Since 4 students did not want any of the fourth sandwich, it was evenly divided among the remaining students. If Carol ate one piece from each of the four sandwiches, the amount of sandwich that she ate would be what fraction of a whole extra-large sandwich?",
+    "options": [
+      "\\(\\frac{m+4}{m(m-4)}\\)",
+      "\\(\\frac{2m-4}{m(m-4)}\\)",
+      "\\(\\frac{4m-4}{m(m-4)}\\)",
+      "\\(\\frac{4m-8}{m(m-4)}\\)",
+      "\\(\\frac{4m-12}{m(m-4)}\\)"
+    ],
+    "correctAnswer": "E",
+    "answerExplanation": "Since each of 3 of the sandwiches was evenly divided among m students, each piece was \\(\\frac{1}{m}\\) of a sandwich. Since the fourth sandwich was evenly divided among m − 4 students, each piece was \\(\\frac{1}{m-4}\\) of the fourth sandwich. Carol ate 1 piece from each of the four sandwiches, which means she ate three pieces from the first three sandwiches and one piece from the fourth. The total amount she ate is the sum of the fractions of the sandwiches she consumed: <br>Total fraction = \\(3(\\frac{1}{m}) + \\frac{1}{m-4}\\) <br>To add these fractions, find a common denominator, which is \\(m(m-4)\\):<br>\\(\\frac{3}{m} + \\frac{1}{m-4} = \\frac{3(m-4)}{m(m-4)} + \\frac{m}{m(m-4)} = \\frac{3m - 12 + m}{m(m-4)} = \\frac{4m - 12}{m(m-4)}\\).",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "Which of the following equations has \\(1 + \\sqrt{2}\\) as one of its roots?",
+    "options": [
+      "\\(x^2 + 2x – 1 = 0\\)",
+      "\\(x^2 – 2x + 1 = 0\\)",
+      "\\(x^2 + 2x + 1 = 0\\)",
+      "\\(x^2 – 2x – 1 = 0\\)",
+      "\\(x^2 – x – 1 = 0\\)"
+    ],
+    "correctAnswer": "D",
+    "answerExplanation": "This problem can be solved by working backward to construct a quadratic equation with \\(1 + \\sqrt{2}\\) as a root that does not involve radicals. <br> 1. Let the root be x: \\(x = 1 + \\sqrt{2}\\) <br> 2. Isolate the radical term: \\(x – 1 = \\sqrt{2}\\) <br> 3. Square both sides to eliminate the radical: \\((x – 1)^2 = (\\sqrt{2})^2\\) <br> 4. Expand the left side: \\(x^2 – 2x + 1 = 2\\) <br> 5. Set the equation to zero: \\(x^2 – 2x – 1 = 0\\)",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "In Country C, the unemployment rate among construction workers dropped from 16 percent on September 1, 1992, to 9 percent on September 1, 1996. If the number of construction workers was 20 percent greater on September 1, 1996, than on September 1, 1992, what was the approximate percent change in the number of unemployed construction workers over this period?",
+    "options": [
+      "50% decrease",
+      "30% decrease",
+      "15% decrease",
+      "30% increase",
+      "55% increase"
+    ],
+    "correctAnswer": "B",
+    "answerExplanation": "Let N be the number of construction workers in 1992. <br> 1. Number of unemployed workers in 1992: \\(0.16N\\). <br> 2. Total number of construction workers in 1996: \\(1.20N\\). <br> 3. Number of unemployed workers in 1996: \\(0.09 \\times 1.20N = 0.108N\\). <br> 4. The percent change is calculated as \\(\\frac{\\text{New Value} - \\text{Old Value}}{\\text{Old Value}} \\times 100\\%\\). <br> Percent change = \\(\\frac{0.108N - 0.16N}{0.16N} \\times 100\\% = \\frac{-0.052N}{0.16N} \\times 100\\% = -0.325 \\times 100\\% = -32.5\\%\\).<br> A 32.5% decrease is approximately a 30% decrease.",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "In a box of 12 pens, a total of 3 are defective. If a customer buys 2 pens selected at random from the box, what is the probability that neither pen will be defective?",
+    "options": [
+      "\\(\\frac{1}{6}\\)",
+      "\\(\\frac{2}{9}\\)",
+      "\\(\\frac{6}{11}\\)",
+      "\\(\\frac{9}{16}\\)",
+      "\\(\\frac{3}{4}\\)"
+    ],
+    "correctAnswer": "C",
+    "answerExplanation": "There are two main ways to solve this problem:<br><b>Method 1: Dependent Events</b><br>There are 12 pens in total, with \\(12-3=9\\) non-defective pens.<br>The probability that the first pen selected is not defective is \\(\\frac{9}{12}\\).<br>After selecting one non-defective pen, there are 11 pens left, with 8 non-defective pens. The probability that the second pen is not defective is \\(\\frac{8}{11}\\).<br>The probability that both events happen is the product of their probabilities: \\(P(\\text{neither is defective}) = \\frac{9}{12} \\times \\frac{8}{11} = \\frac{3}{4} \\times \\frac{8}{11} = \\frac{24}{44} = \\frac{6}{11}\\).<br><b>Method 2: Combinations</b><br>The total number of ways to choose 2 pens from 12 is \\(\\binom{12}{2} = \\frac{12 \\times 11}{2} = 66\\).<br>The number of ways to choose 2 non-defective pens from the 9 available is \\(\\binom{9}{2} = \\frac{9 \\times 8}{2} = 36\\).<br>The probability is the ratio of favorable outcomes to total outcomes: \\(P = \\frac{36}{66} = \\frac{6}{11}\\).",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "At a certain fruit stand, the price of each apple is 40 cents and the price of each orange is 60 cents. Mary selects a total of 10 apples and oranges from the fruit stand, and the average (arithmetic mean) price of the 10 pieces of fruit is 56 cents. How many oranges must Mary put back so that the average price of the pieces of fruit that she keeps is 52 cents?",
+    "options": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "correctAnswer": "E",
+    "answerExplanation": "<b>Step 1: Find the initial number of apples and oranges.</b><br>Let 'a' be the number of apples and 'o' be the number of oranges. We know \\(a + o = 10\\).<br>The total cost is \\(40a + 60o\\). The average price is \\(\\frac{40a + 60o}{10} = 56\\).<br>So, \\(40a + 60o = 560\\). Substitute \\(a = 10 - o\\):<br>\\(40(10 - o) + 60o = 560\\)<br>\\(400 - 40o + 60o = 560\\)<br>\\(20o = 160 \\Rightarrow o = 8\\).<br>Mary initially selected 8 oranges and \\(10-8=2\\) apples.<br><br><b>Step 2: Find how many oranges to put back.</b><br>Let 'y' be the number of oranges Mary puts back. She keeps \\(8-y\\) oranges and 2 apples. The total number of fruits she keeps is \\(2 + (8-y) = 10-y\\).<br>The new average price is 52 cents:<br>\\(\\frac{40(2) + 60(8-y)}{10-y} = 52\\)<br>\\(80 + 480 - 60y = 52(10-y)\\)<br>\\(560 - 60y = 520 - 52y\\)<br>\\(40 = 8y \\Rightarrow y = 5\\).<br>Mary must put back 5 oranges.",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "A pharmaceutical company received \\$3 million in royalties on the first \\$20 million in sales of the generic equivalent of one of its products and then \\$9 million in royalties on the next \\$108 million in sales. By approximately what percent did the ratio of royalties to sales decrease from the first \\$20 million in sales to the next \\$108 million in sales?",
+    "options": [
+      "8%",
+      "15%",
+      "45%",
+      "52%",
+      "56%"
+    ],
+    "correctAnswer": "C",
+    "answerExplanation": "<b>Step 1: Calculate the first ratio of royalties to sales.</b><br>Ratio 1 = \\(\\frac{\\$3 \\text{ million}}{\\$20 \\text{ million}} = \\frac{3}{20} = 0.15\\).<br><br><b>Step 2: Calculate the second ratio of royalties to sales.</b><br>Ratio 2 = \\(\\frac{\\$9 \\text{ million}}{\\$108 \\text{ million}} = \\frac{9}{108} = \\frac{1}{12}\\).<br>\\(\\frac{1}{12} \\approx 0.0833\\).<br><br><b>Step 3: Calculate the percent decrease.</b><br>Percent Decrease = \\(\\frac{\\text{Original Ratio} - \\text{New Ratio}}{\\text{Original Ratio}} \\times 100\\%\\)<br>Percent Decrease = \\(\\frac{\\frac{3}{20} - \\frac{1}{12}}{\\frac{3}{20}} \\times 100\\%\\)<br>First, find a common denominator for the fractions in the numerator (60):<br>\\(\\frac{3}{20} - \\frac{1}{12} = \\frac{9}{60} - \\frac{5}{60} = \\frac{4}{60} = \\frac{1}{15}\\).<br>Now substitute this back into the percent decrease formula:<br>\\(\\frac{\\frac{1}{15}}{\\frac{3}{20}} \\times 100\\% = \\frac{1}{15} \\times \\frac{20}{3} \\times 100\\% = \\frac{20}{45} \\times 100\\% = \\frac{4}{9} \\times 100\\%\\).<br>\\(\\frac{4}{9} \\approx 0.444\\), which is a 44.4% decrease. This is approximately 45%.",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "The light in a restroom operates with a 15-minute timer that is reset every time the door opens as a person goes in or out of the room. Thus, after someone enters or exits the room, the light remains on for only 15 minutes unless the door opens again and resets the timer for another 15 minutes. The table below lists the times at which the door opened from 8:00 to 10:00.<br><table><tr><td>8:00</td><td>8:06</td><td>8:30</td><td>9:05</td></tr><tr><td>8:03</td><td>8:10</td><td>8:31</td><td>9:11</td></tr><tr><td>8:04</td><td>8:18</td><td>8:54</td><td>9:29</td></tr><tr><td>8:04</td><td>8:19</td><td>8:57</td><td>9:31</td></tr></table>Approximately how many minutes during this two-hour period was the light off?",
+    "options": [
+      "10",
+      "25",
+      "35",
+      "40",
+      "70"
+    ],
+    "correctAnswer": "B",
+    "answerExplanation": "The light turns off only when more than 15 minutes pass between consecutive door openings. We need to find these time gaps in the provided schedule.<br>The ordered list of times is: 8:00, 8:03, 8:04, 8:04, 8:06, 8:10, 8:18, 8:19, 8:30, 8:31, 8:54, 8:57, 9:05, 9:11, 9:29, 9:31.<br>Let's find the gaps larger than 15 minutes:<br><ul><li><b>Gap 1:</b> Between 8:31 and 8:54. The duration is \\(54 - 31 = 23\\) minutes. The light was on for 15 minutes after 8:31 and then off for \\(23 - 15 = 8\\) minutes.</li><li><b>Gap 2:</b> Between 9:11 and 9:29. The duration is \\(29 - 11 = 18\\) minutes. The light was on for 15 minutes after 9:11 and then off for \\(18 - 15 = 3\\) minutes.</li><li><b>Gap 3:</b> After the last entry at 9:31 until 10:00. The light stays on for 15 minutes, until 9:46. The time from 9:46 to 10:00 is \\(60 - 46 = 14\\) minutes. The light was off for 14 minutes.</li></ul>Total time the light was off is the sum of the off-times from these gaps: \\(8 + 3 + 14 = 25\\) minutes.",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "If p is the product of the integers from 1 to 30, inclusive, what is the greatest integer k for which \\(3^k\\) is a factor of p?",
+    "options": [
+      "10",
+      "12",
+      "14",
+      "16",
+      "18"
+    ],
+    "correctAnswer": "C",
+    "answerExplanation": "We need to find the number of factors of 3 in the prime factorization of \\(30!\\) (the product of integers from 1 to 30).<br>We can count the multiples of 3, multiples of \\(3^2=9\\), and multiples of \\(3^3=27\\) in the range 1 to 30.<br><ul><li>Multiples of 3: 3, 6, 9, 12, 15, 18, 21, 24, 27, 30. There are \\(\\lfloor \\frac{30}{3} \\rfloor = 10\\) such numbers, each contributing at least one factor of 3.</li><li>Multiples of 9: 9, 18, 27. There are \\(\\lfloor \\frac{30}{9} \\rfloor = 3\\) such numbers. These contribute an additional factor of 3 (since one factor was already counted in the multiples of 3).</li><li>Multiples of 27: 27. There is \\(\\lfloor \\frac{30}{27} \\rfloor = 1\\) such number. This contributes one more additional factor of 3.</li></ul>The total number of factors of 3 is the sum of these counts: \\(10 + 3 + 1 = 14\\).<br>Therefore, the greatest integer k is 14.",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "If \\(n = 3^8 – 2^8\\), which of the following is NOT a factor of n?",
+    "options": [
+      "97",
+      "65",
+      "35",
+      "13",
+      "5"
+    ],
+    "correctAnswer": "C",
+    "answerExplanation": "We can factor the expression \\(n = 3^8 – 2^8\\) using the difference of squares formula, \\(a^2 - b^2 = (a - b)(a + b)\\), repeatedly.<br>\\(n = (3^4)^2 – (2^4)^2 = (3^4 – 2^4)(3^4 + 2^4)\\)<br>Factor \\((3^4 – 2^4)\\) further:<br>\\((3^4 – 2^4) = (3^2 – 2^2)(3^2 + 2^2) = (9 – 4)(9 + 4) = (5)(13)\\)<br>Now evaluate \\((3^4 + 2^4)\\):<br>\\((3^4 + 2^4) = 81 + 16 = 97\\)<br>So, \\(n = (5)(13)(97)\\).<br>The prime factors of n are 5, 13, and 97.<br>Now let's check the options:<br><ul><li>A. 97 is a factor.</li><li>B. 65 = 5 × 13, so it is a factor.</li><li>C. 35 = 5 × 7. Since 7 is not a prime factor of n, 35 is NOT a factor.</li><li>D. 13 is a factor.</li><li>E. 5 is a factor.</li></ul>",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "Club X has more than 10 but fewer than 40 members. Sometimes the members sit at tables with 3 members at one table and 4 members at each of the other tables, and sometimes they sit at tables with 3 members at one table and 5 members at each of the other tables. If they sit at tables with 6 members at each table except one and fewer than 6 members at that one table, how many members will be at the table that has fewer than 6 members?",
+    "options": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "correctAnswer": "E",
+    "answerExplanation": "Let n be the number of members in Club X. We are given \\(10 < n < 40\\).<br>From the first seating arrangement, if we remove the table with 3 members, the remaining \\(n-3\\) members can be perfectly divided into groups of 4. So, \\(n-3\\) is a multiple of 4.<br>From the second seating arrangement, if we remove the table with 3 members, the remaining \\(n-3\\) members can be perfectly divided into groups of 5. So, \\(n-3\\) is a multiple of 5.<br>This means \\(n-3\\) must be a multiple of the least common multiple of 4 and 5, which is 20.<br>We have \\(10 < n < 40\\), which implies \\(7 < n-3 < 37\\). The only multiple of 20 in this range is 20 itself. <br>So, \\(n-3 = 20\\), which gives \\(n = 23\\).<br>Now, we seat the 23 members at tables of 6. We want to find the remainder when 23 is divided by 6.<br>\\(23 = 3 \\times 6 + 5\\).<br>This means there will be 3 full tables of 6, and one table with 5 members. The number of members at the last table is 5.",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "In order to complete a reading assignment on time, Terry planned to read 90 pages per day. However, she read only 75 pages per day at first, leaving 690 pages to be read during the last 6 days before the assignment was to be completed. How many days in all did Terry have to complete the assignment on time?",
+    "options": [
+      "15",
+      "16",
+      "25",
+      "40",
+      "46"
+    ],
+    "correctAnswer": "B",
+    "answerExplanation": "Let T be the total number of days for the assignment.<br>The total number of pages in the assignment is \\(90 \\times T\\).<br>Terry read at 75 pages per day for the first \\((T-6)\\) days. The number of pages read in this period is \\(75(T-6)\\).<br>The total number of pages is also the sum of what she read initially and the pages left for the last 6 days. So, Total Pages = \\(75(T-6) + 690\\).<br>Now we can set the two expressions for the total pages equal to each other:<br>\\(90T = 75(T-6) + 690\\)<br>\\(90T = 75T - 450 + 690\\)<br>\\(90T = 75T + 240\\)<br>\\(15T = 240\\)<br>\\(T = \\frac{240}{15} = 16\\).<br>Terry had 16 days in total.",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "If s > 0 and \\(\\sqrt{\\frac{r}{s}} = s\\), what is r in terms of s?",
+    "options": [
+      "\\(\\frac{1}{s}\\)",
+      "\\(\\sqrt{s}\\)",
+      "s",
+      "\\(s^3\\)",
+      "\\(s^2 - s\\)"
+    ],
+    "correctAnswer": "D",
+    "answerExplanation": "We are given the equation \\(\\sqrt{\\frac{r}{s}} = s\\). To solve for r, we need to isolate it.<br>1. Square both sides of the equation to eliminate the square root: <br>\\((\\sqrt{\\frac{r}{s}})^2 = s^2\\)<br>\\(\\frac{r}{s} = s^2\\)<br>2. Multiply both sides by s to solve for r:<br>\\(r = s^2 \\times s\\)<br>\\(r = s^3\\)",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "If 3 < x < 100, for how many values of x is \\(\\frac{x}{3}\\) the square of a prime number?",
+    "options": [
+      "Two",
+      "Three",
+      "Four",
+      "Five",
+      "Nine"
+    ],
+    "correctAnswer": "B",
+    "answerExplanation": "Let \\(\\frac{x}{3} = p^2\\), where p is a prime number. This means \\(x = 3p^2\\).<br>We are given the condition \\(3 < x < 100\\).<br>Substitute \\(x = 3p^2\\) into the inequality:<br>\\(3 < 3p^2 < 100\\)<br>Divide all parts of the inequality by 3:<br>\\(1 < p^2 < \\frac{100}{3}\\)<br>\\(1 < p^2 < 33.33...\\)<br>Now we need to find the prime numbers p whose squares fall within this range.<br><ul><li>If \\(p=2\\) (prime), \\(p^2=4\\). This satisfies \\(1 < 4 < 33.33\\). So \\(x=3(4)=12\\) is a valid value.</li><li>If \\(p=3\\) (prime), \\(p^2=9\\). This satisfies \\(1 < 9 < 33.33\\). So \\(x=3(9)=27\\) is a valid value.</li><li>If \\(p=5\\) (prime), \\(p^2=25\\). This satisfies \\(1 < 25 < 33.33\\). So \\(x=3(25)=75\\) is a valid value.</li><li>If \\(p=7\\) (prime), \\(p^2=49\\). This does not satisfy \\(p^2 < 33.33\\).</li></ul>There are three such prime numbers (2, 3, and 5), which correspond to three possible values of x (12, 27, and 75).",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "A researcher plans to identify each participant in a certain medical experiment with a code consisting of either a single letter or a pair of distinct letters written in alphabetical order. What is the least number of letters that can be used if there are 12 participants, and each participant is to receive a different code?",
+    "options": [
+      "4",
+      "5",
+      "6",
+      "7",
+      "8"
+    ],
+    "correctAnswer": "B",
+    "answerExplanation": "Let n be the number of letters used.<br>The number of possible codes is the sum of:<br>1. The number of single-letter codes: n<br>2. The number of codes with a pair of distinct letters in alphabetical order: This is equivalent to choosing 2 letters from n, which is given by the combination formula \\(\\binom{n}{2} = \\frac{n(n-1)}{2}\\).<br>The total number of codes must be at least 12. So, \\(n + \\frac{n(n-1)}{2} \\ge 12\\).<br>We can test values of n starting from the smallest option:<br><ul><li>If n = 4: Total codes = \\(4 + \\frac{4(3)}{2} = 4 + 6 = 10\\). This is not enough.</li><li>If n = 5: Total codes = \\(5 + \\frac{5(4)}{2} = 5 + 10 = 15\\). This is enough for 12 participants.</li></ul>Therefore, the least number of letters required is 5.",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "An object thrown directly upward is at a height of h feet after t seconds, where \\(h = –16(t – 3)^2 + 150\\). At what height, in feet, is the object 2 seconds after it reaches its maximum height?",
+    "options": [
+      "6",
+      "86",
+      "134",
+      "150",
+      "166"
+    ],
+    "correctAnswer": "B",
+    "answerExplanation": "The height equation \\(h = –16(t – 3)^2 + 150\\) describes a downward-opening parabola. The maximum height occurs at the vertex of the parabola.<br>For an equation of the form \\(h = a(t-k)^2 + p\\), the vertex is at \\(t=k\\). In this case, \\(k=3\\).<br>So, the object reaches its maximum height at \\(t=3\\) seconds.<br>We need to find the height 2 seconds *after* it reaches its maximum. This corresponds to time \\(t = 3 + 2 = 5\\) seconds.<br>Substitute \\(t=5\\) into the height equation:<br>\\(h = –16(5 – 3)^2 + 150\\)<br>\\(h = –16(2)^2 + 150\\)<br>\\(h = –16(4) + 150\\)<br>\\(h = –64 + 150\\)<br>\\(h = 86\\)<br>The height of the object will be 86 feet.",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "Which of the following is equivalent to the pair of inequalities \\(x + 6 > 10\\) and \\(x – 3 \\le 5\\)?",
+    "options": [
+      "\\(2 \\le x < 16\\)",
+      "\\(2 \\le x < 4\\)",
+      "\\(2 < x \\le 8\\)",
+      "\\(4 < x \\le 8\\)",
+      "\\(4 \\le x < 16\\)"
+    ],
+    "correctAnswer": "D",
+    "answerExplanation": "We need to solve each inequality separately and then find the intersection of their solution sets.<br><b>First inequality:</b><br>\\(x + 6 > 10\\)<br>Subtract 6 from both sides:<br>\\(x > 4\\)<br><br><b>Second inequality:</b><br>\\(x – 3 \\le 5\\)<br>Add 3 to both sides:<br>\\(x \\le 8\\)<br><br>Now, we combine the two results. We need x to be greater than 4 AND less than or equal to 8. This can be written as:<br>\\(4 < x \\le 8\\).",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "David has d books, which is 3 times as many as Jeff and \\(\\frac{1}{2}\\) as many as Paula. How many books do the three of them have altogether, in terms of d?",
+    "options": [
+      "\\(\\frac{5}{6}d\\)",
+      "\\(\\frac{7}{3}d\\)",
+      "\\(\\frac{10}{3}d\\)",
+      "\\(\\frac{7}{2}d\\)",
+      "\\(\\frac{9}{2}d\\)"
+    ],
+    "correctAnswer": "C",
+    "answerExplanation": "Let J be the number of books Jeff has, and P be the number of books Paula has.<br>We are given:<br>1. David's books in terms of Jeff's: \\(d = 3J \\Rightarrow J = \\frac{d}{3}\\)<br>2. David's books in terms of Paula's: \\(d = \\frac{1}{2}P \\Rightarrow P = 2d\\)<br>The total number of books is the sum of the books each person has: Total = David + Jeff + Paula.<br>Total = \\(d + J + P\\)<br>Substitute the expressions for J and P in terms of d:<br>Total = \\(d + \\frac{d}{3} + 2d\\)<br>Combine the terms with d:<br>Total = \\(3d + \\frac{d}{3}\\)<br>Find a common denominator to add them:<br>Total = \\(\\frac{9d}{3} + \\frac{d}{3} = \\frac{10d}{3}\\).",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "There are 8 teams in a certain league and each team plays each of the other teams exactly once. If each game is played by 2 teams, what is the total number of games played?",
+    "options": [
+      "15",
+      "16",
+      "28",
+      "56",
+      "64"
+    ],
+    "correctAnswer": "C",
+    "answerExplanation": "This is a combination problem, as the order of the two teams in a game does not matter (Team A vs. Team B is the same game as Team B vs. Team A).<br>We need to find the number of ways to choose 2 teams from a group of 8.<br>The formula for combinations is \\(\\binom{n}{k} = \\frac{n!}{k!(n-k)!}\\).<br>Here, n = 8 (total teams) and k = 2 (teams per game).<br>Number of games = \\(\\binom{8}{2} = \\frac{8!}{2!(8-2)!} = \\frac{8!}{2!6!} = \\frac{8 \\times 7}{2 \\times 1} = 28\\).<br>Alternatively, each of the 8 teams plays the other 7 teams, which gives \\(8 \\times 7 = 56\\) games. However, this counts each game twice (once for each team), so we must divide by 2: \\(\\frac{56}{2} = 28\\) games.",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "At his regular hourly rate, Don had estimated the labor cost of a repair job as \\$336 and he was paid that amount. However, the job took 4 hours longer than he had estimated and, consequently, he earned \\$2 per hour less than his regular hourly rate. What was the time Don had estimated for the job, in hours?",
+    "options": [
+      "28",
+      "24",
+      "16",
+      "14",
+      "12"
+    ],
+    "correctAnswer": "B",
+    "answerExplanation": "Let t be the estimated time in hours and r be the regular hourly rate in dollars.<br>From the problem statement, we can form two equations:<br>1. Estimated cost: \\(t \\times r = 336\\)<br>2. Actual situation: \\((t+4) \\times (r-2) = 336\\)<br><br>From equation (1), we have \\(r = \\frac{336}{t}\\). Substitute this into equation (2):<br>\\((t+4)(\\frac{336}{t} - 2) = 336\\)<br>\\(336 - 2t + \\frac{1344}{t} - 8 = 336\\)<br>\\(-2t + \\frac{1344}{t} - 8 = 0\\)<br>Multiply by t to clear the denominator:<br>\\(-2t^2 - 8t + 1344 = 0\\)<br>Divide by -2:<br>\\(t^2 + 4t - 672 = 0\\)<br><br>Instead of solving the quadratic equation, we can test the answer choices. Let's test option B:<br>If estimated time \\(t = 24\\) hours:<br>Regular rate \\(r = \\frac{336}{24} = 14\\) dollars/hour.<br>Actual time = \\(24+4=28\\) hours.<br>Actual rate = \\(14-2=12\\) dollars/hour.<br>Check if actual cost is \\$336: \\(28 \\times 12 = 336\\). This matches the condition.<br>Therefore, the estimated time was 24 hours.",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  },
+  {
+    "questionText": "If \\(\\frac{p}{q} < 1\\), and p and q are positive integers, which of the following must be greater than 1?",
+    "options": [
+      "\\(\\sqrt{\\frac{p}{q}}\\)",
+      "\\(\\frac{p}{q^2}\\)",
+      "\\(\\frac{p}{2q}\\)",
+      "\\(\\frac{2p}{q}\\)",
+      "\\(\\frac{q}{p}\\)"
+    ],
+    "correctAnswer": "E",
+    "answerExplanation": "We are given that p and q are positive integers and \\(\\frac{p}{q} < 1\\). Multiplying by q (which is positive) gives \\(p < q\\). We need to find the expression that must be greater than 1.<br><ul><li><b>A. \\(\\sqrt{\\frac{p}{q}}\\):</b> Since \\(\\frac{p}{q} < 1\\), its square root will also be less than 1. For example, if \\(p=1, q=4\\), \\(\\sqrt{1/4} = 1/2 < 1\\).</li><li><b>B. \\(\\frac{p}{q^2}\\):</b> Since \\(p < q\\), we can say \\(\\frac{p}{q^2} < \\frac{q}{q^2} = \\frac{1}{q}\\). Since q is a positive integer, \\(\\frac{1}{q} \\le 1\\). So this expression is not greater than 1.</li><li><b>C. \\(\\frac{p}{2q}\\):</b> Since \\(p < q\\), it is also true that \\(p < 2q\\). Dividing by \\(2q\\) gives \\(\\frac{p}{2q} < 1\\).</li><li><b>D. \\(\\frac{2p}{q}\\):</b> This does not have to be greater than 1. For example, if \\(p=2, q=5\\), then \\(\\frac{p}{q} = \\frac{2}{5} < 1\\), but \\(\\frac{2p}{q} = \\frac{4}{5} < 1\\).</li><li><b>E. \\(\\frac{q}{p}\\):</b> Since p and q are positive and \\(p < q\\), dividing both sides of the inequality by p gives \\(1 < \\frac{q}{p}\\). This expression must be greater than 1.</li></ul>",
+    "difficulty": "hard",
+    "question_type": "Quant",
+    "subsection": null
+  }
+]

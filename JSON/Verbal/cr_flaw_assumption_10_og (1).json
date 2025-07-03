@@ -1,0 +1,137 @@
+[
+  {
+    "questionText": "<br><strong>Ramirez: The film industry claims that pirated DVDs, which are usually cheaper than legitimate DVDs and become available well before a film’s official DVD release date, adversely affect its bottom line. But the industry should note what the spread of piracy indicates: consumers want lower prices and faster DVD releases. Lowering prices of DVDs and releasing them sooner would mitigate piracy’s negative effect on film industry profits.</strong></br>Which of the following does the argument rely on assuming?",
+    "options": [
+      "Releasing legitimate DVDs earlier would not cause any reduction in the revenue the film industry receives from the films’ theatrical release.",
+      "Some people who would otherwise purchase pirated DVDs would be willing to purchase legitimate DVDs if they were less expensive and released earlier than they are now.",
+      "The film industry will in the future be able to produce DVDs more cheaply than is currently the case.",
+      "Some current sellers of pirated DVDs would likely discontinue their businesses if legitimate DVDs were released faster and priced lower.",
+      "Current purchasers of pirated DVDs are aware that those DVDs are not authorized by the film industry."
+    ],
+    "correctAnswer": "B",
+    "answerExplanation": "If none of the people who now buy pirated DVDs would switch to official DVDs even at a lower price or earlier release date, then the suggested measures would not mitigate piracy—so the argument requires that at least some would switch. ",
+    "difficulty": "medium",
+    "question_type": "Verbal",
+    "subsection": "CR"
+  },
+  {
+    "questionText": "<br><strong>Editorial: Our city’s public transportation agency is facing a budget shortfall. The fastest growing part of the budget has been employee retirement benefits, which are exceptionally generous. Unless the budget shortfall is resolved, transportation service will be cut, and many transportation employees will lose their jobs. Thus, it would be in the employees’ best interest for their union to accept cuts in retirement benefits.</strong></br>Which of the following is an assumption of the editorial’s argument?",
+    "options": [
+      "The transportation employees’ union should not accept cuts in retirement benefits if doing so would not be in the employees’ best interest.",
+      "The only feasible way for the agency to resolve the budget shortfall would involve cutting transportation service and eliminating jobs.",
+      "Other things being equal, it is in the transportation employees’ interest to have exceptionally generous retirement benefits.",
+      "Cutting the retirement benefits would help resolve the agency’s budget shortfall.",
+      "The transportation employees’ union will not accept cuts in retirement benefits if doing so will not allow more transportation employees to keep their jobs."
+    ],
+    "correctAnswer": "D",
+    "answerExplanation": "If cuts in retirement benefits would not help close the shortfall, then they would not prevent service cuts or job losses, so the argument assumes that cutting benefits does help resolve the shortfall. ",
+    "difficulty": "medium",
+    "question_type": "Verbal",
+    "subsection": "CR"
+  },
+  {
+    "questionText": "<br><strong>Researchers hope to find clues about the A’mk peoples who lived in the Kaumpta region about one thousand years ago but who left few obvious traces. The researchers plan to hire the few remaining shamans of the modern-day indigenous people in Kaumpta, who are believed to be descended from the A’mk, to lead them to ancestral sites that may be the remains of A’mk buildings or ceremonial spaces. The shamans were taught the location of such sites as part of their traditional training as youths, and their knowledge of traditional Kaumpta customs may help determine the nature of any sites the researchers find.</strong></br>Which of the following is an assumption on which the success of the plan depends?",
+    "options": [
+      "The researchers have reliable evidence that the A’mk of one thousand years ago built important ceremonial spaces.",
+      "The shamans have a reasonably accurate memory of A’mk sites they learned about as youths.",
+      "Kaumpta shamans are generally held in high esteem for their traditional knowledge.",
+      "Modern technologies available to the researchers are likely to be able to find some A’mk sites easily.",
+      "Most or all A’mk sites are likely to be found within the Kaumpta region."
+    ],
+    "correctAnswer": "B",
+    "answerExplanation": "If the shamans do not accurately recall the locations they learned as youths, then hiring them will not lead the researchers to any actual A’mk sites. ",
+    "difficulty": "medium",
+    "question_type": "Verbal",
+    "subsection": "CR"
+  },
+  {
+    "questionText": "<br><strong>Astronomer: Most stars are born in groups of thousands, each star in a group forming from the same parent cloud of gas. Each cloud has a unique, homogeneous chemical composition. Therefore, whenever two stars have the same chemical composition as each other, they must have originated from the same cloud of gas.</strong></br>Which of the following, if true, most strengthens the astronomer’s argument?",
+    "options": [
+      "In some groups of stars, not every star originated from the same parent cloud of gas.",
+      "Clouds of gas of similar or identical chemical composition may be remote from each other.",
+      "Whenever a star forms, it inherits the chemical composition of its parent cloud of gas.",
+      "Many stars in vastly different parts of the universe are quite similar in their chemical compositions.",
+      "Astronomers can at least sometimes precisely determine whether a star has the same chemical composition as its parent cloud of gas."
+    ],
+    "correctAnswer": "C",
+    "answerExplanation": "If every star’s composition precisely matches that of its parent cloud—and each cloud’s composition is unique—then two stars with the same composition must have come from the same cloud. ",
+    "difficulty": "hard",
+    "question_type": "Verbal",
+    "subsection": "CR"
+  },
+  {
+    "questionText": "<br><strong>Economist: In 2015, the average per-person amount paid for goods and services purchased by consumers in Country X was the equivalent of $17,570 in United States dollars, just 30 percent of the corresponding figure of $58,566 for Country Y. Yet in 2015, there was already a substantial middle class in Country X that had discretionary income for middle-class consumer goods such as new vehicles, computers, or major household appliances, while a significant portion of the middle class in Country Y did not have sufficient income to purchase such items.</strong></br>Which of the following, if true, most helps explain this discrepancy?",
+    "options": [
+      "There are many consumer goods, such as household appliances, that are produced in Country X to be sold in the Country Y market.",
+      "The volume of trade between Country X and Country Y is increasing rapidly in both directions.",
+      "The economy of Country Y is recovering from a downturn that affected both Country Y and Country X.",
+      "Country X residents pay much less than their Country Y counterparts for housing, transportation, and child care.",
+      "In Country Y as well as in Country X, there are few assembly-line jobs in factories that pay a middle-class wage."
+    ],
+    "correctAnswer": "D",
+    "answerExplanation": "If nondiscretionary costs (housing, transport, child care) are much lower in Country X, its middle class would have more leftover income for discretionary goods despite lower overall spending. ",
+    "difficulty": "hard",
+    "question_type": "Verbal",
+    "subsection": "CR"
+  },
+  {
+    "questionText": "<br><strong>A company that manufactures plastic products from recyclable plastic is, surprisingly, unconcerned that economic conditions may worsen, despite analysts’ belief that consumers would then consider ecofriendly plastic products an expensive luxury. But the company reasons that it will be able to lower its prices because, in a weakened economy, other ecofriendly plastic manufacturers are likely to fail. Demand among manufacturers for recyclable plastics as raw materials would then plummet, creating an oversupply of such materials, making them less expensive for the manufacturer to purchase and thus lowering the company’s costs.</strong></br>Which of the following, if true, most weakens the company’s reasoning?",
+    "options": [
+      "Smaller ecofriendly plastic manufacturers are more likely to fail in a weakened economy than larger ecofriendly manufacturers are.",
+      "Some retailers whose sales include various companies’ ecofriendly plastic products have struggled in recent years despite the overall good economy.",
+      "Consumers would likely soon learn of the oversupply of recyclable plastics and cease recycling them, significantly raising manufacturers’ raw-material costs.",
+      "Retailers, including retailers that cater to consumers seeking certain types of ecofriendly products, may lose some business if economic conditions worsen.",
+      "The plastics used by the company in its products were, after a recent investigation by a regulatory body, declared to be safe for consumers."
+    ],
+    "correctAnswer": "C",
+    "answerExplanation": "If consumers stop recycling due to awareness of oversupply, the raw-material supply could shrink or become costlier, undermining the company’s cost-reduction expectation. ",
+    "difficulty": "medium",
+    "question_type": "Verbal",
+    "subsection": "CR"
+  },
+  {
+    "questionText": "<br><strong>Airline representative: The percentage of flight delays caused by airline error decreased significantly this year. This indicates that airlines listened to complaints about preventable errors and addressed the problems. Although delays caused by weather and other uncontrollable factors will always be part of travel, preventable delays are clearly decreasing.</strong></br>Which of the following most clearly points to a logical flaw in the representative’s reasoning?",
+    "options": [
+      "Airlines may be motivated by financial concerns to underreport the percentage of flight delays caused by airline error.",
+      "The delays caused by uncontrollable factors could have led to an increase in complaints to airlines.",
+      "Complaints may not be the most reliable measure of how many errors occurred in a given year.",
+      "Delays caused by weather and other uncontrollable factors could have increased dramatically during the year under discussion.",
+      "Airline customers might not believe that particular delays were caused by uncontrollable factors rather than airline error."
+    ],
+    "correctAnswer": "D",
+    "answerExplanation": "A rise in weather-related or other non-airline-error delays could lower the airline-error percentage even if the absolute number of airline-error delays stayed the same—so the decrease need not reflect improved performance. ",
+    "difficulty": "medium",
+    "question_type": "Verbal",
+    "subsection": "CR"
+  },
+  {
+    "questionText": "<br><strong>Editorial: The roof of Northtown’s municipal equipment-storage building collapsed under the weight of last week’s heavy snowfall. The building was constructed recently and met local building-safety codes in every particular, except that the nails used for attaching roof supports to the building’s columns were of a smaller size than the codes specify for this purpose. Clearly, this collapse exemplifies how even a single, apparently insignificant departure from safety standards can have severe consequences.</strong></br>Which of the following, if true, most seriously weakens the editorial’s argument?",
+    "options": [
+      "The only other buildings to suffer roof collapses from the weight of the snowfall were older buildings constructed according to less exacting standards than those in the codes.",
+      "The amount of snow that accumulated on the roof of the equipment-storage building was greater than the predicted maximum that was used in drawing up the safety codes.",
+      "Because the equipment-storage building was not intended for human occupation, some safety-code provisions that would have applied to an office building did not apply to it.",
+      "The municipality of Northtown itself has the responsibility for ensuring that buildings constructed within its boundaries meet the provisions of the building-safety codes.",
+      "Because the equipment-storage building was used for storing snow-removal equipment, the building was almost completely empty when the roof collapsed."
+    ],
+    "correctAnswer": "B",
+    "answerExplanation": "If the snowfall exceeded the design load specified by the codes, the collapse could have occurred even if all code requirements (including nail size) had been met—so the nail-size departure need not have caused the collapse. ",
+    "difficulty": "medium",
+    "question_type": "Verbal",
+    "subsection": "CR"
+  },
+  {
+    "questionText": "<br><strong>To reduce waste of raw materials, the government of Sperland is considering requiring household appliances to be broken down for salvage when discarded. To cover the cost of salvage, the government is planning to charge a fee, which would be imposed when the appliance is first sold. Imposing the fee at the time of salvage would reduce waste more effectively, however, because consumers tend to keep old appliances longer if they are faced with a fee for discarding them.</strong></br>Which of the following, if true, most seriously weakens the argument?",
+    "options": [
+      "Increasing the cost of disposing of an appliance properly increases the incentive to dispose of it improperly.",
+      "The fee provides manufacturers with no incentive to produce appliances that are more durable.",
+      "For people who have bought new appliances recently, the salvage fee would not need to be paid for a number of years.",
+      "People who sell their used, working appliances to others would not need to pay the salvage fee.",
+      "Many nonfunctioning appliances that are currently discarded could be repaired at relatively little expense."
+    ],
+    "correctAnswer": "A",
+    "answerExplanation": "If higher disposal costs encourage consumers to dump appliances illegally rather than salvage them, charging the fee at salvage time could actually increase waste. ",
+    "difficulty": "hard",
+    "question_type": "Verbal",
+    "subsection": "CR"
+  }
+]

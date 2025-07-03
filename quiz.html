@@ -1,0 +1,1443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GMAT Quiz</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- MathJax Configuration -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          displayMath: [['$$', '$$'], ['\\[', '\\]']]
+        },
+        svg: {
+          fontCache: 'global'
+        },
+        options: {
+                  startup: {
+                      ready: () => {
+                          MathJax.startup.defaultReady();
+                      }
+                  }
+        }
+      };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* * === CSS Variables for Theming === */
+        :root {
+            --bg-color: #05050A;
+            --text-color: #E4E4E7;
+            --text-color-muted: #A1A1AA;
+            --text-gradient-from: #E5E7EB;
+            --text-gradient-to: #9CA3AF;
+            --glass-bg: rgba(20, 20, 25, 0.4);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --glass-shadow: 0 16px 48px rgba(0, 0, 0, 0.2);
+            --cta-bg: rgba(30, 30, 35, 0.5);
+            --cta-bg-hover: rgba(45, 45, 50, 0.7);
+            --cta-border: rgba(255, 255, 255, 0.1);
+            --input-bg: rgba(255, 255, 255, 0.05);
+            --gradient-1: hsla(215, 80%, 50%, 0.3);
+            --gradient-2: hsla(280, 70%, 55%, 0.3);
+            --gradient-3: hsla(180, 60%, 50%, 0.2);
+            --correct-bg: rgba(46, 204, 113, 0.15);
+            --correct-border: rgba(46, 204, 113, 0.4);
+            --incorrect-bg: rgba(231, 76, 60, 0.15);
+            --incorrect-border: rgba(231, 76, 60, 0.4);
+            --selected-bg: rgba(52, 152, 219, 0.2);
+            --selected-border: rgba(52, 152, 219, 0.5);
+        }
+
+        .light-mode {
+            --bg-color: #F4F4F5;
+            --text-color: #18181B;
+            --text-color-muted: #52525B;
+            --text-gradient-from: #18181B;
+            --text-gradient-to: #3F3F46;
+            --glass-bg: rgba(255, 255, 255, 0.6);
+            --glass-border: rgba(0, 0, 0, 0.1);
+            --glass-shadow: 0 16px 48px rgba(0, 0, 0, 0.1);
+            --cta-bg: rgba(250, 250, 250, 0.7);
+            --cta-bg-hover: rgba(255, 255, 255, 0.9);
+            --cta-border: rgba(0, 0, 0, 0.1);
+            --input-bg: rgba(0, 0, 0, 0.05);
+            --gradient-1: hsla(215, 90%, 60%, 0.4);
+            --gradient-2: hsla(280, 80%, 65%, 0.4);
+            --gradient-3: hsla(180, 70%, 60%, 0.35);
+            --correct-bg: rgba(46, 204, 113, 0.2);
+            --correct-border: rgba(46, 204, 113, 0.6);
+            --incorrect-bg: rgba(231, 76, 60, 0.2);
+            --incorrect-border: rgba(231, 76, 60, 0.6);
+            --selected-bg: rgba(52, 152, 219, 0.25);
+            --selected-border: rgba(52, 152, 219, 0.7);
+        }
+
+        /* * === Base Styles & Animated Background === */
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+            transition: background-color 0.5s ease, color 0.5s ease;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: -10%; left: -10%; right: -10%; bottom: -10%;
+            z-index: -1;
+            background: 
+                radial-gradient(circle at 20% 30%, var(--gradient-1) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, var(--gradient-2) 0%, transparent 40%),
+                radial-gradient(circle at 50% 50%, var(--gradient-3) 0%, transparent 35%);
+            background-size: 150% 150%;
+            animation: moveGradient 25s ease-in-out infinite;
+            transition: background 0.5s ease;
+        }
+
+        @keyframes moveGradient {
+            0% { background-position: 0% 50%; transform: scale(1); }
+            25% { transform: scale(1.1) rotate(2deg); }
+            50% { background-position: 100% 50%; transform: scale(1); }
+            75% { transform: scale(0.9) rotate(-2deg); }
+            100% { background-position: 0% 50%; transform: scale(1); }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px) scale(0.98); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        /* * === UI Components === */
+        .glass-card {
+            position: relative; /* For positioning children */
+            background: var(--glass-bg);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--glass-shadow);
+            animation: fadeIn 1.5s ease-out;
+            transition: filter 0.3s ease-in-out;
+        }
+
+        .heading-gradient {
+            background-image: linear-gradient(to right, var(--text-gradient-from), var(--text-gradient-to));
+        }
+
+        .muted-text { color: var(--text-color-muted); }
+
+        .cta-link {
+            background: var(--cta-bg);
+            border: 1px solid var(--cta-border);
+            color: var(--text-color);
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+        .cta-link:hover:not(:disabled) {
+            background: var(--cta-bg-hover);
+            transform: translateY(-2px);
+        }
+        .cta-link:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        a.cta-link:hover svg { transform: translateX(-4px); }
+
+        .icon-button {
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; background: var(--glass-bg);
+            border: 1px solid var(--glass-border); border-radius: 50%;
+            transition: transform 0.3s ease, background 0.5s ease;
+        }
+        .icon-button:hover { transform: scale(1.1); }
+        .icon-button svg { color: var(--text-color); }
+        
+        .theme-toggle { position: fixed; top: 20px; right: 20px; z-index: 100; width: 50px; height: 50px; }
+        .theme-toggle svg { width: 24px; height: 24px; }
+        
+        .fullscreen-toggle { position: fixed; top: 20px; right: 80px; z-index: 100; width: 50px; height: 50px; }
+        .fullscreen-toggle svg { width: 22px; height: 22px; }
+
+        .back-to-performance-btn {
+            position: absolute;
+            top: 1.5rem;
+            left: 1.5rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            background: var(--cta-bg);
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.875rem;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+        .back-to-performance-btn:hover {
+            background: var(--cta-bg-hover);
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .back-to-performance-btn svg {
+            transition: transform 0.3s ease;
+        }
+        .back-to-performance-btn:hover svg {
+            transform: translateX(-4px);
+        }
+
+        /* * === Quiz Specific Styles === */
+        .quiz-container.with-rc-passage {
+            max-width: 1200px;
+        }
+        
+        /* Responsive adjustments for RC passages */
+        @media (max-width: 1023px) {
+            .rc-passage-display {
+                max-height: 300px;
+                margin-right: 0;
+                margin-bottom: 1rem;
+            }
+            .accessibility-controls {
+                top: 0.5rem;
+                right: 0.5rem;
+            }
+            .accessibility-btn {
+                width: 28px;
+                height: 28px;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .quiz-container.with-rc-passage #question-display-area {
+                padding-left: 1rem;
+            }
+        }
+        .progress-bar-bg {
+            background: var(--input-bg);
+        }
+        .progress-bar {
+            background: var(--text-gradient-from);
+            transition: width 0.4s ease-in-out;
+        }
+        #timer.low-time {
+            color: #FF453A;
+            animation: pulse 1s infinite alternate;
+        }
+        @keyframes pulse {
+            from { transform: scale(1); }
+            to { transform: scale(1.05); }
+        }
+        
+        .option-list li {
+            background: var(--input-bg);
+            border: 1px solid var(--glass-border);
+            transition: background-color 0.2s ease, border-color 0.2s ease;
+        }
+        .option-list li:hover {
+            background: var(--cta-bg);
+        }
+        .option-list li.selected {
+            background-color: var(--selected-bg);
+            border-color: var(--selected-border);
+        }
+        .option-list li.correct {
+            background-color: var(--correct-bg);
+            border-color: var(--correct-border);
+        }
+        .option-list li.incorrect {
+            background-color: var(--incorrect-bg);
+            border-color: var(--incorrect-border);
+        }
+        .option-list li.disabled {
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+        .rc-passage-display {
+            background: var(--input-bg);
+            border: 1px solid var(--glass-border);
+            max-height: 500px;
+            overflow-y: auto;
+            overflow-x: hidden;
+            padding: 1.5rem;
+            margin-right: 1rem;
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            position: relative;
+        }
+        
+        /* Glass Morphic Scrollbar for RC Passage */
+        .rc-passage-display::-webkit-scrollbar {
+            width: 8px;
+        }
+        .rc-passage-display::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            margin: 5px;
+        }
+        .rc-passage-display::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, 
+                rgba(255, 255, 255, 0.2) 0%, 
+                rgba(255, 255, 255, 0.1) 50%, 
+                rgba(255, 255, 255, 0.05) 100%);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        .rc-passage-display::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, 
+                rgba(255, 255, 255, 0.3) 0%, 
+                rgba(255, 255, 255, 0.2) 50%, 
+                rgba(255, 255, 255, 0.1) 100%);
+        }
+        
+        /* Light mode scrollbar adjustments */
+        .light-mode .rc-passage-display::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.05);
+        }
+        .light-mode .rc-passage-display::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, 
+                rgba(0, 0, 0, 0.15) 0%, 
+                rgba(0, 0, 0, 0.1) 50%, 
+                rgba(0, 0, 0, 0.05) 100%);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        .light-mode .rc-passage-display::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, 
+                rgba(0, 0, 0, 0.25) 0%, 
+                rgba(0, 0, 0, 0.15) 50%, 
+                rgba(0, 0, 0, 0.1) 100%);
+        }
+        
+        /* RC Passage Content Styling */
+        .rc-passage-display h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+            border-bottom: 1px solid var(--glass-border);
+            padding-bottom: 0.5rem;
+        }
+        .rc-passage-display p {
+            line-height: 1.7;
+            font-size: var(--rc-font-size, 0.95rem);
+            color: var(--text-color);
+            text-align: justify;
+            margin-bottom: 1rem;
+            transition: font-size 0.3s ease;
+        }
+        
+        /* Accessibility Controls for RC Passage */
+        .accessibility-controls {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            display: flex;
+            gap: 0.5rem;
+            z-index: 10;
+        }
+        .accessibility-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            background: var(--cta-bg);
+            border: 1px solid var(--cta-border);
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        .accessibility-btn:hover {
+            background: var(--cta-bg-hover);
+            transform: scale(1.05);
+        }
+        .accessibility-btn svg {
+            width: 16px;
+            height: 16px;
+            color: var(--text-color);
+        }
+        .accessibility-btn span {
+            color: var(--text-color);
+            font-family: inherit;
+        }
+        .accessibility-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        /* Font size variables for different sizes */
+        .rc-passage-display.font-xs p { font-size: 0.8rem; }
+        .rc-passage-display.font-sm p { font-size: 0.875rem; }
+        .rc-passage-display.font-md p { font-size: 0.95rem; }
+        .rc-passage-display.font-lg p { font-size: 1.1rem; }
+        .rc-passage-display.font-xl p { font-size: 1.25rem; }
+        
+        #pause-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            background-color: rgba(0, 0, 0, 0.3); 
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        #pause-overlay.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .pause-modal {
+            transform: scale(0.95);
+            transition: transform 0.3s ease;
+        }
+
+        #pause-overlay.visible .pause-modal {
+            transform: scale(1);
+        }
+        
+        /* * === Table Styles === */
+        #question-text table {
+            width: 100%;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            border-collapse: collapse;
+            background: var(--input-bg);
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--glass-border);
+        }
+        #question-text th, #question-text td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--glass-border);
+        }
+        #question-text thead th {
+            background: var(--cta-bg);
+            font-weight: 600;
+            color: var(--text-color);
+        }
+        #question-text tbody tr:last-child td {
+            border-bottom: none;
+        }
+        #question-text tbody tr:hover {
+            background-color: var(--cta-bg-hover);
+        }
+
+        /* Styles for Detailed Results View */
+        #detailed-results-view {
+            margin-top: 2rem;
+            text-align: left;
+        }
+        .result-item {
+            background: var(--input-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 0.75rem;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+        .result-item.correct { border-left: 4px solid var(--correct-border); }
+        .result-item.incorrect { border-left: 4px solid var(--incorrect-border); }
+        .result-item.unattempted { border-left: 4px solid var(--selected-border); }
+
+        /* Styles for Explanation Section in Review Mode */
+        .explanation-container {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background-color: rgba(255, 255, 255, 0.03);
+            border-top: 1px solid var(--glass-border);
+            border-radius: 0 0 0.75rem 0.75rem;
+        }
+        .official-explanation {
+            margin-bottom: 1rem;
+            padding: 0.75rem;
+            background: rgba(46, 204, 113, 0.1);
+            border-left: 3px solid var(--correct-border);
+            border-radius: 0.25rem;
+        }
+        .user-explanation-section {
+            padding-top: 1rem;
+            border-top: 1px dashed var(--glass-border);
+        }
+        .user-explanation-section h4 {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        .explanation-input {
+            width: 100%;
+            min-height: 80px;
+            padding: 10px;
+            border: 1px solid var(--cta-border);
+            border-radius: 6px;
+            background-color: var(--glass-bg);
+            color: var(--text-color);
+            font-family: inherit;
+            font-size: 14px;
+            resize: vertical;
+            transition: border-color 0.3s ease;
+        }
+        .explanation-input:focus {
+            outline: none;
+            border-color: var(--selected-border);
+        }
+        .explanation-preview {
+            width: 100%;
+            min-height: 80px;
+            padding: 10px;
+            border: 1px solid transparent;
+            border-radius: 6px;
+            background-color: transparent;
+            color: var(--text-color-muted);
+            font-size: 14px;
+            line-height: 1.5;
+            white-space: pre-wrap;
+        }
+        .explanation-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .explanation-btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        .explanation-btn.save { background-color: var(--selected-border); color: var(--text-color); }
+        .explanation-btn.edit { background-color: rgba(245, 158, 11, 0.4); color: var(--text-color); }
+        .explanation-btn.delete { background-color: rgba(239, 68, 68, 0.4); color: var(--text-color); }
+        .explanation-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+        .explanation-status {
+            font-size: 12px;
+            margin-top: 5px;
+            padding: 5px;
+            border-radius: 4px;
+            transition: opacity 0.3s ease;
+        }
+        .explanation-status.success { color: #2ecc71; }
+        .explanation-status.error { color: #e74c3c; }
+
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen p-4">
+
+    <!-- Theme Toggle Button -->
+    <button id="theme-toggle" class="icon-button theme-toggle" aria-label="Toggle theme">
+        <svg id="theme-icon-sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hidden"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+        <svg id="theme-icon-moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+    </button>
+    
+    <!-- Fullscreen Toggle Button -->
+    <button id="fullscreen-toggle" class="icon-button fullscreen-toggle" aria-label="Toggle fullscreen">
+        <svg id="icon-expand" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21 21-6-6m6 6v-4m0 4h-4"/><path d="M3 3l6 6m-6-6v4m0-4h4"/></svg>
+        <svg id="icon-shrink" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hidden"><path d="M15 15l6 6m-6-6v4m0-4h4"/><path d="M9 9l-6-6m6 6v-4m0 4H5"/></svg>
+    </button>
+
+    <div id="loading-message" class="text-2xl muted-text">Initializing Quiz...</div>
+
+    <main id="quiz-container" class="glass-card quiz-container rounded-3xl p-6 md:p-10 w-full max-w-3xl" style="display: none;">
+        
+        <div id="quiz-content">
+            <!-- Quiz Header -->
+            <div id="quiz-header" class="flex flex-wrap justify-between items-center gap-4 mb-4">
+                <h1 id="quiz-title" class="heading-gradient text-3xl font-extrabold text-transparent bg-clip-text">Quiz in Progress</h1>
+                <div id="timer-container" class="flex items-center gap-4 p-2 rounded-full cta-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-sky-400"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                    <span id="timer-label" class="font-semibold">Time Left:</span>
+                    <span id="timer" class="font-bold text-lg">00:00</span>
+                    <button id="pause-btn" title="Pause Quiz" class="icon-button w-8 h-8">
+                        <svg id="pause-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>
+                    </button>
+                </div>
+            </div>
+            <div class="flex justify-between muted-text text-sm mb-6">
+                <span id="question-section">Section: N/A</span>
+                <span id="difficulty">Difficulty: N/A</span>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="progress-bar-bg w-full h-2.5 rounded-full mb-6">
+                <div id="progress-bar" class="progress-bar h-2.5 rounded-full" style="width: 0%"></div>
+            </div>
+
+            <!-- Quiz Area -->
+            <div id="quiz-area">
+                <div class="flex flex-col lg:flex-row gap-8">
+                    <!-- RC Passage (conditionally shown) -->
+                    <div id="rc-passage-display" class="rc-passage-display lg:w-1/2 rounded-xl font-md" style="display: none;">
+                        <div class="accessibility-controls">
+                            <button id="decrease-font-btn" class="accessibility-btn" title="Decrease font size (A-)" aria-label="Decrease RC passage font size">
+                                <span style="font-size: 12px; font-weight: bold;">A⁻</span>
+                            </button>
+                            <button id="increase-font-btn" class="accessibility-btn" title="Increase font size (A+)" aria-label="Increase RC passage font size">
+                                <span style="font-size: 14px; font-weight: bold;">A⁺</span>
+                            </button>
+                            <button id="reset-font-btn" class="accessibility-btn" title="Reset font size" aria-label="Reset RC passage font size to default">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/>
+                                    <path d="M21 3v5h-5"/>
+                                    <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/>
+                                    <path d="M8 16H3v5"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <h3 id="rc-passage-title" class="font-bold text-lg mb-3"></h3>
+                        <div id="rc-passage-text" class="text-sm leading-relaxed"></div>
+                    </div>
+                    <!-- Question Area -->
+                    <div id="question-display-area" class="w-full lg:flex-1">
+                        <h2 class="font-bold text-xl mb-4">Question <span id="question-number"></span>/<span id="total-questions-display"></span></h2>
+                        <div id="question-text" class="mb-6 text-lg"></div>
+                        <ul id="options-list" class="space-y-3 option-list"></ul>
+                        <div id="feedback" class="mt-4 font-bold text-center min-h-[1.5em]"></div>
+                    </div>
+                </div>
+
+                <!-- Navigation -->
+                <div class="flex justify-between mt-8">
+                    <button id="prev-btn" class="cta-link px-6 py-3 rounded-lg font-semibold">Previous</button>
+                    <button id="next-btn" class="cta-link px-6 py-3 rounded-lg font-semibold">Next</button>
+                    <button id="submit-quiz-btn" class="cta-link px-6 py-3 rounded-lg font-semibold bg-green-500/50 hover:bg-green-500/70" style="display: none;">Submit Quiz</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Finish Page -->
+        <div id="finish-page" style="display: none;" class="text-center">
+            <h2 class="heading-gradient text-4xl font-extrabold text-transparent bg-clip-text mb-4">Quiz Finished!</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-8">
+                <div class="cta-link rounded-lg p-4">
+                    <p class="text-sm muted-text">Final Score</p>
+                    <p id="final-score" class="text-2xl font-bold"></p>
+                </div>
+                <div class="cta-link rounded-lg p-4">
+                    <p class="text-sm muted-text">Time Taken</p>
+                    <p id="time-taken" class="text-2xl font-bold"></p>
+                </div>
+                <div class="cta-link rounded-lg p-4">
+                    <p class="text-sm muted-text">Correct</p>
+                    <p id="correct-answers" class="text-2xl font-bold"></p>
+                </div>
+                <div class="cta-link rounded-lg p-4">
+                    <p class="text-sm muted-text">Incorrect</p>
+                    <p id="incorrect-answers" class="text-2xl font-bold"></p>
+                </div>
+                <div class="cta-link rounded-lg p-4 md:col-start-2">
+                    <p class="text-sm muted-text">Unattempted</p>
+                    <p id="unattempted-answers" class="text-2xl font-bold"></p>
+                </div>
+            </div>
+            <div class="flex justify-center gap-4 mt-8 flex-wrap">
+                <a href="performance.html" class="cta-link px-6 py-3 rounded-lg font-semibold">View Dashboard</a>
+                <button onclick="restartQuiz()" class="cta-link px-6 py-3 rounded-lg font-semibold">Restart Quiz</button>
+                <button id="view-details-btn" class="cta-link px-6 py-3 rounded-lg font-semibold">View Detailed Results</button>
+            </div>
+            <div id="detailed-results-view" class="hidden mt-8">
+                <!-- Detailed results will be injected here by JS -->
+            </div>
+        </div>
+    </main>
+    
+    <div id="pause-overlay">
+        <div class="pause-modal glass-card rounded-2xl p-8">
+            <h2 class="text-2xl font-bold mb-2">Quiz Paused</h2>
+            <p class="muted-text mb-6">Your progress is saved. Take a break!</p>
+            <button id="resume-btn" class="cta-link inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                Resume Quiz
+            </button>
+        </div>
+    </div>
+
+
+    <script>
+        const API_BASE_URL = 'http://127.0.0.1:8000/api';
+        let questions = [], currentQuestionIndex = 0, score = 0, timerInterval, timeRemaining, quizTimeLimitSeconds, startTime, userAnswers = [], detailedQuizResults = [], currentQuizId = null, timeSpentOnQuestion = [], currentQuestionViewStartTime, isReviewMode = false, reviewData = null, isPaused = false, totalPausedTime = 0, pauseStartTime = null;
+
+        const loadingMessageEl = document.getElementById('loading-message');
+        const quizContainerEl = document.getElementById('quiz-container');
+        const quizContentEl = document.getElementById('quiz-content');
+        const finishPageEl = document.getElementById('finish-page');
+        const quizAreaEl = document.getElementById('quiz-area');
+        const rcPassageDisplayEl = document.getElementById('rc-passage-display');
+        const rcPassageTitleEl = document.getElementById('rc-passage-title');
+        const rcPassageTextEl = document.getElementById('rc-passage-text');
+        const questionDisplayArea = document.getElementById('question-display-area');
+        const questionNumberEl = document.getElementById('question-number');
+        const totalQuestionsDisplayEl = document.getElementById('total-questions-display');
+        const questionTextEl = document.getElementById('question-text');
+        const optionsListEl = document.getElementById('options-list');
+        const feedbackEl = document.getElementById('feedback');
+        const timerEl = document.getElementById('timer');
+        const timerLabelEl = document.getElementById('timer-label');
+        const timerContainerEl = document.getElementById('timer-container');
+        const difficultyEl = document.getElementById('difficulty');
+        const questionSectionEl = document.getElementById('question-section');
+        const progressBarEl = document.getElementById('progress-bar');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const submitQuizBtn = document.getElementById('submit-quiz-btn');
+        const finalScoreEl = document.getElementById('final-score');
+        const timeTakenEl = document.getElementById('time-taken');
+        const correctAnswersEl = document.getElementById('correct-answers');
+        const incorrectAnswersEl = document.getElementById('incorrect-answers');
+        const unattemptedAnswersEl = document.getElementById('unattempted-answers');
+        const pauseBtn = document.getElementById('pause-btn');
+        const resumeBtn = document.getElementById('resume-btn');
+        const pauseOverlay = document.getElementById('pause-overlay');
+        const viewDetailsBtn = document.getElementById('view-details-btn');
+        const detailedResultsViewEl = document.getElementById('detailed-results-view');
+        
+        // Accessibility controls
+        const decreaseFontBtn = document.getElementById('decrease-font-btn');
+        const increaseFontBtn = document.getElementById('increase-font-btn');
+        const resetFontBtn = document.getElementById('reset-font-btn');
+
+        // --- Theme & Fullscreen Logic ---
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const sunIcon = document.getElementById('theme-icon-sun');
+        const moonIcon = document.getElementById('theme-icon-moon');
+        const fullscreenToggleBtn = document.getElementById('fullscreen-toggle');
+        const expandIcon = document.getElementById('icon-expand');
+        const shrinkIcon = document.getElementById('icon-shrink');
+
+        const applyTheme = (theme) => {
+            document.body.classList.toggle('light-mode', theme === 'light');
+            sunIcon.classList.toggle('hidden', theme !== 'light');
+            moonIcon.classList.toggle('hidden', theme === 'light');
+        };
+
+        let currentTheme = localStorage.getItem('theme') || 'dark';
+        applyTheme(currentTheme);
+
+        themeToggleBtn.addEventListener('click', () => {
+            currentTheme = document.body.classList.contains('light-mode') ? 'dark' : 'light';
+            localStorage.setItem('theme', currentTheme);
+            applyTheme(currentTheme);
+        });
+
+        const toggleFullscreenState = () => {
+            const isFullscreen = !!document.fullscreenElement;
+            expandIcon.classList.toggle('hidden', isFullscreen);
+            shrinkIcon.classList.toggle('hidden', !isFullscreen);
+        };
+
+        fullscreenToggleBtn.addEventListener('click', () => {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen().catch(err => console.error(`Fullscreen error: ${err.message}`));
+            } else {
+                if (document.exitFullscreen) document.exitFullscreen();
+            }
+        });
+        document.addEventListener('fullscreenchange', toggleFullscreenState);
+        toggleFullscreenState();
+        
+        // --- RC Passage Font Size Management ---
+        const fontSizes = ['font-xs', 'font-sm', 'font-md', 'font-lg', 'font-xl'];
+        let currentFontSizeIndex = 2; // Default to 'font-md'
+        
+        // Load saved font size preference
+        const savedFontSize = localStorage.getItem('rcPassageFontSize');
+        if (savedFontSize) {
+            const savedIndex = fontSizes.indexOf(savedFontSize);
+            if (savedIndex !== -1) {
+                currentFontSizeIndex = savedIndex;
+            }
+        }
+        
+        function updateFontSize() {
+            // Remove all font size classes
+            fontSizes.forEach(size => rcPassageDisplayEl.classList.remove(size));
+            // Add current font size class
+            rcPassageDisplayEl.classList.add(fontSizes[currentFontSizeIndex]);
+            
+            // Update button states
+            decreaseFontBtn.disabled = currentFontSizeIndex === 0;
+            increaseFontBtn.disabled = currentFontSizeIndex === fontSizes.length - 1;
+            
+            // Save preference
+            localStorage.setItem('rcPassageFontSize', fontSizes[currentFontSizeIndex]);
+        }
+        
+        function decreaseFontSize() {
+            if (currentFontSizeIndex > 0) {
+                currentFontSizeIndex--;
+                updateFontSize();
+            }
+        }
+        
+        function increaseFontSize() {
+            if (currentFontSizeIndex < fontSizes.length - 1) {
+                currentFontSizeIndex++;
+                updateFontSize();
+            }
+        }
+        
+        function resetFontSize() {
+            currentFontSizeIndex = 2; // Reset to 'font-md'
+            updateFontSize();
+        }
+        
+        // Initialize font size
+        updateFontSize();
+        
+        // Event listeners for font size controls
+        decreaseFontBtn.addEventListener('click', decreaseFontSize);
+        increaseFontBtn.addEventListener('click', increaseFontSize);
+        resetFontBtn.addEventListener('click', resetFontSize);
+        
+        // Function to format RC passage text with proper paragraph breaks
+        function formatRCPassageText(passageText) {
+            if (!passageText) return '';
+            
+            // Normalize line breaks and remove excessive whitespace
+            let formatted = passageText.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
+            
+            // Split on double line breaks first (most common paragraph separator)
+            let paragraphs = formatted.split(/\n\s*\n/);
+            
+            // If no double line breaks found, try other natural break points
+            if (paragraphs.length === 1) {
+                // Look for sentences that end with periods followed by capital letters
+                // This helps break long single paragraphs at natural sentence boundaries
+                formatted = formatted.replace(/\.\s+([A-Z][^.]*)/g, '.\n\n$1');
+                paragraphs = formatted.split(/\n\s*\n/);
+            }
+            
+            // Clean up and format each paragraph
+            return paragraphs
+                .map(paragraph => {
+                    // Clean up the paragraph text
+                    const cleaned = paragraph
+                        .replace(/\n+/g, ' ')  // Replace single line breaks with spaces
+                        .replace(/\s+/g, ' ')   // Normalize multiple spaces
+                        .trim();
+                    
+                    // Only return non-empty paragraphs
+                    return cleaned.length > 0 ? `<p>${cleaned}</p>` : '';
+                })
+                .filter(p => p.length > 0)  // Remove empty paragraphs
+                .join('');
+        }
+        
+        function formatTimeMMSS(totalSeconds) {
+            if (isNaN(totalSeconds) || totalSeconds < 0) return '00:00';
+            const minutes = Math.floor(totalSeconds / 60);
+            const seconds = totalSeconds % 60;
+            return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+        }
+        
+        async function startQuiz() {
+            const urlParams = new URLSearchParams(window.location.search);
+            currentQuizId = urlParams.get('quiz_id');
+            if (!currentQuizId) {
+                loadingMessageEl.textContent = "Error: No Quiz ID specified.";
+                return;
+            }
+            loadingMessageEl.style.display = 'block';
+            quizContainerEl.style.display = 'none';
+            try {
+                const quizDetailsRes = await fetch(`${API_BASE_URL}/quizzes/${currentQuizId}`);
+                const quizDetails = await quizDetailsRes.json();
+                quizTimeLimitSeconds = quizDetails.time_limit_minutes * 60;
+                timeRemaining = quizTimeLimitSeconds;
+
+                const questionsRes = await fetch(`${API_BASE_URL}/quizzes/${currentQuizId}/questions/`);
+                questions = await questionsRes.json();
+                if (questions.length === 0) {
+                    loadingMessageEl.textContent = "This quiz has no questions.";
+                    return;
+                }
+                
+                userAnswers = new Array(questions.length).fill(null);
+                timeSpentOnQuestion = new Array(questions.length).fill(0);
+                startTime = Date.now();
+                totalPausedTime = 0;
+                
+                loadingMessageEl.style.display = 'none';
+                quizContainerEl.style.display = 'block';
+                document.getElementById('quiz-title').textContent = quizDetails.name;
+                
+                renderQuestion();
+                startTimer();
+            } catch (error) {
+                loadingMessageEl.textContent = "Failed to load quiz.";
+                console.error("Error loading quiz:", error);
+            }
+        }
+
+        async function startQuizReview() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const recordId = urlParams.get('recordId');
+            if (!recordId) {
+                loadingMessageEl.textContent = "Error: No record ID for review.";
+                return;
+            }
+            isReviewMode = true;
+            loadingMessageEl.style.display = 'block';
+            quizContainerEl.style.display = 'none';
+            try {
+                // Fetch basic record data
+                const recordRes = await fetch(`${API_BASE_URL}/performance/${recordId}`);
+                if (!recordRes.ok) throw new Error(`Failed to fetch quiz record: ${recordRes.status}`);
+                reviewData = await recordRes.json();
+                
+                // Fetch detailed review data which includes explanations
+                const detailedReviewRes = await fetch(`${API_BASE_URL}/performance/${recordId}/detailed-review`);
+                if (!detailedReviewRes.ok) throw new Error(`Failed to fetch detailed review: ${detailedReviewRes.status}`);
+                const detailedReviewData = await detailedReviewRes.json();
+                reviewData.detailedResults = detailedReviewData; // Overwrite with more detailed data
+
+                const quizDetailsRes = await fetch(`${API_BASE_URL}/quizzes/${reviewData.quizId}`);
+                const quizDetails = await quizDetailsRes.json();
+
+                const questionsRes = await fetch(`${API_BASE_URL}/quizzes/${reviewData.quizId}/questions/`);
+                questions = await questionsRes.json();
+
+                userAnswers = new Array(questions.length).fill(null);
+                questions.forEach((q, index) => {
+                    const result = reviewData.detailedResults.find(r => r.questionId === q.id);
+                    if (result) {
+                        userAnswers[index] = result.userAnswer;
+                    }
+                });
+
+                loadingMessageEl.style.display = 'none';
+                quizContainerEl.style.display = 'block';
+                document.getElementById('quiz-title').textContent = `Review: ${quizDetails.name}`;
+                timerContainerEl.style.display = 'none';
+                
+                addReviewModeIndicator();
+                renderQuestion();
+
+            } catch (error) {
+                loadingMessageEl.textContent = "Failed to load review.";
+                console.error("Error loading review:", error);
+            }
+        }
+
+        function addReviewModeIndicator() {
+            const backButton = document.createElement('a');
+            backButton.href = 'performance.html';
+            backButton.className = 'back-to-performance-btn';
+            backButton.innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+                <span>Dashboard</span>
+            `;
+            if (!quizContainerEl.querySelector('.back-to-performance-btn')) {
+                quizContainerEl.insertBefore(backButton, quizContainerEl.firstChild);
+            }
+
+            const reviewIndicator = document.createElement('div');
+            reviewIndicator.id = 'review-mode-indicator';
+            reviewIndicator.innerHTML = `
+                <div class="bg-blue-900/50 text-white p-3 text-center mb-6 rounded-lg font-bold">
+                    📝 REVIEW MODE
+                </div>
+            `;
+            if (quizContentEl && !document.getElementById('review-mode-indicator')) {
+                quizContentEl.insertBefore(reviewIndicator, quizContentEl.firstChild);
+            }
+        }
+        
+        function renderQuestion() {
+            if (isReviewMode) {
+                renderQuestionReview();
+                return;
+            }
+
+            currentQuestionViewStartTime = Date.now();
+            const question = questions[currentQuestionIndex];
+            questionNumberEl.textContent = currentQuestionIndex + 1;
+            totalQuestionsDisplayEl.textContent = questions.length;
+            difficultyEl.textContent = `Difficulty: ${question.difficulty || 'N/A'}`;
+            questionSectionEl.textContent = `Section: ${question.question_type || 'N/A'}`;
+            questionTextEl.innerHTML = question.questionText;
+
+            rcPassageDisplayEl.style.display = (question.rc_passage) ? 'block' : 'none';
+            if (question.rc_passage) {
+                rcPassageTitleEl.textContent = question.rc_passage.title;
+                // Format passage text with proper paragraphs
+                const formattedPassage = formatRCPassageText(question.rc_passage.passage_text);
+                rcPassageTextEl.innerHTML = formattedPassage;
+                quizContainerEl.classList.add('with-rc-passage');
+            } else {
+                quizContainerEl.classList.remove('with-rc-passage');
+            }
+
+            optionsListEl.innerHTML = '';
+            feedbackEl.innerHTML = '';
+            question.options.forEach((option, index) => {
+                const optionLetter = String.fromCharCode(65 + index);
+                const li = document.createElement('li');
+                li.className = 'p-4 rounded-lg cursor-pointer';
+                li.dataset.option = optionLetter;
+                li.innerHTML = `${optionLetter}. ${option}`;
+
+                if (userAnswers[currentQuestionIndex] === optionLetter) li.classList.add('selected');
+                li.onclick = handleOptionSelect;
+                
+                optionsListEl.appendChild(li);
+            });
+            
+            if (typeof MathJax !== 'undefined') MathJax.typesetPromise();
+            updateNavigationButtons();
+            updateProgressBar();
+        }
+
+        function renderQuestionReview() {
+            // Clear previous timing display if it exists
+            const oldTimingEl = questionDisplayArea.querySelector('.question-timing-display');
+            if (oldTimingEl) oldTimingEl.remove();
+
+            const question = questions[currentQuestionIndex];
+            questionNumberEl.textContent = currentQuestionIndex + 1;
+            totalQuestionsDisplayEl.textContent = questions.length;
+            difficultyEl.textContent = `Difficulty: ${question.difficulty || 'N/A'}`;
+            questionSectionEl.textContent = `Section: ${question.question_type || 'N/A'}`;
+            questionTextEl.innerHTML = question.questionText;
+
+            // Display time spent on this question
+            const detailedResult = reviewData.detailedResults.find(r => r.questionId === question.id);
+            const timeSpent = detailedResult?.timeSpent;
+
+            if (timeSpent !== undefined && timeSpent !== null) {
+                const timingEl = document.createElement('div');
+                timingEl.className = 'question-timing-display cta-link p-3 text-center mb-4 rounded-lg';
+                timingEl.innerHTML = `
+                    <span class="font-semibold muted-text">Time Spent:</span> 
+                    <span class="font-bold text-lg">${formatTimeMMSS(timeSpent)}</span>
+                `;
+                questionDisplayArea.querySelector('h2').after(timingEl);
+            }
+
+            rcPassageDisplayEl.style.display = (question.rc_passage) ? 'block' : 'none';
+            if (question.rc_passage) {
+                rcPassageTitleEl.textContent = question.rc_passage.title;
+                // Format passage text with proper paragraphs
+                const formattedPassage = formatRCPassageText(question.rc_passage.passage_text);
+                rcPassageTextEl.innerHTML = formattedPassage;
+                quizContainerEl.classList.add('with-rc-passage');
+            } else {
+                quizContainerEl.classList.remove('with-rc-passage');
+            }
+
+            optionsListEl.innerHTML = '';
+            question.options.forEach((option, index) => {
+                const optionLetter = String.fromCharCode(65 + index);
+                const li = document.createElement('li');
+                li.className = 'p-4 rounded-lg cursor-pointer disabled';
+                li.dataset.option = optionLetter;
+                li.innerHTML = `${optionLetter}. ${option}`;
+
+                const userAnswer = userAnswers[currentQuestionIndex];
+                if (optionLetter === question.correctAnswer) li.classList.add('correct');
+                if (userAnswer === optionLetter && userAnswer !== question.correctAnswer) li.classList.add('incorrect');
+                if (userAnswer === optionLetter) li.classList.add('selected');
+
+                optionsListEl.appendChild(li);
+            });
+
+            feedbackEl.innerHTML = ''; // Clear previous feedback
+            const explanationContainer = document.createElement('div');
+            explanationContainer.className = 'explanation-container';
+            
+            const officialExplanation = detailedResult?.answerExplanation || question.answerExplanation;
+            const userExplanation = detailedResult?.userExplanation || '';
+
+            if (officialExplanation) {
+                explanationContainer.innerHTML += `
+                    <div class="official-explanation">
+                        <h4 class="font-bold mb-2">Official Explanation</h4>
+                        <p class="muted-text">${officialExplanation}</p>
+                    </div>
+                `;
+            }
+            
+            const isCorrect = userAnswers[currentQuestionIndex] === question.correctAnswer;
+            // Show user explanation section only if the answer is incorrect or unattempted
+            if (!isCorrect) {
+                const hasExistingExplanation = userExplanation.trim().length > 0;
+                explanationContainer.innerHTML += `
+                    <div class="user-explanation-section">
+                        <h4>My Notes & Explanation</h4>
+                        <textarea class="explanation-input" id="explanation-input-${question.id}" placeholder="Why did you get this wrong? What did you learn?" style="display: ${hasExistingExplanation ? 'none' : 'block'};">${userExplanation}</textarea>
+                        <div class="explanation-preview" id="explanation-preview-${question.id}" style="display: ${hasExistingExplanation ? 'block' : 'none'};">${userExplanation.replace(/\n/g, '<br>')}</div>
+                        <div class="explanation-buttons">
+                            <button class="explanation-btn ${hasExistingExplanation ? 'edit' : 'save'}" onclick="${hasExistingExplanation ? `editExplanation(event, ${question.id})` : `saveExplanation(event, ${question.id})`}">
+                                ${hasExistingExplanation ? 'Edit Notes' : 'Save Notes'}
+                            </button>
+                            ${hasExistingExplanation ? `<button class="explanation-btn delete" onclick="deleteExplanation(event, ${question.id})">Delete Notes</button>` : ''}
+                        </div>
+                        <div class="explanation-status" id="explanation-status-${question.id}"></div>
+                    </div>
+                `;
+            }
+            
+            if (explanationContainer.innerHTML.trim() !== '') {
+                feedbackEl.appendChild(explanationContainer);
+            }
+
+            if (typeof MathJax !== 'undefined') {
+                MathJax.typesetPromise([questionDisplayArea]);
+            }
+            updateNavigationButtons();
+            updateProgressBar();
+        }
+
+        function editExplanation(event, questionId) {
+            document.getElementById(`explanation-input-${questionId}`).style.display = 'block';
+            document.getElementById(`explanation-preview-${questionId}`).style.display = 'none';
+            const saveBtn = event.target;
+            saveBtn.textContent = 'Save Notes';
+            saveBtn.className = 'explanation-btn save';
+            saveBtn.onclick = (e) => saveExplanation(e, questionId);
+        }
+
+        async function saveExplanation(event, questionId) {
+            const inputEl = document.getElementById(`explanation-input-${questionId}`);
+            const statusEl = document.getElementById(`explanation-status-${questionId}`);
+            const explanationText = inputEl.value.trim();
+            const saveBtn = event.target;
+            saveBtn.disabled = true;
+            saveBtn.textContent = 'Saving...';
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/performance/${reviewData.id}/explanations/`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ question_id: questionId, explanation_text: explanationText })
+                });
+                if (!response.ok) throw new Error('Failed to save.');
+
+                statusEl.textContent = 'Saved successfully!';
+                statusEl.className = 'explanation-status success';
+                
+                const detailedResult = reviewData.detailedResults.find(r => r.questionId === questionId);
+                if(detailedResult) detailedResult.userExplanation = explanationText;
+
+                const previewEl = document.getElementById(`explanation-preview-${questionId}`);
+                previewEl.innerHTML = explanationText.replace(/\n/g, '<br>');
+                if (typeof MathJax !== 'undefined') MathJax.typesetPromise([previewEl]);
+
+                inputEl.style.display = 'none';
+                previewEl.style.display = 'block';
+                
+                saveBtn.textContent = 'Edit Notes';
+                saveBtn.className = 'explanation-btn edit';
+                saveBtn.onclick = (e) => editExplanation(e, questionId);
+
+                const buttonsContainer = saveBtn.parentElement;
+                if (!buttonsContainer.querySelector('.delete')) {
+                    const deleteBtn = document.createElement('button');
+                    deleteBtn.className = 'explanation-btn delete';
+                    deleteBtn.textContent = 'Delete Notes';
+                    deleteBtn.onclick = (e) => deleteExplanation(e, questionId);
+                    buttonsContainer.appendChild(deleteBtn);
+                }
+
+            } catch (error) {
+                statusEl.textContent = 'Error saving notes.';
+                statusEl.className = 'explanation-status error';
+            } finally {
+                saveBtn.disabled = false;
+                setTimeout(() => statusEl.textContent = '', 3000);
+            }
+        }
+
+        async function deleteExplanation(event, questionId) {
+            // A custom modal should be used here instead of confirm() in a real app
+            if (!confirm('Are you sure you want to delete your notes for this question?')) return;
+            
+            const statusEl = document.getElementById(`explanation-status-${questionId}`);
+            const deleteBtn = event.target;
+            deleteBtn.disabled = true;
+            deleteBtn.textContent = 'Deleting...';
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/performance/${reviewData.id}/explanations/${questionId}`, { method: 'DELETE' });
+                if (!response.ok) throw new Error('Failed to delete.');
+
+                statusEl.textContent = 'Deleted successfully!';
+                statusEl.className = 'explanation-status success';
+
+                const detailedResult = reviewData.detailedResults.find(r => r.questionId === questionId);
+                if(detailedResult) detailedResult.userExplanation = '';
+
+                const inputEl = document.getElementById(`explanation-input-${questionId}`);
+                const previewEl = document.getElementById(`explanation-preview-${questionId}`);
+                inputEl.value = '';
+                previewEl.innerHTML = '';
+                inputEl.style.display = 'block';
+                previewEl.style.display = 'none';
+                
+                const buttonsContainer = deleteBtn.parentElement;
+                const saveBtn = buttonsContainer.querySelector('.save, .edit');
+                saveBtn.textContent = 'Save Notes';
+                saveBtn.className = 'explanation-btn save';
+                saveBtn.onclick = (e) => saveExplanation(e, questionId);
+                deleteBtn.remove();
+
+            } catch (error) {
+                statusEl.textContent = 'Error deleting notes.';
+                statusEl.className = 'explanation-status error';
+                deleteBtn.disabled = false;
+                deleteBtn.textContent = 'Delete Notes';
+            } finally {
+                setTimeout(() => statusEl.textContent = '', 3000);
+            }
+        }
+
+
+        function handleOptionSelect(event) {
+             if (isPaused || isReviewMode) return;
+             const selectedOptionEl = event.target.closest('li');
+             userAnswers[currentQuestionIndex] = selectedOptionEl.dataset.option;
+             document.querySelectorAll('#options-list li').forEach(opt => opt.classList.remove('selected'));
+             selectedOptionEl.classList.add('selected');
+             updateProgressBar();
+        }
+        
+        function updateNavigationButtons() {
+            prevBtn.disabled = currentQuestionIndex === 0;
+            nextBtn.disabled = currentQuestionIndex === questions.length - 1;
+            if(isReviewMode) {
+                submitQuizBtn.style.display = 'none';
+            } else {
+                nextBtn.style.display = currentQuestionIndex === questions.length - 1 ? 'none' : 'block';
+                submitQuizBtn.style.display = currentQuestionIndex === questions.length - 1 ? 'block' : 'none';
+            }
+        }
+
+        function updateProgressBar() {
+            const progress = isReviewMode 
+                ? ((currentQuestionIndex + 1) / questions.length) * 100
+                : (userAnswers.filter(a => a !== null).length / questions.length) * 100;
+            progressBarEl.style.width = `${progress}%`;
+        }
+
+        // --- TIMER LOGIC (MODIFIED) ---
+        function startTimer() {
+            timerInterval = setInterval(() => {
+                if(isPaused) return;
+                timeRemaining--;
+                updateTimerDisplay();
+                // No longer auto-submits. The timer will continue into negative values.
+            }, 1000);
+        }
+
+        function updateTimerDisplay() {
+            const isOvertime = timeRemaining < 0;
+            const displaySeconds = Math.abs(timeRemaining);
+            
+            const minutes = Math.floor(displaySeconds / 60);
+            const seconds = displaySeconds % 60;
+            const formattedTime = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+            
+            timerEl.textContent = formattedTime;
+
+            if (isOvertime) {
+                timerLabelEl.textContent = "Extra Time:";
+                timerEl.classList.add('low-time');
+            } else {
+                timerLabelEl.textContent = "Time Left:";
+                timerEl.classList.toggle('low-time', timeRemaining <= 60);
+            }
+        }
+        // --- END OF TIMER LOGIC (MODIFIED) ---
+
+        function recordTimeOnCurrentQuestion() {
+            if (!isReviewMode && currentQuestionViewStartTime) {
+                const timeSpent = Date.now() - currentQuestionViewStartTime;
+                if (timeSpentOnQuestion[currentQuestionIndex] !== undefined) {
+                    timeSpentOnQuestion[currentQuestionIndex] += timeSpent;
+                }
+            }
+        }
+        
+        function nextQuestion() {
+            if (currentQuestionIndex < questions.length - 1) {
+                recordTimeOnCurrentQuestion();
+                currentQuestionIndex++;
+                renderQuestion();
+            }
+        }
+        function prevQuestion() {
+            if (currentQuestionIndex > 0) {
+                recordTimeOnCurrentQuestion();
+                currentQuestionIndex--;
+                renderQuestion();
+            }
+        }
+        
+        async function submitQuiz() {
+            recordTimeOnCurrentQuestion();
+            clearInterval(timerInterval);
+            if(pauseBtn) pauseBtn.style.display = 'none';
+
+            const endTime = Date.now();
+            const totalTimeTakenSeconds = Math.floor(((endTime - startTime) - totalPausedTime) / 1000);
+
+            score = 0;
+            let incorrectCount = 0;
+            const attemptedCount = userAnswers.filter(a => a !== null).length;
+
+            detailedQuizResults = questions.map((q, i) => {
+                const userAnswer = userAnswers[i];
+                const isCorrect = userAnswer === q.correctAnswer;
+
+                if (isCorrect) {
+                    score++;
+                } else if (userAnswer !== null) {
+                    incorrectCount++;
+                }
+
+                return {
+                    questionId: q.id,
+                    correct: isCorrect,
+                    userAnswer: userAnswer,
+                    correctAnswer: q.correctAnswer,
+                    timeSpent: Math.round((timeSpentOnQuestion[i] || 0) / 1000),
+                    questionText: q.questionText,
+                    options: q.options,
+                    difficulty: q.difficulty,
+                    question_type: q.question_type,
+                    answerExplanation: q.answerExplanation || null
+                };
+            });
+
+            const unattemptedCount = questions.length - attemptedCount;
+
+            const performanceData = {
+                quizId: currentQuizId,
+                totalQuestions: questions.length,
+                correctAnswers: score,
+                incorrectAnswers: incorrectCount,
+                unattemptedQuestions: unattemptedCount,
+                timeTakenSeconds: totalTimeTakenSeconds,
+                detailedResults: detailedQuizResults,
+            };
+
+            try {
+                await fetch(`${API_BASE_URL}/performance/`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(performanceData),
+                });
+            } catch (error) {
+                console.error("Failed to submit performance data:", error);
+            }
+
+            quizContentEl.style.display = 'none';
+            finishPageEl.style.display = 'block';
+
+            finalScoreEl.textContent = `${score} / ${questions.length}`;
+            timeTakenEl.textContent = formatTimeMMSS(totalTimeTakenSeconds);
+            correctAnswersEl.textContent = score;
+            incorrectAnswersEl.textContent = incorrectCount;
+            unattemptedAnswersEl.textContent = unattemptedCount;
+            
+            prepareDetailedResultsView(detailedQuizResults);
+        }
+
+        function prepareDetailedResultsView(results) {
+            detailedResultsViewEl.innerHTML = ''; // Clear previous results
+            results.forEach((result, index) => {
+                const resultEl = document.createElement('div');
+                let statusClass = result.correct ? 'correct' : (result.userAnswer ? 'incorrect' : 'unattempted');
+                resultEl.className = `result-item ${statusClass}`;
+                
+                let statusText = result.correct ? 'Correct' : (result.userAnswer ? 'Incorrect' : 'Unattempted');
+
+                resultEl.innerHTML = `
+                    <div class="flex justify-between items-center mb-2">
+                        <h4 class="font-bold text-lg">Question ${index + 1}</h4>
+                        <span class="font-bold text-sm">${statusText}</span>
+                    </div>
+                    <div class="muted-text text-sm mb-4">${result.questionText.substring(0, 100)}...</div>
+                    <div class="text-xs">Time Spent: ${result.timeSpent}s</div>
+                    <div class="mt-2">
+                        <p>Your Answer: ${result.userAnswer || 'N/A'}</p>
+                        <p class="font-bold">Correct Answer: ${result.correctAnswer}</p>
+                    </div>
+                    ${result.answerExplanation ? `<div class="mt-2 p-2 rounded-md explanation-section"><p class="font-semibold">Explanation:</p><p>${result.answerExplanation}</p></div>` : ''}
+                `;
+                detailedResultsViewEl.appendChild(resultEl);
+            });
+        }
+
+        function restartQuiz() {
+            window.location.reload();
+        }
+
+        function pauseQuiz() {
+            if (isReviewMode || isPaused) return;
+            isPaused = true;
+            pauseStartTime = Date.now();
+            clearInterval(timerInterval);
+            pauseOverlay.classList.add('visible');
+            quizContainerEl.style.filter = 'blur(5px)';
+        }
+
+        function resumeQuiz() {
+            if (isReviewMode || !isPaused) return;
+            if (pauseStartTime) {
+                const pausedDuration = Date.now() - pauseStartTime;
+                totalPausedTime += pausedDuration;
+                if(currentQuestionViewStartTime) {
+                   currentQuestionViewStartTime += pausedDuration;
+                }
+            }
+            isPaused = false;
+            pauseStartTime = null;
+            startTimer();
+            pauseOverlay.classList.remove('visible');
+            quizContainerEl.style.filter = 'none';
+        }
+        
+        viewDetailsBtn.addEventListener('click', () => {
+            const isHidden = detailedResultsViewEl.classList.contains('hidden');
+            detailedResultsViewEl.classList.toggle('hidden');
+            viewDetailsBtn.textContent = isHidden ? 'Hide Detailed Results' : 'View Detailed Results';
+        });
+
+        prevBtn.addEventListener('click', prevQuestion);
+        nextBtn.addEventListener('click', nextQuestion);
+        submitQuizBtn.addEventListener('click', submitQuiz);
+        pauseBtn.addEventListener('click', pauseQuiz);
+        resumeBtn.addEventListener('click', resumeQuiz);
+        
+        document.addEventListener('DOMContentLoaded', () => {
+             const urlParams = new URLSearchParams(window.location.search);
+             if (urlParams.get('mode') === 'review') {
+                 startQuizReview();
+             } else {
+                 startQuiz();
+             }
+        });
+    </script>
+</body>
+</html>
