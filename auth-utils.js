@@ -56,15 +56,24 @@ class AuthManager {
             throw new Error('No API key available');
         }
 
-        const defaultOptions = {
-            headers: {
-                'X-API-Key': apiKey,
-                'Content-Type': 'application/json',
-                ...options.headers
-            }
+        const defaultHeaders = {
+            'X-API-Key': apiKey,
+            ...(options.headers || {})
         };
 
-        const finalOptions = { ...defaultOptions, ...options };
+        // Only add Content-Type if not explicitly set and not FormData
+        if (!options.headers?.['Content-Type'] && !(options.body instanceof FormData)) {
+            defaultHeaders['Content-Type'] = 'application/json';
+        }
+
+        const finalOptions = { 
+            method: 'GET', // Default method
+            ...options, // This will override the method if provided
+            headers: defaultHeaders
+        };
+        
+        console.log('Making authenticated request to:', url);
+        console.log('Request options:', finalOptions);
         
         try {
             const response = await fetch(url, finalOptions);

@@ -1260,47 +1260,81 @@ async def get_performance_summary(
     }
 
 @app.post("/api/quizzes/{quiz_id}/questions/bulk/")
-async def bulk_add_questions(quiz_id: int, questions: List[BulkQuestionCreate], db: Session = Depends(get_db)):
+async def bulk_add_questions(quiz_id: int, questions: List[BulkQuestionCreate], db: Session = Depends(get_main_db)):
+    # Debug logging
+    print(f"Bulk upload request for quiz_id: {quiz_id}")
+    print(f"Number of questions received: {len(questions)}")
+    
+    # Check if quiz exists
     db_quiz = db.query(QuizDB).filter(QuizDB.id == quiz_id).first()
     if db_quiz is None:
+        print(f"Quiz not found for ID: {quiz_id}")
         raise HTTPException(status_code=404, detail="Quiz not found")
+    
+    print(f"Quiz found: {db_quiz.name}")
+    
     count = 0
-    for q in questions:
-        valid_types = ["Quant", "Verbal", "Data Insights"]
-        if q.question_type not in valid_types:
-             raise HTTPException(status_code=400, detail=f"Invalid question_type in bulk data: {q.question_type}. Must be one of {valid_types}")
-        if q.question_type == "Verbal":
-             valid_subsections = ["RC", "CR"]
-             if q.subsection not in valid_subsections:
-                  raise HTTPException(status_code=400, detail=f"Invalid subsection for Verbal type in bulk data: {q.subsection}. Must be one of {valid_subsections}")
-             if q.subsection == "RC" and q.rc_id is None:
-                  raise HTTPException(status_code=400, detail="RC questions in bulk data must be linked to an RC passage.")
-             if q.subsection == "CR" and q.rc_id is not None:
-                  raise HTTPException(status_code=400, detail="CR questions in bulk data cannot be linked to an RC passage.")
-        elif q.subsection is not None:
-             raise HTTPException(status_code=400, detail=f"Subsection in bulk data must be null for question_type {q.question_type}.")
-        if q.question_type in ["Quant", "Data Insights"] and q.rc_id is not None:
-             raise HTTPException(status_code=400, detail=f"RC Passage link in bulk data must be null for question_type {q.question_type}.")
-        if q.rc_id is not None:
-            db_rc_passage = db.query(RCPassageDB).filter(RCPassageDB.id == q.rc_id).first()
-            if db_rc_passage is None:
-                raise HTTPException(status_code=404, detail=f"RC Passage with ID {q.rc_id} not found for a question in the bulk upload.")
-        db_question = QuestionDB(
-            quiz_id=quiz_id,
-            rc_id=q.rc_id,
-            question_text=q.questionText,
-            options_json=json.dumps(q.options),
-            correct_answer=q.correctAnswer,
-            answer_explanation=q.answerExplanation,
-            image=None,
-            difficulty=q.difficulty,
-            question_type=q.question_type,
-            subsection=q.subsection
-        )
-        db.add(db_question)
-        count += 1
-    db.commit()
-    return {"message": f"{count} questions added to quiz {quiz_id}."}
+    try:
+        for i, q in enumerate(questions):
+            print(f"Processing question {i+1}: {q.questionText[:50]}...")
+            
+            # Validate question type
+            valid_types = ["Quant", "Verbal", "Data Insights"]
+            if q.question_type not in valid_types:
+                 raise HTTPException(status_code=400, detail=f"Invalid question_type in bulk data: {q.question_type}. Must be one of {valid_types}")
+            
+            # Validate Verbal questions
+            if q.question_type == "Verbal":
+                 valid_subsections = ["RC", "CR"]
+                 if q.subsection not in valid_subsections:
+                      raise HTTPException(status_code=400, detail=f"Invalid subsection for Verbal type in bulk data: {q.subsection}. Must be one of {valid_subsections}")
+                 if q.subsection == "RC" and q.rc_id is None:
+                      raise HTTPException(status_code=400, detail="RC questions in bulk data must be linked to an RC passage.")
+                 if q.subsection == "CR" and q.rc_id is not None:
+                      raise HTTPException(status_code=400, detail="CR questions in bulk data cannot be linked to an RC passage.")
+            elif q.subsection is not None:
+                 raise HTTPException(status_code=400, detail=f"Subsection in bulk data must be null for question_type {q.question_type}.")
+            
+            # Validate RC passage linking
+            if q.question_type in ["Quant", "Data Insights"] and q.rc_id is not None:
+                 raise HTTPException(status_code=400, detail=f"RC Passage link in bulk data must be null for question_type {q.question_type}.")
+            
+            # Check if RC passage exists when referenced
+            if q.rc_id is not None:
+                db_rc_passage = db.query(RCPassageDB).filter(RCPassageDB.id == q.rc_id).first()
+                if db_rc_passage is None:
+                    raise HTTPException(status_code=404, detail=f"RC Passage with ID {q.rc_id} not found for a question in the bulk upload.")
+            
+            # Create question
+            db_question = QuestionDB(
+                quiz_id=quiz_id,
+                rc_id=q.rc_id,
+                question_text=q.questionText,
+                options_json=json.dumps(q.options),
+                correct_answer=q.correctAnswer,
+                answer_explanation=q.answerExplanation,
+                image=None,
+                difficulty=q.difficulty,
+                question_type=q.question_type,
+                subsection=q.subsection
+            )
+            db.add(db_question)
+            count += 1
+        
+        # Commit all changes
+        db.commit()
+        print(f"Successfully added {count} questions to quiz {quiz_id}")
+        return {"message": f"{count} questions added to quiz {quiz_id}."}
+        
+    except HTTPException:
+        # Re-raise HTTP exceptions as they are
+        db.rollback()
+        raise
+    except Exception as e:
+        # Handle unexpected database errors
+        db.rollback()
+        print(f"Database error during bulk upload: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Database error during bulk upload: {str(e)}")
 
 # --- User Explanation Endpoints ---
 

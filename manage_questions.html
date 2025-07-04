@@ -888,6 +888,11 @@
             const quizId = urlParams.get('quiz_id');
             const quizName = urlParams.get('quiz_name');
 
+            // Debug logging
+            console.log('URL search params:', window.location.search);
+            console.log('Parsed quizId:', quizId);
+            console.log('Parsed quizName:', quizName);
+
             if (!quizId) {
                 messageEl.textContent = "Error: No quiz ID specified in the URL. Please go back to Manage Quizzes.";
                 messageEl.style.color = 'red';
@@ -903,6 +908,10 @@
             currentQuizName = quizName ? decodeURIComponent(quizName) : `Quiz ID ${currentQuizId}`;
             pageTitleEl.textContent = `Manage Questions for "${currentQuizName}"`;
             existingQuestionsTitle.textContent = `Questions in "${currentQuizName}"`;
+
+            // Debug logging
+            console.log('Set currentQuizId:', currentQuizId);
+            console.log('Set currentQuizName:', currentQuizName);
 
             return currentQuizId;
         }
@@ -1585,11 +1594,16 @@
 
         // --- Initial Load ---
         window.onload = () => {
+            console.log('Page loaded, getting quiz info from URL...');
             const quizId = getQuizInfoFromUrl();
+            console.log('Quiz ID from URL:', quizId);
             if (quizId !== null) {
+                console.log('Valid quiz ID found, fetching questions and initializing bulk upload...');
                 fetchAndDisplayQuestions(quizId); // This now also fetches RC passages
                 // Initialize bulk upload logic after quiz ID is set
                 initializeBulkUpload();
+            } else {
+                console.log('No valid quiz ID found in URL');
             }
             // Initial call to set form visibility based on default selections
              updateFormVisibility();
@@ -1735,23 +1749,50 @@
                     
                     messageEl.textContent = 'Uploading questions...';
                     messageEl.style.color = '';
+                    
+                    // Debug logging - log the structure of the request being sent
+                    console.log('About to upload to quiz ID:', currentQuizId);
+                    console.log('Upload URL:', `${API_BASE_URL}/quizzes/${currentQuizId}/questions/bulk/`);
+                    console.log('Number of questions to upload:', questions.length);
+                    console.log('Sample question data structure:', questions[0]);
+                    console.log('Full request payload (first 3 questions):', JSON.stringify(questions.slice(0, 3), null, 2));
+                    
                     // Send to backend
                     const response = await auth.makeAuthenticatedRequest(`${API_BASE_URL}/quizzes/${currentQuizId}/questions/bulk/`, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify(questions)
                     });
+                    
+                    // Debug logging
+                    console.log('Upload response status:', response.status);
+                    console.log('Upload response ok:', response.ok);
+                    console.log('Upload response headers:', Object.fromEntries(response.headers.entries()));
+                    
                     if (!response.ok) {
-                        const errorData = await response.json();
+                        let errorData;
+                        try {
+                            errorData = await response.json();
+                            console.log('Upload error data:', errorData);
+                        } catch (parseError) {
+                            console.log('Could not parse error response as JSON:', parseError);
+                            const errorText = await response.text();
+                            console.log('Raw error response text:', errorText);
+                            throw new Error(`HTTP error! status: ${response.status}. Response: ${errorText}`);
+                        }
                         throw new Error(errorData.detail || `HTTP error! status: ${response.status}`);
                     }
-                    messageEl.textContent = 'Questions uploaded successfully!';
+                    
+                    const successResponse = await response.json();
+                    console.log('Upload success response:', successResponse);
+                    messageEl.textContent = `Questions uploaded successfully! ${successResponse.message || ''}`;
                     messageEl.style.color = '#34C759';
                     fetchAndDisplayQuestions(currentQuizId);
                      resetQuestionFormAndVisibility(); // Reset form and visibility after successful bulk upload
 
                 } catch (err) {
                     console.error('Bulk upload processing error:', err);
+                    console.error('Error stack:', err.stack);
                     messageEl.textContent = 'Bulk upload failed: ' + err.message;
                     messageEl.style.color = 'red';
                 }
