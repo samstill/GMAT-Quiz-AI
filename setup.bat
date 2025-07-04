@@ -52,6 +52,9 @@ REM Overwrite requirements.txt
     echo pydantic
     echo python-multipart
     echo aiofiles
+    echo python-dotenv
+    echo httpx
+    echo google.api_core
 ) > requirements.txt
 
 pip install --upgrade pip
@@ -60,24 +63,50 @@ pip install -r requirements.txt
 echo.
 echo Dependencies installed.
 
-REM 5. Prompt to run backend
+REM 5. Create user databases directory
+echo.
+echo Creating user_databases directory...
+if not exist user_databases mkdir user_databases
+
+REM 6. Check if .env file exists, if not create it
+echo.
+echo Checking for .env file...
+if not exist .env (
+    echo Creating .env file with default configuration...
+    (
+        echo # GMAT Quiz Environment Variables
+        echo ALLOW_USER_REGISTRATION=true
+        echo # GOOGLE_API_KEY=your_gemini_api_key_here
+    ) > .env
+    echo Created .env file. Please edit it with your API key if needed.
+)
+
+REM 7. Run user database setup
+echo.
+echo Do you want to set up the multi-user database architecture now? (Y/N)
+set /p SETUP_USER_DBS="Setup user databases now? "
+if /i "%SETUP_USER_DBS%"=="Y" (
+    echo Running user database setup...
+    call setup_user_dbs.bat
+)
+
+REM 8. Prompt to run backend
 echo.
 echo === Backend Setup Complete! ===
 echo To start the FastAPI backend, run:
-echo    call venv\Scripts\activate.bat
-echo    uvicorn main:app --reload
+echo    start.bat
 echo.
 echo The API will be available at http://127.0.0.1:8000
 echo.
 
-REM 6. Prompt to open frontend
+REM 9. Prompt to open frontend
 echo To use the frontend, just open index.html in your browser.
 echo.
 echo You can now manage quizzes, upload questions, and take quizzes with a modern UI!
 echo.
 echo === Setup Complete! ===
 
-REM 7. Ensure PowerShell execution policy is set to Bypass for CurrentUser
+REM 10. Ensure PowerShell execution policy is set to Bypass for CurrentUser
 echo.
 echo Setting PowerShell execution policy to Bypass for CurrentUser...
 powershell -NoProfile -ExecutionPolicy Bypass -Command "Set-ExecutionPolicy -Scope CurrentUser Bypass -Force"

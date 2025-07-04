@@ -13,6 +13,8 @@ A comprehensive web-based GMAT (Graduate Management Admission Test) preparation 
 - **Flashcard System**: Create and manage study flashcards with visual components
 - **Image Support**: Upload and display images for questions
 - **Time Management**: Built-in timer and time tracking for realistic test simulation
+- **User Authentication**: Secure login and registration with API key management
+- **Per-User Database**: Each user has their own isolated database for quiz data
 
 ### Advanced Features
 - **Detailed Performance Review**: Question-by-question analysis with explanations
@@ -25,7 +27,9 @@ A comprehensive web-based GMAT (Graduate Management Admission Test) preparation 
 ## 🏗️ Architecture
 
 - **Backend**: FastAPI (Python) with SQLAlchemy ORM
-- **Database**: SQLite with automatic migrations
+- **Database**: Multi-database SQLite architecture
+  - Main authentication database (`quiz.db`)
+  - Per-user isolated databases (`user_databases/{user_id}.db`)
 - **Frontend**: Modern HTML/CSS/JavaScript with responsive design
 - **AI Integration**: Google Gemini 2.0 Flash API
 - **File Storage**: Local image storage with static file serving
@@ -111,6 +115,27 @@ A comprehensive web-based GMAT (Graduate Management Admission Test) preparation 
 
 ## 🔧 Configuration
 
+### Multi-Database Architecture
+
+The application uses a split-database architecture:
+
+1. **Authentication Database** (`quiz.db`):
+   - Stores user accounts and API keys only
+   - Handles all authentication operations
+   - Used by all users for login/registration
+
+2. **User Databases** (`user_databases/{user_id}.db`):
+   - Each user gets their own isolated database
+   - Stores user-specific quizzes, questions, and performance data
+   - Automatically created on user registration
+   - Complete data isolation between users
+
+To set up the multi-database structure:
+```bash
+# Run the user database setup script
+setup_user_dbs.bat
+```
+
 ### Environment Variables
 
 Create a `.env` file in the project root with the following variables:
@@ -192,29 +217,34 @@ DEBUG=True
 
 ```
 GMAT Quiz/
-├── main.py                 # FastAPI application entry point
+├── main.py                # FastAPI application entry point
 ├── models.py              # SQLAlchemy database models
 ├── ai_tools.py            # Gemini AI integration and tools
+├── migrate_db.py          # Database migration script for auth DB
+├── migrate_user_db.py     # Script to create and populate user DBs
+├── setup_user_dbs.bat     # User database setup script
 ├── requirements.txt       # Python dependencies
 ├── .env                   # Environment variables (create from .env.example)
-├── .env.example          # Environment variables template
-├── .gitignore            # Git ignore rules
-├── setup.bat             # Windows setup script
-├── start.bat             # Windows start script
-├── quiz.db               # SQLite database (auto-created)
-├── index.html            # Main application interface
-├── quiz.html             # Quiz taking interface
-├── manage_quizzes.html   # Quiz management interface
-├── manage_questions.html # Question management interface
-├── performance.html      # Performance tracking interface
-├── images/               # Uploaded question images
-├── JSON/                 # Sample question data
-│   ├── Quant/           # Quantitative questions
-│   ├── Verbal/          # Verbal questions
-│   └── Data Insights/   # Data Insights questions
-├── Backup/              # Backup files
-├── Temp/                # Temporary development files
-└── __pycache__/         # Python cache (auto-generated)
+├── .env.example           # Environment variables template
+├── .gitignore             # Git ignore rules
+├── setup.bat              # Windows setup script
+├── start.bat              # Windows start script
+├── quiz.db                # Main authentication database (auto-created)
+├── user_databases/        # Directory containing per-user databases
+│   └── {user_id}.db       # Individual user database files
+├── index.html             # Main application interface
+├── quiz.html              # Quiz taking interface
+├── manage_quizzes.html    # Quiz management interface
+├── manage_questions.html  # Question management interface
+├── performance.html       # Performance tracking interface
+├── images/                # Uploaded question images
+├── JSON/                  # Sample question data
+│   ├── Quant/             # Quantitative questions
+│   ├── Verbal/            # Verbal questions
+│   └── Data Insights/     # Data Insights questions
+├── Backup/                # Backup files
+├── Temp/                  # Temporary development files
+└── __pycache__/           # Python cache (auto-generated)
 ```
 
 ## 🔌 API Endpoints

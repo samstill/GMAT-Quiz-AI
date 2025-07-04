@@ -674,7 +674,7 @@
 
 
     <script>
-        const API_BASE_URL = 'http://127.0.0.1:8000/api';
+        const API_BASE_URL = '/api';
         let questions = [], currentQuestionIndex = 0, score = 0, timerInterval, timeRemaining, quizTimeLimitSeconds, startTime, userAnswers = [], detailedQuizResults = [], currentQuizId = null, timeSpentOnQuestion = [], currentQuestionViewStartTime, isReviewMode = false, reviewData = null, isPaused = false, totalPausedTime = 0, pauseStartTime = null;
 
         const loadingMessageEl = document.getElementById('loading-message');

@@ -6,3 +6,5 @@ python-multipart
 aiofiles
 python-dotenv
 httpx
+google.api_core
+requests

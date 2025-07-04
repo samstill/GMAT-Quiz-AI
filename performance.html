@@ -25,6 +25,8 @@
     </script>
     <script async src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <!-- Authentication Script -->
+    <script src="auth-utils.js"></script>
     <style>
         /* * === CSS Variables for Theming === */
         :root {
@@ -374,6 +376,10 @@
     </style>
 </head>
 <body class="p-4 md:p-8">
+    <!-- User Authentication Info -->
+    
+    
+    <!-- Logout Button will be added by auth-utils.js -->
 
     <!-- Theme Toggle Button -->
     <button id="theme-toggle" class="icon-button theme-toggle" aria-label="Toggle theme">
@@ -500,7 +506,7 @@
 
     <script>
         // --- API and DOM Elements ---
-        const API_BASE_URL = 'http://127.0.0.1:8000/api';
+        const API_BASE_URL = '/api';
         const loadingMessageEl = document.getElementById('loading-message');
         const performanceDataContainerEl = document.getElementById('performance-data-container');
         const performanceTableBodyEl = document.getElementById('performance-table-body');
@@ -708,9 +714,9 @@
             loadingMessageEl.style.display = 'block';
             performanceDataContainerEl.style.display = 'none';
             try {
-                const [quizzesRes, performanceRes] = await Promise.all([
-                    fetch(`${API_BASE_URL}/quizzes/`),
-                    fetch(`${API_BASE_URL}/performance/${selectedQuizId ? `?quiz_id=${selectedQuizId}` : ''}`)
+                const [quizzesRes, performanceRes] = await                Promise.all([
+                    window.authManager.makeAuthenticatedRequest(`${API_BASE_URL}/quizzes/`),
+                    window.authManager.makeAuthenticatedRequest(`${API_BASE_URL}/performance/${selectedQuizId ? `?quiz_id=${selectedQuizId}` : ''}`)
                 ]);
                 if (!quizzesRes.ok) throw new Error('Failed to fetch quizzes.');
                 quizzes = await quizzesRes.json();
@@ -720,7 +726,7 @@
                 
                 // If we are loading for the first time, fetch all performance records to populate the dropdown correctly
                 if (quizSelectEl.options.length <= 1) {
-                    const allPerformanceRes = await fetch(`${API_BASE_URL}/performance/`);
+                    const allPerformanceRes = await window.authManager.makeAuthenticatedRequest(`${API_BASE_URL}/performance/`);
                     performanceRecords = await allPerformanceRes.json();
                     populateQuizSelector(quizzes);
                 }
@@ -883,19 +889,26 @@
 
         async function callAIAnalysisAPI(history) {
             try {
+                // Get Gemini API key from localStorage if available
+                const geminiApiKey = localStorage.getItem('geminiApiKey');
+                
                 const payload = {
                     history: history,
-                    quiz_id: quizSelectEl.value ? parseInt(quizSelectEl.value) : null
+                    quiz_id: quizSelectEl.value ? parseInt(quizSelectEl.value) : null,
+                    gemini_api_key: geminiApiKey
                 };
 
-                const response = await fetch(`${API_BASE_URL}/ai/analyze`, {
+                const response = await window.authManager.makeAuthenticatedRequest(`${API_BASE_URL}/ai/analyze`, {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(payload)
                 });
 
                 if (!response.ok) {
                     const errorData = await response.json();
+                    // Check if this is a missing API key error
+                    if (response.status === 400 && errorData.detail && errorData.detail.includes("No Gemini API key provided")) {
+                        throw new Error("A Gemini API key is required for AI analysis. Please add one in your profile settings.");
+                    }
                     throw new Error(errorData.detail || `HTTP error! status: ${response.status}`);
                 }
                 
@@ -972,7 +985,7 @@
         async function confirmDeletion() {
             if (!recordIdToDelete) return;
             try {
-                const response = await fetch(`${API_BASE_URL}/performance/${recordIdToDelete}`, {
+                const response = await window.authManager.makeAuthenticatedRequest(`${API_BASE_URL}/performance/${recordIdToDelete}`, {
                     method: 'DELETE'
                 });
                 if (!response.ok) {

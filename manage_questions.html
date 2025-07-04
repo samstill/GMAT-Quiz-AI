@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manage Questions</title>
+    <!-- Authentication Script -->
+    <script src="auth-utils.js"></script>
 <!-- Add this to your other pages, like manage_quizzes.html -->
 <script>
     document.addEventListener('DOMContentLoaded', () => {
@@ -612,6 +614,10 @@
     </style>
 </head>
 <body>
+    <!-- User Authentication Info -->
+ 
+    
+    <!-- Logout Button will be added by auth-utils.js -->
     <button class="theme-toggle" id="theme-toggle">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.818 5.182a.75.75 0 011.06 0l1.591 1.591a.75.75 0 11-1.06 1.06l-1.591-1.59a.75.75 0 010-1.06zM5.182 5.182a.75.75 0 010 1.06L3.591 7.832a.75.75 0 01-1.06-1.06l1.59-1.591a.75.75 0 011.06 0zM16.5 7.5a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V8.25a.75.75 0 01.75-.75zM7.5 16.5a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V17.25a.75.75 0 01.75-.75zM3 12a.75.75 0 01.75-.75h2.25a.75.75 0 010 1.5H3.75A.75.75 0 013 12zM19.5 12a.75.75 0 01.75-.75h2.25a.75.75 0 010 1.5H20.25a.75.75 0 01-.75-.75zM6.659 18.818a.75.75 0 01-1.06 0l-1.591-1.591a.75.75 0 111.06-1.06l1.591 1.59a.75.75 0 010 1.06zM18.818 18.818a.75.75 0 01-1.06 0l-1.591-1.591a.75.75 0 111.06-1.06l1.591 1.59a.75.75 0 010 1.06z"></path></svg>
     </button>
@@ -803,7 +809,16 @@
     </div>
 
     <script>
-        const API_BASE_URL = 'http://127.0.0.1:8000/api'; // Adjust if your server is on a different address/port
+        const API_BASE_URL = '/api'; // Adjust if your server is on a different address/port
+        
+        // Initialize auth manager
+        const auth = new AuthManager();
+        
+        // Require authentication to access this page
+        if (!auth.requireAuth()) {
+            // This will redirect to auth.html if not authenticated
+            throw new Error("Authentication required");
+        }
 
         const pageTitleEl = document.getElementById('page-title');
         const messageEl = document.getElementById('message');
@@ -935,7 +950,7 @@
 
             try {
                 // Fetch RC Passages first
-                const rcResponse = await fetch(`${API_BASE_URL}/rc_passages/`);
+                const rcResponse = await auth.makeAuthenticatedRequest(`${API_BASE_URL}/rc_passages/`);
                 if (!rcResponse.ok) {
                     const errorData = await rcResponse.json();
                     console.error('Error fetching RC passages:', errorData);
@@ -953,7 +968,7 @@
 
 
                 // Fetch Questions for the quiz
-                const response = await fetch(`${API_BASE_URL}/quizzes/${quizId}/questions/`);
+                const response = await auth.makeAuthenticatedRequest(`${API_BASE_URL}/quizzes/${quizId}/questions/`);
                 if (!response.ok) {
                      const errorData = await response.json();
                      // If quiz not found, show specific message
@@ -1061,11 +1076,8 @@
                     url = `${API_BASE_URL}/rc_passages/`;
                 }
 
-                response = await fetch(url, {
+                response = await window.authManager.makeAuthenticatedRequest(url, {
                     method: method,
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
                     body: JSON.stringify(passageData)
                 });
 
@@ -1144,7 +1156,7 @@
              messageEl.textContent = `Deleting passage ${passageId}...`;
              messageEl.style.color = ''; // Reset color
             try {
-                const response = await fetch(`${API_BASE_URL}/rc_passages/${passageId}`, {
+                const response = await window.authManager.makeAuthenticatedRequest(`${API_BASE_URL}/rc_passages/${passageId}`, {
                     method: 'DELETE',
                 });
 
@@ -1265,7 +1277,7 @@
              messageEl.style.color = ''; // Reset color
             try {
                 // Use the backend endpoint for deleting a specific question
-                const response = await fetch(`${API_BASE_URL}/questions/${questionId}`, {
+                const response = await window.authManager.makeAuthenticatedRequest(`${API_BASE_URL}/questions/${questionId}`, {
                     method: 'DELETE',
                 });
 
@@ -1294,7 +1306,7 @@
         async function editQuestion(questionId) {
             // Fetch the specific question details (including rc_id)
              try {
-                 const response = await fetch(`${API_BASE_URL}/quizzes/${currentQuizId}/questions/`); // Fetch all questions for the quiz to find the one to edit
+                 const response = await auth.makeAuthenticatedRequest(`${API_BASE_URL}/quizzes/${currentQuizId}/questions/`); // Fetch all questions for the quiz to find the one to edit
                  if (!response.ok) {
                       const errorData = await response.json();
                       throw new Error(errorData.detail || `HTTP error! status: ${response.status}`);
@@ -1317,7 +1329,7 @@
                      verbalTypeSelect.value = ''; // Reset verbal subtype
                  } else if (question.question_type === 'Data Insights') {
                       questionTypeSelect.value = 'Data Insights';
-                      verbalTypeSelect.value = ''; // Reset verbal subtype
+                     verbalTypeSelect.value = ''; // Reset verbal subtype
                  } else if (question.question_type === 'Verbal') {
                       questionTypeSelect.value = 'Verbal';
                       verbalTypeSelect.value = 'CR'; // Default to CR for Verbal if not RC
@@ -1452,13 +1464,13 @@
                 let response;
                 if (editingQuestionId) {
                     // Update (PUT) request
-                    response = await fetch(`${API_BASE_URL}/questions/${editingQuestionId}`, {
+                    response = await auth.makeAuthenticatedRequest(`${API_BASE_URL}/questions/${editingQuestionId}`, {
                         method: 'PUT',
                         body: formData,
                     });
                 } else {
                     // Add (POST) request
-                    response = await fetch(`${API_BASE_URL}/quizzes/${currentQuizId}/questions/`, {
+                    response = await auth.makeAuthenticatedRequest(`${API_BASE_URL}/quizzes/${currentQuizId}/questions/`, {
                         method: 'POST',
                         body: formData,
                     });
@@ -1697,6 +1709,7 @@
                            }
                     }
                     
+                                       
                     // Debug: Log the questions before sending to backend
                     console.log('Questions after validation:', questions.map(q => ({
                         questionText: q.questionText.substring(0, 30) + '...',
@@ -1708,7 +1721,7 @@
                     messageEl.textContent = 'Uploading questions...';
                     messageEl.style.color = '';
                     // Send to backend
-                    const response = await fetch(`${API_BASE_URL}/quizzes/${currentQuizId}/questions/bulk/`, {
+                    const response = await auth.makeAuthenticatedRequest(`${API_BASE_URL}/quizzes/${currentQuizId}/questions/bulk/`, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify(questions)

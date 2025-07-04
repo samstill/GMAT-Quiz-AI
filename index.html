@@ -134,6 +134,9 @@
         .theme-toggle { position: fixed; top: 20px; right: 20px; z-index: 100; width: 50px; height: 50px; }
         .theme-toggle:hover { transform: scale(1.1) rotate(15deg); }
         .theme-toggle svg { width: 24px; height: 24px; }
+        .logout-toggle { position: fixed; top: 20px; right: 80px; z-index: 100; width: 50px; height: 50px; }
+        .logout-toggle:hover { transform: scale(1.1) rotate(-15deg); }
+        .logout-toggle svg { width: 24px; height: 24px; }
         .fullscreen-toggle { position: absolute; top: 16px; right: 16px; width: 40px; height: 40px; }
         .fullscreen-toggle svg { width: 20px; height: 20px; }
 
@@ -1177,6 +1180,23 @@
         <svg id="theme-icon-moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-moon"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
     </button>
 
+    <!-- Logout Button -->
+    <button id="logout-toggle" class="icon-button logout-toggle" aria-label="Logout">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-log-out">
+            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+            <polyline points="16,17 21,12 16,7"/>
+            <line x1="21" y1="12" x2="9" y2="12"/>
+        </svg>
+    </button>
+    
+    <!-- User Authentication Info -->
+    <div id="auth-info" class="fixed top-20 right-140 z-40 glass-card p-3 rounded-lg shadow-lg flex items-center gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+        <span data-user-display>User</span>
+    </div>
+    
+    <!-- Logout Button will be added by auth-utils.js -->
+
     <!-- Main View -->
     <div id="main-view" class="w-full">
         <main class="w-full max-w-2xl text-center mx-auto">
@@ -1426,6 +1446,8 @@
         </div>
     </div>
 
+    <!-- Authentication Script -->
+    <script src="auth-utils.js"></script>
     <script>
         // --- Global variable to hold active chart instances ---
         let activeCharts = [];
@@ -1490,6 +1512,22 @@
             applyTheme(currentTheme);
         });
 
+        // --- Logout Button Logic ---
+        const logoutToggleBtn = document.getElementById('logout-toggle');
+        
+        logoutToggleBtn.addEventListener('click', () => {
+            if (window.authManager) {
+                window.authManager.logout();
+            } else {
+                // Fallback logout if authManager is not available
+                localStorage.removeItem('apiKey');
+                localStorage.removeItem('username');
+                localStorage.removeItem('userId');
+                localStorage.removeItem('geminiApiKey');
+                window.location.href = 'auth.html';
+            }
+        });
+
         // --- Fullscreen Toggle Logic ---
         const fullscreenToggleBtn = document.getElementById('fullscreen-toggle');
         const expandIcon = document.getElementById('icon-expand');
@@ -1536,7 +1574,7 @@
 
         async function generateAIQuote() {
             try {
-                const response = await fetch('http://127.0.0.1:8000/api/ai/analyze', {
+                const response = await fetch('/api/ai/analyze', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -1642,7 +1680,7 @@
         
 
         // --- API Base URL for backend ---
-        const API_BASE = 'http://127.0.0.1:8000';
+        const API_BASE = '/api';
 
         // Save flashcards event listener
         saveFlashcardsBtn.addEventListener('click', async () => {
@@ -1919,7 +1957,7 @@
                 // First, get performance context to inform flashcard generation
                 let performanceContext = '';
                 try {
-                    const performanceResponse = await fetch('http://127.0.0.1:8000/api/ai/analyze', {
+                    const performanceResponse = await fetch('/api/ai/analyze', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
@@ -1947,7 +1985,7 @@
 
                 const enhancedPrompt = prompt + performanceContext;
 
-                const response = await fetch('http://127.0.0.1:8000/api/ai/analyze', {
+                const response = await fetch('/api/ai/analyze', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

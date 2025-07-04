@@ -150,6 +150,8 @@
         }
 
     </style>
+    <!-- Authentication Script -->
+    <script src="auth-utils.js"></script>
 </head>
 <body class="flex items-center justify-center min-h-screen p-4">
 
@@ -164,6 +166,10 @@
         <svg id="icon-expand" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-expand"><path d="m21 21-6-6m6 6v-4m0 4h-4"/><path d="M3 3l6 6m-6-6v4m0-4h4"/></svg>
         <svg id="icon-shrink" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shrink hidden"><path d="M15 15l6 6m-6-6v4m0-4h4"/><path d="M9 9l-6-6m6 6v-4m0 4H5"/></svg>
     </button>
+    
+    <!-- User Authentication Info -->
+    
+    <!-- Logout Button will be added by auth-utils.js -->
 
     <main class="w-full max-w-4xl text-left">
         <div class="glass-card rounded-3xl p-8 md:p-12">
@@ -248,18 +254,28 @@
         document.addEventListener('fullscreenchange', toggleFullscreenState);
         toggleFullscreenState();
 
-        // --- Quiz Management Logic (preserved from original file) ---
-        const API_BASE_URL = 'http://127.0.0.1:8000/api';
+        // --- Quiz Management Logic ---
+        const API_BASE_URL = '/api';
         const messageEl = document.getElementById('message');
         const createQuizForm = document.getElementById('create-quiz-form');
         const quizNameInput = document.getElementById('quiz-name');
         const timeLimitInput = document.getElementById('time-limit');
         const quizListEl = document.getElementById('quiz-list');
+        
+        // Initialize auth manager
+        const auth = new AuthManager();
+        
+        // Require authentication to access this page
+        if (!auth.requireAuth()) {
+            // This will redirect to auth.html if not authenticated
+            throw new Error("Authentication required");
+        }
 
         async function fetchAndDisplayQuizzes() {
             messageEl.textContent = 'Loading quizzes...';
             try {
-                const response = await fetch(`${API_BASE_URL}/quizzes/`);
+                // Use authenticated request
+                const response = await auth.makeAuthenticatedRequest(`${API_BASE_URL}/quizzes/`);
                 if (!response.ok) {
                     const errorData = await response.json();
                     throw new Error(errorData.detail || `HTTP error! status: ${response.status}`);
@@ -304,9 +320,9 @@
             }
             messageEl.textContent = 'Creating quiz...';
             try {
-                const response = await fetch(`${API_BASE_URL}/quizzes/`, {
+                // Use authenticated request
+                const response = await auth.makeAuthenticatedRequest(`${API_BASE_URL}/quizzes/`, {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ name: quizName, time_limit_minutes: timeLimitMinutes }),
                 });
                 if (!response.ok) throw new Error('Failed to create quiz.');
@@ -333,7 +349,10 @@
         async function deleteQuiz(quizId) {
             messageEl.textContent = `Deleting quiz...`;
             try {
-                const response = await fetch(`${API_BASE_URL}/quizzes/${quizId}`, { method: 'DELETE' });
+                // Use authenticated request
+                const response = await auth.makeAuthenticatedRequest(`${API_BASE_URL}/quizzes/${quizId}`, { 
+                    method: 'DELETE' 
+                });
                 if (!response.ok) throw new Error('Failed to delete quiz.');
                 messageEl.textContent = `Quiz deleted successfully.`;
                 fetchAndDisplayQuizzes();

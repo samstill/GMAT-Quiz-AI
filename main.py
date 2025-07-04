@@ -1,10 +1,11 @@
 # main.py - Your FastAPI Backend with Multiple Quizzes, Detailed Performance Tracking, and Time Limit
 
-from fastapi import FastAPI, Depends, HTTPException, UploadFile, File, Form, Path
+from fastapi import FastAPI, Depends, HTTPException, UploadFile, File, Form, Path, Header, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
-from pydantic import BaseModel
-from typing import List, Optional, Dict, Any
+from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
+from pydantic import BaseModel, EmailStr
+from typing import List, Optional, Dict, Any, Union
 from sqlalchemy import create_engine, Column, Integer, String, Text, Boolean, Float, DateTime, ForeignKey, text
 from sqlalchemy.orm import sessionmaker, declarative_base, relationship, joinedload, Session # Import joinedload for eager loading
 from sqlalchemy.exc import IntegrityError, OperationalError
@@ -15,19 +16,29 @@ import datetime # To record submission time
 import httpx # Required for making server-to-server API calls
 import asyncio
 import time
+import hashlib
+import secrets
 from dotenv import load_dotenv
 from google.api_core import retry, exceptions
 from ai_tools import AVAILABLE_TOOLS, GEMINI_TOOLS, GEMINI_TOOL_CONFIG
-from models import Base, QuizDB, RCPassageDB, QuestionDB, PerformanceDB, UserExplanationDB, FlashcardSetDB, IndividualFlashcardDB
+from models import Base, QuizDB, RCPassageDB, QuestionDB, PerformanceDB, UserExplanationDB, FlashcardSetDB, IndividualFlashcardDB, UserDB, APIKeyDB
 
 # Load environment variables from .env file
 load_dotenv()
 
+# --- Configuration ---
+GOOGLE_API_KEY = os.environ.get("GOOGLE_API_KEY")
+ALLOW_USER_REGISTRATION = os.environ.get("ALLOW_USER_REGISTRATION", "true").lower() == "true"
+
 # --- Google AI Configuration with Rate Limiting ---
 GOOGLE_API_KEY = os.environ.get("GOOGLE_API_KEY")
-if not GOOGLE_API_KEY:
-    raise ValueError("GOOGLE_API_KEY environment variable is required")
-GEMINI_API_URL = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={GOOGLE_API_KEY}"
+# Make GOOGLE_API_KEY optional - will be provided from frontend when needed
+GEMINI_API_URL_BASE = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent"
+
+if GOOGLE_API_KEY:
+    print("Using Gemini API key from environment variables")
+else:
+    print("No Gemini API key found in environment. API key will be required from frontend for AI features.")
 
 # Rate limiting configuration for Gemini free tier
 # Free tier limits: 15 RPM (requests per minute), 1 million TPM (tokens per minute), 1,500 RPD (requests per day)
@@ -66,18 +77,86 @@ class RateLimiter:
 gemini_rate_limiter = RateLimiter()
 
 # --- Database Configuration ---
-SQLALCHEMY_DATABASE_URL = "sqlite:///./quiz.db"
-engine = create_engine(
-    SQLALCHEMY_DATABASE_URL,
+# Main database for user authentication
+MAIN_DATABASE_URL = "sqlite:///./quiz.db"
+main_engine = create_engine(
+    MAIN_DATABASE_URL,
     connect_args={"check_same_thread": False}
 )
-SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+MainSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=main_engine)
 
 # --- Database Models (SQLAlchemy ORM) ---
-Base.metadata.create_all(bind=engine)
+# Create auth tables in the main database
+Base.metadata.create_all(bind=main_engine)
+
+# --- Create user_databases directory if it doesn't exist
+os.makedirs('user_databases', exist_ok=True)
+
+# --- Database dependency injection ---
+def get_main_db():
+    """Get a database session for the main authentication database"""
+    db = MainSessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
+
+def get_user_db(request: Request, db: Session = Depends(get_main_db)):
+    """
+    Get a database session for the current user's database.
+    If no authenticated user, returns the main database for auth operations.
+    """
+    # Get the API key from the header
+    api_key = request.headers.get("X-API-Key")
+    
+    # If no API key is provided, return the main database (for auth operations)
+    if not api_key:
+        yield db
+        return
+    
+    # Query for active API key to get user ID
+    db_api_key = db.query(APIKeyDB).filter(
+        APIKeyDB.api_key == api_key,
+        APIKeyDB.is_active == True
+    ).first()
+    
+    # If API key not found or user not found, use main database
+    if not db_api_key:
+        yield db
+        return
+    
+    # Check if API key has expired
+    if db_api_key.expires_at and db_api_key.expires_at < datetime.datetime.utcnow():
+        yield db
+        return
+    
+    # Update last used timestamp
+    db_api_key.last_used_at = datetime.datetime.utcnow()
+    db.commit()
+    
+    # Get the user
+    user = db.query(UserDB).filter(
+        UserDB.id == db_api_key.user_id,
+        UserDB.is_active == True
+    ).first()
+    
+    if not user:
+        yield db
+        return
+    
+    # Create or get the user's database session
+    user_db_session = UserDB.get_user_db_session(user.id)
+    
+    try:
+        yield user_db_session
+    finally:
+        user_db_session.close()
+
+# Default database dependency - works for both auth and user operations
+get_db = get_user_db
 
 def migrate_database():
-    db = SessionLocal()
+    db = MainSessionLocal()
     try:
         db.execute(text("SELECT answer_explanation FROM questions LIMIT 1"))
         print("Database migration: answer_explanation column already exists")
@@ -102,6 +181,42 @@ migrate_database()
 
 # --- Pydantic Models (for Request/Response Validation) ---
 
+# --- Authentication Models ---
+class UserCreate(BaseModel):
+    username: str
+    email: EmailStr
+    password: str
+
+class UserResponse(BaseModel):
+    id: int
+    username: str
+    email: str
+    is_active: bool
+    created_at: datetime.datetime
+    
+    class Config:
+        from_attributes = True
+
+class APIKeyCreate(BaseModel):
+    key_name: str
+    expires_in_days: Optional[int] = None  # Optional expiration in days
+
+class APIKeyResponse(BaseModel):
+    id: int
+    key_name: str
+    api_key: str
+    is_active: bool
+    created_at: datetime.datetime
+    expires_at: Optional[datetime.datetime] = None
+    
+    class Config:
+        from_attributes = True
+
+class LoginRequest(BaseModel):
+    username: str
+    password: str
+
+# --- Quiz Models ---
 class QuizBase(BaseModel):
     name: str
     time_limit_minutes: int
@@ -290,12 +405,53 @@ IMAGES_DIR = "images"
 os.makedirs(IMAGES_DIR, exist_ok=True)
 app.mount("/images", StaticFiles(directory=IMAGES_DIR), name="images")
 
-def get_db():
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
+# Mount static files for frontend (HTML, CSS, JS)
+app.mount("/static", StaticFiles(directory="."), name="static")
+
+# Add a route to serve the main page
+@app.get("/")
+async def serve_index():
+    from fastapi.responses import FileResponse
+    return FileResponse("index.html")
+
+# Health check endpoint
+@app.get("/health")
+async def health_check():
+    return {"status": "healthy", "timestamp": datetime.datetime.now().isoformat()}
+
+# --- Authentication Utilities ---
+async def get_optional_user(
+    api_key: str = Header(None, alias="X-API-Key"),
+    db: Session = Depends(get_main_db)
+) -> Optional[UserDB]:
+    """Dependency to get current user from API key if provided, otherwise None"""
+    if not api_key:
+        return None
+    
+    # Query for active API key
+    db_api_key = db.query(APIKeyDB).filter(
+        APIKeyDB.api_key == api_key,
+        APIKeyDB.is_active == True
+    ).first()
+    
+    if not db_api_key:
+        return None
+    
+    # Check if API key has expired
+    if db_api_key.expires_at and db_api_key.expires_at < datetime.datetime.utcnow():
+        return None
+    
+    # Update last used timestamp
+    db_api_key.last_used_at = datetime.datetime.utcnow()
+    db.commit()
+    
+    # Get the user
+    user = db.query(UserDB).filter(
+        UserDB.id == db_api_key.user_id,
+        UserDB.is_active == True
+    ).first()
+    
+    return user
 
 # --- API Endpoints ---
 
@@ -303,11 +459,156 @@ def get_db():
 async def read_root():
     return {"message": "Welcome to the Quiz API!"}
 
+# --- Authentication Endpoints ---
+
+@app.post("/api/auth/register", response_model=UserResponse, status_code=201)
+async def register_user(user_data: UserCreate, db: Session = Depends(get_main_db)):
+    if not ALLOW_USER_REGISTRATION:
+        raise HTTPException(status_code=403, detail="User registration is disabled")
+    
+    # Check if user already exists
+    db_user = db.query(UserDB).filter(
+        (UserDB.username == user_data.username) | (UserDB.email == user_data.email)
+    ).first()
+    if db_user:
+        raise HTTPException(
+            status_code=400,
+            detail="Username or email already registered"
+        )
+    
+    # Create new user
+    db_user = UserDB(
+        username=user_data.username,
+        email=user_data.email,
+        password=user_data.password
+    )
+    db.add(db_user)
+    try:
+        db.commit()
+        db.refresh(db_user)
+        
+        # Create user's personal database
+        user_db_path = UserDB.create_user_db(db_user.id)
+        
+        # Update user with the database path
+        db_user.database_path = user_db_path
+        db.commit()
+        
+        return db_user
+    except IntegrityError:
+        db.rollback()
+        raise HTTPException(status_code=400, detail="User could not be created.")
+
+@app.post("/api/auth/login")
+async def login_for_api_key(form_data: LoginRequest, db: Session = Depends(get_main_db)):
+    """
+    Authenticate user and return an API key for accessing the application.
+    """
+    user = db.query(UserDB).filter(UserDB.username == form_data.username).first()
+    if not user or user.password != form_data.password:
+        raise HTTPException(
+            status_code=401,
+            detail="Incorrect username or password",
+            headers={"WWW-Authenticate": "Bearer"},
+        )
+
+    # Ensure user has a database
+    if not user.database_path or not os.path.exists(user.database_path):
+        # Create user database if it doesn't exist
+        user_db_path = UserDB.create_user_db(user.id)
+        user.database_path = user_db_path
+        db.commit()
+
+    # Create or retrieve API key
+    api_key = db.query(APIKeyDB).filter(APIKeyDB.user_id == user.id).first()
+    if api_key:
+        # Update last used timestamp
+        api_key.last_used_at = datetime.datetime.utcnow()
+        db.commit()
+    else:
+        # Create a new API key
+        new_api_key = APIKeyDB.generate_api_key()
+        db_api_key = APIKeyDB(
+            user_id=user.id,
+            key_name="default",
+            api_key=new_api_key
+        )
+        db.add(db_api_key)
+        db.commit()
+
+    return {
+        "message": "Login successful",
+        "api_key": api_key.api_key if api_key else new_api_key,
+        "username": user.username,
+        "user_id": user.id
+    }
+
+@app.post("/api/auth/api-keys", response_model=APIKeyResponse, status_code=201)
+async def create_api_key(
+    key_data: APIKeyCreate,
+    current_user: UserDB = Depends(get_optional_user),
+    db: Session = Depends(get_main_db)
+):
+    """Generate a new API key for the authenticated user."""
+    new_api_key_str = APIKeyDB.generate_api_key()
+    expires_at = None
+    if key_data.expires_in_days:
+        expires_at = datetime.datetime.utcnow() + datetime.timedelta(days=key_data.expires_in_days)
+    
+    db_api_key = APIKeyDB(
+        user_id=current_user.id,
+        key_name=key_data.key_name,
+        api_key=new_api_key_str,
+        expires_at=expires_at
+    )
+    db.add(db_api_key)
+    db.commit()
+    db.refresh(db_api_key)
+    
+    return db_api_key
+
+@app.get("/api/auth/api-keys", response_model=List[APIKeyResponse])
+async def get_user_api_keys(
+    current_user: Optional[UserDB] = Depends(get_optional_user),
+    db: Session = Depends(get_main_db)
+):
+    """List all active API keys for the authenticated user."""
+    api_keys = db.query(APIKeyDB).filter(APIKeyDB.user_id == current_user.id).all()
+    return api_keys
+
+@app.delete("/api/auth/api-keys/{api_key_id}", status_code=204)
+async def delete_api_key(
+    api_key_id: int,
+    current_user: Optional[UserDB] = Depends(get_optional_user),
+    db: Session = Depends(get_main_db)
+):
+    """Delete an API key for the authenticated user."""
+    db_api_key = db.query(APIKeyDB).filter(
+        APIKeyDB.id == api_key_id,
+        APIKeyDB.user_id == current_user.id
+    ).first()
+    
+    if db_api_key is None:
+        raise HTTPException(status_code=404, detail="API key not found")
+        
+    db.delete(db_api_key)
+    db.commit()
+    return
+
+
 # --- Quiz Management Endpoints ---
 
 @app.post("/api/quizzes/", response_model=QuizResponse, status_code=201)
-async def create_quiz(quiz: QuizCreate, db: Session = Depends(get_db)):
-    db_quiz = QuizDB(name=quiz.name, time_limit_minutes=quiz.time_limit_minutes)
+async def create_quiz(
+    quiz: QuizCreate, 
+    db: Session = Depends(get_db),
+    current_user: Optional[UserDB] = Depends(get_optional_user)
+):
+    # If authenticated, associate quiz with user
+    if current_user:
+        db_quiz = QuizDB(name=quiz.name, time_limit_minutes=quiz.time_limit_minutes, created_by_user_id=current_user.id)
+    else:
+        db_quiz = QuizDB(name=quiz.name, time_limit_minutes=quiz.time_limit_minutes)
     db.add(db_quiz)
     try:
         db.commit()
@@ -1096,7 +1397,7 @@ async def delete_user_explanation(
     db.delete(explanation)
     db.commit()
 
-Base.metadata.create_all(bind=engine)
+Base.metadata.create_all(bind=main_engine)
 
 
 
@@ -1112,6 +1413,7 @@ class AIChatMessage(BaseModel):
 class AIAnalysisRequest(BaseModel):
     history: List[AIChatMessage]
     quiz_id: Optional[int] = None # Allow filtering data by quiz
+    gemini_api_key: Optional[str] = None # API key can be provided from frontend
 
 
 # --- Helper function to get performance context from DB ---
@@ -1176,11 +1478,22 @@ def get_performance_context_from_db(db: Session, quiz_id: Optional[int] = None):
     return json.dumps(context, indent=2)
 
 
-async def call_gemini_with_retry(payload: Dict[str, Any], max_retries: int = 3) -> Dict[str, Any]:
+async def call_gemini_with_retry(payload: Dict[str, Any], gemini_api_key: str = None, max_retries: int = 3) -> Dict[str, Any]:
     """
     Call Gemini API with proper rate limiting and retry logic.
     Based on official Gemini documentation best practices.
+    
+    Uses the provided API key or falls back to the environment variable if available.
     """
+    # Use provided API key or environment variable as fallback
+    api_key = gemini_api_key or GOOGLE_API_KEY
+    
+    if not api_key:
+        raise HTTPException(status_code=400, detail="No Gemini API key provided. Please set one in your profile or provide it in the request.")
+        
+    # Construct the full URL with the API key
+    api_url = f"{GEMINI_API_URL_BASE}?key={api_key}"
+    
     # Apply rate limiting first
     await gemini_rate_limiter.acquire()
     
@@ -1188,7 +1501,7 @@ async def call_gemini_with_retry(payload: Dict[str, Any], max_retries: int = 3) 
         try:
             async with httpx.AsyncClient() as client:
                 response = await client.post(
-                    GEMINI_API_URL, 
+                    api_url, 
                     json=payload, 
                     timeout=httpx.Timeout(60.0)
                 )
@@ -1342,7 +1655,7 @@ async def analyze_performance(request: AIAnalysisRequest, db: Session = Depends(
         }
 
         try:
-            result = await call_gemini_with_retry(payload)
+            result = await call_gemini_with_retry(payload, gemini_api_key=request.gemini_api_key)
             
             # Check for valid response structure
             if not result.get("candidates") or not result["candidates"]:
@@ -1505,34 +1818,6 @@ async def list_flashcard_sets(db: Session = Depends(get_db)):
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Failed to load flashcard sets: {str(e)}")
 
-@app.get("/api/flashcards/list-individual", response_model=List[IndividualFlashcardResponse])
-async def list_individual_flashcards(db: Session = Depends(get_db)):
-    """Get all saved individual flashcards"""
-    try:
-        flashcards = db.query(IndividualFlashcardDB).order_by(IndividualFlashcardDB.created_at.desc()).all()
-        
-        result = []
-        for db_card in flashcards:
-            try:
-                flashcard_data = json.loads(db_card.flashcard_json)
-                flashcard_obj = Flashcard(**flashcard_data)
-                
-                result.append(IndividualFlashcardResponse(
-                    id=db_card.id,
-                    name=db_card.name,
-                    topics=db_card.topics,
-                    flashcard=flashcard_obj,
-                    created_at=db_card.created_at
-                ))
-            except json.JSONDecodeError:
-                # Skip corrupted flashcards
-                continue
-                
-        return result
-        
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Failed to load individual flashcards: {str(e)}")
-
 @app.get("/api/flashcards/{flashcard_set_id}", response_model=FlashcardSetResponse)
 async def get_flashcard_set(flashcard_set_id: int, db: Session = Depends(get_db)):
     """Get a specific flashcard set by ID"""
@@ -1544,7 +1829,7 @@ async def get_flashcard_set(flashcard_set_id: int, db: Session = Depends(get_db)
         
         flashcards_data = json.loads(db_set.flashcards_json)
         flashcards = [Flashcard(**card) for card in flashcards_data]
-        
+
         return FlashcardSetResponse(
             id=db_set.id,
             name=db_set.name,
@@ -1552,7 +1837,6 @@ async def get_flashcard_set(flashcard_set_id: int, db: Session = Depends(get_db)
             flashcards=flashcards,
             created_at=db_set.created_at
         )
-        
     except json.JSONDecodeError:
         raise HTTPException(status_code=500, detail="Corrupted flashcard set data")
     except Exception as e:

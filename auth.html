@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authentication | GMAT Prep</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color-start: #1a202c;
+            --bg-color-end: #2d3748;
+            --card-bg-color: rgba(26, 32, 44, 0.6);
+            --text-color: #E2E8F0;
+            --text-color-muted: #A0AEC0;
+            --accent-color: #6366F1;
+            --accent-color-hover: #4F46E5;
+            --border-color: rgba(255, 255, 255, 0.1);
+        }
+        .light-mode {
+            --bg-color-start: #F7FAFC;
+            --bg-color-end: #EDF2F7;
+            --card-bg-color: rgba(255, 255, 255, 0.7);
+            --text-color: #1A202C;
+            --text-color-muted: #4A5568;
+            --accent-color: #4F46E5;
+            --accent-color-hover: #4338CA;
+            --border-color: rgba(0, 0, 0, 0.1);
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--bg-color-start), var(--bg-color-end));
+            color: var(--text-color);
+            transition: background 0.5s ease, color 0.5s ease;
+        }
+        .glass-card {
+            background: var(--card-bg-color);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border-color);
+            transition: background 0.5s ease, border 0.5s ease;
+        }
+        .form-input {
+            background-color: rgba(0,0,0,0.2);
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+        }
+        .light-mode .form-input {
+            background-color: rgba(255,255,255,0.5);
+        }
+        .form-input:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 2px var(--accent-color);
+        }
+        .cta-button {
+            background-color: var(--accent-color);
+            transition: background-color 0.3s ease;
+        }
+        .cta-button:hover {
+            background-color: var(--accent-color-hover);
+        }
+        .toggle-link {
+            color: var(--accent-color);
+            cursor: pointer;
+        }
+        .toggle-link:hover {
+            text-decoration: underline;
+        }
+        .heading-gradient {
+            background: linear-gradient(135deg, var(--accent-color), #8B5CF6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+            width: 50px;
+            height: 50px;
+            background: var(--card-bg-color);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .theme-toggle:hover {
+            transform: scale(1.1) rotate(15deg);
+        }
+        .theme-toggle svg {
+            width: 24px;
+            height: 24px;
+            color: var(--text-color);
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen p-4">
+
+    <!-- Theme Toggle Button -->
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+        <svg id="theme-icon-sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hidden">
+            <circle cx="12" cy="12" r="4"/>
+            <path d="M12 2v2"/>
+            <path d="M12 20v2"/>
+            <path d="m4.93 4.93 1.41 1.41"/>
+            <path d="m17.66 17.66 1.41 1.41"/>
+            <path d="M2 12h2"/>
+            <path d="M20 12h2"/>
+            <path d="m6.34 17.66-1.41 1.41"/>
+            <path d="m19.07 4.93-1.41 1.41"/>
+        </svg>
+        <svg id="theme-icon-moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
+        </svg>
+    </button>
+
+    <div id="notification-container" class="fixed top-5 right-5 z-50"></div>
+
+    <main class="w-full max-w-md">
+        <div id="auth-container" class="glass-card rounded-2xl p-8 md:p-12 shadow-2xl">
+            <!-- Login Form -->
+            <form id="login-form" class="space-y-6">
+                <h2 class="text-3xl font-bold text-center heading-gradient">Welcome Back</h2>
+                <div>
+                    <label for="login-username" class="block text-sm font-medium text-gray-400">Username</label>
+                    <input type="text" id="login-username" required class="form-input mt-1 block w-full rounded-md p-3">
+                </div>
+                <div>
+                    <label for="login-password" class="block text-sm font-medium text-gray-400">Password</label>
+                    <input type="password" id="login-password" required class="form-input mt-1 block w-full rounded-md p-3">
+                </div>
+                <div>
+                    <label for="gemini-key" class="block text-sm font-medium text-gray-400">Optional: Gemini API Key</label>
+                    <input type="password" id="gemini-key" placeholder="Enter key for AI features" class="form-input mt-1 block w-full rounded-md p-3">
+                </div>
+                <button type="submit" class="w-full cta-button text-white font-bold py-3 px-4 rounded-md">Login</button>
+                <p class="text-center text-sm text-gray-400">
+                    Don't have an account? <span id="show-register" class="toggle-link font-semibold">Register here</span>
+                </p>
+            </form>
+
+            <!-- Registration Form (hidden by default) -->
+            <form id="register-form" class="space-y-6 hidden">
+                <h2 class="text-3xl font-bold text-center heading-gradient">Create Account</h2>
+                <div>
+                    <label for="register-username" class="block text-sm font-medium text-gray-400">Username</label>
+                    <input type="text" id="register-username" required class="form-input mt-1 block w-full rounded-md p-3">
+                </div>
+                <div>
+                    <label for="register-email" class="block text-sm font-medium text-gray-400">Email</label>
+                    <input type="email" id="register-email" required class="form-input mt-1 block w-full rounded-md p-3">
+                </div>
+                <div>
+                    <label for="register-password" class="block text-sm font-medium text-gray-400">Password</label>
+                    <input type="password" id="register-password" required class="form-input mt-1 block w-full rounded-md p-3">
+                </div>
+                <button type="submit" class="w-full cta-button text-white font-bold py-3 px-4 rounded-md">Register</button>
+                <p class="text-center text-sm text-gray-400">
+                    Already have an account? <span id="show-login" class="toggle-link font-semibold">Login here</span>
+                </p>
+            </form>
+        </div>
+    </main>
+
+    <script src="auth.js"></script>
+</body>
+</html>
