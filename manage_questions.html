@@ -1766,8 +1766,8 @@
                     console.log('Full request payload (first 3 questions):', JSON.stringify(questions.slice(0, 3), null, 2));
                     
                     // Debug: Check current user authentication
-                    const currentUser = auth.getCurrentUser();
-                    console.log('Current authenticated user:', currentUser);
+                    console.log('Current authenticated user ID:', localStorage.getItem('userId'));
+                    console.log('Current authenticated username:', localStorage.getItem('username'));
                     console.log('User ID from localStorage:', localStorage.getItem('userId'));
                     console.log('API Key from localStorage:', localStorage.getItem('apiKey'));
                     
