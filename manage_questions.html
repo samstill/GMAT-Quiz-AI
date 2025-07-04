@@ -1765,6 +1765,24 @@
                     console.log('Sample question data structure:', questions[0]);
                     console.log('Full request payload (first 3 questions):', JSON.stringify(questions.slice(0, 3), null, 2));
                     
+                    // Debug: Check current user authentication
+                    const currentUser = auth.getCurrentUser();
+                    console.log('Current authenticated user:', currentUser);
+                    console.log('User ID from localStorage:', localStorage.getItem('userId'));
+                    console.log('API Key from localStorage:', localStorage.getItem('apiKey'));
+                    
+                    // Debug: First verify the quiz exists by fetching quiz details
+                    console.log('Verifying quiz exists...');
+                    const verifyResponse = await auth.makeAuthenticatedRequest(`${API_BASE_URL}/quizzes/${currentQuizId}`);
+                    console.log('Quiz verification response status:', verifyResponse.status);
+                    if (!verifyResponse.ok) {
+                        const verifyError = await verifyResponse.json();
+                        console.log('Quiz verification error:', verifyError);
+                        throw new Error(`Quiz verification failed: ${verifyError.detail || 'Quiz not found for current user'}`);
+                    }
+                    const quizData = await verifyResponse.json();
+                    console.log('Quiz verification successful:', quizData);
+                    
                     // Send to backend
                     const response = await auth.makeAuthenticatedRequest(`${API_BASE_URL}/quizzes/${currentQuizId}/questions/bulk/`, {
                         method: 'POST',

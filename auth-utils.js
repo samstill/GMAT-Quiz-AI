@@ -174,6 +174,16 @@ class AuthManager {
         
         return logoutBtn;
     }
+
+    // Get current user info
+    getCurrentUser() {
+        return {
+            username: this.getUsername(),
+            userId: this.getUserId(),
+            apiKey: this.getApiKey(),
+            geminiApiKey: this.getGeminiApiKey()
+        };
+    }
 }
 
 // Create global instance
