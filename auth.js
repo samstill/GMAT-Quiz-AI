@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const API_BASE_URL = 'http://127.0.0.1:8000/api';
+    const API_BASE_URL = '/api'; // Use relative URL to match other files
     const loginForm = document.getElementById('login-form');
     const registerForm = document.getElementById('register-form');
     const showRegisterLink = document.getElementById('show-register');
@@ -54,6 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const username = document.getElementById('register-username').value;
         const email = document.getElementById('register-email').value;
         const password = document.getElementById('register-password').value;
+        const geminiKey = document.getElementById('register-gemini-key').value;
 
         try {
             const response = await fetch(`${API_BASE_URL}/auth/register`, {
@@ -63,6 +64,11 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             if (response.ok) {
+                // Store Gemini API key if provided (for use after login)
+                if (geminiKey) {
+                    localStorage.setItem('pendingGeminiApiKey', geminiKey);
+                }
+                
                 showNotification('Registration successful! Please login.', 'success');
                 registerForm.reset();
                 showLoginLink.click();
@@ -104,6 +110,13 @@ document.addEventListener('DOMContentLoaded', () => {
             // Store Gemini API key if provided
             if (geminiKey) {
                 localStorage.setItem('geminiApiKey', geminiKey);
+            } else {
+                // Check if there's a pending Gemini API key from registration
+                const pendingKey = localStorage.getItem('pendingGeminiApiKey');
+                if (pendingKey) {
+                    localStorage.setItem('geminiApiKey', pendingKey);
+                    localStorage.removeItem('pendingGeminiApiKey');
+                }
             }
 
             showNotification('Login successful! Redirecting...', 'success');

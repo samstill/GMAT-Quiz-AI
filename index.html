@@ -1449,6 +1449,46 @@
     <!-- Authentication Script -->
     <script src="auth-utils.js"></script>
     <script>
+        // Check authentication status and redirect if needed
+        document.addEventListener('DOMContentLoaded', async () => {
+            console.log('Page loading, current URL:', window.location.href);
+            console.log('Protocol:', window.location.protocol);
+            
+            // If opened as file://, redirect to server
+            if (window.location.protocol === 'file:') {
+                console.log('Page opened as file://, redirecting to server');
+                window.location.href = 'http://localhost:8000/index.html';
+                return;
+            }
+            
+            // Wait for auth manager to load
+            let authCheckRetries = 0;
+            while (!window.authManager && authCheckRetries < 50) {
+                await new Promise(resolve => setTimeout(resolve, 100));
+                authCheckRetries++;
+            }
+            
+            console.log('Auth manager loaded:', !!window.authManager);
+            
+            // If auth manager is available, check authentication
+            if (window.authManager && window.authManager.isAuthenticated) {
+                const isAuth = window.authManager.isAuthenticated();
+                console.log('User authenticated:', isAuth);
+                
+                if (!isAuth) {
+                    // User is not authenticated, redirect to auth page
+                    console.log('User not authenticated, redirecting to auth page');
+                    window.location.href = 'auth.html';
+                    return;
+                }
+            } else {
+                // Auth manager not available, redirect to auth page
+                console.log('Auth manager not available, redirecting to auth page');
+                window.location.href = 'auth.html';
+                return;
+            }
+        });
+
         // --- Global variable to hold active chart instances ---
         let activeCharts = [];
 
@@ -1574,19 +1614,43 @@
 
         async function generateAIQuote() {
             try {
-                const response = await fetch('/api/ai/analyze', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        history: [{
-                            role: "user",
-                            parts: [{
-                                text: "Generate a single inspiring and motivational quote for a GMAT student who is working hard to achieve their goals. The quote should be encouraging, focused on persistence, growth, and achieving excellence. Return only the quote text without quotes or additional formatting."
-                            }]
+                // Wait for auth manager to be ready
+                let retries = 0;
+                while ((!window.authManager || !window.authManager.makeAuthenticatedRequest) && retries < 10) {
+                    await new Promise(resolve => setTimeout(resolve, 100));
+                    retries++;
+                }
+                
+                // Check if auth manager is available and user is authenticated
+                if (!window.authManager || !window.authManager.makeAuthenticatedRequest) {
+                    console.log('Auth manager not available after waiting, using fallback quote');
+                    displayRandomQuote();
+                    return;
+                }
+
+                // Check if user is authenticated
+                if (!window.authManager.isAuthenticated || !window.authManager.isAuthenticated()) {
+                    console.log('User not authenticated, using fallback quote');
+                    displayRandomQuote();
+                    return;
+                }
+
+                // Get Gemini API key from localStorage if available
+                const geminiApiKey = localStorage.getItem('geminiApiKey');
+                
+                const quotePayload = {
+                    history: [{
+                        role: "user",
+                        parts: [{
+                            text: "Generate a single inspiring and motivational quote for a GMAT student who is working hard to achieve their goals. The quote should be encouraging, focused on persistence, growth, and achieving excellence. Return only the quote text without quotes or additional formatting."
                         }]
-                    })
+                    }],
+                    gemini_api_key: geminiApiKey
+                };
+
+                const response = await window.authManager.makeAuthenticatedRequest('/api/ai/analyze', {
+                    method: 'POST',
+                    body: JSON.stringify(quotePayload)
                 });
 
                 if (response.ok) {
@@ -1609,8 +1673,18 @@
             quoteElement.textContent = `"${motivationalQuotes[randomIndex]}"`;
         }
 
-        // Try AI quote first, fallback to random quote
-        document.addEventListener('DOMContentLoaded', generateAIQuote);
+        // Try AI quote first, fallback to random quote - but only if user is authenticated
+        document.addEventListener('DOMContentLoaded', async () => {
+            // Wait a bit for auth manager to initialize
+            await new Promise(resolve => setTimeout(resolve, 500));
+            
+            // Only try AI quote if user is authenticated
+            if (window.authManager && window.authManager.isAuthenticated && window.authManager.isAuthenticated()) {
+                generateAIQuote();
+            } else {
+                displayRandomQuote();
+            }
+        });
 
         // --- AI Flashcard Modal Logic ---
         const generateFlashcardsBtn = document.getElementById('generate-flashcards-btn');
@@ -1840,6 +1914,41 @@
                 return;
             }
 
+            // Check if Gemini API key is available
+            const geminiApiKey = localStorage.getItem('geminiApiKey');
+            console.log('API Key check:', geminiApiKey ? 'Present' : 'Missing');
+            
+            // Check if auth manager is available
+            if (!window.authManager || !window.authManager.makeAuthenticatedRequest) {
+                // Wait for auth manager to be ready
+                let retries = 0;
+                while ((!window.authManager || !window.authManager.makeAuthenticatedRequest) && retries < 30) {
+                    await new Promise(resolve => setTimeout(resolve, 100));
+                    retries++;
+                }
+                
+                if (!window.authManager || !window.authManager.makeAuthenticatedRequest) {
+                    flashcardOutput.innerHTML = `
+                        <div class="col-span-full p-6 text-center">
+                            <div class="text-red-400 text-lg mb-2">⚠️ Authentication Error</div>
+                            <p class="text-gray-300 mb-4">Authentication system not ready. Please refresh the page and try again.</p>
+                        </div>
+                    `;
+                    return;
+                }
+            }
+            
+            if (!geminiApiKey || geminiApiKey.trim() === '') {
+                flashcardOutput.innerHTML = `
+                    <div class="col-span-full p-6 text-center">
+                        <div class="text-yellow-400 text-lg mb-2">🔑 API Key Required</div>
+                        <p class="text-gray-300 mb-4">A Gemini API key is required to generate AI-powered flashcards.</p>
+                        <p class="text-sm text-gray-400">Please log out and log back in with your Gemini API key, or add one in your profile settings.</p>
+                    </div>
+                `;
+                return;
+            }
+
             modalForm.classList.add('hidden');
             modalResult.classList.remove('hidden');
             loader.classList.remove('hidden');
@@ -1954,54 +2063,101 @@
             `;
 
             try {
+                // Test backend connection first
+                try {
+                    const testResponse = await fetch('/health', { method: 'GET' });
+                    if (!testResponse.ok) {
+                        throw new Error('Backend not accessible');
+                    }
+                } catch (connectionError) {
+                    console.error('Backend connection test failed:', connectionError);
+                    flashcardOutput.innerHTML = `
+                        <div class="col-span-full p-6 text-center">
+                            <div class="text-red-400 text-lg mb-2">🔌 Connection Error</div>
+                            <p class="text-gray-300 mb-4">Cannot connect to the backend server.</p>
+                            <p class="text-sm text-gray-400">Please make sure the server is running and try again.</p>
+                        </div>
+                    `;
+                    return;
+                }
+
                 // First, get performance context to inform flashcard generation
                 let performanceContext = '';
                 try {
-                    const performanceResponse = await fetch('/api/ai/analyze', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({
+                    // Check if auth manager is available
+                    if (!window.authManager || !window.authManager.makeAuthenticatedRequest) {
+                        console.log('Auth manager not available for performance analysis');
+                        performanceContext = '\n\n**STUDENT PERFORMANCE ANALYSIS:** Authentication system not ready. Focus on comprehensive coverage of advanced GMAT Focus Edition topics.';
+                    } else {
+                        // Get Gemini API key from localStorage if available
+                        const geminiApiKey = localStorage.getItem('geminiApiKey');
+                    
+                        const performancePayload = {
                             history: [{
                                 role: "user",
                                 parts: [{
                                     text: "Analyze my recent GMAT performance data and identify my top 3 weakness areas and top 2 strength areas. Provide a brief summary for flashcard targeting. Focus on question types, difficulty levels, and specific topics where I need improvement."
                                 }]
-                            }]
-                        })
-                    });
+                            }],
+                            gemini_api_key: geminiApiKey
+                        };
 
-                    if (performanceResponse.ok) {
-                        const performanceResult = await performanceResponse.json();
-                        if (performanceResult.text) {
-                            performanceContext = `\n\n**STUDENT PERFORMANCE ANALYSIS:**\n${performanceResult.text.trim()}\n\n**FLASHCARD TARGETING INSTRUCTION:** Use this performance data to prioritize topics where the student needs the most improvement. Focus 60% of flashcards on identified weakness areas.`;
+                        const performanceResponse = await window.authManager.makeAuthenticatedRequest('/api/ai/analyze', {
+                            method: 'POST',
+                            body: JSON.stringify(performancePayload)
+                        });
+
+                        if (performanceResponse.ok) {
+                            const performanceResult = await performanceResponse.json();
+                            if (performanceResult.text) {
+                                performanceContext = `\n\n**STUDENT PERFORMANCE ANALYSIS:**\n${performanceResult.text.trim()}\n\n**FLASHCARD TARGETING INSTRUCTION:** Use this performance data to prioritize topics where the student needs the most improvement. Focus 60% of flashcards on identified weakness areas.`;
+                            }
                         }
                     }
                 } catch (perfError) {
                     console.log('Performance analysis unavailable, proceeding with general flashcards:', perfError);
+                    console.log('Performance error details:', {
+                        message: perfError.message,
+                        hasAuthManager: !!(window.authManager && window.authManager.makeAuthenticatedRequest)
+                    });
                     performanceContext = '\n\n**STUDENT PERFORMANCE ANALYSIS:** No recent performance data available. Focus on comprehensive coverage of advanced GMAT Focus Edition topics.';
                 }
 
                 const enhancedPrompt = prompt + performanceContext;
 
-                const response = await fetch('/api/ai/analyze', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        history: [{
-                            role: "user",
-                            parts: [{
-                                text: enhancedPrompt
-                            }]
+                // Get Gemini API key from localStorage if available
+                const geminiApiKey = localStorage.getItem('geminiApiKey');
+
+                console.log('Making flashcard request with API key:', geminiApiKey ? 'Present' : 'Missing');
+
+                const flashcardPayload = {
+                    history: [{
+                        role: "user",
+                        parts: [{
+                            text: enhancedPrompt
                         }]
-                    })
+                    }],
+                    gemini_api_key: geminiApiKey
+                };
+
+                const response = await window.authManager.makeAuthenticatedRequest('/api/ai/analyze', {
+                    method: 'POST',
+                    body: JSON.stringify(flashcardPayload)
                 });
 
+                console.log('Response status:', response.status);
+                console.log('Response ok:', response.ok);
+
                 if (!response.ok) {
-                    throw new Error(`Backend API error: ${response.status}`);
+                    const errorData = await response.json().catch(() => ({ detail: 'Unknown error' }));
+                    console.error('API Error Response:', errorData);
+                    
+                    // Check if this is a missing API key error
+                    if (response.status === 400 && errorData.detail && errorData.detail.includes("No Gemini API key provided")) {
+                        throw new Error("A Gemini API key is required for AI analysis. Please add one in your profile settings.");
+                    }
+                    
+                    throw new Error(errorData.detail || `Backend API error: ${response.status}`);
                 }
 
                 const result = await response.json();
@@ -2049,7 +2205,40 @@
 
             } catch (error) {
                 console.error("Error calling AI API:", error);
-                flashcardOutput.innerHTML = `<p class="text-red-400 col-span-full">An error occurred while generating flashcards. Please check your internet connection and try again.</p>`;
+                console.error("Full error details:", {
+                    message: error.message,
+                    stack: error.stack,
+                    geminiApiKey: localStorage.getItem('geminiApiKey') ? 'Present' : 'Missing'
+                });
+                
+                // Check if this is a missing API key error
+                if (error.message && error.message.includes("Gemini API key")) {
+                    flashcardOutput.innerHTML = `
+                        <div class="col-span-full p-6 text-center">
+                            <div class="text-yellow-400 text-lg mb-2">🔑 API Key Required</div>
+                            <p class="text-gray-300 mb-4">A Gemini API key is required to generate AI-powered flashcards.</p>
+                            <p class="text-sm text-gray-400">Please add your Gemini API key in your profile settings and try again.</p>
+                        </div>
+                    `;
+                } else if (error.message && error.message.includes("Failed to fetch")) {
+                    flashcardOutput.innerHTML = `
+                        <div class="col-span-full p-6 text-center">
+                            <div class="text-red-400 text-lg mb-2">🔌 Connection Error</div>
+                            <p class="text-gray-300 mb-4">Cannot connect to the backend server.</p>
+                            <p class="text-sm text-gray-400">Please make sure the server is running and try again.</p>
+                        </div>
+                    `;
+                } else {
+                    // Provide more detailed error information
+                    flashcardOutput.innerHTML = `
+                        <div class="col-span-full p-6 text-center">
+                            <div class="text-red-400 text-lg mb-2">⚠️ Generation Failed</div>
+                            <p class="text-gray-300 mb-2">An error occurred while generating flashcards.</p>
+                            <p class="text-sm text-gray-400 mb-4">Error: ${error.message || 'Unknown error'}</p>
+                            <p class="text-xs text-gray-500">Check the browser console for more details.</p>
+                        </div>
+                    `;
+                }
             } finally {
                 loader.classList.add('hidden');
                 loader.classList.remove('flex');

@@ -1,7 +1,7 @@
 // Authentication utilities for GMAT Quiz App
 class AuthManager {
     constructor() {
-        this.API_BASE_URL = 'http://127.0.0.1:8000/api';
+        this.API_BASE_URL = '/api'; // Use relative URL to match the index.html pattern
     }
 
     // Check if user is authenticated
