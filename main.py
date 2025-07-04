@@ -78,7 +78,7 @@ gemini_rate_limiter = RateLimiter()
 
 # --- Database Configuration ---
 # Main database for user authentication
-MAIN_DATABASE_URL = "sqlite:///./quiz.db"
+MAIN_DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./data/quiz.db")
 main_engine = create_engine(
     MAIN_DATABASE_URL,
     connect_args={"check_same_thread": False}
@@ -86,11 +86,12 @@ main_engine = create_engine(
 MainSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=main_engine)
 
 # --- Database Models (SQLAlchemy ORM) ---
+# Ensure data directory exists
+os.makedirs('data', exist_ok=True)
+os.makedirs('user_databases', exist_ok=True)
+
 # Create auth tables in the main database
 Base.metadata.create_all(bind=main_engine)
-
-# --- Create user_databases directory if it doesn't exist
-os.makedirs('user_databases', exist_ok=True)
 
 # --- Database dependency injection ---
 def get_main_db():
@@ -1396,10 +1397,6 @@ async def delete_user_explanation(
         raise HTTPException(status_code=404, detail="User explanation not found")
     db.delete(explanation)
     db.commit()
-
-Base.metadata.create_all(bind=main_engine)
-
-
 
 
 # --- NEW Pydantic Models for AI Chat ---

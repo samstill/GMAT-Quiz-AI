@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   # Frontend service (nginx serving static files with SSL support)
   frontend:
@@ -7,7 +5,7 @@ services:
       context: .
       dockerfile: Dockerfile.frontend
     ports:
-      - "80:80"
+      - "8080:80"  # Use port 8080 to avoid conflicts
       - "443:443"
     depends_on:
       - backend
@@ -38,14 +36,15 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      # Mount the database and user data directories to persist data
-      - ./quiz.db:/app/quiz.db
+      # Mount data directory for SQLite and other files (better approach)
+      - ./data:/app/data
       - ./user_databases:/app/user_databases
       - ./JSON:/app/JSON
       - ./images:/app/images
     environment:
       - GOOGLE_API_KEY=${GOOGLE_API_KEY:-}
       - ALLOW_USER_REGISTRATION=${ALLOW_USER_REGISTRATION:-true}
+      - DATABASE_URL=sqlite:///data/quiz.db  # Use data directory
     restart: unless-stopped
     healthcheck:
       test: ["CMD-SHELL", "python -c 'import requests; requests.get(\"http://localhost:8000/health\")' || exit 1"]
