@@ -1783,6 +1783,21 @@
                     const quizData = await verifyResponse.json();
                     console.log('Quiz verification successful:', quizData);
                     
+                    // Debug: Let's test the exact same endpoint as the curl command
+                    console.log('Testing bulk endpoint with empty array...');
+                    const testResponse = await auth.makeAuthenticatedRequest(`${API_BASE_URL}/quizzes/${currentQuizId}/questions/bulk/`, {
+                        method: 'POST',
+                        body: JSON.stringify([])
+                    });
+                    console.log('Test bulk upload response status:', testResponse.status);
+                    if (testResponse.ok) {
+                        const testData = await testResponse.json();
+                        console.log('Test bulk upload success:', testData);
+                    } else {
+                        const testError = await testResponse.json();
+                        console.log('Test bulk upload error:', testError);
+                    }
+                    
                     // Send to backend
                     const response = await auth.makeAuthenticatedRequest(`${API_BASE_URL}/quizzes/${currentQuizId}/questions/bulk/`, {
                         method: 'POST',
