@@ -47,7 +47,13 @@
         });
     });
 </script>
+    <!-- Tailwind CSS via CDN - for development only -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1' && location.hostname !== '') {
+            console.warn('Tailwind CSS CDN should not be used in production. Consider installing Tailwind CSS locally.');
+        }
+    </script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" async></script>
     <script>
@@ -60,12 +66,10 @@
         svg: {
           fontCache: 'global'
         },
-        options: {
-             startup: {
-                 ready: () => {
-                     MathJax.startup.defaultReady();
-                 }
-             }
+        startup: {
+          ready: () => {
+            MathJax.startup.defaultReady();
+          }
         }
       };
     </script>
@@ -1584,15 +1588,18 @@
             const quizId = getQuizInfoFromUrl();
             if (quizId !== null) {
                 fetchAndDisplayQuestions(quizId); // This now also fetches RC passages
+                // Initialize bulk upload logic after quiz ID is set
+                initializeBulkUpload();
             }
             // Initial call to set form visibility based on default selections
              updateFormVisibility();
         };
 
         // --- Bulk Upload JSON Logic ---
-        const jsonUploadDropZone = document.getElementById('json-upload-drop-zone');
-        const jsonUploadInput = document.getElementById('json-upload-input');
-        if (jsonUploadDropZone && jsonUploadInput) {
+        function initializeBulkUpload() {
+            const jsonUploadDropZone = document.getElementById('json-upload-drop-zone');
+            const jsonUploadInput = document.getElementById('json-upload-input');
+            if (jsonUploadDropZone && jsonUploadInput) {
             // Drag events
             ['dragenter', 'dragover'].forEach(eventName => {
                 jsonUploadDropZone.addEventListener(eventName, (e) => {
@@ -1630,12 +1637,21 @@
                 }
             });
         }
+        
         async function handleJsonFile(file) {
             if (!file.name.endsWith('.json')) {
                 messageEl.textContent = 'Please upload a .json file.';
                 messageEl.style.color = 'orange';
                 return;
             }
+            
+            // Ensure currentQuizId is set
+            if (!currentQuizId) {
+                messageEl.textContent = 'Error: No quiz selected. Please ensure you accessed this page with a valid quiz ID.';
+                messageEl.style.color = 'red';
+                return;
+            }
+            
             messageEl.textContent = 'Reading file...';
             messageEl.style.color = '';
             const reader = new FileReader();
