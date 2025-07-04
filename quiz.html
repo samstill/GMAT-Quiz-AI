@@ -15,17 +15,17 @@
         svg: {
           fontCache: 'global'
         },
-        options: {
-                  startup: {
-                      ready: () => {
-                          MathJax.startup.defaultReady();
-                      }
-                  }
+        startup: {
+          ready: () => {
+            MathJax.startup.defaultReady();
+          }
         }
       };
     </script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Authentication Script -->
+    <script src="auth-utils.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
     <style>
         /* * === CSS Variables for Theming === */
@@ -677,6 +677,15 @@
         const API_BASE_URL = '/api';
         let questions = [], currentQuestionIndex = 0, score = 0, timerInterval, timeRemaining, quizTimeLimitSeconds, startTime, userAnswers = [], detailedQuizResults = [], currentQuizId = null, timeSpentOnQuestion = [], currentQuestionViewStartTime, isReviewMode = false, reviewData = null, isPaused = false, totalPausedTime = 0, pauseStartTime = null;
 
+        // Initialize auth manager
+        const auth = new AuthManager();
+        
+        // Require authentication to access this page
+        if (!auth.requireAuth()) {
+            // This will redirect to auth.html if not authenticated
+            throw new Error("Authentication required");
+        }
+
         const loadingMessageEl = document.getElementById('loading-message');
         const quizContainerEl = document.getElementById('quiz-container');
         const quizContentEl = document.getElementById('quiz-content');
@@ -860,12 +869,18 @@
             loadingMessageEl.style.display = 'block';
             quizContainerEl.style.display = 'none';
             try {
-                const quizDetailsRes = await fetch(`${API_BASE_URL}/quizzes/${currentQuizId}`);
+                const quizDetailsRes = await auth.makeAuthenticatedRequest(`${API_BASE_URL}/quizzes/${currentQuizId}`);
+                if (!quizDetailsRes.ok) {
+                    throw new Error(`Failed to fetch quiz details: ${quizDetailsRes.status}`);
+                }
                 const quizDetails = await quizDetailsRes.json();
                 quizTimeLimitSeconds = quizDetails.time_limit_minutes * 60;
                 timeRemaining = quizTimeLimitSeconds;
 
-                const questionsRes = await fetch(`${API_BASE_URL}/quizzes/${currentQuizId}/questions/`);
+                const questionsRes = await auth.makeAuthenticatedRequest(`${API_BASE_URL}/quizzes/${currentQuizId}/questions/`);
+                if (!questionsRes.ok) {
+                    throw new Error(`Failed to fetch questions: ${questionsRes.status}`);
+                }
                 questions = await questionsRes.json();
                 if (questions.length === 0) {
                     loadingMessageEl.textContent = "This quiz has no questions.";
@@ -901,20 +916,20 @@
             quizContainerEl.style.display = 'none';
             try {
                 // Fetch basic record data
-                const recordRes = await fetch(`${API_BASE_URL}/performance/${recordId}`);
+                const recordRes = await auth.makeAuthenticatedRequest(`${API_BASE_URL}/performance/${recordId}`);
                 if (!recordRes.ok) throw new Error(`Failed to fetch quiz record: ${recordRes.status}`);
                 reviewData = await recordRes.json();
                 
                 // Fetch detailed review data which includes explanations
-                const detailedReviewRes = await fetch(`${API_BASE_URL}/performance/${recordId}/detailed-review`);
+                const detailedReviewRes = await auth.makeAuthenticatedRequest(`${API_BASE_URL}/performance/${recordId}/detailed-review`);
                 if (!detailedReviewRes.ok) throw new Error(`Failed to fetch detailed review: ${detailedReviewRes.status}`);
                 const detailedReviewData = await detailedReviewRes.json();
                 reviewData.detailedResults = detailedReviewData; // Overwrite with more detailed data
 
-                const quizDetailsRes = await fetch(`${API_BASE_URL}/quizzes/${reviewData.quizId}`);
+                const quizDetailsRes = await auth.makeAuthenticatedRequest(`${API_BASE_URL}/quizzes/${reviewData.quizId}`);
                 const quizDetails = await quizDetailsRes.json();
 
-                const questionsRes = await fetch(`${API_BASE_URL}/quizzes/${reviewData.quizId}/questions/`);
+                const questionsRes = await auth.makeAuthenticatedRequest(`${API_BASE_URL}/quizzes/${reviewData.quizId}/questions/`);
                 questions = await questionsRes.json();
 
                 userAnswers = new Array(questions.length).fill(null);
@@ -1126,9 +1141,8 @@
             saveBtn.textContent = 'Saving...';
 
             try {
-                const response = await fetch(`${API_BASE_URL}/performance/${reviewData.id}/explanations/`, {
+                const response = await auth.makeAuthenticatedRequest(`${API_BASE_URL}/performance/${reviewData.id}/explanations/`, {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ question_id: questionId, explanation_text: explanationText })
                 });
                 if (!response.ok) throw new Error('Failed to save.');
@@ -1178,7 +1192,7 @@
             deleteBtn.textContent = 'Deleting...';
 
             try {
-                const response = await fetch(`${API_BASE_URL}/performance/${reviewData.id}/explanations/${questionId}`, { method: 'DELETE' });
+                const response = await auth.makeAuthenticatedRequest(`${API_BASE_URL}/performance/${reviewData.id}/explanations/${questionId}`, { method: 'DELETE' });
                 if (!response.ok) throw new Error('Failed to delete.');
 
                 statusEl.textContent = 'Deleted successfully!';
@@ -1342,9 +1356,8 @@
             };
 
             try {
-                await fetch(`${API_BASE_URL}/performance/`, {
+                await auth.makeAuthenticatedRequest(`${API_BASE_URL}/performance/`, {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(performanceData),
                 });
             } catch (error) {

@@ -53,7 +53,7 @@
     <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" async></script>
     <script>
       // MathJax configuration
-      MathJax = {
+      window.MathJax = {
         tex: {
           inlineMath: [['$', '$'], ['\\(', '\\)']], // Enable $...$ and \(...\) for inline math
           displayMath: [['$$', '$$'], ['\\[', '\\]']] // Enable $$...$$ and \[...\] for display math
@@ -64,9 +64,22 @@
         startup: {
           ready: () => {
             MathJax.startup.defaultReady();
+            console.log('MathJax loaded and ready');
           }
         }
       };
+
+      // Helper function to safely call MathJax typeset
+      function safeTypesetMathJax(elements) {
+        if (window.MathJax && window.MathJax.typesetPromise) {
+          return window.MathJax.typesetPromise(elements).catch((err) => {
+            console.error('MathJax typesetting failed', err);
+          });
+        } else {
+          console.warn('MathJax not ready yet, skipping typeset');
+          return Promise.resolve();
+        }
+      }
     </script>
      <style>
         /* --- CSS Variables for Theming --- */
@@ -1010,7 +1023,7 @@
             if (passages.length === 0) {
                 rcPassagesListEl.innerHTML = '<li>No RC passages added yet.</li>';
                  if (typeof MathJax !== 'undefined') { // Typeset the empty message if needed
-                     MathJax.typesetPromise([rcPassagesListEl]).catch((err) => console.error('MathJax typesetting failed', err));
+                     safeTypesetMathJax([rcPassagesListEl]);
                  }
                 return;
             }
@@ -1032,7 +1045,7 @@
             });
              // --- Trigger MathJax rendering for the new list items ---
              if (typeof MathJax !== 'undefined') {
-                 MathJax.typesetPromise([rcPassagesListEl]).catch((err) => console.error('MathJax typesetting failed', err));
+                 safeTypesetMathJax([rcPassagesListEl]);
              }
         }
 
@@ -1206,7 +1219,7 @@
                 questionsListEl.innerHTML = '<li>No questions added to this quiz yet.</li>';
                 // Trigger MathJax typesetting even for this message if it contains LaTeX
                  if (typeof MathJax !== 'undefined') {
-                     MathJax.typesetPromise([questionsListEl]).catch((err) => console.error('MathJax typesetting failed', err));
+                     safeTypesetMathJax([questionsListEl]);
                  }
                 return;
             }
@@ -1255,7 +1268,7 @@
 
              // --- Trigger MathJax rendering for the new list items ---
              if (typeof MathJax !== 'undefined') {
-                 MathJax.typesetPromise([questionsListEl]).catch((err) => console.error('MathJax typesetting failed', err));
+                 safeTypesetMathJax([questionsListEl]);
              }
         }
 
