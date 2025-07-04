@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Authenticated Quiz Creation</title>
+    <script src="auth-utils.js"></script>
+</head>
+<body>
+    <h1>Test Authenticated Quiz Creation</h1>
+    <button onclick="testAuth()">Test Authentication</button>
+    <button onclick="createTestQuiz()">Create Test Quiz</button>
+    <button onclick="listQuizzes()">List Quizzes</button>
+    <div id="output"></div>
+
+    <script>
+        const auth = new AuthManager();
+        const output = document.getElementById('output');
+
+        function log(message) {
+            console.log(message);
+            output.innerHTML += '<p>' + message + '</p>';
+        }
+
+        function testAuth() {
+            log('Testing authentication...');
+            log('Is authenticated: ' + auth.isAuthenticated());
+            log('Username: ' + auth.getUsername());
+            log('User ID: ' + auth.getUserId());
+            log('API Key exists: ' + !!auth.getApiKey());
+        }
+
+        async function createTestQuiz() {
+            try {
+                log('Creating test quiz...');
+                const response = await auth.makeAuthenticatedRequest('/api/quizzes/', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        name: 'Test Quiz',
+                        description: 'Test quiz for debugging',
+                        time_limit: 60
+                    })
+                });
+
+                if (response.ok) {
+                    const quiz = await response.json();
+                    log('Quiz created successfully: ' + JSON.stringify(quiz));
+                } else {
+                    const error = await response.text();
+                    log('Error creating quiz: ' + error);
+                }
+            } catch (error) {
+                log('Exception: ' + error.message);
+            }
+        }
+
+        async function listQuizzes() {
+            try {
+                log('Listing quizzes...');
+                const response = await auth.makeAuthenticatedRequest('/api/quizzes/');
+                
+                if (response.ok) {
+                    const quizzes = await response.json();
+                    log('Quizzes: ' + JSON.stringify(quizzes, null, 2));
+                } else {
+                    const error = await response.text();
+                    log('Error listing quizzes: ' + error);
+                }
+            } catch (error) {
+                log('Exception: ' + error.message);
+            }
+        }
+
+        // Check auth status on load
+        window.onload = function() {
+            testAuth();
+        };
+    </script>
+</body>
+</html>

@@ -1260,7 +1260,7 @@ async def get_performance_summary(
     }
 
 @app.post("/api/quizzes/{quiz_id}/questions/bulk/")
-async def bulk_add_questions(quiz_id: int, questions: List[BulkQuestionCreate], db: Session = Depends(get_main_db)):
+async def bulk_add_questions(quiz_id: int, questions: List[BulkQuestionCreate], db: Session = Depends(get_db)):
     # Debug logging
     print(f"Bulk upload request for quiz_id: {quiz_id}")
     print(f"Number of questions received: {len(questions)}")
