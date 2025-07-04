@@ -5,8 +5,8 @@ services:
       context: .
       dockerfile: Dockerfile.frontend
     ports:
-      - "80:80"   # Use standard HTTP port
-      - "443:443"
+      - "80:80"   # Standard HTTP port
+      - "443:443" # Standard HTTPS port
     depends_on:
       - backend
     volumes:
