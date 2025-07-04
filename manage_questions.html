@@ -1080,7 +1080,7 @@
                     url = `${API_BASE_URL}/rc_passages/`;
                 }
 
-                response = await window.authManager.makeAuthenticatedRequest(url, {
+                response = await auth.makeAuthenticatedRequest(url, {
                     method: method,
                     body: JSON.stringify(passageData)
                 });
@@ -1160,7 +1160,7 @@
              messageEl.textContent = `Deleting passage ${passageId}...`;
              messageEl.style.color = ''; // Reset color
             try {
-                const response = await window.authManager.makeAuthenticatedRequest(`${API_BASE_URL}/rc_passages/${passageId}`, {
+                const response = await auth.makeAuthenticatedRequest(`${API_BASE_URL}/rc_passages/${passageId}`, {
                     method: 'DELETE',
                 });
 
@@ -1281,7 +1281,7 @@
              messageEl.style.color = ''; // Reset color
             try {
                 // Use the backend endpoint for deleting a specific question
-                const response = await window.authManager.makeAuthenticatedRequest(`${API_BASE_URL}/questions/${questionId}`, {
+                const response = await auth.makeAuthenticatedRequest(`${API_BASE_URL}/questions/${questionId}`, {
                     method: 'DELETE',
                 });
 
@@ -1593,49 +1593,48 @@
             }
             // Initial call to set form visibility based on default selections
              updateFormVisibility();
-        };
-
-        // --- Bulk Upload JSON Logic ---
+        };        // --- Bulk Upload JSON Logic ---
         function initializeBulkUpload() {
             const jsonUploadDropZone = document.getElementById('json-upload-drop-zone');
             const jsonUploadInput = document.getElementById('json-upload-input');
             if (jsonUploadDropZone && jsonUploadInput) {
-            // Drag events
-            ['dragenter', 'dragover'].forEach(eventName => {
-                jsonUploadDropZone.addEventListener(eventName, (e) => {
+                // Drag events
+                ['dragenter', 'dragover'].forEach(eventName => {
+                    jsonUploadDropZone.addEventListener(eventName, (e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        jsonUploadDropZone.style.background = 'rgba(0,102,255,0.08)';
+                        jsonUploadDropZone.style.borderColor = 'var(--primary-accent)';
+                    });
+                });
+                ['dragleave', 'drop'].forEach(eventName => {
+                    jsonUploadDropZone.addEventListener(eventName, (e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        jsonUploadDropZone.style.background = 'rgba(255,255,255,0.07)';
+                        jsonUploadDropZone.style.borderColor = 'var(--border-color)';
+                    });
+                });
+                // Drop event
+                jsonUploadDropZone.addEventListener('drop', (e) => {
                     e.preventDefault();
                     e.stopPropagation();
-                    jsonUploadDropZone.style.background = 'rgba(0,102,255,0.08)';
-                    jsonUploadDropZone.style.borderColor = 'var(--primary-accent)';
+                    if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+                        handleJsonFile(e.dataTransfer.files[0]);
+                    }
                 });
-            });
-            ['dragleave', 'drop'].forEach(eventName => {
-                jsonUploadDropZone.addEventListener(eventName, (e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    jsonUploadDropZone.style.background = 'rgba(255,255,255,0.07)';
-                    jsonUploadDropZone.style.borderColor = 'var(--border-color)';
+                // Click to open file picker
+                jsonUploadDropZone.addEventListener('click', () => {
+                    jsonUploadInput.value = '';
+                    jsonUploadInput.click();
                 });
-            });
-            // Drop event
-            jsonUploadDropZone.addEventListener('drop', (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
-                    handleJsonFile(e.dataTransfer.files[0]);
-                }
-            });
-            // Click to open file picker
-            jsonUploadDropZone.addEventListener('click', () => {
-                jsonUploadInput.value = '';
-                jsonUploadInput.click();
-            });
-            // File input change
-            jsonUploadInput.addEventListener('change', (e) => {
-                if (e.target.files && e.target.files.length > 0) {
-                    handleJsonFile(e.target.files[0]);
-                }
-            });
+                // File input change
+                jsonUploadInput.addEventListener('change', (e) => {
+                    if (e.target.files && e.target.files.length > 0) {
+                        handleJsonFile(e.target.files[0]);
+                    }
+                });
+            }
         }
         
         async function handleJsonFile(file) {
