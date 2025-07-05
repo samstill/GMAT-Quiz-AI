@@ -1167,9 +1167,340 @@
         .notification-close:hover {
             opacity: 1;
         }
+
+        /* * === Mobile Responsive Design === */
+        
+        /* Mobile-first base adjustments */
+        @media (max-width: 768px) {
+            body {
+                overflow: auto; /* Allow scrolling on mobile */
+                padding: 12px;
+            }
+            
+            body::before {
+                /* Reduce animation intensity on mobile for better performance */
+                animation-duration: 35s;
+            }
+            
+            /* Main layout adjustments */
+            #main-view {
+                padding: 0;
+            }
+            
+            .glass-card {
+                padding: 20px !important;
+                border-radius: 20px !important;
+                margin: 0;
+            }
+            
+            /* Typography scaling */
+            .heading-gradient {
+                font-size: 2rem !important; /* Smaller than md:text-5xl */
+                line-height: 1.2;
+                min-height: 60px !important;
+            }
+            
+            .muted-text {
+                font-size: 1rem !important;
+                line-height: 1.5;
+            }
+            
+            /* Button adjustments */
+            .cta-link {
+                padding: 12px 20px !important;
+                font-size: 1rem !important;
+                width: 100%;
+                text-align: center;
+            }
+            
+            /* Icon button positioning */
+            .theme-toggle, .logout-toggle {
+                top: 16px;
+                width: 44px;
+                height: 44px;
+            }
+            
+            .theme-toggle {
+                right: 16px;
+            }
+            
+            .logout-toggle {
+                right: 70px;
+            }
+            
+            .fullscreen-toggle {
+                top: 12px;
+                right: 12px;
+                width: 36px;
+                height: 36px;
+            }
+            
+            /* Modal adjustments */
+            .modal-content {
+                width: 95% !important;
+                max-width: none !important;
+                margin: 20px;
+                max-height: 90vh !important;
+                padding: 20px !important;
+            }
+            
+            .modal-input {
+                padding: 14px !important;
+                font-size: 16px !important; /* Prevent zoom on iOS */
+            }
+            
+            /* Flashcard grid responsive */
+            .flashcard-grid {
+                grid-template-columns: 1fr !important;
+                gap: 1rem !important;
+            }
+            
+            .flashcard {
+                min-height: 180px !important;
+            }
+            
+            .flashcard-face {
+                padding: 16px !important;
+            }
+            
+            /* Flashcard toolbar mobile */
+            .flashcard-toolbar {
+                top: 6px;
+                right: 6px;
+                gap: 6px;
+            }
+            
+            .flashcard-action-btn {
+                width: 32px;
+                height: 32px;
+                padding: 6px;
+            }
+            
+            .flashcard-action-btn svg {
+                width: 16px;
+                height: 16px;
+            }
+            
+            /* Navigation adjustments */
+            .glass-navbar {
+                padding: 12px 16px;
+                margin-bottom: 16px;
+                border-radius: 12px;
+            }
+        }
+        
+        /* Small mobile devices */
+        @media (max-width: 480px) {
+            body {
+                padding: 8px;
+            }
+            
+            .glass-card {
+                padding: 16px !important;
+                border-radius: 16px !important;
+            }
+            
+            .heading-gradient {
+                font-size: 1.75rem !important;
+                min-height: 50px !important;
+            }
+            
+            .muted-text {
+                font-size: 0.9rem !important;
+            }
+            
+            .cta-link {
+                padding: 10px 16px !important;
+                font-size: 0.9rem !important;
+                gap: 8px !important;
+            }
+            
+            .theme-toggle, .logout-toggle {
+                width: 40px;
+                height: 40px;
+                top: 12px;
+            }
+            
+            .theme-toggle {
+                right: 12px;
+            }
+            
+            .logout-toggle {
+                right: 60px;
+            }
+            
+            .theme-toggle svg, .logout-toggle svg {
+                width: 20px;
+                height: 20px;
+            }
+            
+            .modal-content {
+                padding: 16px !important;
+                margin: 12px;
+            }
+            
+            .flashcard {
+                min-height: 160px !important;
+            }
+            
+            .flashcard-face {
+                padding: 12px !important;
+            }
+            
+            /* Notification responsive */
+            .notification-container {
+                top: 12px;
+                right: 12px;
+                left: 12px;
+            }
+            
+            .notification {
+                max-width: none;
+                margin: 0 12px;
+            }
+        }
+        
+        /* Extra small devices */
+        @media (max-width: 360px) {
+            .heading-gradient {
+                font-size: 1.5rem !important;
+                min-height: 45px !important;
+            }
+            
+            .cta-link {
+                font-size: 0.85rem !important;
+                padding: 8px 12px !important;
+            }
+            
+            .modal-content {
+                padding: 12px !important;
+                margin: 8px;
+            }
+            
+            .flashcard {
+                min-height: 140px !important;
+            }
+        }
+        
+        /* Touch-friendly improvements */
+        @media (hover: none) and (pointer: coarse) {
+            /* Remove hover effects on touch devices */
+            .cta-link:hover {
+                transform: none;
+                box-shadow: var(--glass-shadow);
+            }
+            
+            .icon-button:hover {
+                transform: none;
+            }
+            
+            .flashcard-action-btn:hover {
+                transform: none;
+                background: var(--glass-bg);
+            }
+            
+            /* Increase touch targets */
+            .icon-button {
+                min-width: 44px;
+                min-height: 44px;
+            }
+            
+            .cta-link {
+                min-height: 44px;
+            }
+            
+            button, .button {
+                min-height: 44px;
+            }
+        }
+        
+        /* Landscape orientation adjustments for mobile */
+        @media (max-width: 768px) and (orientation: landscape) {
+            .heading-gradient {
+                font-size: 1.8rem !important;
+                min-height: 40px !important;
+            }
+            
+            .glass-card {
+                padding: 16px !important;
+            }
+            
+            .modal-content {
+                max-height: 85vh !important;
+            }
+            
+            .flashcard {
+                min-height: 120px !important;
+            }
+        }
+        
+        /* Improve scrolling on mobile */
+        @media (max-width: 768px) {
+            .modal-result-container {
+                -webkit-overflow-scrolling: touch;
+            }
+            
+            .glass-scrollbar {
+                scrollbar-width: auto;
+            }
+            
+            .glass-scrollbar::-webkit-scrollbar {
+                width: 8px;
+            }
+        }
+        
+        /* iOS Safari specific fixes */
+        @supports (-webkit-touch-callout: none) {
+            body {
+                /* Fix for iOS Safari viewport issues */
+                min-height: -webkit-fill-available;
+            }
+            
+            .modal-overlay {
+                /* Fix for iOS Safari modal positioning */
+                position: fixed;
+                height: -webkit-fill-available;
+            }
+        }
+        
+        /* Dark mode improvements for mobile */
+        @media (max-width: 768px) {
+            .light-mode {
+                /* Ensure good contrast on small screens */
+                --text-color: #111827;
+                --text-color-muted: #4B5563;
+            }
+            
+            .light-mode .glass-card {
+                background: rgba(255, 255, 255, 0.6);
+                border-color: rgba(0, 0, 0, 0.15);
+            }
+        }
+        
+        /* Accessibility improvements for mobile */
+        @media (max-width: 768px) {
+            /* Ensure text is readable */
+            p, span, div {
+                font-size: inherit;
+                line-height: 1.4;
+            }
+            
+            /* Improve button contrast */
+            button, .button {
+                border: 1px solid var(--glass-border);
+            }
+            
+            /* Focus indicators for keyboard navigation */
+            button:focus,
+            input:focus,
+            select:focus {
+                outline: 2px solid #3B82F6;
+                outline-offset: 2px;
+            }
+        }
     </style>
 </head>
-<body class="flex items-center justify-center min-h-screen p-4">
+<body class="flex items-center justify-center min-h-screen p-2 sm:p-4">
 
     <!-- Notification Container -->
     <div id="notification-container" class="notification-container"></div>
@@ -1195,27 +1526,27 @@
 
     <!-- Main View -->
     <div id="main-view" class="w-full">
-        <main class="w-full max-w-2xl text-center mx-auto">
+        <main class="w-full max-w-2xl text-center mx-auto px-4">
             <div class="glass-card rounded-3xl p-8 md:p-12">
                 <button id="fullscreen-toggle" class="icon-button fullscreen-toggle" aria-label="Toggle fullscreen">
                     <svg id="icon-expand" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-expand"><path d="m21 21-6-6m6 6v-4m0 4h-4"/><path d="M3 3l6 6m-6-6v4m0-4h4"/></svg>
                     <svg id="icon-shrink" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shrink hidden"><path d="M15 15l6 6m-6-6v4m0-4h4"/><path d="M9 9l-6-6m6 6v-4m0 4H5"/></svg>
                 </button>
 
-                <h1 id="motivational-quote" class="heading-gradient text-3xl md:text-5xl font-extrabold text-transparent bg-clip-text leading-tight min-h-[100px] flex items-center justify-center">
+                <h1 id="motivational-quote" class="heading-gradient text-2xl sm:text-3xl md:text-5xl font-extrabold text-transparent bg-clip-text leading-tight min-h-[100px] flex items-center justify-center text-center">
                     Loading quote...
                 </h1>
                 
-                <p class="mt-6 text-lg md:text-xl max-w-lg mx-auto muted-text">
+                <p class="mt-6 text-base sm:text-lg md:text-xl max-w-lg mx-auto muted-text text-center">
                     The discomfort of discipline is temporary. The regret of being stuck is not. It's time to break through.
                 </p>
 
                 <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-                    <a href="manage_quizzes.html" class="cta-link inline-flex items-center gap-3 px-8 py-4 rounded-full font-semibold text-lg w-full sm:w-auto justify-center">
+                    <a href="manage_quizzes.html" class="cta-link inline-flex items-center gap-3 px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg w-full sm:w-auto justify-center">
                         Start Quiz
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                     </a>
-                    <button id="generate-flashcards-btn" class="cta-link inline-flex items-center gap-3 px-8 py-4 rounded-full font-semibold text-lg w-full sm:w-auto justify-center">
+                    <button id="generate-flashcards-btn" class="cta-link inline-flex items-center gap-3 px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg w-full sm:w-auto justify-center">
                         ⚡ Generate Flashcards
                     </button>
                 </div>
@@ -1238,7 +1569,7 @@
                 
                 <div class="mb-4 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800">
                     <h3 class="text-sm font-semibold text-blue-800 dark:text-blue-200 mb-2">🎯 GMAT Focus Edition Topics</h3>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-2 text-xs">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 text-xs">
                         <div>
                             <strong class="text-blue-700 dark:text-blue-300">Quantitative:</strong>
                             <div class="text-blue-600 dark:text-blue-400">Algebra, Geometry, Number Properties, Statistics, Combinatorics</div>
@@ -1254,7 +1585,7 @@
                     </div>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
                     <div>
                         <label for="flashcard-topics" class="block text-sm font-medium muted-text mb-1">Topics (comma-separated)</label>
                         <input type="text" id="flashcard-topics" class="modal-input w-full p-3 rounded-lg" placeholder="e.g., Data Sufficiency, Critical Reasoning, Table Analysis">
@@ -1280,14 +1611,14 @@
                         </div>
                     </div>
                 </div>
-                <div class="flex gap-2 mb-4">
-                    <button id="submit-flashcard-request" class="cta-link flex-1 text-center justify-center inline-flex items-center gap-3 px-6 py-3 rounded-full font-semibold">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sparkles">
+                <div class="flex flex-col sm:flex-row gap-2 mb-4">
+                    <button id="submit-flashcard-request" class="cta-link flex-1 text-center justify-center inline-flex items-center gap-3 px-4 sm:px-6 py-3 rounded-full font-semibold text-sm sm:text-base">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sparkles">
                             <path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .962 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.582a.5.5 0 0 1 0 .962L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.962 0z"/>
                         </svg>
                         Generate AI Flashcards
                     </button>
-                    <button id="load-saved-flashcards" class="cta-link px-6 py-3 rounded-full font-semibold inline-flex items-center gap-2">
+                    <button id="load-saved-flashcards" class="cta-link px-4 sm:px-6 py-3 rounded-full font-semibold text-sm sm:text-base inline-flex items-center gap-2 justify-center">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-folder-open">
                             <path d="m6 14 1.45-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.73 3l-1.45 2.9a2 2 0 0 1-1.79 1.1H9a2 2 0 0 1-1.73-3z"/>
                             <path d="M4 6h16a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2z"/>
@@ -1298,23 +1629,25 @@
             </div>
 
             <div id="modal-result" class="hidden flex-grow mt-6 modal-result-container overflow-y-auto glass-scrollbar">
-                <div id="flashcard-controls" class="hidden mb-4 flex gap-2 items-center flex-wrap">
-                    <input type="text" id="flashcard-set-name" class="modal-input flex-1 min-w-48" placeholder="Enter flashcard set name...">
-                    <button id="save-flashcards" class="cta-link px-4 py-2 rounded-lg font-medium inline-flex items-center gap-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-save">
-                            <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/>
-                            <polyline points="17,21 17,13 7,13 7,21"/>
-                            <polyline points="7,3 7,8 15,8"/>
-                        </svg>
-                        Save Set
-                    </button>
-                    <button id="back-to-form" class="cta-link px-4 py-2 rounded-lg font-medium inline-flex items-center gap-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left">
-                            <path d="m12 19-7-7 7-7"/>
-                            <path d="M19 12H5"/>
-                        </svg>
-                        Back to Form
-                    </button>
+                <div id="flashcard-controls" class="hidden mb-4 flex flex-col sm:flex-row gap-2 items-stretch sm:items-center">
+                    <input type="text" id="flashcard-set-name" class="modal-input flex-1 min-w-0" placeholder="Enter flashcard set name...">
+                    <div class="flex gap-2">
+                        <button id="save-flashcards" class="cta-link px-4 py-2 rounded-lg font-medium inline-flex items-center gap-2 justify-center flex-1 sm:flex-none">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-save">
+                                <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/>
+                                <polyline points="17,21 17,13 7,13 7,21"/>
+                                <polyline points="7,3 7,8 15,8"/>
+                            </svg>
+                            Save Set
+                        </button>
+                        <button id="back-to-form" class="cta-link px-4 py-2 rounded-lg font-medium inline-flex items-center gap-2 justify-center flex-1 sm:flex-none">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left">
+                                <path d="m12 19-7-7 7-7"/>
+                                <path d="M19 12H5"/>
+                            </svg>
+                            Back to Form
+                        </button>
+                    </div>
                 </div>
                 <div id="loader" class="hidden justify-center items-center py-10"><div class="loader"></div></div>
                 <div id="flashcard-output" class="flashcard-grid">
