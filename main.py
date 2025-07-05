@@ -1643,7 +1643,8 @@ async def analyze_performance(request: AIAnalysisRequest, db: Session = Depends(
         - **Target Areas**: Which areas will yield the highest score improvements?
         
         ## Output Format:
-        - Use clear Markdown formatting with headers and bullet points
+        - Use clear HTML formatting with headers and bullet points
+        - Use Latex formatting for mathematical equations. Be aware of the questions that have $ sign for those use alternative latex syntax like \(...\) to make sure everything appears correctly
         - Include specific statistics and percentages when available
         - Provide numbered action items for recommendations
         - Use tables for comparative data when helpful
@@ -1661,7 +1662,7 @@ async def analyze_performance(request: AIAnalysisRequest, db: Session = Depends(
         history_for_api.append({
             "role": "user", 
             "parts": [{
-                "text": "Please provide a comprehensive analysis of my GMAT performance. I'd like to understand my strengths, weaknesses, and get specific recommendations for improvement. Please analyze my accuracy by question type and difficulty, review my recent performance trends, and identify the most important areas I should focus on studying."
+                "text": "Please provide a comprehensive analysis of my GMAT performance. I'd like to understand my strengths, weaknesses, and get specific recommendations for improvement. Please analyse my accuracy by question type and difficulty, review my recent performance trends, and identify the most important areas I should focus on studying."
             }]
         })
 
