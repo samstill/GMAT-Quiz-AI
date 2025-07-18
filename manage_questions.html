@@ -128,10 +128,16 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; /* System fonts */
             font-weight: 400;
             min-height: 100vh;
-            padding: 20px;
+            padding: 1rem;
             overflow-x: hidden; /* Prevent horizontal scroll */
             transition: background 0.5s ease, color 0.5s ease; /* Smooth theme transition */
             position: relative; /* Needed for pseudo-elements positioning */
+        }
+
+        @media (min-width: 768px) {
+            body {
+                padding: 1.25rem;
+            }
         }
 
          /* Remove animated pseudo-elements */
@@ -147,37 +153,65 @@
             backdrop-filter: blur(15px); /* Slightly more blur */
             -webkit-backdrop-filter: blur(15px);
             border: 1px solid var(--glass-border);
-            border-radius: 20px; /* More rounded */
+            border-radius: 1.25rem; /* More rounded */
             box-shadow: var(--shadow); /* Use variable shadow */
-            padding: 30px;
-            width: 95%;
-            max-width: 800px; /* Adjust as needed */
-            margin: 20px auto;
+            padding: 1.25rem;
+            width: 100%;
+            margin: 1.25rem auto;
             position: relative; /* Ensure container is above background effects */
             z-index: 1;
+        }
+
+        @media (min-width: 768px) {
+            .glass-container {
+                padding: 1.875rem;
+                width: 95%;
+                max-width: 50rem; /* Adjust as needed */
+            }
         }
 
         /* --- Typography --- */
         h1, h2 {
             color: var(--text-color); /* Use variable */
             font-weight: 600; /* Semi-bold */
-            font-size: 2rem; /* Large heading */
-            margin-bottom: 1.5rem;
+            font-size: 1.5rem; /* Large heading */
+            margin-bottom: 1rem;
             text-align: center;
         }
+
+        @media (min-width: 768px) {
+            h1, h2 {
+                font-size: 2rem; /* Large heading */
+                margin-bottom: 1.5rem;
+            }
+        }
+
         h2 {
             color: var(--text-color); /* Ensure consistent heading color */
-            font-size: 1.5rem; /* Medium heading */
-            margin-bottom: 1rem;
+            font-size: 1.25rem; /* Medium heading */
+            margin-bottom: 0.75rem;
+        }
+
+        @media (min-width: 768px) {
+            h2 {
+                font-size: 1.5rem; /* Medium heading */
+                margin-bottom: 1rem;
+            }
         }
 
         /* --- Forms and Inputs --- */
         form {
             background-color: var(--surface-color);
             border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 20px;
+            border-radius: 0.75rem;
+            padding: 1rem;
+            margin-bottom: 1.25rem;
+        }
+
+        @media (min-width: 768px) {
+            form {
+                padding: 1.25rem;
+            }
         }
 
         form label {
@@ -192,9 +226,9 @@
         form select,
         form textarea {
             width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            border-radius: 8px;
+            padding: 0.75rem;
+            margin-bottom: 1rem;
+            border-radius: 0.5rem;
             border: 1px solid var(--border-color);
             background-color: rgba(255, 255, 255, 0.08); /* Slightly transparent input */
             color: var(--text-color);
@@ -247,11 +281,11 @@
         /* Drag and Drop Image Area */
         .image-drop-zone {
             border: 2px dashed var(--border-color);
-            border-radius: 12px;
-            padding: 20px;
+            border-radius: 0.75rem;
+            padding: 1.25rem;
             text-align: center;
             cursor: pointer;
-            margin-bottom: 15px;
+            margin-bottom: 1rem;
             transition: background-color 0.2s ease, border-color 0.2s ease;
             background-color: rgba(255, 255, 255, 0.05);
             position: relative; /* Needed for absolute positioning of preview */
@@ -259,7 +293,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            min-height: 100px; /* Minimum height */
+            min-height: 6.25rem; /* Minimum height */
         }
 
         .image-drop-zone.dragover {
@@ -295,11 +329,17 @@
 
         /* --- RC Passage Management --- */
         .rc-passage-section {
-            margin-bottom: 32px;
-            padding: 20px;
+            margin-bottom: 2rem;
+            padding: 1rem;
             background-color: var(--surface-color);
             border: 1px solid var(--border-color);
-            border-radius: 12px;
+            border-radius: 0.75rem;
+        }
+
+        @media (min-width: 768px) {
+            .rc-passage-section {
+                padding: 1.25rem;
+            }
         }
 
         .rc-passage-section h2 {
@@ -384,9 +424,15 @@
         .question-list-container {
              background-color: var(--surface-color);
             border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 20px;
+            border-radius: 0.75rem;
+            padding: 1rem;
+            margin-bottom: 1.25rem;
+        }
+
+        @media (min-width: 768px) {
+            .question-list-container {
+                padding: 1.25rem;
+            }
         }
 
         .question-list {
@@ -476,13 +522,13 @@
         /* --- Theme Toggle --- */
         .theme-toggle {
             position: fixed;
-            top: 20px;
-            right: 20px;
+            top: 1rem;
+            right: 1rem;
             background: var(--surface-color);
             border: 1px solid var(--border-color);
             border-radius: 50%;
-            width: 40px;
-            height: 40px;
+            width: 2.5rem;
+            height: 2.5rem;
             display: flex;
             align-items: center;
             justify-content: center;

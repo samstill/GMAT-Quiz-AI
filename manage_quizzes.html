@@ -85,6 +85,14 @@
             box-shadow: var(--glass-shadow);
             animation: fadeIn 1.5s ease-out;
             transition: background 0.5s ease, border 0.5s ease, box-shadow 0.5s ease;
+            padding: 1.5rem;
+            border-radius: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .glass-card {
+                padding: 2.5rem;
+            }
         }
         
         @keyframes fadeIn {
@@ -95,6 +103,13 @@
         .heading-gradient {
             background-image: linear-gradient(to right, var(--text-gradient-from), var(--text-gradient-to));
             transition: background-image 0.5s ease;
+            font-size: 1.875rem;
+        }
+
+        @media (min-width: 768px) {
+            .heading-gradient {
+                font-size: 2.25rem;
+            }
         }
 
         .muted-text { color: var(--text-color-muted); transition: color 0.5s ease; }
@@ -104,6 +119,8 @@
             border: 1px solid var(--cta-border);
             color: var(--text-color);
             transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease, color 0.5s ease;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
         }
 
         .cta-link:hover {
@@ -122,20 +139,29 @@
             cursor: pointer; background: var(--glass-bg);
             border: 1px solid var(--glass-border); border-radius: 50%;
             transition: transform 0.3s ease, background 0.5s ease, border 0.5s ease;
+            width: 2.75rem;
+            height: 2.75rem;
         }
         .icon-button:hover { transform: scale(1.1); }
-        .icon-button svg { color: var(--text-color); transition: color 0.5s ease; }
-        .theme-toggle { position: fixed; top: 20px; right: 20px; z-index: 100; width: 50px; height: 50px; }
+        .icon-button svg { color: var(--text-color); transition: color 0.5s ease; width: 1.5rem; height: 1.5rem; }
+        .theme-toggle { position: fixed; top: 1rem; right: 1rem; z-index: 100; }
         .theme-toggle:hover { transform: scale(1.1) rotate(15deg); }
-        .theme-toggle svg { width: 24px; height: 24px; }
-        .fullscreen-toggle { position: fixed; top: 20px; right: 80px; z-index: 100; width: 50px; height: 50px; }
-        .fullscreen-toggle svg { width: 22px; height: 22px; }
+        .fullscreen-toggle { position: fixed; top: 1rem; right: 4.5rem; z-index: 100; }
+
+        @media (min-width: 640px) {
+            .icon-button {
+                width: 3.125rem;
+                height: 3.125rem;
+            }
+        }
 
         /* * === Form & List Styles === */
         .modal-input {
             background: var(--input-bg);
             border: 1px solid var(--glass-border);
             color: var(--text-color);
+            padding: 0.75rem;
+            border-radius: 0.5rem;
         }
         .modal-input::placeholder { color: var(--text-color-muted); }
         
@@ -143,6 +169,8 @@
             background: var(--cta-bg);
             border: 1px solid var(--cta-border);
             transition: background 0.3s ease, transform 0.3s ease;
+            padding: 1rem;
+            border-radius: 0.75rem;
         }
         .quiz-list-item:hover {
             background: var(--cta-bg-hover);

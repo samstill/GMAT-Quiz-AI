@@ -118,10 +118,25 @@
             border: 1px solid var(--glass-border);
             box-shadow: var(--glass-shadow);
             animation: fadeIn 1.5s ease-out;
+            padding: 1.5rem;
+            border-radius: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .glass-card {
+                padding: 2.5rem;
+            }
         }
 
         .heading-gradient {
             background-image: linear-gradient(to right, var(--text-gradient-from), var(--text-gradient-to));
+            font-size: 1.875rem;
+        }
+
+        @media (min-width: 768px) {
+            .heading-gradient {
+                font-size: 2.25rem;
+            }
         }
 
         .muted-text { color: var(--text-color-muted); }
@@ -131,6 +146,8 @@
             border: 1px solid var(--cta-border);
             color: var(--text-color);
             transition: background 0.3s ease, transform 0.3s ease;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
         }
         .cta-link:hover {
             background: var(--cta-bg-hover);
@@ -143,12 +160,20 @@
             cursor: pointer; background: var(--glass-bg);
             border: 1px solid var(--glass-border); border-radius: 50%;
             transition: transform 0.3s ease, background 0.5s ease;
+            width: 2.75rem;
+            height: 2.75rem;
         }
         .icon-button:hover { transform: scale(1.1); }
-        .icon-button svg { color: var(--text-color); }
+        .icon-button svg { color: var(--text-color); width: 1.5rem; height: 1.5rem; }
         
-        .theme-toggle { position: fixed; top: 20px; right: 20px; z-index: 100; width: 50px; height: 50px; }
-        .theme-toggle svg { width: 24px; height: 24px; }
+        .theme-toggle { position: fixed; top: 1rem; right: 1rem; z-index: 100; }
+
+        @media (min-width: 640px) {
+            .icon-button {
+                width: 3.125rem;
+                height: 3.125rem;
+            }
+        }
         
         .modal-input {
             background: var(--input-bg);
@@ -166,16 +191,30 @@
         .chart-container {
             background: var(--cta-bg);
             border: 1px solid var(--cta-border);
-            padding: 1.5rem;
-            border-radius: 1.5rem;
+            padding: 1rem;
+            border-radius: 1rem;
             position: relative;
         }
+
+        @media (min-width: 768px) {
+            .chart-container {
+                padding: 1.5rem;
+                border-radius: 1.5rem;
+            }
+        }
+
         .performance-table-container {
             background: var(--cta-bg);
             border: 1px solid var(--cta-border);
-            border-radius: 1.5rem;
+            border-radius: 1rem;
             padding: 1rem;
             overflow-x: auto;
+        }
+
+        @media (min-width: 768px) {
+            .performance-table-container {
+                border-radius: 1.5rem;
+            }
         }
         .performance-table {
             width: 100%;
@@ -196,6 +235,13 @@
             display: flex; align-items: center; justify-content: center;
             z-index: 999; opacity: 0; visibility: hidden;
             transition: opacity 0.3s ease, visibility 0.3s ease;
+            padding: 1rem;
+        }
+
+        @media (min-width: 768px) {
+            .modal-overlay {
+                padding: 0;
+            }
         }
         .modal-overlay.active { opacity: 1; visibility: visible; }
         
@@ -234,6 +280,16 @@
             display: flex;
             flex-direction: column;
             gap: 1rem;
+        }
+
+        .analysis-chip {
+            font-size: 0.875rem;
+        }
+
+        @media (min-width: 768px) {
+            .analysis-chip {
+                font-size: 1rem;
+            }
         }
         
         /* Analysis Chips */

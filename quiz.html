@@ -124,10 +124,25 @@
             box-shadow: var(--glass-shadow);
             animation: fadeIn 1.5s ease-out;
             transition: filter 0.3s ease-in-out;
+            padding: 1.5rem;
+            border-radius: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .glass-card {
+                padding: 2.5rem;
+            }
         }
 
         .heading-gradient {
             background-image: linear-gradient(to right, var(--text-gradient-from), var(--text-gradient-to));
+            font-size: 1.875rem;
+        }
+
+        @media (min-width: 768px) {
+            .heading-gradient {
+                font-size: 2.25rem;
+            }
         }
 
         .muted-text { color: var(--text-color-muted); }
@@ -137,6 +152,8 @@
             border: 1px solid var(--cta-border);
             color: var(--text-color);
             transition: background 0.3s ease, transform 0.3s ease;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
         }
         .cta-link:hover:not(:disabled) {
             background: var(--cta-bg-hover);
@@ -154,20 +171,27 @@
             cursor: pointer; background: var(--glass-bg);
             border: 1px solid var(--glass-border); border-radius: 50%;
             transition: transform 0.3s ease, background 0.5s ease;
+            width: 2.75rem;
+            height: 2.75rem;
         }
         .icon-button:hover { transform: scale(1.1); }
-        .icon-button svg { color: var(--text-color); }
+        .icon-button svg { color: var(--text-color); width: 1.5rem; height: 1.5rem; }
         
-        .theme-toggle { position: fixed; top: 20px; right: 20px; z-index: 100; width: 50px; height: 50px; }
-        .theme-toggle svg { width: 24px; height: 24px; }
+        .theme-toggle { position: fixed; top: 1rem; right: 1rem; z-index: 100; }
         
-        .fullscreen-toggle { position: fixed; top: 20px; right: 80px; z-index: 100; width: 50px; height: 50px; }
-        .fullscreen-toggle svg { width: 22px; height: 22px; }
+        .fullscreen-toggle { position: fixed; top: 1rem; right: 4.5rem; z-index: 100; }
+
+        @media (min-width: 640px) {
+            .icon-button {
+                width: 3.125rem;
+                height: 3.125rem;
+            }
+        }
 
         .back-to-performance-btn {
             position: absolute;
-            top: 1.5rem;
-            left: 1.5rem;
+            top: 1rem;
+            left: 1rem;
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
@@ -180,6 +204,13 @@
             font-size: 0.875rem;
             transition: all 0.3s ease;
             z-index: 10;
+        }
+
+        @media (min-width: 768px) {
+            .back-to-performance-btn {
+                top: 1.5rem;
+                left: 1.5rem;
+            }
         }
         .back-to-performance-btn:hover {
             background: var(--cta-bg-hover);
@@ -195,27 +226,26 @@
 
         /* * === Quiz Specific Styles === */
         .quiz-container.with-rc-passage {
-            max-width: 1200px;
+            max-width: 100%;
         }
-        
-        /* Responsive adjustments for RC passages */
-        @media (max-width: 1023px) {
-            .rc-passage-display {
-                max-height: 300px;
-                margin-right: 0;
-                margin-bottom: 1rem;
-            }
-            .accessibility-controls {
-                top: 0.5rem;
-                right: 0.5rem;
-            }
-            .accessibility-btn {
-                width: 28px;
-                height: 28px;
+
+        @media (min-width: 1200px) {
+            .quiz-container.with-rc-passage {
+                max-width: 1200px;
             }
         }
         
+        .rc-passage-display {
+            max-height: 250px;
+            margin-bottom: 1rem;
+        }
+
         @media (min-width: 1024px) {
+            .rc-passage-display {
+                max-height: 500px;
+                margin-right: 1rem;
+                margin-bottom: 0;
+            }
             .quiz-container.with-rc-passage #question-display-area {
                 padding-left: 1rem;
             }
@@ -446,9 +476,16 @@
 
         /* Styles for Detailed Results View */
         #detailed-results-view {
-            margin-top: 2rem;
+            margin-top: 1.5rem;
             text-align: left;
         }
+
+        @media (min-width: 768px) {
+            #detailed-results-view {
+                margin-top: 2rem;
+            }
+        }
+
         .result-item {
             background: var(--input-bg);
             border: 1px solid var(--glass-border);
@@ -462,11 +499,17 @@
 
         /* Styles for Explanation Section in Review Mode */
         .explanation-container {
-            margin-top: 1.5rem;
+            margin-top: 1rem;
             padding: 1rem;
             background-color: rgba(255, 255, 255, 0.03);
             border-top: 1px solid var(--glass-border);
             border-radius: 0 0 0.75rem 0.75rem;
+        }
+
+        @media (min-width: 768px) {
+            .explanation-container {
+                margin-top: 1.5rem;
+            }
         }
         .official-explanation {
             margin-bottom: 1rem;

@@ -54,7 +54,7 @@
             color: var(--text-color);
             font-family: 'Inter', sans-serif;
             min-height: 100vh;
-            overflow: hidden;
+            overflow-x: hidden;
             transition: background-color 0.5s ease, color 0.5s ease;
         }
 
@@ -90,6 +90,14 @@
             box-shadow: var(--glass-shadow);
             animation: fadeIn 1.5s ease-out;
             transition: background 0.5s ease, border 0.5s ease, box-shadow 0.5s ease;
+            padding: 1.5rem;
+            border-radius: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .glass-card {
+                padding: 2rem;
+            }
         }
         
         @keyframes fadeIn {
@@ -100,9 +108,17 @@
         .heading-gradient {
             background-image: linear-gradient(to right, var(--text-gradient-from), var(--text-gradient-to));
             transition: background-image 0.5s ease;
+            font-size: 2rem;
+            line-height: 1.2;
+            min-height: 3.75rem;
         }
 
-        .muted-text { color: var(--text-color-muted); transition: color 0.5s ease; }
+        .muted-text {
+            color: var(--text-color-muted);
+            transition: color 0.5s ease;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
         
         .light-mode .muted-text { color: #4B5563; }
 
@@ -111,11 +127,27 @@
             border: 1px solid var(--cta-border);
             color: var(--text-color);
             transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease, color 0.5s ease;
+            padding: 0.75rem 1.25rem;
+            font-size: 1rem;
+            width: 100%;
+            text-align: center;
+        }
+
+        @media (min-width: 640px) {
+            .heading-gradient {
+                font-size: 3rem;
+            }
+            .muted-text {
+                font-size: 1.125rem;
+            }
+            .cta-link {
+                width: auto;
+            }
         }
 
         .cta-link:hover {
             background: var(--cta-bg-hover);
-            transform: translateY(-4px);
+            transform: translateY(-0.25rem);
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
         }
         
@@ -128,17 +160,28 @@
             cursor: pointer; background: var(--glass-bg);
             border: 1px solid var(--glass-border); border-radius: 50%;
             transition: transform 0.3s ease, background 0.5s ease, border 0.5s ease;
+            width: 2.75rem;
+            height: 2.75rem;
         }
         .icon-button:hover { transform: scale(1.1); }
-        .icon-button svg { color: var(--text-color); transition: color 0.5s ease; }
-        .theme-toggle { position: fixed; top: 20px; right: 20px; z-index: 100; width: 50px; height: 50px; }
+        .icon-button svg { color: var(--text-color); transition: color 0.5s ease; width: 1.25rem; height: 1.25rem;}
+        .theme-toggle { position: fixed; top: 1rem; right: 1rem; z-index: 100; }
         .theme-toggle:hover { transform: scale(1.1) rotate(15deg); }
-        .theme-toggle svg { width: 24px; height: 24px; }
-        .logout-toggle { position: fixed; top: 20px; right: 80px; z-index: 100; width: 50px; height: 50px; }
+        .logout-toggle { position: fixed; top: 1rem; right: 4.5rem; z-index: 100; }
         .logout-toggle:hover { transform: scale(1.1) rotate(-15deg); }
-        .logout-toggle svg { width: 24px; height: 24px; }
-        .fullscreen-toggle { position: absolute; top: 16px; right: 16px; width: 40px; height: 40px; }
-        .fullscreen-toggle svg { width: 20px; height: 20px; }
+        .fullscreen-toggle { position: absolute; top: 1rem; right: 1rem; width: 2.5rem; height: 2.5rem; }
+        .fullscreen-toggle svg { width: 1.25rem; height: 1.25rem; }
+
+        @media (min-width: 640px) {
+            .icon-button {
+                width: 3.125rem;
+                height: 3.125rem;
+            }
+            .icon-button svg {
+                width: 1.5rem;
+                height: 1.5rem;
+            }
+        }
 
         /* * === Modal & Scrollbar Styles === */
         .modal-overlay {
@@ -150,9 +193,18 @@
         }
         .modal-overlay.active { opacity: 1; pointer-events: auto; }
         .modal-content {
-            width: 90%; max-width: 800px; max-height: 85vh;
+            width: 95%;
+            max-height: 90vh;
+            margin: 1.25rem;
             display: flex; flex-direction: column;
             transform: scale(0.95); transition: transform 0.3s ease;
+        }
+
+        @media (min-width: 768px) {
+            .modal-content {
+                width: 90%;
+                max-width: 50rem;
+            }
         }
         .modal-overlay.active .modal-content { transform: scale(1); }
         .modal-input {
@@ -383,12 +435,20 @@
             z-index: 10;
             background: var(--glass-bg);
             border: 1px solid var(--glass-border);
-            border-radius: 16px;
+            border-radius: 0.75rem;
             backdrop-filter: blur(20px);
             box-shadow: var(--glass-shadow);
-            margin-bottom: 20px;
-            padding: 16px 20px;
+            margin-bottom: 1rem;
+            padding: 0.75rem 1rem;
             transition: all 0.3s ease;
+        }
+
+        @media (min-width: 768px) {
+            .glass-navbar {
+                border-radius: 1rem;
+                margin-bottom: 1.25rem;
+                padding: 1rem 1.25rem;
+            }
         }
 
         .glass-navbar:hover {
@@ -399,24 +459,39 @@
 
         .navbar-content {
             display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 12px;
-            min-height: 40px;
-            flex-wrap: wrap;
+            flex-direction: column;
+            align-items: stretch;
+            gap: 0.75rem;
+        }
+
+        @media (min-width: 768px) {
+            .navbar-content {
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+                gap: 0.75rem;
+            }
         }
 
         .navbar-title {
-            font-size: 18px;
+            font-size: 1rem;
             font-weight: 600;
             color: var(--text-color);
             margin: 0;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 0.5rem;
             flex-shrink: 0;
-            padding: 4px 0;
+            padding: 0.25rem 0;
             order: 1;
+            align-self: center;
+        }
+
+        @media (min-width: 768px) {
+            .navbar-title {
+                font-size: 1.125rem;
+                align-self: initial;
+            }
         }
 
         .navbar-title svg {
@@ -427,27 +502,42 @@
         .navbar-stats {
             display: flex;
             align-items: center;
-            gap: 8px;
-            font-size: 14px;
+            gap: 0.5rem;
+            font-size: 0.75rem;
             color: var(--text-color-muted);
-            flex: 1;
             justify-content: center;
-            min-width: 200px;
             order: 2;
+        }
+
+        @media (min-width: 768px) {
+            .navbar-stats {
+                gap: 0.75rem;
+                font-size: 0.875rem;
+                flex: 1;
+            }
         }
 
         .stat-item {
             display: flex;
             align-items: center;
-            gap: 4px;
-            padding: 4px 8px;
+            gap: 0.25rem;
+            padding: 0.25rem 0.5rem;
             background: var(--input-bg);
             border: 1px solid var(--glass-border);
-            border-radius: 16px;
+            border-radius: 1rem;
             transition: all 0.2s ease;
             white-space: nowrap;
-            min-height: 24px;
-            font-size: 13px;
+            min-height: 1.5rem;
+            font-size: 0.75rem;
+        }
+
+        @media (min-width: 768px) {
+            .stat-item {
+                gap: 0.5rem;
+                padding: 0.25rem 0.75rem;
+                min-height: 1.75rem;
+                font-size: 0.8125rem;
+            }
         }
 
         .stat-item:hover {
@@ -470,26 +560,40 @@
         .navbar-actions {
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 0.5rem;
+            justify-content: center;
             flex-shrink: 0;
             order: 3;
         }
 
+        @media (min-width: 768px) {
+            .navbar-actions {
+                gap: 0.75rem;
+            }
+        }
+
         .navbar-btn {
-            padding: 6px 12px;
-            border-radius: 20px;
+            padding: 0.5rem 1rem;
+            border-radius: 1.25rem;
             border: 1px solid var(--glass-border);
             background: var(--input-bg);
             color: var(--text-color);
-            font-size: 13px;
+            font-size: 0.8125rem;
             font-weight: 500;
             cursor: pointer;
             transition: all 0.2s ease;
             display: flex;
             align-items: center;
-            gap: 4px;
+            gap: 0.25rem;
             white-space: nowrap;
-            min-height: 32px;
+            min-height: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .navbar-btn {
+                padding: 0.375rem 0.75rem;
+                font-size: 0.875rem;
+            }
         }
 
         .navbar-btn:hover {
@@ -650,16 +754,30 @@
         /* * === Flashcard Styles === */
         .flashcard-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: 1fr;
+            gap: 1rem;
             perspective: 1000px;
         }
+
+        @media (min-width: 640px) {
+            .flashcard-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+                gap: 1.5rem;
+            }
+        }
+
         .flashcard {
             background-color: transparent;
-            min-height: 220px;
+            min-height: 180px;
             cursor: pointer;
             transform-style: preserve-3d;
             transition: transform 0.6s;
+        }
+
+        @media (min-width: 768px) {
+            .flashcard {
+                min-height: 220px;
+            }
         }
         .flashcard.flipped {
             transform: rotateY(180deg);
