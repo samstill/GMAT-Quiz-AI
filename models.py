@@ -68,10 +68,9 @@ class PerformanceDB(Base):
     total_questions = Column(Integer, nullable=False)
     correct_answers = Column(Integer, nullable=False)
     time_taken_seconds = Column(Integer, nullable=False)
-    detailed_results_json = Column(Text, nullable=True)
-
     quiz = relationship("QuizDB", back_populates="performance_records")
     user_explanations = relationship("UserExplanationDB", back_populates="performance", cascade="all, delete-orphan")
+    detailed_results = relationship("DetailedResultDB", back_populates="performance", cascade="all, delete-orphan")
 
     def __repr__(self):
         return f"<Performance(id={self.id}, quiz_id={self.quiz_id}, score={self.correct_answers}/{self.total_questions}, time={self.time_taken_seconds}s)>"
@@ -91,6 +90,20 @@ class UserExplanationDB(Base):
 
     def __repr__(self):
         return f"<UserExplanation(id={self.id}, performance_id={self.performance_id}, question_id={self.question_id})>"
+
+
+class DetailedResultDB(Base):
+    __tablename__ = "detailed_results"
+
+    id = Column(Integer, primary_key=True, index=True)
+    performance_id = Column(Integer, ForeignKey("performance.id"), nullable=False)
+    question_id = Column(Integer, ForeignKey("questions.id"), nullable=False)
+    correct = Column(Boolean, nullable=False)
+    user_answer = Column(String, nullable=True)
+    time_spent = Column(Integer, nullable=True)
+
+    performance = relationship("PerformanceDB", back_populates="detailed_results")
+    question = relationship("QuestionDB")
 
 class FlashcardSetDB(Base):
     __tablename__ = "flashcard_sets"

@@ -809,8 +809,24 @@ async def create_question_for_quiz(
              raise
         raise HTTPException(status_code=500, detail="An internal server error occurred.")
 
+# --- Caching ---
+from fastapi import Response
+from cachetools import TTLCache
+
+# Cache for quiz questions (10 minute TTL, max 100 quizzes)
+quiz_question_cache = TTLCache(maxsize=100, ttl=600)
+
 @app.get("/api/quizzes/{quiz_id}/questions/", response_model=List[QuestionResponse])
-async def read_questions_for_quiz(quiz_id: int = Path(..., title="The ID of the quiz to get questions for"), db: Session = Depends(get_db)):
+async def read_questions_for_quiz(
+    quiz_id: int = Path(..., title="The ID of the quiz to get questions for"),
+    response: Response = None,
+    db: Session = Depends(get_db)
+):
+    # Check cache first
+    if quiz_id in quiz_question_cache:
+        response.headers["X-Cache"] = "HIT"
+        return quiz_question_cache[quiz_id]
+
     db_quiz = db.query(QuizDB).filter(QuizDB.id == quiz_id).first()
     if db_quiz is None:
         raise HTTPException(status_code=404, detail="Quiz not found")
@@ -836,6 +852,11 @@ async def read_questions_for_quiz(quiz_id: int = Path(..., title="The ID of the 
             subsection=q.subsection,
             answerExplanation=q.answer_explanation
         ))
+
+    # Add to cache
+    quiz_question_cache[quiz_id] = response_list
+    response.headers["X-Cache"] = "MISS"
+
     return response_list
 
 @app.delete("/api/questions/{question_id}", status_code=204)
@@ -990,42 +1011,26 @@ async def create_performance_record(performance_data: PerformanceCreate, db: Ses
     db_quiz = db.query(QuizDB).filter(QuizDB.id == performance_data.quizId).first()
     if db_quiz is None:
         raise HTTPException(status_code=404, detail="Quiz not found")
-    enhanced_results = []
-    for result in performance_data.detailedResults:
-        question = db.query(QuestionDB).options(
-            joinedload(QuestionDB.rc_passage)
-        ).filter(QuestionDB.id == result.questionId).first()
-        if question:
-            enhanced_result = {
-                "questionId": result.questionId,
-                "correct": result.correct,
-                "difficulty": result.difficulty,
-                "userAnswer": result.userAnswer,
-                "correctAnswer": question.correct_answer,
-                "questionText": question.question_text,
-                "options": json.loads(question.options_json),
-                "question_type": question.question_type,
-                "subsection": question.subsection,
-                "timeSpent": result.timeSpent,
-                "explanation": result.answerExplanation, # This should be answerExplanation from QuestionDB
-                "rc_passage": {
-                    "id": question.rc_passage.id,
-                    "title": question.rc_passage.title,
-                    "passage_text": question.rc_passage.passage_text
-                } if question.rc_passage else None
-            }
-            # Correctly use the question's answerExplanation
-            enhanced_result["answerExplanation"] = question.answer_explanation 
-            enhanced_results.append(enhanced_result)
-
     db_performance = PerformanceDB(
         quiz_id=performance_data.quizId,
         total_questions=performance_data.totalQuestions,
         correct_answers=performance_data.correctAnswers,
         time_taken_seconds=performance_data.timeTakenSeconds,
         timestamp=datetime.datetime.utcnow(),
-        detailed_results_json=json.dumps(enhanced_results) if enhanced_results else None
     )
+    db.add(db_performance)
+    db.commit()
+    db.refresh(db_performance)
+
+    for result in performance_data.detailedResults:
+        db_detailed_result = DetailedResultDB(
+            performance_id=db_performance.id,
+            question_id=result.questionId,
+            correct=result.correct,
+            user_answer=result.userAnswer,
+            time_spent=result.timeSpent
+        )
+        db.add(db_detailed_result)
     db.add(db_performance)
     try:
         db.commit()
@@ -1038,25 +1043,42 @@ async def create_performance_record(performance_data: PerformanceCreate, db: Ses
 
 @app.get("/api/performance/", response_model=List[PerformanceResponse])
 async def read_performance_records(quiz_id: Optional[int] = None, db: Session = Depends(get_db)):
-    query = db.query(PerformanceDB)
+    query = db.query(PerformanceDB).options(joinedload(PerformanceDB.detailed_results))
     if quiz_id is not None:
         db_quiz = db.query(QuizDB).filter(QuizDB.id == quiz_id).first()
         if db_quiz is None:
             raise HTTPException(status_code=404, detail="Quiz not found")
         query = query.filter(PerformanceDB.quiz_id == quiz_id)
     performance_records_db = query.order_by(PerformanceDB.timestamp).all()
-    return [
-        PerformanceResponse(
+
+    response = []
+    for rec in performance_records_db:
+        detailed_results = []
+        for result in rec.detailed_results:
+            question = result.question
+            detailed_results.append(DetailedQuestionResult(
+                questionId=result.question_id,
+                correct=result.correct,
+                difficulty=question.difficulty,
+                userAnswer=result.user_answer,
+                correctAnswer=question.correct_answer,
+                questionText=question.question_text,
+                options=json.loads(question.options_json),
+                question_type=question.question_type,
+                subsection=question.subsection,
+                timeSpent=result.time_spent,
+                answerExplanation=question.answer_explanation
+            ))
+        response.append(PerformanceResponse(
             id=rec.id,
             quizId=rec.quiz_id,
             timestamp=rec.timestamp,
             totalQuestions=rec.total_questions,
             correctAnswers=rec.correct_answers,
             timeTakenSeconds=rec.time_taken_seconds,
-            detailedResults=json.loads(rec.detailed_results_json) if rec.detailed_results_json else []
-        )
-        for rec in performance_records_db
-    ]
+            detailedResults=detailed_results
+        ))
+    return response
 
 @app.get("/api/performance/{performance_id}", response_model=PerformanceResponse)
 async def get_performance_record(
@@ -1067,26 +1089,21 @@ async def get_performance_record(
     if performance_record is None:
         raise HTTPException(status_code=404, detail="Performance record not found")
     detailed_results = []
-    if performance_record.detailed_results_json:
-        try:
-            parsed_results = json.loads(performance_record.detailed_results_json)
-            for result in parsed_results:
-                simplified_result = DetailedQuestionResult(
-                    questionId=result["questionId"],
-                    correct=result["correct"],
-                    difficulty=result["difficulty"],
-                    userAnswer=result.get("userAnswer"),
-                    correctAnswer=result["correctAnswer"],
-                    questionText=result["questionText"],
-                    options=result["options"],
-                    question_type=result["question_type"],
-                    subsection=result.get("subsection"),
-                    timeSpent=result.get("timeSpent"),
-                    answerExplanation=result.get("answerExplanation")
-                )
-                detailed_results.append(simplified_result)
-        except json.JSONDecodeError:
-            detailed_results = []
+    for result in performance_record.detailed_results:
+        question = result.question
+        detailed_results.append(DetailedQuestionResult(
+            questionId=result.question_id,
+            correct=result.correct,
+            difficulty=question.difficulty,
+            userAnswer=result.user_answer,
+            correctAnswer=question.correct_answer,
+            questionText=question.question_text,
+            options=json.loads(question.options_json),
+            question_type=question.question_type,
+            subsection=question.subsection,
+            timeSpent=result.time_spent,
+            answerExplanation=question.answer_explanation
+        ))
     return PerformanceResponse(
         id=performance_record.id,
         quizId=performance_record.quiz_id,
@@ -1140,43 +1157,40 @@ async def get_detailed_performance_review(
     performance_record = db.query(PerformanceDB).filter(PerformanceDB.id == performance_id).first()
     if performance_record is None:
         raise HTTPException(status_code=404, detail="Performance record not found")
-    if not performance_record.detailed_results_json:
-        return []
-    try:
-        detailed_results = json.loads(performance_record.detailed_results_json)
-        review_items = []
-        for result in detailed_results:
-            rc_passage_data = None
-            if result.get("rc_passage"):
-                rc_passage_data = RCPassageResponse(
-                    id=result["rc_passage"]["id"],
-                    title=result["rc_passage"]["title"],
-                    passage_text=result["rc_passage"]["passage_text"]
-                )
-            user_explanation = db.query(UserExplanationDB).filter(
-                UserExplanationDB.performance_id == performance_id,
-                UserExplanationDB.question_id == result["questionId"]
-            ).first()
-            review_item = DetailedPerformanceReview(
-                questionId=result["questionId"],
-                correct=result["correct"],
-                userAnswer=result.get("userAnswer"),
-                correctAnswer=result["correctAnswer"],
-                questionText=result["questionText"],
-                options=result["options"],
-                difficulty=result["difficulty"],
-                question_type=result["question_type"],
-                subsection=result.get("subsection"),
-                timeSpent=result.get("timeSpent"),
-                answerExplanation=result.get("answerExplanation"),
-                rc_passage=rc_passage_data,
-                userExplanation=user_explanation.explanation_text if user_explanation else None
-            )
-            review_items.append(review_item)
-        return review_items
-    except (json.JSONDecodeError, KeyError) as e:
-        print(f"Error parsing detailed results for performance {performance_id}: {e}")
-        raise HTTPException(status_code=500, detail="Error retrieving detailed performance data")
+    performance_record = db.query(PerformanceDB).options(
+        joinedload(PerformanceDB.detailed_results).joinedload(DetailedResultDB.question).joinedload(QuestionDB.rc_passage),
+        joinedload(PerformanceDB.user_explanations)
+    ).filter(PerformanceDB.id == performance_id).first()
+
+    if performance_record is None:
+        raise HTTPException(status_code=404, detail="Performance record not found")
+
+    review_items = []
+    for result in performance_record.detailed_results:
+        question = result.question
+        rc_passage_data = None
+        if question.rc_passage:
+            rc_passage_data = RCPassageResponse.from_orm(question.rc_passage)
+
+        user_explanation = next((exp for exp in performance_record.user_explanations if exp.question_id == result.question_id), None)
+
+        review_item = DetailedPerformanceReview(
+            questionId=result.question_id,
+            correct=result.correct,
+            userAnswer=result.user_answer,
+            correctAnswer=question.correct_answer,
+            questionText=question.question_text,
+            options=json.loads(question.options_json),
+            difficulty=question.difficulty,
+            question_type=question.question_type,
+            subsection=question.subsection,
+            timeSpent=result.time_spent,
+            answerExplanation=question.answer_explanation,
+            rc_passage=rc_passage_data,
+            userExplanation=user_explanation.explanation_text if user_explanation else None
+        )
+        review_items.append(review_item)
+    return review_items
 
 @app.get("/api/performance/summary/{quiz_id}")
 async def get_performance_summary(
@@ -1203,35 +1217,31 @@ async def get_performance_summary(
     difficulty_stats = {}
     common_mistakes = []
     for record in performance_records:
-        if record.detailed_results_json:
-            try:
-                detailed_results = json.loads(record.detailed_results_json)
-                for result in detailed_results:
-                    q_type = result.get("question_type", "Unknown")
-                    difficulty = result.get("difficulty", "Unknown")
-                    correct = result.get("correct", False)
-                    if q_type not in type_stats:
-                        type_stats[q_type] = {"total": 0, "correct": 0}
-                    type_stats[q_type]["total"] += 1
-                    if correct:
-                        type_stats[q_type]["correct"] += 1
-                    if difficulty not in difficulty_stats:
-                        difficulty_stats[difficulty] = {"total": 0, "correct": 0}
-                    difficulty_stats[difficulty]["total"] += 1
-                    if correct:
-                        difficulty_stats[difficulty]["correct"] += 1
-                    if not correct:
-                        mistake_entry = {
-                            "questionId": result.get("questionId"),
-                            "questionText": result.get("questionText", "")[:100] + "...",
-                            "userAnswer": result.get("userAnswer"),
-                            "correctAnswer": result.get("correctAnswer"),
-                            "question_type": q_type,
-                            "difficulty": difficulty
-                        }
-                        common_mistakes.append(mistake_entry)
-            except json.JSONDecodeError:
-                continue
+        for result in record.detailed_results:
+            question = result.question
+            q_type = question.question_type
+            difficulty = question.difficulty
+            correct = result.correct
+            if q_type not in type_stats:
+                type_stats[q_type] = {"total": 0, "correct": 0}
+            type_stats[q_type]["total"] += 1
+            if correct:
+                type_stats[q_type]["correct"] += 1
+            if difficulty not in difficulty_stats:
+                difficulty_stats[difficulty] = {"total": 0, "correct": 0}
+            difficulty_stats[difficulty]["total"] += 1
+            if correct:
+                difficulty_stats[difficulty]["correct"] += 1
+            if not correct:
+                mistake_entry = {
+                    "questionId": result.question_id,
+                    "questionText": question.question_text[:100] + "...",
+                    "userAnswer": result.user_answer,
+                    "correctAnswer": question.correct_answer,
+                    "question_type": q_type,
+                    "difficulty": difficulty
+                }
+                common_mistakes.append(mistake_entry)
     for stats in type_stats.values():
         stats["percentage"] = (stats["correct"] / stats["total"] * 100) if stats["total"] > 0 else 0
     for stats in difficulty_stats.values():
