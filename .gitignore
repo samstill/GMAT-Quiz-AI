@@ -68,3 +68,7 @@ wheels/
 *.temp
 temp/
 tmp/
+ssl/
+user_databases/
+data/
+node_modules/

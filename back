@@ -20,10 +20,9 @@ import hashlib
 import secrets
 from dotenv import load_dotenv
 from google.api_core import retry, exceptions
-from ai_tools import AVAILABLE_TOOLS, GEMINI_TOOLS, GEMINI_TOOL_CONFIG, call_tool, parse_tool_result
+from ai_tools import AVAILABLE_TOOLS, GEMINI_TOOLS, GEMINI_TOOL_CONFIG
 from models import Base, QuizDB, RCPassageDB, QuestionDB, PerformanceDB, UserExplanationDB, FlashcardSetDB, IndividualFlashcardDB, UserDB, APIKeyDB
-from fastapi.responses import StreamingResponse
-import io
+
 # Load environment variables from .env file
 load_dotenv()
 
@@ -1442,11 +1441,6 @@ class AIChatMessage(BaseModel):
     role: str
     parts: List[AIChatPart]
 
-class ErrorLogRequest(BaseModel):
-    performance_id: int
-    gemini_api_key: Optional[str] = None
-
-
 class AIAnalysisRequest(BaseModel):
     history: List[AIChatMessage]
     quiz_id: Optional[int] = None # Allow filtering data by quiz
@@ -1791,54 +1785,6 @@ async def analyze_performance(request: AIAnalysisRequest, db: Session = Depends(
 
     # If we've exceeded max turns, return an error
     raise HTTPException(status_code=500, detail="AI analysis exceeded maximum conversation turns. Please try again.")
-
-@app.post("/api/tools/create_error_log_csv")
-async def api_create_error_log_csv(
-    request: ErrorLogRequest,
-    db: Session = Depends(get_db)
-):
-    """
-    API endpoint to handle the request for creating a CSV error log.
-    It calls the corresponding tool from ai_tools.py, passing the Gemini API key.
-    """
-    try:
-        # Call the tool, now passing the API key as well
-        result_json_str = call_tool(
-            "create_error_log_csv",
-            db=db,
-            performance_id=request.performance_id,
-            gemini_api_key=request.gemini_api_key # Pass the key to the tool
-        )
-        
-        result_data = parse_tool_result(result_json_str)
-
-        if result_data.get("status") == "error":
-            raise HTTPException(
-                status_code=500, 
-                detail=result_data.get("message", "An error occurred while generating the CSV.")
-            )
-        
-        csv_content = result_data.get("csv_content")
-        file_name = result_data.get("file_name", "error_log.csv")
-
-        if not csv_content:
-             raise HTTPException(status_code=500, detail="Tool did not generate CSV content.")
-
-        string_io = io.StringIO(csv_content)
-
-        return StreamingResponse(
-            iter([string_io.read()]),
-            media_type="text/csv",
-            headers={"Content-Disposition": f"attachment; filename={file_name}"}
-        )
-
-    except Exception as e:
-        print(f"ERROR in api_create_error_log_csv: {e}")
-        raise HTTPException(status_code=500, detail=f"An internal server error occurred: {str(e)}")
-
-
-
-# --- Flashcard Endpoints ---
 
 # --- Flashcard Endpoints ---
 @app.post("/api/flashcards/save", response_model=FlashcardSetResponse, status_code=201)
