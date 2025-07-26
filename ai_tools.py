@@ -427,8 +427,26 @@ def create_error_log_csv(db: Session, performance_id: int, gemini_api_key: str =
         writer = csv.DictWriter(output, fieldnames=headers)
         writer.writeheader()
 
-        # Process questions in batches to respect API rate limits (15 RPM)
-        for i, question in enumerate(all_answers):
+        # --- INTELLIGENT RATE LIMITING SETUP ---
+        request_count_in_batch = 0
+        batch_start_time = time.time()
+        # Gemini Free Tier allows 15 requests per minute.
+        BATCH_SIZE = 15 
+        BATCH_WINDOW_SECONDS = 61 # Use 61 seconds for a small safety margin
+
+        for question in all_answers:
+            # Check if we need to pause before this request
+            if request_count_in_batch >= BATCH_SIZE:
+                elapsed_time = time.time() - batch_start_time
+                if elapsed_time < BATCH_WINDOW_SECONDS:
+                    wait_time = BATCH_WINDOW_SECONDS - elapsed_time
+                    print(f"Processed batch of {BATCH_SIZE}. Pausing for {wait_time:.1f} seconds to respect API rate limit...")
+                    time.sleep(wait_time)
+                
+                # Reset for the next batch
+                request_count_in_batch = 0
+                batch_start_time = time.time()
+
             section = question.get("question_type", "Unknown")
             
             name = "Unknown"
@@ -438,6 +456,9 @@ def create_error_log_csv(db: Session, performance_id: int, gemini_api_key: str =
 
             # Generate topic, skill, area, and concept using AI
             ai_analysis = call_gemini_for_question_analysis(question.get("questionText", ""), api_key)
+            
+            # Increment the request counter for the current batch AFTER the API call
+            request_count_in_batch += 1
 
             date_taken_str = quiz_overview.get("dateTaken")
             date_formatted = ""
@@ -469,14 +490,6 @@ def create_error_log_csv(db: Session, performance_id: int, gemini_api_key: str =
                 "Time Spent (Minutes)": time_spent_min
             }
             writer.writerow(row)
-            
-            # --- INTELLIGENT RATE LIMITING ---
-            # After every 15th request, wait for 60 seconds to reset the minute quota.
-            # We check `(i + 1)` because `i` is 0-indexed.
-            # We also check if it's not the very last question to avoid an unnecessary wait.
-            if (i + 1) % 15 == 0 and (i + 1) < len(all_answers):
-                print(f"Processed batch of 15. Pausing for 60 seconds to respect API rate limit...")
-                time.sleep(60)
 
         csv_content = output.getvalue()
         output.close()
