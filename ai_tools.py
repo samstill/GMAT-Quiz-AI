@@ -54,15 +54,14 @@ def resolve_quiz_identifier(db: Session, quiz_identifier: str) -> int:
     return quiz.id if quiz else None
 
 
-def call_gemini_for_question_analysis(question_text: str, api_key: str):
+def call_gemini_for_question_analysis(question_text: str, api_key: str, max_retries: int = 3):
     """
-    Makes a synchronous call to the Gemini API to generate a topic, 
-    fundamental skill, content area, and in-depth concept for a question.
+    Makes a synchronous call to the Gemini API with retry logic for rate limiting.
+    Generates a topic, fundamental skill, content area, and in-depth concept for a question.
     """
     if not api_key:
         return {"topic": "Error: API Key Missing", "skill": "Error", "area": "Error", "concept": "Error"}
 
-    # CORRECTED THE URL HERE
     api_url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={api_key}"
     
     prompt = f"""
@@ -80,28 +79,39 @@ def call_gemini_for_question_analysis(question_text: str, api_key: str):
         "contents": [{"parts": [{"text": prompt}]}]
     }
     
-    try:
-        with httpx.Client(timeout=30.0) as client:
-            response = client.post(api_url, json=payload)
-            response.raise_for_status()
-            result = response.json()
-            
-            # Extract and clean the JSON string from the response
-            response_text = result["candidates"][0]["content"]["parts"][0]["text"]
-            # Clean the response to ensure it's valid JSON
-            clean_json_str = response_text.strip().replace('```json', '').replace('```', '').strip()
-            
-            analysis_json = json.loads(clean_json_str)
-            
-            return {
-                "topic": analysis_json.get("topic", "AI Topic Failed"),
-                "skill": analysis_json.get("skill", "AI Skill Failed"),
-                "area": analysis_json.get("area", "AI Area Failed"),
-                "concept": analysis_json.get("concept", "AI Concept Failed")
-            }
-    except Exception as e:
-        print(f"Error calling Gemini for question analysis: {e}")
-        return {"topic": "AI Generation Failed", "skill": "AI Generation Failed", "area": "AI Generation Failed", "concept": "AI Generation Failed"}
+    for attempt in range(max_retries):
+        try:
+            with httpx.Client(timeout=45.0) as client:
+                response = client.post(api_url, json=payload)
+                response.raise_for_status()
+                result = response.json()
+                
+                response_text = result["candidates"][0]["content"]["parts"][0]["text"]
+                clean_json_str = response_text.strip().replace('```json', '').replace('```', '').strip()
+                
+                analysis_json = json.loads(clean_json_str)
+                
+                return {
+                    "topic": analysis_json.get("topic", "AI Topic Failed"),
+                    "skill": analysis_json.get("skill", "AI Skill Failed"),
+                    "area": analysis_json.get("area", "AI Area Failed"),
+                    "concept": analysis_json.get("concept", "AI Concept Failed")
+                }
+        except httpx.HTTPStatusError as e:
+            if e.response.status_code == 429 and attempt < max_retries - 1:
+                # Exponential backoff: wait 2, 4, 8 seconds
+                wait_time = 2 ** (attempt + 1)
+                print(f"Rate limited. Retrying in {wait_time} seconds...")
+                time.sleep(wait_time)
+                continue
+            else:
+                print(f"Error calling Gemini for question analysis: {e}")
+                return {"topic": "AI Generation Failed", "skill": "AI Generation Failed", "area": "AI Generation Failed", "concept": "AI Generation Failed"}
+        except Exception as e:
+            print(f"Error calling Gemini for question analysis: {e}")
+            return {"topic": "AI Generation Failed", "skill": "AI Generation Failed", "area": "AI Generation Failed", "concept": "AI Generation Failed"}
+    
+    return {"topic": "AI Generation Failed after retries", "skill": "AI Generation Failed", "area": "AI Generation Failed", "concept": "AI Generation Failed"}
 
 
 
@@ -352,6 +362,7 @@ def analyze_latest_quiz_detailed(db: Session):
         return json.dumps({"message": "No quiz performances found."})
     return call_tool("analyze_performance_by_id", db, performance_id=latest_performance.id)
 @tool("analyze_performance_by_id")
+@tool("analyze_performance_by_id")
 def analyze_performance_by_id(db: Session, performance_id: int):
     """
     Provides comprehensive details for ALL questions in a specific quiz performance.
@@ -390,14 +401,12 @@ def analyze_performance_by_id(db: Session, performance_id: int):
     return json.dumps(result, indent=2)
 
 
-
-
+# --- MODIFIED TOOL ---
 @tool("create_error_log_csv")
 def create_error_log_csv(db: Session, performance_id: int, gemini_api_key: str = None):
     """
     Creates CSV content of ALL questions for a specific quiz attempt,
     with AI-generated topics, skills, areas, and concepts, and returns it as a string.
-    Uses a short delay between requests to respect API rate limits without causing a server timeout.
     """
     api_key = gemini_api_key or os.environ.get("GOOGLE_API_KEY")
 
@@ -435,7 +444,7 @@ def create_error_log_csv(db: Session, performance_id: int, gemini_api_key: str =
                 name = f"{section[0]}{counters[section]}"
                 counters[section] += 1
 
-            # Generate topic, skill, area, and concept using AI
+            # Generate topic, skill, area, and concept using AI with retry logic
             ai_analysis = call_gemini_for_question_analysis(question.get("questionText", ""), api_key)
 
             date_taken_str = quiz_overview.get("dateTaken")
@@ -469,11 +478,6 @@ def create_error_log_csv(db: Session, performance_id: int, gemini_api_key: str =
             }
             writer.writerow(row)
             
-            # --- ROBUST RATE LIMITING FIX ---
-            # A short, non-blocking delay after each call to stay under the 15 RPM limit.
-            # 60 seconds / 15 requests = 4 seconds/request. A 4.1s delay is safe.
-            time.sleep(4.1)
-
         csv_content = output.getvalue()
         output.close()
         file_name = f"error_log_perf_{performance_id}.csv"
