@@ -4,6 +4,8 @@ from fastapi import FastAPI, Depends, HTTPException, UploadFile, File, Form, Pat
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
+from fastapi.responses import StreamingResponse
+from fastapi.concurrency import run_in_threadpool
 from pydantic import BaseModel, EmailStr
 from typing import List, Optional, Dict, Any, Union
 from sqlalchemy import create_engine, Column, Integer, String, Text, Boolean, Float, DateTime, ForeignKey, text
@@ -22,7 +24,6 @@ from dotenv import load_dotenv
 from google.api_core import retry, exceptions
 from ai_tools import AVAILABLE_TOOLS, GEMINI_TOOLS, GEMINI_TOOL_CONFIG, call_tool, parse_tool_result
 from models import Base, QuizDB, RCPassageDB, QuestionDB, PerformanceDB, UserExplanationDB, FlashcardSetDB, IndividualFlashcardDB, UserDB, APIKeyDB
-from fastapi.responses import StreamingResponse
 import io
 # Load environment variables from .env file
 load_dotenv()
@@ -1792,6 +1793,7 @@ async def analyze_performance(request: AIAnalysisRequest, db: Session = Depends(
     # If we've exceeded max turns, return an error
     raise HTTPException(status_code=500, detail="AI analysis exceeded maximum conversation turns. Please try again.")
 
+
 @app.post("/api/tools/create_error_log_csv")
 async def api_create_error_log_csv(
     request: ErrorLogRequest,
@@ -1799,15 +1801,19 @@ async def api_create_error_log_csv(
 ):
     """
     API endpoint to handle the request for creating a CSV error log.
-    It calls the corresponding tool from ai_tools.py, passing the Gemini API key.
+    It runs the long-running, blocking tool function in a separate thread
+    to prevent the server from timing out.
     """
     try:
-        # Call the tool, now passing the API key as well
-        result_json_str = call_tool(
-            "create_error_log_csv",
-            db=db,
+        # --- THIS IS THE FIX ---
+        # We run the synchronous, blocking `call_tool` function in a thread pool.
+        # This prevents the `time.sleep(60)` from freezing the main server process.
+        result_json_str = await run_in_threadpool(
+            call_tool, # The function to run
+            "create_error_log_csv", # First argument to call_tool
+            db=db, # Keyword arguments to call_tool
             performance_id=request.performance_id,
-            gemini_api_key=request.gemini_api_key # Pass the key to the tool
+            gemini_api_key=request.gemini_api_key
         )
         
         result_data = parse_tool_result(result_json_str)
