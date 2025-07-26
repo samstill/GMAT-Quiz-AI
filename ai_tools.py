@@ -397,7 +397,7 @@ def create_error_log_csv(db: Session, performance_id: int, gemini_api_key: str =
     """
     Creates CSV content of ALL questions for a specific quiz attempt,
     with AI-generated topics, skills, areas, and concepts, and returns it as a string.
-    Uses an intelligent batching system to respect API rate limits.
+    Uses a short delay between requests to respect API rate limits without causing a server timeout.
     """
     api_key = gemini_api_key or os.environ.get("GOOGLE_API_KEY")
 
@@ -427,26 +427,7 @@ def create_error_log_csv(db: Session, performance_id: int, gemini_api_key: str =
         writer = csv.DictWriter(output, fieldnames=headers)
         writer.writeheader()
 
-        # --- INTELLIGENT RATE LIMITING SETUP ---
-        request_count_in_batch = 0
-        batch_start_time = time.time()
-        # Gemini Free Tier allows 15 requests per minute.
-        BATCH_SIZE = 15 
-        BATCH_WINDOW_SECONDS = 61 # Use 61 seconds for a small safety margin
-
         for question in all_answers:
-            # Check if we need to pause before this request
-            if request_count_in_batch >= BATCH_SIZE:
-                elapsed_time = time.time() - batch_start_time
-                if elapsed_time < BATCH_WINDOW_SECONDS:
-                    wait_time = BATCH_WINDOW_SECONDS - elapsed_time
-                    print(f"Processed batch of {BATCH_SIZE}. Pausing for {wait_time:.1f} seconds to respect API rate limit...")
-                    time.sleep(wait_time)
-                
-                # Reset for the next batch
-                request_count_in_batch = 0
-                batch_start_time = time.time()
-
             section = question.get("question_type", "Unknown")
             
             name = "Unknown"
@@ -456,9 +437,6 @@ def create_error_log_csv(db: Session, performance_id: int, gemini_api_key: str =
 
             # Generate topic, skill, area, and concept using AI
             ai_analysis = call_gemini_for_question_analysis(question.get("questionText", ""), api_key)
-            
-            # Increment the request counter for the current batch AFTER the API call
-            request_count_in_batch += 1
 
             date_taken_str = quiz_overview.get("dateTaken")
             date_formatted = ""
@@ -490,6 +468,11 @@ def create_error_log_csv(db: Session, performance_id: int, gemini_api_key: str =
                 "Time Spent (Minutes)": time_spent_min
             }
             writer.writerow(row)
+            
+            # --- ROBUST RATE LIMITING FIX ---
+            # A short, non-blocking delay after each call to stay under the 15 RPM limit.
+            # 60 seconds / 15 requests = 4 seconds/request. A 4.1s delay is safe.
+            time.sleep(4.1)
 
         csv_content = output.getvalue()
         output.close()
@@ -502,8 +485,6 @@ def create_error_log_csv(db: Session, performance_id: int, gemini_api_key: str =
 
     except Exception as e:
         return json.dumps({"status": "error", "message": "An unexpected error occurred during CSV generation.", "errorDetails": str(e)})
-
-
 
 
 
