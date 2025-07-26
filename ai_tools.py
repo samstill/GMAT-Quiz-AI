@@ -5,6 +5,7 @@ import csv
 import os
 import io
 import httpx
+import time
 from datetime import datetime
 from sqlalchemy.orm import Session, joinedload
 from models import PerformanceDB, QuestionDB, UserExplanationDB, QuizDB, RCPassageDB
@@ -396,6 +397,7 @@ def create_error_log_csv(db: Session, performance_id: int, gemini_api_key: str =
     """
     Creates CSV content of ALL questions for a specific quiz attempt,
     with AI-generated topics, skills, areas, and concepts, and returns it as a string.
+    Uses an intelligent batching system to respect API rate limits.
     """
     api_key = gemini_api_key or os.environ.get("GOOGLE_API_KEY")
 
@@ -425,7 +427,8 @@ def create_error_log_csv(db: Session, performance_id: int, gemini_api_key: str =
         writer = csv.DictWriter(output, fieldnames=headers)
         writer.writeheader()
 
-        for question in all_answers:
+        # Process questions in batches to respect API rate limits (15 RPM)
+        for i, question in enumerate(all_answers):
             section = question.get("question_type", "Unknown")
             
             name = "Unknown"
@@ -466,6 +469,14 @@ def create_error_log_csv(db: Session, performance_id: int, gemini_api_key: str =
                 "Time Spent (Minutes)": time_spent_min
             }
             writer.writerow(row)
+            
+            # --- INTELLIGENT RATE LIMITING ---
+            # After every 15th request, wait for 60 seconds to reset the minute quota.
+            # We check `(i + 1)` because `i` is 0-indexed.
+            # We also check if it's not the very last question to avoid an unnecessary wait.
+            if (i + 1) % 15 == 0 and (i + 1) < len(all_answers):
+                print(f"Processed batch of 15. Pausing for 60 seconds to respect API rate limit...")
+                time.sleep(60)
 
         csv_content = output.getvalue()
         output.close()
