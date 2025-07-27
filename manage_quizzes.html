@@ -281,6 +281,7 @@
                     throw new Error(errorData.detail || `HTTP error! status: ${response.status}`);
                 }
                 const quizzes = await response.json();
+                quizzes.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
                 renderQuizList(quizzes);
                 messageEl.textContent = '';
             } catch (error) {
